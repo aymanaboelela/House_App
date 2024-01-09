@@ -1,13 +1,14 @@
 import 'package:go_router/go_router.dart';
 import '../../Features/Splach/view/splach_view.dart';
 import '../../Features/home/Presentation/views/home_view.dart';
-import '../../Features/on_boarding/on_boarding.dart';
+
+import '../../Features/on_boarding/presentation/on_boardin_view.dart';
 import '../../Features/product/presentation/view/product_view.dart';
 
 abstract class AppRouter {
 
 
-  static const kOnBordingView = '/onbordingView';
+  static const kOnBoardingView = '/onboardingView';
   static const kHomeView = '/homeView';
   static const KProductView = '/productView';
 
@@ -24,8 +25,8 @@ abstract class AppRouter {
       ),
 
       GoRoute(
-        path: kOnBordingView,
-        builder: (context, state) => const OnBordingView(),
+        path: kOnBoardingView,
+        builder: (context, state) => const OnBoardingView(),
       ),
       GoRoute(
         path: kHomeView,
