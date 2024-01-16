@@ -45,7 +45,7 @@ class _HomeViewState extends State<HomeView> {
             SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return CustomProduct();
+                  return const  CustomProduct();
                 },
                 childCount: 10,
               ),

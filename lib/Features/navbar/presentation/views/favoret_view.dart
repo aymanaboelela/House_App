@@ -10,25 +10,25 @@ class FavoritesView extends StatelessWidget {
       appBar: AppBar(
         title: Text('Favorites'),
       ),
-      body: BlocBuilder<FavoritesCubit, List<bool>>(
-        builder: (context, favorites) {
-          List<int> favoriteIndices = [];
-          for (int i = 0; i < favorites.length; i++) {
-            if (favorites[i]) {
-              favoriteIndices.add(i);
-            }
-          }
+      // body: BlocBuilder<FavoritesCubit, List<bool>>(
+      //   builder: (context, favorites) {
+      //     List<int> favoriteIndices = [];
+      //     for (int i = 0; i < favorites.length; i++) {
+      //       if (favorites[i]) {
+      //         favoriteIndices.add(i);
+      //       }
+      //     }
 
-          return ListView.builder(
-            itemCount: favoriteIndices.length,
-            itemBuilder: (context, index) {
-              return ListTile(
-                title: Text('Favorite Item ${favoriteIndices[index]}'),
-              );
-            },
-          );
-        },
-      ),
+      //     return ListView.builder(
+      //       itemCount: favoriteIndices.length,
+      //       itemBuilder: (context, index) {
+      //         return ListTile(
+      //           title: Text('Favorite Item ${favoriteIndices[index]}'),
+      //         );
+      //       },
+      //     );
+      //   },
+      // ),
     );
   }
 }
