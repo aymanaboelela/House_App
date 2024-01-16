@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 import '../../../../core/utils/responsive.dart';
-import 'package:flutter_animated_icons/icons8.dart';
-import 'package:lottie/lottie.dart';
+
+import '../../data/shered_preferences/shared_preferences.dart';
 import 'custom_coll.dart';
 
 class CustomProduct extends StatefulWidget {
@@ -14,23 +14,30 @@ class CustomProduct extends StatefulWidget {
   State<CustomProduct> createState() => _CustomProductState();
 }
 
-class _CustomProductState extends State<CustomProduct>
-    with TickerProviderStateMixin {
-  bool isfavorite = false;
-  late AnimationController _favoriteController;
+class _CustomProductState extends State<CustomProduct> {
+  @override
   @override
   void initState() {
     super.initState();
-    _favoriteController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    initFavoriteState();
   }
 
-  @override
-  void dispose() {
-    _favoriteController.dispose();
+  Future<void> initFavoriteState() async {
+    // Initialize shared preferences before using it
+    await CacheData.cacheDataInit();
 
-    super.dispose();
+    // Retrieve the favorite state from shared preferences
+    bool cachedFavorite = CacheData.getdata(key: "isfavoretproduct") ?? true;
+
+    // Update the state only if the widget is still mounted
+    if (mounted) {
+      setState(() {
+        isfavorite = cachedFavorite;
+      });
+    }
   }
+
+  bool isfavorite = true;
 
   @override
   Widget build(BuildContext context) {
@@ -148,17 +155,25 @@ class _CustomProductState extends State<CustomProduct>
           Positioned(
             left: 0,
             child: IconButton(
-              onPressed: () {
-                if (_favoriteController.status == AnimationStatus.dismissed) {
-                  _favoriteController.reset();
-                  _favoriteController.animateTo(0.6);
-                } else {
-                  _favoriteController.reverse();
-                }
-                setState(() {});
+              onPressed: () async {
+                // Save the updated favorite state to shared preferences
+                await CacheData.setData(
+                  key: "isfavoretproduct",
+                  value: !isfavorite,
+                );
+         
+
+                setState(() {
+                  isfavorite = !isfavorite;
+                });
               },
-              icon: Lottie.asset(Icons8.heart_color,
-                  height: 29, controller: _favoriteController),
+              icon: isfavorite
+                  ? const Icon(Icons.favorite_border)
+                  : Icon(
+                      Icons.favorite,
+                      color: isfavorite ? Colors.grey : Colors.red,
+                      size: SizeConfig.defaultSize! * 3.5,
+                    ),
             ),
           ),
         ]),

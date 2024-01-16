@@ -3,10 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../core/utils/responsive.dart';
 
-class CoustomProductDescription extends StatelessWidget {
-  const CoustomProductDescription.CustomProductDescription({
-    super.key,
-  });
+
+  class CoustomProductDescription extends StatelessWidget {
+  const CoustomProductDescription({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -37,3 +36,5 @@ class CoustomProductDescription extends StatelessWidget {
     );
   }
 }
+
+

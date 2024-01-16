@@ -11,7 +11,11 @@ class NavBarHome extends StatefulWidget {
   State<NavBarHome> createState() => _NavBarHomeState();
 }
 
-List screens = const [HomeView(), FavoretView(), LocationView()];// the screens 
+List screens = [
+  const HomeView(),
+  FavoritesView(),
+  const LocationView()
+]; // the screens
 
 int curantIndex = 0;
 

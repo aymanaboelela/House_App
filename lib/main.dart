@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:house_app_one/core/thems/them.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SharedPreferences.getInstance();
   runApp(const MyApp());
 }
 

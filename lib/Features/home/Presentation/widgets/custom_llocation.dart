@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/core/utils/app_route.dart';
 
 class CustomLocation extends StatelessWidget {
   const CustomLocation({super.key});
@@ -27,10 +29,13 @@ class CustomLocation extends StatelessWidget {
         ),
         const Spacer(),
         IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.notifications_on_sharp,
-            ))
+          onPressed: () {
+            GoRouter.of(context).push(AppRouter.kNotifacationView);
+          },
+          icon: const Icon(
+            Icons.notifications_on_sharp,
+          ),
+        ),
       ],
     );
   }
