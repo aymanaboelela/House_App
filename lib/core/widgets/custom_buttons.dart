@@ -21,9 +21,9 @@ class CustomGeneralButton extends StatelessWidget {
         child: Center(
           child: Text(
             text!,
-            style: const  TextStyle(
+            style: const TextStyle(
               fontSize: 14,
-              color:  Color(0xffffffff),
+              color: Color(0xffffffff),
               fontWeight: FontWeight.w500,
             ),
             textAlign: TextAlign.left,
@@ -53,7 +53,7 @@ class CustomButtonWithIcon extends StatelessWidget {
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(8),
             border: Border.all(
-              color:const Color(0xFF707070),
+              color: Colors.blue,
             )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -62,14 +62,14 @@ class CustomButtonWithIcon extends StatelessWidget {
               iconData,
               color: color,
             ),
-           const SizeHorizontal( value: 2),
+            const SizeHorizontal(value: 2),
             Text(
               text,
-              style: const  TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w600,
                 fontFamily: 'Poppins',
                 fontSize: 12,
-                color:  Color(0xff000000),
+                color: Colors.white,
               ),
               textAlign: TextAlign.left,
             ),

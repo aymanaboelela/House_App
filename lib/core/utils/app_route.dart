@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Splach/view/splach_view.dart';
+import '../../Features/add_Product/presentation/views/add_product.dart';
 import '../../Features/home/Presentation/views/notifacation.dart';
 import '../../Features/on_boarding/presentation/on_boardin_view.dart';
 import '../../Features/product/presentation/view/product_view.dart';
@@ -10,6 +11,7 @@ abstract class AppRouter {
   static const kHomeView = '/homeView';
   static const kNotifacationView = '/notifacationview';
   static const KProductView = '/productView';
+  static const KAddProduct = '/KAddProduct';
 
 //nav Bat roure
 
@@ -39,10 +41,10 @@ abstract class AppRouter {
         path: kNotifacationView,
         builder: (context, state) => const NotifacationView(),
       ),
-      // GoRoute(
-      //   path: kLikeProductView,
-      //   builder: (context, state) => const ProductView(),
-      // ),
+      GoRoute(
+        path: KAddProduct,
+        builder: (context, state) =>  AddProduct(),
+      ),
       // GoRoute(
       //   path: kCallPhone,
       //   builder: (context, state) => const ProductView(),
