@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
 import 'package:house_app_one/core/thems/them.dart';
+import 'package:house_app_one/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
@@ -14,7 +15,7 @@ Future<void> main() async {
   
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
-    // options: DefaultFirebaseOptions.currentPlatform,
+    options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
 }

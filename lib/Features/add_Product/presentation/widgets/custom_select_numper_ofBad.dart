@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomSelectNumperOfBad extends StatefulWidget {
-  const CustomSelectNumperOfBad({Key? key}) : super(key: key);
-
+  const CustomSelectNumperOfBad({Key? key, required this.onNumberSelected}) : super(key: key);
+  final Function(String) onNumberSelected;
   @override
   State<CustomSelectNumperOfBad> createState() =>
       _CustomSelectNumperOfBadState();
@@ -33,6 +33,7 @@ class _CustomSelectNumperOfBadState extends State<CustomSelectNumperOfBad> {
           for (int i = 0; i < numbers.length; i++)
             Row(
               children: [
+                Text(numbers[i]),
                 Radio(
                   activeColor: Colors.blue,
                   value: numbers[i],
@@ -41,9 +42,10 @@ class _CustomSelectNumperOfBadState extends State<CustomSelectNumperOfBad> {
                     setState(() {
                       selectedNumber = value.toString();
                     });
+                     widget.onNumberSelected(selectedNumber);
+                    print(selectedNumber);
                   },
                 ),
-                Text(numbers[i]),
               ],
             ),
         ],

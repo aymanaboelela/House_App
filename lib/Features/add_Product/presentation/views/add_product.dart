@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -5,7 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
 import 'package:image_picker/image_picker.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../core/widgets/custom_buttons.dart';
 import '../widgets/custom_check_bok.dart';
 import '../widgets/custom_select_numper_ofBad.dart';
@@ -26,6 +27,44 @@ class _AddProductState extends State<AddProduct> {
   bool isapartmentSelected = true;
   bool isStudioSelected = false;
   bool isChecked = false;
+
+  String? typeHouse;
+  String? genger;
+  String? prise;
+  String? numpersOfRome;
+  String? numpersOfBad;
+  String? description;
+  String? airConditioner;
+  String? wifi;
+  String? naturalgas;
+
+  @override
+  void initState() {
+    addHouse();
+    super.initState();
+  }
+
+  CollectionReference house = FirebaseFirestore.instance.collection('users');
+
+  Future<void> addHouse() async {
+    try {
+      await house.add({
+        'Type House': typeHouse,
+        'Gender': genger,
+        'Numpers Of Rome': numpersOfRome,
+        'Numpers of bad': numpersOfBad,
+        'airConditioner': airConditioner,
+        'Wifi': wifi,
+        'naturalgas': naturalgas,
+        'Prise': prise,
+        'Description': description,
+      });
+
+      print("Added House");
+    } catch (error) {
+      print("Failed to add House: $error");
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -59,6 +98,7 @@ class _AddProductState extends State<AddProduct> {
                         label: "شقه  ",
                         isSelected: isapartmentSelected,
                         onToggle: () {
+                          typeHouse = "شقه";
                           setState(() {
                             isapartmentSelected = !isapartmentSelected;
                             isStudioSelected = !isStudioSelected;
@@ -70,6 +110,7 @@ class _AddProductState extends State<AddProduct> {
                         label: "استيديو",
                         isSelected: isStudioSelected,
                         onToggle: () {
+                          typeHouse = "استيديو";
                           setState(
                             () {
                               isStudioSelected = !isStudioSelected;
@@ -95,6 +136,7 @@ class _AddProductState extends State<AddProduct> {
                         label: "شباب ",
                         isSelected: isMaleSelected,
                         onToggle: () {
+                          genger = "شباب";
                           setState(() {
                             isMaleSelected = !isMaleSelected;
                             isFemaleSelected = !isMaleSelected;
@@ -106,6 +148,7 @@ class _AddProductState extends State<AddProduct> {
                         label: "بنات",
                         isSelected: isFemaleSelected,
                         onToggle: () {
+                          genger = "بنات";
                           setState(
                             () {
                               isFemaleSelected = !isFemaleSelected;
@@ -123,7 +166,11 @@ class _AddProductState extends State<AddProduct> {
                       fontSize: 18,
                     ),
                   ),
-                  const CustomSelectNumperOfBad(),
+                  CustomSelectNumperOfBad(
+                    onNumberSelected: (value) {
+                      numpersOfRome = value;
+                    },
+                  ),
                   const SizeVertical(value: 2),
                   Text(
                     "عدد السرائر :",
@@ -131,7 +178,13 @@ class _AddProductState extends State<AddProduct> {
                       fontSize: 18,
                     ),
                   ),
-                  const CustomSelectNumperOfBad(),
+                  CustomSelectNumperOfBad(
+                  
+                    onNumberSelected: (value) {
+                      numpersOfBad = value;
+                      
+                    },
+                  ),
                   const SizeVertical(value: 2),
                   Text(
                     "مميزات الشقه :",
@@ -139,21 +192,47 @@ class _AddProductState extends State<AddProduct> {
                       fontSize: 18,
                     ),
                   ),
-                  CustomCheckbox(title: "مكيفه"),
-                  CustomCheckbox(title: "Wi-Fi"),
-                  CustomCheckbox(title: "غاز طبيعي"),
+                  CustomCheckbox(
+                    selectedTitle: (value) {
+                      airConditioner = value;
+                      setState(() {});
+                  
+                    },
+                    title: "مكيفه",
+                  ),
+                  CustomCheckbox(
+                    title: "Wi-Fi",
+                    selectedTitle: (value) {
+                      wifi = value;
+                      setState(() {});
+                     
+                    },
+                  ),
+                  CustomCheckbox(
+                      title: "غاز طبيعي",
+                      selectedTitle: (value) {
+                        naturalgas = value;
+                        setState(() {});
+                   
+                      }),
                   const SizeVertical(value: 2),
-                  const CustomTextFormField(
-                    keyboardType: TextInputType.numberWithOptions(),
+                  CustomTextFormField(
+                    keyboardType: const TextInputType.numberWithOptions(),
                     title: "سعر السرير:",
                     hintText: "سعر السرير",
                     icon: FontAwesomeIcons.moneyBill,
+                    onChanged: (value) {
+                      prise = value;
+                    },
                   ),
                   const SizeVertical(value: 2),
-                  const CustomTextFormField(
+                  CustomTextFormField(
                     title: "وصف الشقة:",
                     hintText: "وصف الشقة",
                     icon: FontAwesomeIcons.houseChimney,
+                    onChanged: (value) {
+                      description = value;
+                    },
                   ),
                   const SizeVertical(value: 2),
                   Text(
@@ -169,7 +248,21 @@ class _AddProductState extends State<AddProduct> {
                   const SizeVertical(value: 2),
                   CustomGeneralButton(
                     text: "اضف الشقه",
-                    onTap: () {},
+                    onTap: () {
+                      addHouse();
+                    //  print(typeHouse);
+                    //   print(genger);
+                   
+                    //   print(numpersOfRome);
+                    //   print(numpersOfBad);
+                    //   print(naturalgas);
+                    //   print(description);
+                      print(airConditioner);
+                      print(wifi);
+                      print(naturalgas);
+                    //   print(prise);
+                    // 
+                    },
                   ),
                   const SizeVertical(value: 2),
                 ],
@@ -180,11 +273,10 @@ class _AddProductState extends State<AddProduct> {
       ),
     );
   }
-    void pickImage() async {
-     await ImagePicker().pickImage  (source: ImageSource.gallery);
 
-    setState(() {
-   
-    });
+  void pickImage() async {
+    await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    setState(() {});
   }
 }

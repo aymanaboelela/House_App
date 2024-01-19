@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class CustomCheckbox extends StatefulWidget {
-  CustomCheckbox({super.key, required this.title});
+  CustomCheckbox({super.key, required this.title, required this.selectedTitle});
   final String title;
+  final Function(String) selectedTitle;
   @override
   State<CustomCheckbox> createState() => _CustomCheckboxState();
 }
@@ -19,8 +20,8 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
         style: GoogleFonts.cairo(),
       ),
       value: isChecked,
-      
       onChanged: (value) {
+        widget.selectedTitle(isChecked ? "" : widget.title);
         setState(() {
           isChecked = value!;
         });
