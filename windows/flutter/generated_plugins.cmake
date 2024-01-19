@@ -7,6 +7,8 @@ list(APPEND FLUTTER_PLUGIN_LIST
   file_selector_windows
   firebase_core
   flutter_localization
+  modal_progress_hud_nsn
+  rive_common
 )
 
 list(APPEND FLUTTER_FFI_PLUGIN_LIST

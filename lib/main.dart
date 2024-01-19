@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:house_app_one/Features/add_Product/data/cubit/add_house_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
 import 'package:house_app_one/core/thems/them.dart';
 import 'package:house_app_one/firebase_options.dart';
@@ -12,7 +13,7 @@ import 'generated/l10n.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferences.getInstance();
-  
+
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
@@ -26,7 +27,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => FavoretCubit(),)
+        BlocProvider(
+          create: (context) => FavoretCubit(),
+        ),
+        BlocProvider(
+          create: (context) => AddHouseCubit(),
+        )
       ],
       child: MaterialApp.router(
         locale: const Locale('ar'),
