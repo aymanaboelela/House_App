@@ -1,5 +1,4 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -9,8 +8,6 @@ import 'package:house_app_one/Features/add_Product/data/cubit/add_house_cubit.da
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../core/widgets/custom_buttons.dart';
 import '../widgets/custom_check_bok.dart';
@@ -20,7 +17,7 @@ import '../widgets/custom_toggle_button.dart';
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);
 
-  String gender = 'ذكر';
+  String? gender;
   String? typeHouse;
   String? genger;
   String? prise;
@@ -229,7 +226,7 @@ class AddProduct extends StatelessWidget {
                           onTap: () {
                             BlocProvider.of<AddHouseCubit>(context).addHouse(
                               typeHouse: typeHouse!,
-                              gender: gender,
+                              gender: gender!,
                               numberOfRooms: numpersOfRome!,
                               numberOfBeds: numpersOfBad!,
                               airConditioner: airConditioner!,
