@@ -12,7 +12,7 @@ class NavBarHome extends StatefulWidget {
 }
 
 List screens = [
-  const HomeView(),
+  HomeView(),
   FavoritesView(),
   const LocationView()
 ]; // the screens

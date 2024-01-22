@@ -2,13 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
-
-import '../widgets/Custom_product_details.dart';
 import '../widgets/custum_product_coll.dart';
 import '../widgets/custom_product_details2.dart';
 import '../widgets/customproductdescription.dart';
-import '../widgets/custom_ProductItem.dart';
-
 class ProductView extends StatelessWidget {
   const ProductView({Key? key}) : super(key: key);
 
@@ -46,9 +42,9 @@ class ProductView extends StatelessWidget {
             child: SingleChildScrollView(
               child: Column(
                 children: [
-                  CoustomProductItem(),
+                  // CoustomProductItem(prise: ),
                   SizeVertical(value: 2.2),
-                  CustomProductDetails(),
+                  // CustomProductDetails(),
                   SizeVertical(value: 2.2),
                   CustomProductDetails2(),
                   SizeVertical(value: 2.2),

@@ -9,7 +9,20 @@ import '../../../../core/utils/responsive.dart';
 import 'custom_coll.dart';
 
 class CustomProduct extends StatelessWidget {
-  const CustomProduct({super.key});
+  const CustomProduct(
+      {super.key,
+      required this.typeHouse,
+      required this.price,
+      required this.description,
+      required this.genger,
+      required this.numpersOfBad});
+
+  final String typeHouse;
+  final String price;
+  final String description;
+  final String genger;
+  final String numpersOfBad;
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<FavoretCubit, FavoretState>(
@@ -52,14 +65,14 @@ class CustomProduct extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "سرسير",
+                            typeHouse,
                             style: GoogleFonts.cairo(
                               fontSize: 13,
                             ),
                           ),
                           const SizeVertical(value: 0.4),
                           Text(
-                            "1500 ج/ الشهر",
+                            " ${price} ج/ الشهر",
                             style: GoogleFonts.cairo(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -67,7 +80,7 @@ class CustomProduct extends StatelessWidget {
                           ),
                           const SizeVertical(value: 0.5),
                           Text(
-                            "سكن طلاب سوبر لوكس بجانب الجامعة",
+                            description,
                             style: GoogleFonts.mirza(
                               fontSize: 18,
                             ),
@@ -88,7 +101,7 @@ class CustomProduct extends StatelessWidget {
                                   const Icon(Icons.home),
                                   const SizeHorizontal(value: 0.3),
                                   Text(
-                                    "شباب",
+                                    genger,
                                     style: GoogleFonts.cairo(
                                       fontSize: 16,
                                     ),
@@ -101,7 +114,7 @@ class CustomProduct extends StatelessWidget {
                                   const Icon(Icons.bed_rounded),
                                   const SizeHorizontal(value: 0.4),
                                   Text(
-                                    "6",
+                                    numpersOfBad,
                                     style: GoogleFonts.cairo(
                                       fontSize: 18,
                                     ),

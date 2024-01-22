@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/add_Product/data/cubit/add_house_cubit.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
@@ -17,11 +18,10 @@ import '../widgets/custom_toggle_button.dart';
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);
 
-  String? gender;
-  String? typeHouse;
-  String? genger;
-  String? prise;
-  String? numpersOfRome;
+  String typeHouse = "استيديو";
+  String? genger = "شباب";
+  String? price;
+  String? numpersOfRome = "";
   String? numpersOfBad;
   String? description;
   String? airConditioner;
@@ -37,10 +37,11 @@ class AddProduct extends StatelessWidget {
         }
         if (state is IsSucssesAddHouse) {
           isLoging = false;
+          // GoRouter.of(context).pop();
           CustomError.error(context,
               dialogType: DialogType.success,
               title: "نجح",
-              desc: "تم اضافه الشقه");
+              desc: "تم اضافه الشقه بنجاح");
         }
         if (state is IsFeilerAddHouse) {
           isLoging = false;
@@ -48,7 +49,6 @@ class AddProduct extends StatelessWidget {
               dialogType: DialogType.error,
               title: "فشل",
               desc: "فشلت اضافه الشقه ");
-          isLoging = true;
         }
       },
       builder: (context, state) {
@@ -84,7 +84,7 @@ class AddProduct extends StatelessWidget {
                               label: "شقه  ",
                               isSelected:
                                   BlocProvider.of<AddHouseCubit>(context)
-                                      .isapartmentSelected,
+                                      .isApartmentSelected, //
                               onToggle: () {
                                 typeHouse = "شقه";
                                 BlocProvider.of<AddHouseCubit>(context)
@@ -96,7 +96,7 @@ class AddProduct extends StatelessWidget {
                               label: "استيديو",
                               isSelected:
                                   BlocProvider.of<AddHouseCubit>(context)
-                                      .isStudioSelected,
+                                      .isStudioSelected, //
                               onToggle: () {
                                 typeHouse = "استيديو";
                                 BlocProvider.of<AddHouseCubit>(context)
@@ -124,7 +124,7 @@ class AddProduct extends StatelessWidget {
                               onToggle: () {
                                 genger = "شباب";
                                 BlocProvider.of<AddHouseCubit>(context)
-                                    .chingeGengerBoyes();
+                                    .chingeGenderBoyes();
                               },
                             ),
                             const SizeHorizontal(value: 1),
@@ -136,7 +136,7 @@ class AddProduct extends StatelessWidget {
                               onToggle: () {
                                 genger = "بنات";
                                 BlocProvider.of<AddHouseCubit>(context)
-                                    .chingeGengergirls();
+                                    .chingeGenderGirls();
                               },
                             ),
                           ],
@@ -196,7 +196,7 @@ class AddProduct extends StatelessWidget {
                           hintText: "سعر السرير",
                           icon: FontAwesomeIcons.moneyBill,
                           onChanged: (value) {
-                            prise = value;
+                            price = value;
                           },
                         ),
                         const SizeVertical(value: 2),
@@ -225,14 +225,14 @@ class AddProduct extends StatelessWidget {
                           text: "اضف الشقه",
                           onTap: () {
                             BlocProvider.of<AddHouseCubit>(context).addHouse(
-                              typeHouse: typeHouse!,
-                              gender: gender!,
+                              typeHouse: typeHouse,
+                              gender: genger!,
                               numberOfRooms: numpersOfRome!,
                               numberOfBeds: numpersOfBad!,
                               airConditioner: airConditioner!,
                               wifi: wifi!,
                               naturalGas: naturalgas!,
-                              prise: prise!,
+                              price: price!,
                               description: description!,
                             );
                           },

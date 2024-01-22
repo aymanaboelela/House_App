@@ -44,38 +44,38 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyDRpyF98Hl2SD_RgaC8DGwbn0IWZQdtiAQ',
-    appId: '1:890017789779:web:0995c3fab4613c394cd3a6',
-    messagingSenderId: '890017789779',
-    projectId: 'home-app-aab5f',
-    authDomain: 'home-app-aab5f.firebaseapp.com',
-    storageBucket: 'home-app-aab5f.appspot.com',
-    measurementId: 'G-Q2TE7WQ42L',
+    apiKey: 'AIzaSyCaj5E3Ok44berAbgknLasQEFOGDLjSEHg',
+    appId: '1:720301637446:web:9a18d870062e3c624c2f47',
+    messagingSenderId: '720301637446',
+    projectId: 'home-mti',
+    authDomain: 'home-mti.firebaseapp.com',
+    storageBucket: 'home-mti.appspot.com',
+    measurementId: 'G-SYQSV92NG7',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDKnzOguTJlDOm2Nx0-KdUobLa3Yv2pIco',
-    appId: '1:890017789779:android:a94c6e2b1c1155104cd3a6',
-    messagingSenderId: '890017789779',
-    projectId: 'home-app-aab5f',
-    storageBucket: 'home-app-aab5f.appspot.com',
+    apiKey: 'AIzaSyCiFmW6MAIyS0sRFb9EBB-0cimr7FLqtj8',
+    appId: '1:720301637446:android:901691728f4b2b8e4c2f47',
+    messagingSenderId: '720301637446',
+    projectId: 'home-mti',
+    storageBucket: 'home-mti.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyDqeLQ5gTfev0ab4Gz5dbgrbZQwkGYIumQ',
-    appId: '1:890017789779:ios:bf8f228fd59930144cd3a6',
-    messagingSenderId: '890017789779',
-    projectId: 'home-app-aab5f',
-    storageBucket: 'home-app-aab5f.appspot.com',
+    apiKey: 'AIzaSyD_1KdeVHzZ06uWc4UrY4YQaUFmMeIFkJg',
+    appId: '1:720301637446:ios:e01463de0015df3a4c2f47',
+    messagingSenderId: '720301637446',
+    projectId: 'home-mti',
+    storageBucket: 'home-mti.appspot.com',
     iosBundleId: 'com.example.houseAppOne',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyDqeLQ5gTfev0ab4Gz5dbgrbZQwkGYIumQ',
-    appId: '1:890017789779:ios:d43c6e41574a0cb24cd3a6',
-    messagingSenderId: '890017789779',
-    projectId: 'home-app-aab5f',
-    storageBucket: 'home-app-aab5f.appspot.com',
+    apiKey: 'AIzaSyD_1KdeVHzZ06uWc4UrY4YQaUFmMeIFkJg',
+    appId: '1:720301637446:ios:a4d921654e5bf5624c2f47',
+    messagingSenderId: '720301637446',
+    projectId: 'home-mti',
+    storageBucket: 'home-mti.appspot.com',
     iosBundleId: 'com.example.houseAppOne.RunnerTests',
   );
 }

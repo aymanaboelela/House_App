@@ -7,6 +7,7 @@ import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dar
 import 'package:house_app_one/core/thems/them.dart';
 import 'package:house_app_one/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
 
@@ -32,7 +33,10 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => AddHouseCubit(),
-        )
+        ),
+        BlocProvider(
+          create: (context) => GethouseCubit(),
+        ),
       ],
       child: MaterialApp.router(
         locale: const Locale('ar'),

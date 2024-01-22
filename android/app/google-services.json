@@ -1,13 +1,13 @@
 {
   "project_info": {
-    "project_number": "890017789779",
-    "project_id": "home-app-aab5f",
-    "storage_bucket": "home-app-aab5f.appspot.com"
+    "project_number": "720301637446",
+    "project_id": "home-mti",
+    "storage_bucket": "home-mti.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:890017789779:android:a94c6e2b1c1155104cd3a6",
+        "mobilesdk_app_id": "1:720301637446:android:901691728f4b2b8e4c2f47",
         "android_client_info": {
           "package_name": "com.example.house_app_one"
         }
@@ -15,7 +15,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyDKnzOguTJlDOm2Nx0-KdUobLa3Yv2pIco"
+          "current_key": "AIzaSyCiFmW6MAIyS0sRFb9EBB-0cimr7FLqtj8"
         }
       ],
       "services": {

@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 
@@ -9,14 +10,13 @@ class AddHouseCubit extends Cubit<AddHouseState> {
   AddHouseCubit() : super(AddHouseInitial());
   bool isMaleSelected = true;
   bool isFemaleSelected = false;
-  bool isapartmentSelected = true;
+  bool isApartmentSelected = true;
   bool isStudioSelected = false;
-  bool isChecked = false;
 
   Future<void> addHouse({
     required String typeHouse,
     required String gender,
-    required String prise,
+    required String price,
     required String numberOfRooms,
     required String numberOfBeds,
     required String description,
@@ -26,14 +26,15 @@ class AddHouseCubit extends Cubit<AddHouseState> {
   }) async {
     emit(IsLodingAddHouse());
     try {
+      await Firebase.initializeApp(); // Initialize Firebase
       CollectionReference houses =
-          FirebaseFirestore.instance.collection('users');
+          FirebaseFirestore.instance.collection('houses');
       await houses.add({
         'Type House': typeHouse,
         'Gender': gender,
-        'Prise': prise,
-        'Numpers Of Rome': numberOfRooms,
-        'Numpers of Bad': numberOfBeds,
+        'Price': price,
+        'Number Of Rooms': numberOfRooms,
+        'Number Of Beds': numberOfBeds,
         'Description': description,
         'Air Conditioner': airConditioner,
         'Wi-Fi': wifi,
@@ -42,39 +43,50 @@ class AddHouseCubit extends Cubit<AddHouseState> {
       print("House added successfully");
       emit(IsSucssesAddHouse());
     } catch (e) {
-      emit(IsFeilerAddHouse(error: e.toString()));
+      if (e is FirebaseException) {
+        emit(IsFeilerAddHouse(error: e.toString()));
+      } else {
+        emit(IsFeilerAddHouse(error: 'An unknown error occurred.'));
+      }
     }
   }
 
   void houseSelected() {
-    isapartmentSelected = !isapartmentSelected;
-    isStudioSelected = !isStudioSelected;
+    isApartmentSelected = !isApartmentSelected;
+    isStudioSelected = !isApartmentSelected;
     emit(ChingeUiAddHouse());
   }
 
   void houseSelected2() {
     isStudioSelected = !isStudioSelected;
-    isapartmentSelected = !isapartmentSelected;
-
+    isApartmentSelected = !isStudioSelected;
     emit(ChingeUiAddHouse());
   }
 
-  void chingeGengerBoyes() {
+  void chingeGenderBoyes() {
     isMaleSelected = !isMaleSelected;
     isFemaleSelected = !isMaleSelected;
-
     emit(ChingeUiAddHouse());
   }
 
-  void chingeGengergirls() {
+  void chingeGenderGirls() {
     isFemaleSelected = !isFemaleSelected;
     isMaleSelected = !isFemaleSelected;
-
     emit(ChingeUiAddHouse());
   }
 
   void pickImage() async {
-    await ImagePicker().pickImage(source: ImageSource.gallery);
-    emit(ChingeUiAddHouse());
+    try {
+      final pickedFile =
+          await ImagePicker().pickImage(source: ImageSource.gallery);
+      if (pickedFile != null) {
+        // Do something with the picked image (e.g., upload to Firebase Storage)
+        // Here, you might want to update your Firestore document with the image URL
+      }
+      emit(ChingeUiAddHouse());
+    } catch (e) {
+      // Handle image picking error
+      print('Error picking image: $e');
+    }
   }
 }

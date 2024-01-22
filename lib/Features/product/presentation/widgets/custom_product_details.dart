@@ -6,7 +6,13 @@ import '../../../../core/utils/responsive.dart';
 class CustomProductDetails extends StatelessWidget {
   const CustomProductDetails({
     super.key,
+    required this.typeHouse,
+    required this.numberOfBeds,
+    required this.numberOfRooms,
   });
+  final String typeHouse;
+  final String numberOfBeds;
+  final String numberOfRooms;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +39,7 @@ class CustomProductDetails extends StatelessWidget {
                   ),
                   const SizeHorizontal(value: 8.2),
                   Text(
-                    "نوع الاستجار :  سرير",
+                    "${typeHouse} : نوع الاستجار",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),
@@ -44,14 +50,14 @@ class CustomProductDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    " عدد الغرف : 3",
+                    "${numberOfBeds} : عدد الغرف",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),
                   ),
                   const SizeHorizontal(value: 10.2),
                   Text(
-                    "عدد السرائر :  6",
+                    "${numberOfRooms} : عدد السرائر",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),

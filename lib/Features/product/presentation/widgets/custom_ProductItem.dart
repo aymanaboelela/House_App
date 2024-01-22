@@ -4,9 +4,9 @@ import 'package:house_app_one/core/utils/responsive.dart';
 
 class CoustomProductItem extends StatelessWidget {
   const CoustomProductItem({
-    super.key,
+    super.key, required this.prise,
   });
-
+  final String prise;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -25,7 +25,7 @@ class CoustomProductItem extends StatelessWidget {
           ),
           const SizeVertical(value: 2),
           Text(
-            "1500 ج/ الشهر",
+            "${prise} ج/ الشهر",
             style: GoogleFonts.cairo(
               fontSize: SizeConfig.defaultSize! * 2.2,
               fontWeight: FontWeight.bold,
