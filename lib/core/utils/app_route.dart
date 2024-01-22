@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Splach/view/splach_view.dart';
 import '../../Features/add_Product/presentation/views/add_product.dart';
@@ -33,17 +34,17 @@ abstract class AppRouter {
         path: kHomeView,
         builder: (context, state) => const NavBarHome(),
       ),
-      GoRoute(
-        path: KProductView,
-        builder: (context, state) => ProductView(),
-      ),
+      // GoRoute(
+      //   path: KProductView,
+      //   builder: (context, state) => ProductView(data:state.extra),
+      // ),
       GoRoute(
         path: kNotifacationView,
         builder: (context, state) => const NotifacationView(),
       ),
       GoRoute(
         path: KAddProduct,
-        builder: (context, state) =>  AddProduct(),
+        builder: (context, state) => AddProduct(),
       ),
       // GoRoute(
       //   path: kCallPhone,

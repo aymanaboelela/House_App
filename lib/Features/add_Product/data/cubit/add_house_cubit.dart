@@ -14,6 +14,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
   bool isStudioSelected = false;
 
   Future<void> addHouse({
+    required int id,
     required String typeHouse,
     required String gender,
     required String price,
@@ -30,6 +31,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
       CollectionReference houses =
           FirebaseFirestore.instance.collection('houses');
       await houses.add({
+        'id':id,
         'Type House': typeHouse,
         'Gender': gender,
         'Price': price,

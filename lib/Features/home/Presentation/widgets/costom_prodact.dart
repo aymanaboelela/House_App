@@ -4,24 +4,18 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
+import 'package:house_app_one/Features/home/data/models/house_model.dart';
+import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 import '../../../../core/utils/responsive.dart';
 import 'custom_coll.dart';
 
 class CustomProduct extends StatelessWidget {
-  const CustomProduct(
-      {super.key,
-      required this.typeHouse,
-      required this.price,
-      required this.description,
-      required this.genger,
-      required this.numpersOfBad});
-
-  final String typeHouse;
-  final String price;
-  final String description;
-  final String genger;
-  final String numpersOfBad;
+  const CustomProduct({
+    super.key,
+    required this.data,
+  });
+  final HouseModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +30,12 @@ class CustomProduct extends StatelessWidget {
           padding: const EdgeInsets.only(bottom: 22),
           child: InkWell(
             onTap: () {
-              GoRouter.of(context).push(AppRouter.KProductView);
+              // GoRouter.of(context).push(AppRouter.KProductView,extra:data );
+              Navigator.push(context, MaterialPageRoute(
+                builder: (context) {
+                  return ProductView(data: data);
+                },
+              ));
             },
             child: Stack(children: [
               Container(
@@ -65,14 +64,14 @@ class CustomProduct extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            typeHouse,
+                            data.typeHouse,
                             style: GoogleFonts.cairo(
                               fontSize: 13,
                             ),
                           ),
                           const SizeVertical(value: 0.4),
                           Text(
-                            " ${price} ج/ الشهر",
+                            " ${data.price} ج/ الشهر",
                             style: GoogleFonts.cairo(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -80,7 +79,7 @@ class CustomProduct extends StatelessWidget {
                           ),
                           const SizeVertical(value: 0.5),
                           Text(
-                            description,
+                            data.description,
                             style: GoogleFonts.mirza(
                               fontSize: 18,
                             ),
@@ -101,7 +100,7 @@ class CustomProduct extends StatelessWidget {
                                   const Icon(Icons.home),
                                   const SizeHorizontal(value: 0.3),
                                   Text(
-                                    genger,
+                                    data.gender,
                                     style: GoogleFonts.cairo(
                                       fontSize: 16,
                                     ),
@@ -114,7 +113,7 @@ class CustomProduct extends StatelessWidget {
                                   const Icon(Icons.bed_rounded),
                                   const SizeHorizontal(value: 0.4),
                                   Text(
-                                    numpersOfBad,
+                                    data.numpersOfBad,
                                     style: GoogleFonts.cairo(
                                       fontSize: 18,
                                     ),

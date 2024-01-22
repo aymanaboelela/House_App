@@ -1,15 +1,17 @@
 class HouseModel {
   String typeHouse;
-  int price;
+  String price;
   String airConditioner;
   String wifi;
   String naturalgas;
   String description;
   String gender;
-  int numpersOfBad;
-  String image;
+  String numpersOfBad;
+  String numpersOfRoms;
+
 
   HouseModel({
+    required this.numpersOfRoms,
     required this.typeHouse,
     required this.price,
     required this.airConditioner,
@@ -18,31 +20,33 @@ class HouseModel {
     required this.description,
     required this.gender,
     required this.numpersOfBad,
-    required this.image,
+   
   });
 
   HouseModel.fromMap(Map<String, dynamic> map)
-      : typeHouse = map['typeHouse'],
-        price = map['price'],
-        airConditioner = map['airConditioner'],
-        wifi = map['wifi'],
-        naturalgas = map['naturalgas'],
-        description = map['description'],
-        gender = map['gender'],
-        numpersOfBad = map['numpersOfBad'],
-        image = map['image'];
+      : typeHouse = map['Type House'],
+        numpersOfRoms = map['Number Of Rooms'],
+        price = map['Price'],
+        airConditioner = map['Air Conditioner'],
+        wifi = map['Wi-Fi'],
+        naturalgas = map['Natural Gas'],
+        description = map['Description'],
+        gender = map['Gender'],
+        numpersOfBad = map['Number Of Beds'];
+  // image = map['image'];
 
   Map<String, dynamic> toMap() {
     return {
-      'typeHouse': typeHouse,
-      'price': price,
-      'airConditioner': airConditioner,
-      'wifi': wifi,
-      'naturalgas': naturalgas,
+      'Type House': typeHouse,
+      'Price': price,
+      'Air Conditioner': airConditioner,
+      'Wi-Fi': wifi,
+      'Natural Gas': naturalgas,
       'description': description,
-      'gender': gender,
-      'numpersOfBad': numpersOfBad,
-      'image': image,
+      'Gender': gender,
+      'Number Of Beds': numpersOfBad,
+     
+      'Number Of Rooms': numpersOfRoms,
     };
   }
 }

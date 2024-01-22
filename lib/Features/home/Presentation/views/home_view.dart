@@ -3,6 +3,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:house_app_one/Features/home/data/models/house_model.dart';
+import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
@@ -28,15 +30,19 @@ class _HomeViewState extends State<HomeView> {
     //  BlocProvider.of<GethouseCubit>(context).getData();
     super.initState();
     setState(() {
-      getGat();
+      getdate();
     });
   }
 
-  List data = [];
-  Future getGat() async {
+  static List<HouseModel> data = [];
+
+  Future getdate() async {
     QuerySnapshot querySnapshot =
         await FirebaseFirestore.instance.collection('houses').get();
-    data.addAll(querySnapshot.docs);
+    querySnapshot.docs.forEach((doc) {
+      HouseModel house = HouseModel.fromMap(doc.data() as Map<String, dynamic>);
+      data.add(house);
+    });
   }
 
   @override
@@ -75,11 +81,8 @@ class _HomeViewState extends State<HomeView> {
                     childCount: data.length,
                     (context, index) {
                       return CustomProduct(
-                          typeHouse: data[index]["Type House"],
-                          price: data[index]["Price"],
-                          description: data[index]["Description"],
-                          genger: data[index]["Gender"],
-                          numpersOfBad: data[index]["Number Of Beds"]);
+                        data: data[index],
+                      );
                     },
                   ),
                 ),
@@ -89,6 +92,7 @@ class _HomeViewState extends State<HomeView> {
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: () {
+
             GoRouter.of(context).push(AppRouter.KAddProduct);
           },
           child: const Icon(Icons.add),

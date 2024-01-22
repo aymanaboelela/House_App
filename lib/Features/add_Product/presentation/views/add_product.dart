@@ -17,7 +17,7 @@ import '../widgets/custom_toggle_button.dart';
 
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);
-
+  int id = 1;
   String typeHouse = "استيديو";
   String? genger = "شباب";
   String? price;
@@ -199,6 +199,15 @@ class AddProduct extends StatelessWidget {
                             price = value;
                           },
                         ),
+                        CustomTextFormField(
+                          keyboardType: const TextInputType.numberWithOptions(),
+                          title: "id :",
+                          hintText: "id",
+                          icon: FontAwesomeIcons.moneyBill,
+                          onChanged: (value) {
+                            id = value as int;
+                          },
+                        ),
                         const SizeVertical(value: 2),
                         CustomTextFormField(
                           title: "وصف الشقة:",
@@ -225,6 +234,7 @@ class AddProduct extends StatelessWidget {
                           text: "اضف الشقه",
                           onTap: () {
                             BlocProvider.of<AddHouseCubit>(context).addHouse(
+                              id: id,
                               typeHouse: typeHouse,
                               gender: genger!,
                               numberOfRooms: numpersOfRome!,
