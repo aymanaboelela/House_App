@@ -1,11 +1,10 @@
 import 'package:go_router/go_router.dart';
-import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Splach/view/splach_view.dart';
 import '../../Features/add_Product/presentation/views/add_product.dart';
 import '../../Features/home/Presentation/views/notifacation.dart';
 import '../../Features/on_boarding/presentation/on_boardin_view.dart';
-import '../../Features/product/presentation/view/product_view.dart';
+
 
 abstract class AppRouter {
   static const kOnBoardingView = '/onboardingView';
@@ -46,10 +45,6 @@ abstract class AppRouter {
         path: KAddProduct,
         builder: (context, state) => AddProduct(),
       ),
-      // GoRoute(
-      //   path: kCallPhone,
-      //   builder: (context, state) => const ProductView(),
-      // ),
     ],
   );
 }

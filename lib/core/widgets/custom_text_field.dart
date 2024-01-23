@@ -62,7 +62,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           ),
         ),
       ),
-      SizeVertical(value: 1.5),
+      const SizeVertical(value: 1.5),
       TextFormField(
         style: widget.textFieldStyle ??
             const TextStyle(color: Colors.white, fontSize: 18),
@@ -73,7 +73,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         validator: widget.validator ??
             (value) {
               if (value!.isEmpty) {
-                return "please fill out the field!";
+                return "";
               } else {
                 return null;
               }
@@ -90,10 +90,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           isDense: true,
           errorStyle:
               const TextStyle(fontSize: 16, fontWeight: FontWeight.w700),
-          prefixIcon: widget.icon != null
-              ?
-              Icon(widget.icon!) 
-              : null,
+          prefixIcon: widget.icon != null ? Icon(widget.icon!) : null,
           suffixIcon: widget.isVisible == true
               ? IconButton(
                   onPressed: () {
@@ -112,7 +109,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
               horizontal: SizeConfig.defaultSize! * 0.22222),
           filled: true,
           fillColor: widget.fillColor ?? Colors.grey[850],
-          hintText: widget.hintText ,
+          hintText: widget.hintText,
           label: Text(widget.label ?? ""),
           enabledBorder: const OutlineInputBorder(
             borderSide: BorderSide(color: Colors.white, width: 2),
