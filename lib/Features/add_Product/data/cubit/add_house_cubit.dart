@@ -33,8 +33,8 @@ class AddHouseCubit extends Cubit<AddHouseState> {
     required bool wifi,
     required bool naturalGas,
   }) async {
-    emit(IsLodingAddHouse());
-    if (file == null) {
+    emit(IsLodingAddHouse()  );
+    if (file  == null ) {
       emit(IamgeFeiler());
     } else {
       try {

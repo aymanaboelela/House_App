@@ -9,6 +9,7 @@ import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 import '../../../../core/utils/responsive.dart';
+import '../../../product/presentation/widgets/image_scrrol.dart';
 import 'custom_coll.dart';
 
 class CustomProduct extends StatelessWidget {
@@ -51,25 +52,7 @@ class CustomProduct extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    data.url != null
-                        ? CachedNetworkImage(
-                            imageUrl: data.url!,
-                            placeholder: (context, url) => const Center(
-                                child: CircularProgressIndicator()),
-                            errorWidget: (context, url, error) =>
-                                const Icon(Icons.error),
-                            alignment: Alignment.bottomCenter,
-                            // fadeInDuration: const Duration(minutes: 3),
-                            fit: BoxFit.fill,
-                            height: SizeConfig.defaultSize! * 21.5,
-                            width: double.infinity,
-                          )
-                        : SizedBox(
-                            height: SizeConfig.defaultSize! * 21.5,
-                            child:const Center(
-                              child: CircularProgressIndicator(),
-                            ),
-                          ),
+                    ScrollImage(data: data, autoPlay: false),
                     const SizeVertical(value: 1),
                     Padding(
                       padding: EdgeInsets.symmetric(

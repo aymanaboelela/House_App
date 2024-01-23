@@ -20,14 +20,14 @@ class AddProduct extends StatelessWidget {
   String typeHouse = "استيديو";
   String? genger = "شباب";
   String? price;
-  String? numpersOfRome = "6";
-  String? numpersOfBad = "6";
+  String numpersOfRome = "3";
+  String numpersOfBad = "6";
   String? description = "test";
   bool? airConditioner = false;
   bool? wifi = false;
   bool? naturalgas = false;
   bool isLoging = false;
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AddHouseCubit, AddHouseState>(
@@ -247,8 +247,8 @@ class AddProduct extends StatelessWidget {
                                   idHouse: idHouse,
                                   typeHouse: typeHouse,
                                   gender: genger!,
-                                  numberOfRooms: numpersOfRome!,
-                                  numberOfBeds: numpersOfBad!,
+                                  numberOfRooms: numpersOfRome,
+                                  numberOfBeds: numpersOfBad,
                                   airConditioner: airConditioner!,
                                   wifi: wifi!,
                                   naturalGas: naturalgas!,
