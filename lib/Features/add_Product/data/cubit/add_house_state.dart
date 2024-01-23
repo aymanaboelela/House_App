@@ -10,6 +10,7 @@ class IsSucssesAddHouse extends AddHouseState {}
 class IsLodingAddHouse extends AddHouseState {}
 
 class ChingeUiAddHouse extends AddHouseState {}
+class IamgeFeiler extends AddHouseState {}
 
 class IsFeilerAddHouse extends AddHouseState {
   IsFeilerAddHouse({required this.error}) : super();

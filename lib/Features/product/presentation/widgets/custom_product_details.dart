@@ -9,9 +9,11 @@ class CustomProductDetails extends StatelessWidget {
     required this.typeHouse,
     required this.numberOfBeds,
     required this.numberOfRooms,
+    required this.gender,
   });
   final String typeHouse;
   final String numberOfBeds;
+  final String gender;
   final String numberOfRooms;
 
   @override
@@ -32,14 +34,14 @@ class CustomProductDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "نوع العقار :  شقه",
+                    "نوع العقار : $typeHouse",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),
                   ),
                   const SizeHorizontal(value: 8.2),
                   Text(
-                    "${typeHouse} : نوع الاستجار",
+                    "عدد الغرف : $numberOfBeds",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),
@@ -50,14 +52,14 @@ class CustomProductDetails extends StatelessWidget {
               Row(
                 children: [
                   Text(
-                    "${numberOfBeds} : عدد الغرف",
+                    "نوع السكن : $gender",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),
                   ),
-                  const SizeHorizontal(value: 10.2),
+                  const SizeHorizontal(value: 8.6),
                   Text(
-                    "${numberOfRooms} : عدد السرائر",
+                    "عدد السرائر : $numberOfRooms",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),

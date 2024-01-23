@@ -1,12 +1,17 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 
 class CoustomProductItem extends StatelessWidget {
   const CoustomProductItem({
-    super.key, required this.prise,
+    super.key,
+    required this.data,
   });
-  final String prise;
+
+  final HouseModel data;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,20 +22,49 @@ class CoustomProductItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.asset(
-            "assets/images/test1.png",
-            fit: BoxFit.fill,
-            height: SizeConfig.defaultSize! * 25,
-            width: double.infinity,
-          ),
+          data.url != null
+              ? CachedNetworkImage(
+                  imageUrl: data.url!,
+                  placeholder: (context, url) =>
+                      const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => const Icon(Icons.error),
+                  alignment: Alignment.bottomCenter,
+                 
+                  fit: BoxFit.fill,
+                  height: SizeConfig.defaultSize! * 21.5,
+                  width: double.infinity,
+                )
+              : SizedBox(
+                  height: SizeConfig.defaultSize! * 25,
+                  child: const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                ),
           const SizeVertical(value: 2),
-          Text(
-            "${prise} ج/ الشهر",
-            style: GoogleFonts.cairo(
-              fontSize: SizeConfig.defaultSize! * 2.2,
-              fontWeight: FontWeight.bold,
-            ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Spacer(),
+              Text(
+                "${data.price} ج/ الشهر",
+                style: GoogleFonts.cairo(
+                  fontSize: SizeConfig.defaultSize! * 2.2,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Spacer(),
+              Text(
+                "ID : ${data.idHouse}",
+                style: GoogleFonts.cairo(
+                  fontSize: SizeConfig.defaultSize! * 2.2,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              const Spacer()
+            ],
           ),
+
+          // SizeVertical(value: 1),
         ],
       ),
     );

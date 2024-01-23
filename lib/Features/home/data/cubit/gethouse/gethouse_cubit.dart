@@ -7,39 +7,33 @@ part 'gethouse_state.dart';
 
 class GethouseCubit extends Cubit<GethouseState> {
   GethouseCubit() : super(GethouseInitial());
+  List<HouseModel> data = [];
 
-  List data = [];
-  Future getData() async {
-    emit(IsLodingGetHouse());
-    await Future.delayed(const Duration(minutes: 1));
+  Future<void> getData() async {
+    data.clear();
+    //  await Future.delayed(const Duration(minutes: 1));
     try {
+      emit(IsLodingGetHouse());
+      print("Data is loading...");
       QuerySnapshot querySnapshot =
           await FirebaseFirestore.instance.collection('houses').get();
-
-      data.addAll(querySnapshot.docs);
-
+      querySnapshot.docs.forEach((doc) {
+        HouseModel house =
+            HouseModel.fromMap(doc.data() as Map<String, dynamic>);
+        data.add(house);
+      });
       emit(IsSucssesGetHouse(data: data));
-    } on Exception catch (e) {
+      print("get data...");
+    } catch (e) {
+      print("Data loading failed: $e");
       emit(IsFeilerGetHouse(error: e.toString()));
     }
   }
+
+  // void deletHouse(int index) async {
+  //   await FirebaseFirestore.instance
+  //       .collection('houses')
+  //       .doc(data[index].id)
+  //       .delete();
+  // }
 }
-//   class GethouseCubit extends Cubit<GethouseState> {
-//   GethouseCubit() : super(GethouseInitial());
-
-//   List<HouseModel> data = [];
-
-//   Future<void> getData() async {
-//     emit(IsLodingGetHouse());
-//     print("Data is loading...");
-//     try {
-//       final querySnapshot = await FirebaseFirestore.instance.collection('houses').get();
-//       data = querySnapshot.docs.map((doc) => HouseModel.fromMap(doc.data())).toList();
-//       print("Data successfully loaded!");
-//       emit(IsSucssesGetHouse(data: data));
-//     } on Exception catch (e) {
-//       print("Data loading failed: $e");
-//       emit(IsFeilerGetHouse(error: e.toString()));
-//     }
-//   }
-// }

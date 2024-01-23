@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -50,12 +51,25 @@ class CustomProduct extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Image.asset(
-                      "assets/images/test1.png",
-                      fit: BoxFit.fill,
-                      height: SizeConfig.defaultSize! * 21.5,
-                      width: double.infinity,
-                    ),
+                    data.url != null
+                        ? CachedNetworkImage(
+                            imageUrl: data.url!,
+                            placeholder: (context, url) => const Center(
+                                child: CircularProgressIndicator()),
+                            errorWidget: (context, url, error) =>
+                                const Icon(Icons.error),
+                            alignment: Alignment.bottomCenter,
+                            // fadeInDuration: const Duration(minutes: 3),
+                            fit: BoxFit.fill,
+                            height: SizeConfig.defaultSize! * 21.5,
+                            width: double.infinity,
+                          )
+                        : SizedBox(
+                            height: SizeConfig.defaultSize! * 21.5,
+                            child:const Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          ),
                     const SizeVertical(value: 1),
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -146,7 +160,7 @@ class CustomProduct extends StatelessWidget {
                 left: 0,
                 child: IconButton(
                   onPressed: () {
-                    BlocProvider.of<FavoretCubit>(context).setDataProduct();
+                    //   BlocProvider.of<FavoretCubit>(context).setDataProduct();
                   },
                   icon: BlocProvider.of<FavoretCubit>(context).isfavoriteProduct
                       ? const Icon(Icons.favorite_border)

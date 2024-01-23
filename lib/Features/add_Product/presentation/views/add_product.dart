@@ -17,16 +17,16 @@ import '../widgets/custom_toggle_button.dart';
 
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);
-  int id = 1;
+  String idHouse = "1";
   String typeHouse = "استيديو";
   String? genger = "شباب";
   String? price;
-  String? numpersOfRome = "";
-  String? numpersOfBad;
-  String? description;
-  String? airConditioner;
-  String? wifi;
-  String? naturalgas;
+  String? numpersOfRome = "6";
+  String? numpersOfBad = "6";
+  String? description = "test";
+  bool? airConditioner = false;
+  bool? wifi = false;
+  bool? naturalgas = false;
   bool isLoging = false;
   @override
   Widget build(BuildContext context) {
@@ -49,6 +49,11 @@ class AddProduct extends StatelessWidget {
               dialogType: DialogType.error,
               title: "فشل",
               desc: "فشلت اضافه الشقه ");
+        }
+        if (state is IamgeFeiler) {
+          isLoging = false;
+          CustomError.error(context,
+              dialogType: DialogType.error, title: "فشل", desc: "اضف صوره ");
         }
       },
       builder: (context, state) {
@@ -199,13 +204,13 @@ class AddProduct extends StatelessWidget {
                             price = value;
                           },
                         ),
+                        const SizeVertical(value: 2),
                         CustomTextFormField(
-                          keyboardType: const TextInputType.numberWithOptions(),
-                          title: "id :",
+                          title: " ID : ",
                           hintText: "id",
-                          icon: FontAwesomeIcons.moneyBill,
+                          icon: FontAwesomeIcons.idBadge,
                           onChanged: (value) {
-                            id = value as int;
+                            idHouse = value;
                           },
                         ),
                         const SizeVertical(value: 2),
@@ -234,7 +239,7 @@ class AddProduct extends StatelessWidget {
                           text: "اضف الشقه",
                           onTap: () {
                             BlocProvider.of<AddHouseCubit>(context).addHouse(
-                              id: id,
+                              idHouse: idHouse,
                               typeHouse: typeHouse,
                               gender: genger!,
                               numberOfRooms: numpersOfRome!,

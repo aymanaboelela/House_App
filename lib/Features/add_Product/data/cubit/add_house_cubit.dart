@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
+import 'package:path/path.dart';
 
 part 'add_house_state.dart';
 
@@ -13,42 +17,55 @@ class AddHouseCubit extends Cubit<AddHouseState> {
   bool isApartmentSelected = true;
   bool isStudioSelected = false;
 
+  File? file;
+  var imageName;
+  String? url;
+
   Future<void> addHouse({
-    required int id,
+    required String idHouse,
     required String typeHouse,
     required String gender,
     required String price,
     required String numberOfRooms,
     required String numberOfBeds,
     required String description,
-    required String airConditioner,
-    required String wifi,
-    required String naturalGas,
+    required bool airConditioner,
+    required bool wifi,
+    required bool naturalGas,
   }) async {
     emit(IsLodingAddHouse());
-    try {
-      await Firebase.initializeApp(); // Initialize Firebase
-      CollectionReference houses =
-          FirebaseFirestore.instance.collection('houses');
-      await houses.add({
-        'id':id,
-        'Type House': typeHouse,
-        'Gender': gender,
-        'Price': price,
-        'Number Of Rooms': numberOfRooms,
-        'Number Of Beds': numberOfBeds,
-        'Description': description,
-        'Air Conditioner': airConditioner,
-        'Wi-Fi': wifi,
-        'Natural Gas': naturalGas,
-      });
-      print("House added successfully");
-      emit(IsSucssesAddHouse());
-    } catch (e) {
-      if (e is FirebaseException) {
-        emit(IsFeilerAddHouse(error: e.toString()));
-      } else {
-        emit(IsFeilerAddHouse(error: 'An unknown error occurred.'));
+    if (file == null) {
+      emit(IamgeFeiler());
+    } else {
+      try {
+        await addImage();
+        await Firebase.initializeApp();
+        CollectionReference houses =
+            FirebaseFirestore.instance.collection('houses');
+
+        await houses.add(
+          {
+            'id House': idHouse,
+            'Type House': typeHouse,
+            'Gender': gender,
+            'Price': price,
+            'Number Of Rooms': numberOfRooms,
+            'Number Of Beds': numberOfBeds,
+            'Description': description,
+            'Air Conditioner': airConditioner,
+            'Wi-Fi': wifi,
+            'Natural Gas': naturalGas,
+            'url': url,
+          },
+        );
+        print("House added successfully");
+        emit(IsSucssesAddHouse());
+      } catch (e) {
+        if (e is FirebaseException) {
+          emit(IsFeilerAddHouse(error: e.toString()));
+        } else {
+          emit(IsFeilerAddHouse(error: 'An unknown error occurred.'));
+        }
       }
     }
   }
@@ -77,18 +94,23 @@ class AddHouseCubit extends Cubit<AddHouseState> {
     emit(ChingeUiAddHouse());
   }
 
-  void pickImage() async {
+  Future<void> pickImage() async {
     try {
       final pickedFile =
           await ImagePicker().pickImage(source: ImageSource.gallery);
       if (pickedFile != null) {
-        // Do something with the picked image (e.g., upload to Firebase Storage)
-        // Here, you might want to update your Firestore document with the image URL
+        file = File(pickedFile.path);
+        imageName = basename(pickedFile.path);
       }
       emit(ChingeUiAddHouse());
     } catch (e) {
-      // Handle image picking error
-      print('Error picking image: $e');
+      print('Error picking image///////////////////////: $e');
     }
+  }
+
+  Future<void> addImage() async {
+    var refStorage = FirebaseStorage.instance.ref().child('image/$imageName');
+    await refStorage.putFile(file!);
+    url = await refStorage.getDownloadURL();
   }
 }

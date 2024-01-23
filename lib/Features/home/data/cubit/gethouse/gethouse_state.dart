@@ -6,7 +6,7 @@ abstract class GethouseState {}
 class GethouseInitial extends GethouseState {}
 
 class IsSucssesGetHouse extends GethouseState {
-    final List data;
+    final List<HouseModel>  data;
 
   IsSucssesGetHouse({required this.data});
 }

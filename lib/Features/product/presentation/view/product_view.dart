@@ -47,25 +47,31 @@ class _ProductViewState extends State<ProductView> {
         ],
       ),
       body: Padding(
-        padding:const  EdgeInsets.symmetric(horizontal: 9),
+        padding: const EdgeInsets.symmetric(horizontal: 9),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              CoustomProductItem(prise: widget.data.price),
-            const   SizeVertical(value: 2.2),
+              CoustomProductItem(
+                data: widget.data,
+              ),
+              const SizeVertical(value: 2.2),
               CustomProductDetails(
+                  gender: widget.data.gender,
                   numberOfBeds: widget.data.numpersOfBad,
                   numberOfRooms: widget.data.numpersOfRoms,
                   typeHouse: widget.data.typeHouse),
-            const   SizeVertical(value: 2.2),
-              CustomProductDetails2(),
-            const   SizeVertical(value: 2.2),
+              const SizeVertical(value: 2.2),
+              CustomProductDetails2(
+                  isWiFi: widget.data.wifi,
+                  isAirConditioner: widget.data.airConditioner,
+                  isNaturalgas: widget.data.naturalgas),
+              const SizeVertical(value: 2.2),
               CoustomProductDescription(
                 description: widget.data.description,
               ),
-             const  SizeVertical(value: 2.2),
-            const   CustomProductCall(),
-            const   SizeVertical(value: 2.2),
+              const SizeVertical(value: 2.2),
+              const CustomProductCall(),
+              const SizeVertical(value: 2.2),
             ],
           ),
         ),

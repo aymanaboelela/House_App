@@ -51,6 +51,10 @@ dependencies:
   awesome_dialog: ^3.2.0
   modal_progress_hud_nsn: ^0.4.0
   
+  firebase_storage: ^11.6.0
+  path: ^1.8.3
+  cached_network_image: ^3.3.1
+  
 
 dev_dependencies:
   flutter_test:
