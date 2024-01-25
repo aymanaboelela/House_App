@@ -1,4 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
@@ -23,7 +23,7 @@ class CoustomProductItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          ScrollImage(data: data, autoPlay: false),
+          ScrollImage(data: data, autoPlay: true),
           const SizeVertical(value: 2),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

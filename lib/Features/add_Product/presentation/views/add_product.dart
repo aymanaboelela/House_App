@@ -235,7 +235,7 @@ class AddProduct extends StatelessWidget {
                           const SizeVertical(value: 2),
                           IconButton(
                               onPressed: BlocProvider.of<AddHouseCubit>(context)
-                                  .pickImage,
+                                  .pickImages,
                               icon: const Icon(FontAwesomeIcons.photoFilm)),
                           const SizeVertical(value: 2),
                           CustomGeneralButton(

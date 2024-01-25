@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -48,6 +47,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
       ],
     );
   }
+
   void initSlidingAnimation() {
     animationController = AnimationController(
       vsync: this,
@@ -63,7 +63,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
 
   void navigateToHome() {
     Future.delayed(
-      const Duration(seconds: 10),
+      const Duration(seconds: 3),
       () {
         GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingView);
       },

@@ -1,6 +1,6 @@
 part of 'gethouse_cubit.dart';
 
-@immutable
+
 abstract class GethouseState {}
 
 class GethouseInitial extends GethouseState {}

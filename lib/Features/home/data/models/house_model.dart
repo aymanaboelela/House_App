@@ -9,7 +9,7 @@ class HouseModel {
   String gender;
   String numpersOfBad;
   String numpersOfRoms;
-  String ?url;
+  List<dynamic> url;
 
   HouseModel({
     required this.idHouse,
@@ -36,5 +36,5 @@ class HouseModel {
         description = map['Description'],
         gender = map['Gender'],
         numpersOfBad = map['Number Of Beds'],
-        url = map['url'];
+        url = map['Urls'] ?? [];
 }

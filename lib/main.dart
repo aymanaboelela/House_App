@@ -10,7 +10,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SharedPreferences.getInstance();

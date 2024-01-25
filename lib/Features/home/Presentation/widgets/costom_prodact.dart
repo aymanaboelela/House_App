@@ -1,13 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
-import 'package:house_app_one/core/utils/app_route.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../product/presentation/widgets/image_scrrol.dart';
 import 'custom_coll.dart';

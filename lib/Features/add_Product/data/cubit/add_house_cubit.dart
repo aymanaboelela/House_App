@@ -17,8 +17,9 @@ class AddHouseCubit extends Cubit<AddHouseState> {
   bool isApartmentSelected = true;
   bool isStudioSelected = false;
 
-  File? file;
-  var imageName;
+  List<XFile> imagesFiles = [];
+  List imageNames = [];
+  List<String> imageUrls = [];
   String? url;
 
   Future<void> addHouse({
@@ -33,12 +34,12 @@ class AddHouseCubit extends Cubit<AddHouseState> {
     required bool wifi,
     required bool naturalGas,
   }) async {
-    emit(IsLodingAddHouse()  );
-    if (file  == null ) {
+    emit(IsLodingAddHouse());
+    if (imagesFiles.isEmpty) {
       emit(IamgeFeiler());
     } else {
       try {
-        await addImage();
+        await addImages();
         await Firebase.initializeApp();
         CollectionReference houses =
             FirebaseFirestore.instance.collection('houses');
@@ -55,10 +56,11 @@ class AddHouseCubit extends Cubit<AddHouseState> {
             'Air Conditioner': airConditioner,
             'Wi-Fi': wifi,
             'Natural Gas': naturalGas,
-            'url': url,
+            'Urls': imageUrls,
           },
         );
         print("House added successfully");
+        imagesFiles.clear();
         emit(IsSucssesAddHouse());
       } catch (e) {
         if (e is FirebaseException) {
@@ -94,23 +96,37 @@ class AddHouseCubit extends Cubit<AddHouseState> {
     emit(ChingeUiAddHouse());
   }
 
-  Future<void> pickImage() async {
+  final ImagePicker imagePicker = ImagePicker();
+
+  Future<void> pickImages() async {
     try {
-      final pickedFile =
-          await ImagePicker().pickImage(source: ImageSource.gallery);
-      if (pickedFile != null) {
-        file = File(pickedFile.path);
-        imageName = basename(pickedFile.path);
+      final List<XFile>? pickedFiles = await imagePicker.pickMultiImage();
+      if (pickedFiles != null && pickedFiles.isNotEmpty) {
+        imagesFiles.addAll(pickedFiles);
+        for (XFile pickedFile in pickedFiles) {
+          imageNames.add(basename(pickedFile.path));
+        }
       }
       emit(ChingeUiAddHouse());
     } catch (e) {
-      print('Error picking image///////////////////////: $e');
+      print('Error picking images: $e');
     }
   }
 
-  Future<void> addImage() async {
-    var refStorage = FirebaseStorage.instance.ref().child('image/$imageName');
-    await refStorage.putFile(file!);
-    url = await refStorage.getDownloadURL();
+  Future<void> addImages() async {
+    try {
+      for (int i = 0; i < imagesFiles.length; i++) {
+        File file = File(imagesFiles[i].path);
+        var refStorage =
+            FirebaseStorage.instance.ref().child('images/${imageNames[i]}');
+        await refStorage.putFile(file);
+        url = await refStorage.getDownloadURL();
+
+        imageUrls.add(url!);
+      }
+      emit(ChingeUiAddHouse());
+    } catch (e) {
+      print('Error uploading images: $e');
+    }
   }
 }
