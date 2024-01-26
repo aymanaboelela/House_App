@@ -31,7 +31,7 @@ class _ProductViewState extends State<ProductView> {
         actions: [
           IconButton(
             onPressed: () {
-              BlocProvider.of<FavoretCubit>(context).setData();
+              // BlocProvider.of<FavoretCubit>(context).setData( );
             },
             icon: BlocProvider.of<FavoretCubit>(context).isfavorite
                 ? Icon(

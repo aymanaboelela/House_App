@@ -1,34 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 
-import '../../data/favorites_cubit.dart';
+import '../../../home/Presentation/widgets/costom_prodact.dart';
+import '../../../home/data/models/house_model.dart';
 
-class FavoritesView extends StatelessWidget {
+class FavoriteProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Favorites'),
+        title: Text(
+          'المفضله',
+          style: GoogleFonts.cairo(),
+        ),
       ),
-      // body: BlocBuilder<FavoritesCubit, List<bool>>(
-      //   builder: (context, favorites) {
-      //     List<int> favoriteIndices = [];
-      //     for (int i = 0; i < favorites.length; i++) {
-      //       if (favorites[i]) {
-      //         favoriteIndices.add(i);
-      //       }
-      //     }
-
-      //     return ListView.builder(
-      //       itemCount: favoriteIndices.length,
-      //       itemBuilder: (context, index) {
-      //         return ListTile(
-      //           title: Text('Favorite Item ${favoriteIndices[index]}'),
-      //         );
-      //       },
-      //     );
-      //   },
-      // ),
+      body: Padding(
+        padding: const EdgeInsets.all(10),
+        child: ListView.builder(
+          itemCount: FavoriteProducts.products.length,
+          itemBuilder: (context, index) {
+            HouseModel data = FavoriteProducts.products[index];
+            return CustomProduct(data: data,indix: index, );
+          },
+        ),
+      ),
     );
   }
 }

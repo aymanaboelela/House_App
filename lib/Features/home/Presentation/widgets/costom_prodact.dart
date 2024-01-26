@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -6,24 +5,41 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../product/presentation/widgets/image_scrrol.dart';
 import 'custom_coll.dart';
 
-class CustomProduct extends StatelessWidget {
+class CustomProduct extends StatefulWidget {
   const CustomProduct({
     super.key,
     required this.data,
+    required this.indix,
   });
   final HouseModel data;
+  final int indix;
 
   @override
+  State<CustomProduct> createState() => _CustomProductState();
+}
+
+class _CustomProductState extends State<CustomProduct> {
+  @override
+  void initState() {
+    super.initState();
+    BlocProvider.of<FavoretCubit>(context).getData();
+    setState(() {});
+  }
+
+  String? phoneNumber = "01225796476";
+  @override
   Widget build(BuildContext context) {
+    bool isFavorite = FavoriteProducts.products.contains(widget.data);
     return BlocConsumer<FavoretCubit, FavoretState>(
       listener: (context, state) {
-        if (state is FavoretCachProuduct) {
-          BlocProvider.of<FavoretCubit>(context).getDataProduct();
-        }
+        // if (state is GetDataState) {
+        //   BlocProvider.of<FavoretCubit>(context).getData();
+        // }
       },
       builder: (context, state) {
         return Padding(
@@ -33,13 +49,13 @@ class CustomProduct extends StatelessWidget {
               // GoRouter.of(context).push(AppRouter.KProductView,extra:data );
               Navigator.push(context, MaterialPageRoute(
                 builder: (context) {
-                  return ProductView(data: data);
+                  return ProductView(data: widget.data);
                 },
               ));
             },
             child: Stack(children: [
               Container(
-                height: SizeConfig.defaultSize! * 41,
+                height: SizeConfig.defaultSize! * 42,
                 width: double.infinity,
                 decoration: const BoxDecoration(
                   color: Colors.white12,
@@ -50,7 +66,7 @@ class CustomProduct extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    ScrollImage(data: data, autoPlay: false),
+                    ScrollImage(data: widget.data, autoPlay: false),
                     const SizeVertical(value: 1),
                     Padding(
                       padding: EdgeInsets.symmetric(
@@ -59,14 +75,14 @@ class CustomProduct extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            data.typeHouse,
+                            widget.data.typeHouse,
                             style: GoogleFonts.cairo(
                               fontSize: 13,
                             ),
                           ),
                           const SizeVertical(value: 0.4),
                           Text(
-                            " ${data.price} ج/ الشهر",
+                            " ${widget.data.price} ج/ الشهر",
                             style: GoogleFonts.cairo(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -74,7 +90,7 @@ class CustomProduct extends StatelessWidget {
                           ),
                           const SizeVertical(value: 0.5),
                           Text(
-                            data.description,
+                            widget.data.description,
                             style: GoogleFonts.mirza(
                               fontSize: 18,
                             ),
@@ -95,7 +111,7 @@ class CustomProduct extends StatelessWidget {
                                   const Icon(Icons.home),
                                   const SizeHorizontal(value: 0.3),
                                   Text(
-                                    data.gender,
+                                    widget.data.gender,
                                     style: GoogleFonts.cairo(
                                       fontSize: 16,
                                     ),
@@ -108,7 +124,7 @@ class CustomProduct extends StatelessWidget {
                                   const Icon(Icons.bed_rounded),
                                   const SizeHorizontal(value: 0.4),
                                   Text(
-                                    data.numpersOfBad,
+                                    widget.data.numpersOfBad,
                                     style: GoogleFonts.cairo(
                                       fontSize: 18,
                                     ),
@@ -119,12 +135,20 @@ class CustomProduct extends StatelessWidget {
                               Row(
                                 children: [
                                   CustomColl(
-                                    onTap: () {},
+                                    onTap: () {
+                                      _makePhoneCall(phoneNumber!);
+                                    },
+                                    color: Colors.blue,
                                     icon: Icons.phone,
                                   ),
                                   const SizeHorizontal(value: 1.5),
                                   CustomColl(
-                                    onTap: () {},
+                                    onTap: () {
+                                      String massege =
+                                          " لو سمحت عاوزاستفسر عن شقه Id : ${widget.data.idHouse}";
+                                      _launchWhatsApp(phoneNumber!, massege);
+                                    },
+                                    color: const Color(0xFF4EFF75),
                                     icon: FontAwesomeIcons.whatsapp,
                                   ),
                                 ],
@@ -141,17 +165,26 @@ class CustomProduct extends StatelessWidget {
                 left: 0,
                 child: IconButton(
                   onPressed: () {
-                    //   BlocProvider.of<FavoretCubit>(context).setDataProduct();
+                    if (isFavorite) {
+                      // Remove from favorites
+                      FavoriteProducts.products.remove(widget.data);
+                    } else {
+                      // Add to favorites
+                      FavoriteProducts.products.add(widget.data);
+                    }
+                    isFavorite = !isFavorite;
+                    // Trigger a rebuild
+                    BlocProvider.of<FavoretCubit>(context).setData(isFavorite);
                   },
-                  icon: BlocProvider.of<FavoretCubit>(context).isfavoriteProduct
-                      ? const Icon(Icons.favorite_border)
-                      : Icon(
+                  icon: isFavorite
+                      ? Icon(
                           Icons.favorite,
-                          color: BlocProvider.of<FavoretCubit>(context)
-                                  .isfavoriteProduct
-                              ? Colors.grey
-                              : Colors.red,
+                          color: Colors.red,
                           size: SizeConfig.defaultSize! * 3.5,
+                        )
+                      : Icon(
+                          Icons.favorite_border,
+                          size: SizeConfig.defaultSize! * 3,
                         ),
                 ),
               ),
@@ -161,4 +194,25 @@ class CustomProduct extends StatelessWidget {
       },
     );
   }
+
+  Future<void> _makePhoneCall(String phoneNumber) async {
+    final Uri launchUri = Uri(
+      scheme: 'tel',
+      path: phoneNumber,
+    );
+    await launchUrl(launchUri);
+  }
+
+  Future<void> _launchWhatsApp(String phoneNumber, String massege) async {
+    String url = "whatsapp://send?phone=$phoneNumber&text=$massege";
+     if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    print("Can't launch WhatsApp");
+  }
+  }
+}
+
+class FavoriteProducts {
+  static List<HouseModel> products = [];
 }

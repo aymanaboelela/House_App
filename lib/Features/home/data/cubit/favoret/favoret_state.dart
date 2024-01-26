@@ -7,7 +7,7 @@ class FavoretInitial extends FavoretState {}
 
 class FavoretChenge extends FavoretState {}
 
-class FavoretCach extends FavoretState {}
+class GetDataState extends FavoretState {}
 
 class FavoretChengeProduct extends FavoretState {}
 

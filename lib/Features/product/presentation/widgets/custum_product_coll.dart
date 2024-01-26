@@ -31,11 +31,12 @@ class CustomProductCall extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 CustomColl(
+                  color: Colors.deepPurple[300],
                   icon: FontAwesomeIcons.phone,
                   onTap: () {},
                 ),
                 const SizeHorizontal(value: 4),
-                CustomColl(icon: FontAwesomeIcons.whatsapp, onTap: () {})
+                CustomColl(icon: FontAwesomeIcons.whatsapp,  color:const Color(0xFF4EFF75), onTap: () {})
               ],
             )
           ],
@@ -44,3 +45,4 @@ class CustomProductCall extends StatelessWidget {
     );
   }
 }
+        

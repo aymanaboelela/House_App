@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 class CustomColl extends StatelessWidget {
   const CustomColl({
     super.key,
-   required this.onTap,
-    required this.icon,
+    required this.onTap,
+    required this.icon, required this.color,
   });
   final void Function()? onTap;
+  final  Color? color;
   final IconData icon;
   @override
   Widget build(BuildContext context) {
@@ -16,7 +17,7 @@ class CustomColl extends StatelessWidget {
         width: 43,
         height: 42,
         decoration: ShapeDecoration(
-          color: const Color(0xFF4EFF75),
+          color: color,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(13),
           ),

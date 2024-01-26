@@ -9,26 +9,23 @@ class FavoretCubit extends Cubit<FavoretState> {
   bool isfavorite = false;
   FavoretCubit() : super(FavoretInitial());
 // favoret in single product view
-  void setData() {
+  void setData(bool favorite) {
     CacheData.setData(
-      key: "isfavoretandtetels",
-      value: isfavorite,
+      key: "isFavoret",
+      value: favorite,
     );
-    isfavorite = !isfavorite;
-
+    print("***isFavoret***** $favorite,");
     emit(FavoretChenge());
   }
 
   Future<void> getData() async {
-    bool cachedFavorite =
-        await CacheData.getdata(key: "isfavoretandtetels") ?? true;
-    isfavorite = cachedFavorite;
-
-    emit(FavoretCach());
+    await CacheData.getdata(key: "isFavoret");
+    print("***********");
+    emit(GetDataState());
   }
 
 // favoret in home product view
-  bool isfavoriteProduct = false;
+  bool isfavoriteProduct = true;
   void setDataProduct() {
     CacheData.setData(
       key: "isfavoretproduct",
@@ -40,10 +37,9 @@ class FavoretCubit extends Cubit<FavoretState> {
   }
 
   Future<void> getDataProduct() async {
+    emit(FavoretCachProuduct());
     bool cachedFavorite =
         await CacheData.getdata(key: "isfavoretproduct") ?? true;
     isfavoriteProduct = cachedFavorite;
-
-    emit(FavoretCachProuduct());
   }
 }

@@ -83,6 +83,7 @@ class _HomeViewState extends State<HomeView> {
                       childCount: data.length,
                       (context, index) {
                         return CustomProduct(
+                          indix: index,
                           data: data[index],
                         );
                       },

@@ -10,10 +10,9 @@ class NavBarHome extends StatefulWidget {
   @override
   State<NavBarHome> createState() => _NavBarHomeState();
 }
-
 List screens = [
   HomeView(),
-  FavoritesView(),
+  FavoriteProductsView(),
   const LocationView()
 ]; // the screens
 
