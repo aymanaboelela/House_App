@@ -2,13 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
+import 'package:house_app_one/Features/home/data/cubit/coll/coll_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
-import 'package:url_launcher/url_launcher.dart';
+
 import '../../../../core/utils/responsive.dart';
 import '../../../product/presentation/widgets/image_scrrol.dart';
-import 'custom_coll.dart';
+
 
 class CustomProduct extends StatefulWidget {
   const CustomProduct({
@@ -132,27 +134,9 @@ class _CustomProductState extends State<CustomProduct> {
                                 ],
                               ),
                               const Spacer(),
-                              Row(
-                                children: [
-                                  CustomColl(
-                                    onTap: () {
-                                      _makePhoneCall(phoneNumber!);
-                                    },
-                                    color: Colors.blue,
-                                    icon: Icons.phone,
-                                  ),
-                                  const SizeHorizontal(value: 1.5),
-                                  CustomColl(
-                                    onTap: () {
-                                      String massege =
-                                          " لو سمحت عاوزاستفسر عن شقه Id : ${widget.data.idHouse}";
-                                      _launchWhatsApp(phoneNumber!, massege);
-                                    },
-                                    color: const Color(0xFF4EFF75),
-                                    icon: FontAwesomeIcons.whatsapp,
-                                  ),
-                                ],
-                              ),
+                              CollItem(
+                                data: widget.data,
+                              )
                             ],
                           )
                         ],
@@ -193,23 +177,6 @@ class _CustomProductState extends State<CustomProduct> {
         );
       },
     );
-  }
-
-  Future<void> _makePhoneCall(String phoneNumber) async {
-    final Uri launchUri = Uri(
-      scheme: 'tel',
-      path: phoneNumber,
-    );
-    await launchUrl(launchUri);
-  }
-
-  Future<void> _launchWhatsApp(String phoneNumber, String massege) async {
-    String url = "whatsapp://send?phone=$phoneNumber&text=$massege";
-     if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    print("Can't launch WhatsApp");
-  }
   }
 }
 

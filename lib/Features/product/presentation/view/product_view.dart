@@ -29,21 +29,21 @@ class _ProductViewState extends State<ProductView> {
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-            onPressed: () {
-              // BlocProvider.of<FavoretCubit>(context).setData( );
-            },
-            icon: BlocProvider.of<FavoretCubit>(context).isfavorite
-                ? Icon(
-                    Icons.favorite,
-                    size: SizeConfig.defaultSize! * 3.5,
-                  )
-                : Icon(Icons.favorite_border,
-                    size: SizeConfig.defaultSize! * 3),
-            color: BlocProvider.of<FavoretCubit>(context).isfavorite
-                ? Colors.red
-                : Colors.grey,
-          ),
+          // IconButton(
+          //   onPressed: () {
+          //     // BlocProvider.of<FavoretCubit>(context).setData( );
+          //   },
+          //   icon: BlocProvider.of<FavoretCubit>(context).isfavorite
+          //       ? Icon(
+          //           Icons.favorite,
+          //           size: SizeConfig.defaultSize! * 3.5,
+          //         )
+          //       : Icon(Icons.favorite_border,
+          //           size: SizeConfig.defaultSize! * 3),
+          //   color: BlocProvider.of<FavoretCubit>(context).isfavorite
+          //       ? Colors.red
+          //       : Colors.grey,
+          // ),
         ],
       ),
       body: Padding(

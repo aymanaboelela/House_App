@@ -8,9 +8,11 @@ import 'package:house_app_one/Features/home/data/shered_preferences/shared_prefe
 import 'package:house_app_one/core/thems/them.dart';
 import 'package:house_app_one/firebase_options.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'Features/home/data/cubit/coll/coll_cubit.dart';
 import 'Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheData.cacheDataInit();
@@ -35,6 +37,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => GethouseCubit(),
+        ),
+        BlocProvider(
+          create: (context) => CollCubit(),
         ),
       ],
       child: MaterialApp.router(
