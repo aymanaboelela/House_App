@@ -1,7 +1,5 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import '../../../home/data/models/house_model.dart';
 import '../widgets/custom_ProductItem.dart';
@@ -28,23 +26,7 @@ class _ProductViewState extends State<ProductView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [
-          // IconButton(
-          //   onPressed: () {
-          //     // BlocProvider.of<FavoretCubit>(context).setData( );
-          //   },
-          //   icon: BlocProvider.of<FavoretCubit>(context).isfavorite
-          //       ? Icon(
-          //           Icons.favorite,
-          //           size: SizeConfig.defaultSize! * 3.5,
-          //         )
-          //       : Icon(Icons.favorite_border,
-          //           size: SizeConfig.defaultSize! * 3),
-          //   color: BlocProvider.of<FavoretCubit>(context).isfavorite
-          //       ? Colors.red
-          //       : Colors.grey,
-          // ),
-        ],
+        actions: [FavoretIconItem(data: widget.data)],
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 9),
@@ -70,7 +52,9 @@ class _ProductViewState extends State<ProductView> {
                 description: widget.data.description,
               ),
               const SizeVertical(value: 2.2),
-              const CustomProductCall(),
+              CustomProductCall(
+                data: widget.data,
+              ),
               const SizeVertical(value: 2.2),
             ],
           ),

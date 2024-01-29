@@ -8,8 +8,12 @@ import '../../data/cubit/coll/coll_cubit.dart';
 import '../../data/models/house_model.dart';
 
 class CollItem extends StatelessWidget {
-  const CollItem({super.key, required this.data});
+  const CollItem({
+    super.key,
+    required this.data,
+  });
   final HouseModel data;
+
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<CollCubit, CollState>(

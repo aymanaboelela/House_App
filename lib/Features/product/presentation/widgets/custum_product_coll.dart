@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
+import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import '../../../../core/utils/responsive.dart';
-import '../../../home/Presentation/widgets/custom_coll.dart';
-
 class CustomProductCall extends StatelessWidget {
   const CustomProductCall({
     super.key,
+    required this.data,
   });
-
+  final HouseModel data;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -29,20 +29,11 @@ class CustomProductCall extends StatelessWidget {
             const SizeVertical(value: 3),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                CustomColl(
-                  color: Colors.deepPurple[300],
-                  icon: FontAwesomeIcons.phone,
-                  onTap: () {},
-                ),
-                const SizeHorizontal(value: 4),
-                CustomColl(icon: FontAwesomeIcons.whatsapp,  color:const Color(0xFF4EFF75), onTap: () {})
-              ],
-            )
+              children: [CollItem(data: data)],
+            ),
           ],
         ),
       ),
     );
   }
 }
-        
