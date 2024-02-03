@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
-import 'package:house_app_one/Features/home/data/cubit/favoret/favoret_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
 import '../../../../core/utils/responsive.dart';
@@ -22,12 +21,6 @@ class CustomProduct extends StatefulWidget {
 
 class _CustomProductState extends State<CustomProduct> {
   @override
-  void initState() {
-    super.initState();
-    BlocProvider.of<FavoretCubit>(context).getData();
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(

@@ -9,7 +9,7 @@ class CustomToggleButton extends StatelessWidget {
   final bool isSelected;
   final VoidCallback onToggle;
 
-  CustomToggleButton({
+ const CustomToggleButton({super.key, 
     required this.label,
     required this.isSelected,
     required this.onToggle,
@@ -18,7 +18,7 @@ class CustomToggleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
-      padding: EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(8.0),
       minSize: SizeConfig.defaultSize! * 6,
       color: isSelected ? Colors.blue : Colors.grey,
       onPressed: onToggle,

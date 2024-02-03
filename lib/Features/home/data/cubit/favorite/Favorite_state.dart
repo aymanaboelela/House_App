@@ -1,4 +1,4 @@
-part of 'favoret_cubit.dart';
+part of 'favorite_cubit.dart';
 
 @immutable
 abstract class FavoretState {}
@@ -6,6 +6,7 @@ abstract class FavoretState {}
 class FavoretInitial extends FavoretState {}
 
 class FavoretChenge extends FavoretState {}
+class SetDataState extends FavoretState {}
 
 class GetDataState extends FavoretState {}
 

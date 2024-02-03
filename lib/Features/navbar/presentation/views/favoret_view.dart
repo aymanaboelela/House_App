@@ -3,7 +3,8 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../home/Presentation/widgets/costom_prodact.dart';
 
-import '../../../home/data/cubit/favoret/favoret_cubit.dart';
+
+import '../../../home/data/cubit/favorite/favorite_cubit.dart';
 import '../../../home/data/models/house_model.dart';
 
 class FavoriteProductsView extends StatelessWidget {

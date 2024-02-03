@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class SlidingText extends StatelessWidget {
   const SlidingText({
@@ -15,9 +16,10 @@ class SlidingText extends StatelessWidget {
         builder: (context, _) {
           return SlideTransition(
             position: slidingAnimation,
-            child: const Text(
-              'سكني يباشا',
+            child: Text(
+              "AKODO",
               textAlign: TextAlign.center,
+              style: GoogleFonts.aBeeZee(fontSize: 30),
             ),
           );
         });

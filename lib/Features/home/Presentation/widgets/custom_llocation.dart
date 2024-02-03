@@ -3,8 +3,8 @@ import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 
-class CustomLocation extends StatelessWidget {
-  const CustomLocation({super.key});
+class CustomLocationAndNotifacation extends StatelessWidget {
+  const CustomLocationAndNotifacation({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +24,11 @@ class CustomLocation extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const Icon(Icons.keyboard_arrow_down_outlined)
+            IconButton(
+                onPressed: () {
+                  GoRouter.of(context).push(AppRouter.KLocationView);
+                },
+                icon: const Icon(Icons.keyboard_arrow_down_outlined))
           ],
         ),
         const Spacer(),

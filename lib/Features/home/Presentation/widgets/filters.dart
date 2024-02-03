@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/Custom_select_gender.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_filter_gender.dart';
 
 import '../../../../core/utils/responsive.dart';
 
@@ -71,33 +72,9 @@ class CustomFilters extends StatelessWidget {
           },
         );
       },
-      child: Container(
-        height: SizeConfig.defaultSize! * 4,
-        decoration: ShapeDecoration(
-          shape: RoundedRectangleBorder(
-            side: const BorderSide(width: 1, color: Colors.white),
-            borderRadius: BorderRadius.circular(12),
-          ),
-        ),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Text(
-                "النوع",
-                style: GoogleFonts.cairo(fontSize: 12),
-              ),
-              const SizeHorizontal(value: 0.9),
-              const Icon(
-                Icons.keyboard_arrow_down_outlined,
-              )
-            ],
-          ),
-        ),
-      ),
+      child:const CustomFilterGender(),
     );
   }
 }
+
 

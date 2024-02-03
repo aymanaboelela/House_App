@@ -2,25 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/utils/responsive.dart';
-import '../../data/cubit/favoret/favoret_cubit.dart';
+import '../../data/cubit/favorite/favorite_cubit.dart';
 import '../../data/models/house_model.dart';
 
-class FavoretIconItem extends StatelessWidget {
-  const  FavoretIconItem({super.key, required this.data});
+class FavoretIconItem extends StatefulWidget {
+  const FavoretIconItem({super.key, required this.data});
   final HouseModel data;
+
+  @override
+  State<FavoretIconItem> createState() => _FavoretIconItemState();
+}
+
+class _FavoretIconItemState extends State<FavoretIconItem> {
+  @override
+  void initState() {
+    BlocProvider.of<FavoriteCubit>(context).getData();
+    setState(() {});
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    bool isFavorite = BlocProvider.of<FavoretCubit>(context).isFavorite;
-
-    return BlocBuilder<FavoretCubit, FavoretState>(
+    return BlocBuilder<FavoriteCubit, FavoretState>(
       builder: (context, state) {
         return IconButton(
           onPressed: () {
-            BlocProvider.of<FavoretCubit>(context)
-                .addProductInFavoretView(data);
-            BlocProvider.of<FavoretCubit>(context).setData();
+            BlocProvider.of<FavoriteCubit>(context)
+                .addProductInFavoriteView(widget.data);
+            BlocProvider.of<FavoriteCubit>(context).setData();
           },
-          icon: isFavorite
+          icon: BlocProvider.of<FavoriteCubit>(context).isFavorite
               ? Icon(
                   Icons.favorite,
                   color: Colors.red,

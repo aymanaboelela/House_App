@@ -2,7 +2,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/favoret_view.dart';
-import 'package:house_app_one/Features/navbar/presentation/views/location_view.dart';
+import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 
 class NavBarHome extends StatefulWidget {
   const NavBarHome({Key? key});

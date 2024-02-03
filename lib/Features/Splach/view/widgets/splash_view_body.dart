@@ -1,13 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../core/utils/responsive.dart';
-import '../../../../core/utils/app_route.dart';
+import 'package:house_app_one/core/utils/app_route.dart';
+
 import '../../../../core/utils/assets.dart';
-import 'sliding_text.dart';
+import '../../../../core/utils/responsive.dart';
 
 class SplashViewbody extends StatefulWidget {
-  const SplashViewbody({Key? key}) : super(key: key);
+  const SplashViewbody({super.key});
 
   @override
   State<SplashViewbody> createState() => _SplashViewbodyState();
@@ -15,58 +14,58 @@ class SplashViewbody extends StatefulWidget {
 
 class _SplashViewbodyState extends State<SplashViewbody>
     with SingleTickerProviderStateMixin {
-  late AnimationController animationController;
-  late Animation<Offset> slidingAnimation;
-
+  AnimationController? animationController;
+  Animation? animation;
   @override
   void initState() {
     super.initState();
-    initSlidingAnimation();
-    navigateToHome();
+    animationController = AnimationController(
+        vsync: this, duration: const Duration(milliseconds: 1000));
+    animation = Tween<double>(begin: .2, end: 1).animate(animationController!)
+      ..addListener(() {
+        setState(() {});
+      });
+    animationController?.repeat(reverse: true);
+    getToNewScreen();
   }
 
   @override
   void dispose() {
+    animationController?.dispose();
     super.dispose();
-
-    animationController.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: [
-        Image.asset(AssetsData.logo),
-        const SizedBox(
-          height: 4,
-        ),
-        SlidingText(slidingAnimation: slidingAnimation),
-      ],
+    return Scaffold(
+      backgroundColor: const Color.fromARGB(137, 25, 25, 25),
+      body: Stack(
+        children: [
+          // Image.asset(kBackGrawendSplash),
+          AnimatedBuilder(
+            animation: animation!,
+            builder: (context, _) => Opacity(
+              opacity: animation?.value,
+              child: Center(
+                child: Image.asset(
+                  AssetsData.logo,
+                  height: SizeConfig.defaultSize! * 25,
+                ),
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
-  void initSlidingAnimation() {
-    animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 1),
-    );
-
-    slidingAnimation =
-        Tween<Offset>(begin: const Offset(0, 2), end: Offset.zero)
-            .animate(animationController);
-
-    animationController.forward();
-  }
-
-  void navigateToHome() {
+  void getToNewScreen() {
     Future.delayed(
-      const Duration(seconds: 3),
-      () {
-        GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingView);
-      },
-    );
+        const Duration(
+          seconds: 6,
+        ), () {
+      GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingView);
+    });
   }
 }

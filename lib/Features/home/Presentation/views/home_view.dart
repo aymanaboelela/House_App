@@ -1,9 +1,9 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
-import 'package:house_app_one/Features/add_Product/data/cubit/add_house_cubit.dart';
+import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
@@ -44,7 +44,9 @@ class _HomeViewState extends State<HomeView> {
         if (state is IsFeilerGetHouse) {
           isLoding = false;
           CustomError.error(context,
-              dialogType: DialogType.error, title: "خطاء", desc: "خطاء");
+              dialogType: DialogType.error,
+              title: "خطاء",
+              desc: " برجاء المحاوله في وقت لاحق");
         }
       },
       builder: (context, state) {
@@ -57,17 +59,20 @@ class _HomeViewState extends State<HomeView> {
               child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
-                    leading: Image.asset(
-                      AssetsData.logo,
-                      height: 20,
-                    ),
+                    actions: [
+                      Image.asset(
+                        AssetsData.logo,
+                        height: 60,
+                        width: 50,
+                      ),
+                    ],
                     expandedHeight: 20,
                   ),
                   const SliverToBoxAdapter(
                     child: SizeVertical(value: 1),
                   ),
                   const SliverToBoxAdapter(
-                    child: CustomLocation(),
+                    child: CustomLocationAndNotifacation(),
                   ),
                   const SliverToBoxAdapter(
                     child: SizeVertical(value: 1),
@@ -92,9 +97,10 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ),
+          // add product
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.KAddProduct);
+              GoRouter.of(context).push(AppRouter.KAddProductView);
             },
             child: const Icon(Icons.add),
           ),
