@@ -14,7 +14,7 @@ List screens = [
   HomeView(),
   FavoriteProductsView(),
   const LocationView()
-]; // the screens
+]; 
 
 int curantIndex = 0;
 

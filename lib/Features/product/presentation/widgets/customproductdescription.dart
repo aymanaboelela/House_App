@@ -9,7 +9,6 @@ class CoustomProductDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.defaultSize! * 16,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white12,

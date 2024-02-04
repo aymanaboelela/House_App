@@ -69,13 +69,17 @@ class _CustomProductState extends State<CustomProduct> {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      const SizeVertical(value: 0.5),
-                      Text(
-                        widget.data.description,
-                        style: GoogleFonts.mirza(
-                          fontSize: 18,
+                      const SizeVertical(value: 0.6),
+                      Padding(
+                        padding: const EdgeInsets.only(left: 40),
+                        child: Text(
+                          widget.data.description,
+                          style: GoogleFonts.vazirmatn(
+                            fontSize: 17,
+                          ),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                         ),
-                        maxLines: 1,
                       ),
                       const SizeVertical(value: 2),
                       const Divider(
@@ -135,4 +139,3 @@ class _CustomProductState extends State<CustomProduct> {
     );
   }
 }
-

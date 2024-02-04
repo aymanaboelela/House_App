@@ -18,13 +18,13 @@ class CustomProductDetails2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.defaultSize! * 16,
+      // height: SizeConfig.defaultSize! * 17,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white12,
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 13),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -50,7 +50,7 @@ class CustomProductDetails2 extends StatelessWidget {
                       ? Row(
                           children: [
                             const Icon(Icons.wifi),
-                            const SizedBox(width: 8),
+                            SizeVertical(value: 2),
                             Text(
                               'Wi-Fi',
                               style: GoogleFonts.cairo(
