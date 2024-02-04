@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
@@ -36,7 +36,7 @@ class _CustomProductState extends State<CustomProduct> {
         },
         child: Stack(children: [
           Container(
-            height: SizeConfig.defaultSize! * 42,
+            height: SizeConfig.defaultSize! * 43  ,
             width: double.infinity,
             decoration: const BoxDecoration(
               color: Colors.white12,
@@ -82,12 +82,7 @@ class _CustomProductState extends State<CustomProduct> {
                         ),
                       ),
                       const SizeVertical(value: 2),
-                      const Divider(
-                        color: Colors.white,
-                        height: 4,
-                        indent: 5,
-                        endIndent: 5,
-                      ),
+                      CustomDivider(),
                       const SizeVertical(value: 1),
                       Row(
                         children: [

@@ -1,11 +1,8 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
@@ -63,17 +60,26 @@ class _HomeViewState extends State<HomeView> {
                   SliverAppBar(
                     centerTitle: true,
                     leading: IconButton(
-                        onPressed: () {},
-                        icon: Icon(Icons.add_ic_call_rounded)),
+                      onPressed: () {
+                        GoRouter.of(context).push(AppRouter.kHelpView);
+                      },
+                      icon: Icon(
+                        Icons.view_headline_sharp,
+                        color: Color.fromARGB(255, 237, 237, 237),
+                        size: SizeConfig.defaultSize! *
+                            2.6, 
+                      ),
+                    ),
                     title: Text(
-                      "AKODO",
-                      style: GoogleFonts.bitter(color: Colors.orange[500]),
+                      "AkOdO",
+                      style: GoogleFonts.spaceGrotesk(
+                        fontWeight: FontWeight.w700,
+                        // color: Color.fromARGB(255, 228, 199, 7),
+                      ),
                     ),
                     actions: [
                       Image.asset(
                         AssetsData.logo,
-                        // height: 70,
-                        // width: 80,
                       ),
                     ],
                     expandedHeight: 20,

@@ -6,10 +6,10 @@ part 'coll_state.dart';
 
 class CollCubit extends Cubit<CollState> {
   String? phoneNumber = "01225796476";
-  
+
   String? id;
   CollCubit() : super(CollInitial());
-  
+
   Future<void> makePhoneCall() async {
     final Uri launchUri = Uri(
       scheme: 'tel',
@@ -19,11 +19,8 @@ class CollCubit extends Cubit<CollState> {
   }
 
   Future<void> launchWhatsApp(String id) async {
-
-    String urls = "https://wa.me/+2${phoneNumber}";
-    //   String massege = " لو سمحت عاوزاستفسر عن شقه Id : $id";
-    // String urls = "https://wa.me/${phoneNumber}&text=$massege";
-
+    String massege = " لو سمحت عاوز استفسر عن شقه ID:[$id ] 🏡";
+    String urls = "https://wa.me/+2${phoneNumber}/?text=$massege";
     final Uri url = Uri.parse(urls);
     await launchUrl(url);
   }

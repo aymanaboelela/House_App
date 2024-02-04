@@ -3,6 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import '../../../../core/utils/responsive.dart';
+
 class CustomProductCall extends StatelessWidget {
   const CustomProductCall({
     super.key,
@@ -12,7 +13,7 @@ class CustomProductCall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.defaultSize! * 15,
+      height: SizeConfig.defaultSize! * 18,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: Colors.white12,
@@ -26,10 +27,17 @@ class CustomProductCall extends StatelessWidget {
               "التواصل",
               style: GoogleFonts.cairo(fontSize: 22),
             ),
+            SizeVertical(value: 1),
+            Text(
+              "اضغط علي رمز الاتصال او الوتساب",
+              style: GoogleFonts.cairo(fontSize: 18),
+            ),
             const SizeVertical(value: 3),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [CollItem(data: data)],
+              children: [
+                CollItem(data: data),
+              ],
             ),
           ],
         ),

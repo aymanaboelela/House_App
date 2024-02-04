@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Splach/view/splach_view.dart';
@@ -9,6 +10,7 @@ import '../../Features/on_boarding/presentation/on_boardin_view.dart';
 abstract class AppRouter {
   static const kOnBoardingView = '/onboardingView';
   static const kHomeView = '/homeView';
+  static const kHelpView = '/helpView';
   static const kNotifacationView = '/notifacationview';
   static const KProductView = '/productView';
   static const KAddProductView = '/KAddProduct';
@@ -33,6 +35,10 @@ abstract class AppRouter {
       GoRoute(
         path: kHomeView,
         builder: (context, state) => const NavBarHome(),
+      ),
+      GoRoute(
+        path: kHelpView,
+        builder: (context, state) => HelpView(),
       ),
       // GoRoute(
       //   path: KProductView,
