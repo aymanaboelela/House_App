@@ -59,7 +59,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
       ),
     );
   }
-
   void getToNewScreen() {
     Future.delayed(
         const Duration(

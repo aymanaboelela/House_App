@@ -2,7 +2,9 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
@@ -59,11 +61,19 @@ class _HomeViewState extends State<HomeView> {
               child: CustomScrollView(
                 slivers: [
                   SliverAppBar(
+                    centerTitle: true,
+                    leading: IconButton(
+                        onPressed: () {},
+                        icon: Icon(Icons.add_ic_call_rounded)),
+                    title: Text(
+                      "AKODO",
+                      style: GoogleFonts.bitter(color: Colors.orange[500]),
+                    ),
                     actions: [
                       Image.asset(
                         AssetsData.logo,
-                        height: 60,
-                        width: 50,
+                        // height: 70,
+                        // width: 80,
                       ),
                     ],
                     expandedHeight: 20,
