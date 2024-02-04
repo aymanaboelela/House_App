@@ -11,7 +11,6 @@ import 'Features/home/data/cubit/coll/coll_cubit.dart';
 import 'Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await CacheData.cacheDataInit();

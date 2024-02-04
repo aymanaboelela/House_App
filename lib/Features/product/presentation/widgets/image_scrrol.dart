@@ -74,12 +74,11 @@ class _ScrollImageState extends State<ScrollImage> {
             left: 0,
             right: 0,
             child: DotsIndicator(
-              
               dotsCount: images.length,
               position: currentPage,
               decorator: DotsDecorator(
                 activeColor: Colors.blue,
-                color: Colors.white10,
+                color: const Color.fromARGB(26, 235, 217, 217),
                 size: const Size.square(9.0),
                 activeSize: const Size(18.0, 9.0),
                 activeShape: RoundedRectangleBorder(

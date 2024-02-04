@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:concentric_transition/concentric_transition.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import '../../../../core/utils/app_route.dart';
@@ -49,6 +50,13 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
         itemBuilder: (int index) {
           return data[index];
         },
+        nextButtonBuilder: (context) {
+          return Icon(
+            Icons.arrow_forward_ios_rounded,
+            size: 30,
+          );
+        },
+        
         onFinish: () {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         },
