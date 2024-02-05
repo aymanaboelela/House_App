@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
+import 'package:house_app_one/core/utils/assets.dart';
 
 import 'package:house_app_one/core/utils/responsive.dart';
-
+import 'package:lottie/lottie.dart';
 
 class HelpView extends StatelessWidget {
   HelpView({super.key});
@@ -24,6 +25,7 @@ class HelpView extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            Lottie.asset(AppAssets.help),
             Text(
               "مرحبًا بك في تطبييق اكادو الذي يساعد الطلاب الغير محليين في العثور على سكن مناسب !",
               textAlign: TextAlign.center,
@@ -64,11 +66,6 @@ class HelpView extends StatelessWidget {
               ),
             ),
             SizeVertical(value: 2),
-            Center(
-                // child: CollItem(
-                //   data: data,
-                // ),
-                ),
           ],
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../core/thems/app/app_colors.dart';
 import '../../../../core/utils/responsive.dart';
 
 class CustomProductDetails2 extends StatelessWidget {
@@ -21,7 +22,7 @@ class CustomProductDetails2 extends StatelessWidget {
       // height: SizeConfig.defaultSize! * 17,
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Colors.white12,
+        color: AppColors.KPrimeColor,
       ),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 13),

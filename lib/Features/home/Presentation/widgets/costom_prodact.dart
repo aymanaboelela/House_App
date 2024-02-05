@@ -6,6 +6,7 @@ import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.
 import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../product/presentation/widgets/image_scrrol.dart';
 import '../../data/cubit/favorite/favorite_cubit.dart';
@@ -27,6 +28,7 @@ class _CustomProductState extends State<CustomProduct> {
     BlocProvider.of<FavoriteCubit>(context).getData();
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -42,10 +44,10 @@ class _CustomProductState extends State<CustomProduct> {
         },
         child: Stack(children: [
           Container(
-            height: SizeConfig.defaultSize! * 43  ,
+            height: SizeConfig.defaultSize! * 43,
             width: double.infinity,
             decoration: const BoxDecoration(
-              color: Colors.white12,
+              color: AppColors.KPrimeColor,
               borderRadius: BorderRadius.all(
                 Radius.circular(18),
               ),

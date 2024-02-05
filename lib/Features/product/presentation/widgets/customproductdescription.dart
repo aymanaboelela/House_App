@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../../../core/thems/app/app_colors.dart';
 import '../../../../core/utils/responsive.dart';
 
 class CoustomProductDescription extends StatelessWidget {
@@ -11,7 +12,7 @@ class CoustomProductDescription extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Colors.white12,
+        color: AppColors.KPrimeColor,
       ),
       child: Padding(
         padding: const EdgeInsets.all(8.0),

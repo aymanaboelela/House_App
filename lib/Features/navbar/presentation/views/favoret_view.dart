@@ -12,7 +12,7 @@ import '../../../home/data/models/house_model.dart';
 class FavoriteProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-     BlocProvider.of<FavoriteCubit>(context).getData();
+    BlocProvider.of<FavoriteCubit>(context).getData();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -28,7 +28,7 @@ class FavoriteProductsView extends StatelessWidget {
                   children: [
                     Lottie.asset(AppAssets.favorite),
                     Text(
-                      "قم باضافه شقه الي المفضله",
+                      "قم باضافه سكن الي المفضله",
                       style: GoogleFonts.cairo(fontSize: 25),
                     ),
                   ],

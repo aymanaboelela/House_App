@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/Custom_select_gender.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_filter_gender.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 
 import '../../../../core/utils/responsive.dart';
 
@@ -21,7 +22,7 @@ class CustomFilters extends StatelessWidget {
                 width: double.infinity,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(16),
-                  color: Colors.white12,
+                  color: AppColors.KPrimeColor,
                 ),
                 child: Column(
                   children: [

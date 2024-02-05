@@ -5,6 +5,8 @@ import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/widgets/image_scrrol.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 
+import '../../../../core/thems/app/app_colors.dart';
+
 class CoustomProductItem extends StatelessWidget {
   const CoustomProductItem({
     super.key,
@@ -19,7 +21,7 @@ class CoustomProductItem extends StatelessWidget {
       height: SizeConfig.defaultSize! * 32,
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Colors.white12,
+        color: AppColors.KPrimeColor,
       ),
       child: Column(
         children: [
