@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
+import 'package:house_app_one/Features/product/presentation/widgets/custom_phone_anmited.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 
 import 'package:house_app_one/core/utils/responsive.dart';
@@ -56,8 +57,6 @@ class HelpView extends StatelessWidget {
               style: GoogleFonts.cairo(fontSize: 20),
             ),
             SizeVertical(value: 2),
-            CustomDivider(),
-            SizeVertical(value: 2),
             Text(
               "اختار الشقه المناسبه \n اضغط علي رمز الاتصال او الواتساب\n للتواصل .",
               textAlign: TextAlign.center,
@@ -66,6 +65,17 @@ class HelpView extends StatelessWidget {
               ),
             ),
             SizeVertical(value: 2),
+            CustomDivider(),
+            SizeVertical(value: 2),
+            Text(
+              "للدعم الفني اضغط علي علامه الاتصال ",
+              textAlign: TextAlign.center,
+              style: GoogleFonts.cairo(
+                fontSize: 21,
+              ),
+            ),
+            SizeVertical(value: 2),
+            CustomPhoneAnmited(),
           ],
         ),
       ),

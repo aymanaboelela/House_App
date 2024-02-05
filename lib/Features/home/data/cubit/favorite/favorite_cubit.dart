@@ -17,6 +17,7 @@ class FavoriteCubit extends Cubit<FavoretState> {
       FavoriteProducts.products.add(data);
     }
     isFavorite = !isFavorite;
+    setData();
     emit(FavoretChenge());
   }
 
@@ -26,13 +27,10 @@ class FavoriteCubit extends Cubit<FavoretState> {
       value: isFavorite,
     );
     emit(SetDataState());
-    print("***set data isFavorite***** $isFavorite");
   }
 
   Future<void> getData() async {
-    isFavorite=  await CacheData.getdata(key: "isFavorite");
-    print("***** get data is favorite******  ${await CacheData.getdata(key: "isFavoret")}");
-
+    isFavorite = await CacheData.getdata(key: "isFavorite");
     emit(GetDataState());
   }
 }
