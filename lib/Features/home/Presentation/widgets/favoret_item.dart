@@ -25,13 +25,14 @@ class _FavoretIconItemState extends State<FavoretIconItem> {
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteCubit, FavoretState>(
       builder: (context, state) {
+        bool isFavorite = BlocProvider.of<FavoriteCubit>(context).isFavorite;
         return IconButton(
           onPressed: () {
             BlocProvider.of<FavoriteCubit>(context)
                 .addProductInFavoriteView(widget.data);
             BlocProvider.of<FavoriteCubit>(context).setData();
           },
-          icon: BlocProvider.of<FavoriteCubit>(context).isFavorite
+          icon: isFavorite
               ? Icon(
                   Icons.favorite,
                   color: Colors.red,

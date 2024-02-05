@@ -30,7 +30,7 @@ class FavoriteCubit extends Cubit<FavoretState> {
   }
 
   Future<void> getData() async {
-    await CacheData.getdata(key: "isFavorite");
+    isFavorite=  await CacheData.getdata(key: "isFavorite");
     print("***** get data is favorite******  ${await CacheData.getdata(key: "isFavoret")}");
 
     emit(GetDataState());

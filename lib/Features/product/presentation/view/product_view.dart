@@ -16,8 +16,8 @@ class ProductView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        actions: [FavoretIconItem(data: data)],
-      ),
+          // actions: [FavoretIconItem(data: data)],
+          ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 9),
         child: SingleChildScrollView(

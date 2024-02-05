@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:lottie/lottie.dart';
@@ -11,6 +12,7 @@ import '../../../home/data/models/house_model.dart';
 class FavoriteProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+     BlocProvider.of<FavoriteCubit>(context).getData();
     return Scaffold(
       appBar: AppBar(
         title: Text(
