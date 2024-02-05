@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
+import 'package:lottie/lottie.dart';
 
 class CustomPageView extends StatelessWidget {
   const CustomPageView(
@@ -27,8 +28,9 @@ class CustomPageView extends StatelessWidget {
         children: [
           const SizeVertical(value: 9),
           SizedBox(
-              height: SizeConfig.screenHeight! * 0.35,
-              child: Image.asset(image)),
+            height: SizeConfig.screenHeight! * 0.35,
+            child: LottieBuilder.asset(image),
+          ),
           const SizeVertical(value: 2),
           Text(
             title.toUpperCase(),

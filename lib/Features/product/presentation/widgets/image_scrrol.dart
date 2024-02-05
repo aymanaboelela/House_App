@@ -3,7 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
+import 'package:lottie/lottie.dart';
 
+import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/responsive.dart';
 
 class ScrollImage extends StatefulWidget {
@@ -57,10 +59,13 @@ class _ScrollImageState extends State<ScrollImage> {
                     margin: const EdgeInsets.symmetric(horizontal: 5.0),
                     child: CachedNetworkImage(
                       imageUrl: url,
-                      placeholder: (context, url) =>
-                          const Center(child: CircularProgressIndicator()),
-                      errorWidget: (context, url, error) =>
-                          const Icon(Icons.error),
+                      placeholder: (context, url) => Center(
+                          child: Lottie.asset(AppAssets.Loding,
+                              height: SizeConfig.defaultSize! * 9)),
+                      errorWidget: (context, url, error) => const Icon(
+                        Icons.error,
+                        size: 30,
+                      ),
                       alignment: Alignment.bottomCenter,
                       fit: BoxFit.fill,
                     ),

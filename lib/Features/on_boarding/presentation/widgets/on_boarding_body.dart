@@ -18,21 +18,21 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
     const CustomPageView(
         title: 'سكن مغتربين ',
         subtitle: 'هتلاقي السكن المناسب وبالسعر المناسب ',
-        image: AssetsData.onbording1,
+        image: AppAssets.onbording1,
         backgroundColor: Color.fromARGB(255, 188, 64, 165),
         titleColor: Colors.white,
         subtitleColor: Colors.white),
     const CustomPageView(
         title: 'جامعه MTi',
         subtitle: 'هتلاقي سكنك جمب الجامعه',
-        image: AssetsData.onbording2,
+        image: AppAssets.onbording2,
         backgroundColor: Colors.white,
         titleColor: Colors.black,
         subtitleColor: Colors.grey),
     const CustomPageView(
         title: 'اقل عموله',
         subtitle: 'هتقدر تاجر سرير او شقه باقل عموله ',
-        image: AssetsData.onbording3,
+        image: AppAssets.onbording3,
         backgroundColor: Colors.deepPurpleAccent,
         titleColor: Colors.white,
         subtitleColor: Colors.white),
@@ -56,7 +56,7 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
             size: 30,
           );
         },
-        
+
         onFinish: () {
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         },

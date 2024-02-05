@@ -36,7 +36,7 @@ class _CustomProductState extends State<CustomProduct> {
         },
         child: Stack(children: [
           Container(
-            height: SizeConfig.defaultSize! * 43 ,
+            height: SizeConfig.defaultSize! * 43  ,
             width: double.infinity,
             decoration: const BoxDecoration(
               color: Colors.white12,

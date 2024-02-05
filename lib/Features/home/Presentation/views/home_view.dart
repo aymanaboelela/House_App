@@ -9,6 +9,7 @@ import 'package:house_app_one/core/utils/app_route.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
+import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../widgets/costom_prodact.dart';
 import '../widgets/custom_llocation.dart';
@@ -53,63 +54,69 @@ class _HomeViewState extends State<HomeView> {
         return Scaffold(
           body: ModalProgressHUD(
             inAsyncCall: isLoding,
+            progressIndicator: Lottie.asset(AppAssets.Loding1,
+                fit: BoxFit.fill, height: SizeConfig.defaultSize! * 11),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 9),
-              child: CustomScrollView(
-                slivers: [
-                  SliverAppBar(
-                    centerTitle: true,
-                    leading: IconButton(
-                      onPressed: () {
-                        GoRouter.of(context).push(AppRouter.kHelpView);
-                      },
-                      icon: Icon(
-                        Icons.view_headline_sharp,
-                        color: Color.fromARGB(255, 237, 237, 237),
-                        size: SizeConfig.defaultSize! *
-                            2.6, 
+              child: RefreshIndicator(
+                displacement: 50.0,
+                onRefresh: () =>
+                    BlocProvider.of<GethouseCubit>(context).getData(),
+                child: CustomScrollView(
+                  slivers: [
+                    SliverAppBar(
+                      centerTitle: true,
+                      leading: IconButton(
+                        onPressed: () {
+                          GoRouter.of(context).push(AppRouter.kHelpView);
+                        },
+                        icon: Icon(
+                          Icons.view_headline_sharp,
+                          color: Color.fromARGB(255, 237, 237, 237),
+                          size: SizeConfig.defaultSize! * 2.6,
+                        ),
+                      ),
+                      title: Text(
+                        "AkOdO",
+                        style: GoogleFonts.spaceGrotesk(
+                          fontWeight: FontWeight.w700,
+                          // color: Color.fromARGB(255, 228, 199, 7),
+                        ),
+                      ),
+                      actions: [
+                        Image.asset(
+                          AppAssets.logo,
+                        ),
+                      ],
+                      expandedHeight: 20,
+                    ),
+                    const SliverToBoxAdapter(
+                      child: SizeVertical(value: 1),
+                    ),
+                    const SliverToBoxAdapter(
+                      child: CustomLocationAndNotifacation(),
+                    ),
+                    const SliverToBoxAdapter(
+                      child: SizeVertical(value: 1),
+                    ),
+                    const SliverToBoxAdapter(
+                      child: CustomFilters(),
+                    ),
+                    const SliverToBoxAdapter(
+                      child: SizeVertical(value: 3),
+                    ),
+                    SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        childCount: data.length,
+                        (context, index) {
+                          return CustomProduct(
+                            data: data[index],
+                          );
+                        },
                       ),
                     ),
-                    title: Text(
-                      "AkOdO",
-                      style: GoogleFonts.spaceGrotesk(
-                        fontWeight: FontWeight.w700,
-                        // color: Color.fromARGB(255, 228, 199, 7),
-                      ),
-                    ),
-                    actions: [
-                      Image.asset(
-                        AssetsData.logo,
-                      ),
-                    ],
-                    expandedHeight: 20,
-                  ),
-                  const SliverToBoxAdapter(
-                    child: SizeVertical(value: 1),
-                  ),
-                  const SliverToBoxAdapter(
-                    child: CustomLocationAndNotifacation(),
-                  ),
-                  const SliverToBoxAdapter(
-                    child: SizeVertical(value: 1),
-                  ),
-                  const SliverToBoxAdapter(
-                    child: CustomFilters(),
-                  ),
-                  const SliverToBoxAdapter(
-                    child: SizeVertical(value: 3),
-                  ),
-                  SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      childCount: data.length,
-                      (context, index) {
-                        return CustomProduct(
-                          data: data[index],
-                        );
-                      },
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

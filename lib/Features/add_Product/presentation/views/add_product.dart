@@ -7,7 +7,9 @@ import 'package:house_app_one/Features/add_Product/data/cubit/add_house_cubit.da
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
+import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../../../core/utils/assets.dart';
 import '../../../../core/widgets/custom_buttons.dart';
 import '../widgets/custom_check_bok.dart';
 import '../widgets/custom_select_numper_ofBad.dart';
@@ -59,6 +61,8 @@ class AddProduct extends StatelessWidget {
       builder: (context, state) {
         return ModalProgressHUD(
           inAsyncCall: isLoging,
+          progressIndicator: Lottie.asset(AppAssets.Loding1,
+              height: SizeConfig.defaultSize! * 11),
           child: Scaffold(
             appBar: AppBar(
               title: Text(

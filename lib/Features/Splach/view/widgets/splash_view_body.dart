@@ -49,7 +49,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
               opacity: animation?.value,
               child: Center(
                 child: Image.asset(
-                  AssetsData.logo,
+                  AppAssets.logo,
                   height: SizeConfig.defaultSize! * 25,
                 ),
               ),
@@ -59,6 +59,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
       ),
     );
   }
+
   void getToNewScreen() {
     Future.delayed(
         const Duration(
