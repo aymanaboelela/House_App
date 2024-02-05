@@ -6,4 +6,5 @@ abstract class AppAssets {
   static const Loding1 = 'assets/json/loding1.json';
   static const Loding = 'assets/json/loding.json';
   static const help = 'assets/json/help.json';
+  static const favorite = 'assets/json/favorite.json';
 }
