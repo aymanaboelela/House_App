@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:concentric_transition/concentric_transition.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import '../../../../core/utils/app_route.dart';
+import '../../../../core/shered_preferences/shared_preferences.dart';
 import 'custom_page_view.dart';
 
 class OnBoardingViewBody extends StatefulWidget {
@@ -12,6 +12,7 @@ class OnBoardingViewBody extends StatefulWidget {
   @override
   State<OnBoardingViewBody> createState() => _HomeScreenState();
 }
+
 
 class _HomeScreenState extends State<OnBoardingViewBody> {
   final data = [
@@ -56,8 +57,8 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
             size: 30,
           );
         },
-
         onFinish: () {
+          CacheData.setData(key: "hasSeenOnboarding", value: true);
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
         },
       ),

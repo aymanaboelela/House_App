@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:house_app_one/Features/add_Product/data/cubit/add_house_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
-import 'package:house_app_one/Features/home/data/shered_preferences/shared_preferences.dart';
+import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/thems/them.dart';
 import 'package:house_app_one/firebase_options.dart';
 import 'Features/home/data/cubit/coll/coll_cubit.dart';

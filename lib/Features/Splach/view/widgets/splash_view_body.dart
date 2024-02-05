@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
+import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 
 import '../../../../core/utils/assets.dart';
@@ -35,6 +37,8 @@ class _SplashViewbodyState extends State<SplashViewbody>
     super.dispose();
   }
 
+  bool hasSeenOnboarding = CacheData.getdata(key: 'hasSeenOnboarding') ?? false;
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -65,7 +69,9 @@ class _SplashViewbodyState extends State<SplashViewbody>
         const Duration(
           seconds: 6,
         ), () {
-      GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingView);
+      hasSeenOnboarding == false
+          ? GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingView)
+          : GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
     });
   }
 }

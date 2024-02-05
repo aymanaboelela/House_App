@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 import '../../models/house_model.dart';
-import '../../shered_preferences/shared_preferences.dart';
+import '../../../../../core/shered_preferences/shared_preferences.dart';
 part 'Favorite_state.dart';
 
 class FavoriteCubit extends Cubit<FavoretState> {
