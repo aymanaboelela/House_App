@@ -1,4 +1,5 @@
 class HouseModel {
+  String id;
   String idHouse;
   String typeHouse;
   String price;
@@ -12,6 +13,7 @@ class HouseModel {
   List<dynamic> url;
 
   HouseModel({
+    required this.id,
     required this.idHouse,
     required this.numpersOfRoms,
     required this.typeHouse,
@@ -25,8 +27,9 @@ class HouseModel {
     required this.url,
   });
 
-  HouseModel.fromMap(Map<String, dynamic> map)
-      : idHouse = map['id House'],
+  HouseModel.fromMap( String id,Map<String, dynamic> map)
+      : id = id,
+        idHouse = map['id House'],
         typeHouse = map['Type House'],
         numpersOfRoms = map['Number Of Rooms'],
         price = map['Price'],

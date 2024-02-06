@@ -1,12 +1,15 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
+import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
+import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../product/presentation/widgets/image_scrrol.dart';
 import '../../data/cubit/favorite/favorite_cubit.dart';
@@ -15,8 +18,10 @@ class CustomProduct extends StatefulWidget {
   const CustomProduct({
     super.key,
     required this.data,
+    required this.index,
   });
   final HouseModel data;
+  final int index;
 
   @override
   State<CustomProduct> createState() => _CustomProductState();
@@ -34,6 +39,21 @@ class _CustomProductState extends State<CustomProduct> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 22),
       child: InkWell(
+
+        //delet house item 
+        onLongPress: () {
+          CustomError.error(
+            context,
+            dialogType: DialogType.info,
+            title: "حذف",
+            desc: " هل تريد الحذف الشقه",
+            btnOkOnPress: () {
+              BlocProvider.of<GethouseCubit>(context).deleteHouse(widget.index);
+            },
+            btnCancelOnPress: () {},
+          );
+        },
+        
         onTap: () {
           // GoRouter.of(context).push(AppRouter.KProductView,extra:data );
           Navigator.push(context, MaterialPageRoute(

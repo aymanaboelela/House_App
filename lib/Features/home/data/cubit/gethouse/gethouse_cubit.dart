@@ -16,7 +16,7 @@ class GethouseCubit extends Cubit<GethouseState> {
           await FirebaseFirestore.instance.collection('houses').get();
       querySnapshot.docs.forEach((doc) {
         HouseModel house =
-            HouseModel.fromMap(doc.data() as Map<String, dynamic>);
+            HouseModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
         data.add(house);
       });
       emit(IsSucssesGetHouse(data: data));
@@ -27,10 +27,17 @@ class GethouseCubit extends Cubit<GethouseState> {
     }
   }
 
-  void deletHouse(int index) async {
-    await FirebaseFirestore.instance
-        .collection('houses')
-        .doc(data[index].idHouse)
-        .delete();
+  void deleteHouse(int index) async {
+    try {
+      String documentId =
+          data[index].id; // Assuming data[index] contains the document ID
+      await FirebaseFirestore.instance
+          .collection('houses')
+          .doc(documentId)
+          .delete();
+      print('House deleted successfully');
+    } catch (e) {
+      print('Error deleting house: $e');
+    }
   }
 }
