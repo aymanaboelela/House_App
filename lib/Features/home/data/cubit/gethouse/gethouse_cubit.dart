@@ -27,6 +27,31 @@ class GethouseCubit extends Cubit<GethouseState> {
     }
   }
 
+  Future<void> getDataGender(String gender) async {
+    data.clear();
+    try {
+      emit(IsLodingGetHouse());
+      print("Data is loading...");
+
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('houses')
+          .where('Gender', isEqualTo: gender)
+          .get();
+
+      querySnapshot.docs.forEach((doc) {
+        HouseModel house =
+            HouseModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
+        data.add(house);
+      });
+
+      emit(IsSucssesGetHouse(data: data));
+      print("get data is $gender..");
+    } catch (e) {
+      print("Data is failed: $e");
+      emit(IsFeilerGetHouse(error: e.toString()));
+    }
+  }
+
   void deleteHouse(int index) async {
     try {
       String documentId =

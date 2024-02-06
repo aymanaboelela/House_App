@@ -9,6 +9,7 @@ import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/thems/them.dart';
 import 'package:house_app_one/firebase_options.dart';
 import 'Features/home/data/cubit/coll/coll_cubit.dart';
+import 'Features/home/data/cubit/filters/filters_cubit.dart';
 import 'Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
@@ -40,6 +41,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CollCubit(),
+        ),
+        BlocProvider(
+          create: (context) => FiltersCubit(),
         ),
       ],
       child: MaterialApp.router(

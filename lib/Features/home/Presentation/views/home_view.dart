@@ -60,8 +60,11 @@ class _HomeViewState extends State<HomeView> {
               padding: const EdgeInsets.symmetric(horizontal: 9),
               child: RefreshIndicator(
                 displacement: 50.0,
-                onRefresh: () =>
-                    BlocProvider.of<GethouseCubit>(context).getData(),
+                onRefresh: () {
+                  return
+                   BlocProvider.of<GethouseCubit>(context).getData();
+                },
+                   
                 child: CustomScrollView(
                   slivers: [
                     SliverAppBar(

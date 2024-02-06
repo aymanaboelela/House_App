@@ -154,6 +154,7 @@ class _CustomProductState extends State<CustomProduct> {
           Positioned(
             left: 0,
             child: FavoretIconItem(
+              
               data: widget.data,
             ),
           ),

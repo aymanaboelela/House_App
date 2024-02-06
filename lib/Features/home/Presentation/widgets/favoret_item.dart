@@ -8,8 +8,6 @@ import '../../data/models/house_model.dart';
 class FavoretIconItem extends StatelessWidget {
   const FavoretIconItem({super.key, required this.data});
   final HouseModel data;
-
-  @override
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<FavoriteCubit, FavoretState>(

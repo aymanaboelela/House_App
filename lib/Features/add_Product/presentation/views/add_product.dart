@@ -13,7 +13,7 @@ import '../../../../core/utils/assets.dart';
 import '../../../../core/widgets/custom_buttons.dart';
 import '../widgets/custom_check_bok.dart';
 import '../widgets/custom_select_numper_ofBad.dart';
-import '../widgets/custom_toggle_button.dart';
+import '../../../../core/widgets/custom_toggle_button.dart';
 
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);
