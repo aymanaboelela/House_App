@@ -29,18 +29,12 @@ class CustomProduct extends StatefulWidget {
 
 class _CustomProductState extends State<CustomProduct> {
   @override
-  void initState() {
-    BlocProvider.of<FavoriteCubit>(context).getData();
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 22),
       child: InkWell(
-
-        //delet house item 
+        //delet house item
         onLongPress: () {
           CustomError.error(
             context,
@@ -49,11 +43,12 @@ class _CustomProductState extends State<CustomProduct> {
             desc: " هل تريد الحذف الشقه",
             btnOkOnPress: () {
               BlocProvider.of<GethouseCubit>(context).deleteHouse(widget.index);
+              BlocProvider.of<GethouseCubit>(context).getData();
             },
             btnCancelOnPress: () {},
           );
         },
-        
+
         onTap: () {
           // GoRouter.of(context).push(AppRouter.KProductView,extra:data );
           Navigator.push(context, MaterialPageRoute(
@@ -154,7 +149,7 @@ class _CustomProductState extends State<CustomProduct> {
           Positioned(
             left: 0,
             child: FavoretIconItem(
-              
+              index: widget.index,
               data: widget.data,
             ),
           ),

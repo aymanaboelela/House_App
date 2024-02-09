@@ -11,6 +11,7 @@ import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../data/cubit/favorite/favorite_cubit.dart';
 import '../widgets/costom_prodact.dart';
 import '../widgets/custom_llocation.dart';
 import '../widgets/filters.dart';
@@ -28,8 +29,10 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     BlocProvider.of<GethouseCubit>(context).getData();
+   
     setState(() {});
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GethouseCubit, GethouseState>(
@@ -60,10 +63,8 @@ class _HomeViewState extends State<HomeView> {
               child: RefreshIndicator(
                 displacement: 50.0,
                 onRefresh: () {
-                  return
-                   BlocProvider.of<GethouseCubit>(context).getData();
+                  return BlocProvider.of<GethouseCubit>(context).getData();
                 },
-                   
                 child: CustomScrollView(
                   slivers: [
                     SliverAppBar(
@@ -102,7 +103,6 @@ class _HomeViewState extends State<HomeView> {
                       child: SizeVertical(value: 1),
                     ),
                     const SliverToBoxAdapter(
-                      
                       child: CustomFilters(),
                     ),
                     const SliverToBoxAdapter(

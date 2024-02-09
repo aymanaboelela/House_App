@@ -9,7 +9,7 @@ import '../../../home/data/models/house_model.dart';
 class FavoriteProductsView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<FavoriteCubit>(context).getData();
+    // BlocProvider.of<FavoriteCubit>(context).getData();
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -36,7 +36,7 @@ class FavoriteProductsView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   HouseModel data = FavoriteProducts.products[index];
                   return CustomProduct(
-                    index: 1,
+                    index: index,
                     data: data,
                   );
                 },
