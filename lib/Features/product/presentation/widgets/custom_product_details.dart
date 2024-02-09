@@ -40,13 +40,14 @@ class CustomProductDetails extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  const SizeHorizontal(value: 8.2),
+                  Spacer(),
                   Text(
                     "عدد الغرف : $numberOfBeds",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),
                   ),
+                  SizeHorizontal(value: 7),
                 ],
               ),
               const SizeVertical(value: 3),
@@ -58,13 +59,14 @@ class CustomProductDetails extends StatelessWidget {
                       fontSize: 16,
                     ),
                   ),
-                  const SizeHorizontal(value: 8.6),
+                  Spacer(),
                   Text(
                     "عدد السرائر : $numberOfRooms",
                     style: GoogleFonts.cairo(
                       fontSize: 16,
                     ),
                   ),
+                  SizeHorizontal(value: 7),
                 ],
               ),
             ],

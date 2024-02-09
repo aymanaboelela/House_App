@@ -61,6 +61,10 @@ class AddHouseCubit extends Cubit<AddHouseState> {
         );
         print("House added successfully");
         imagesFiles.clear();
+        imageNames.clear();
+        imageUrls.clear();
+        
+
         emit(IsSucssesAddHouse());
       } catch (e) {
         if (e is FirebaseException) {

@@ -30,7 +30,6 @@ class _HomeViewState extends State<HomeView> {
     BlocProvider.of<GethouseCubit>(context).getData();
     setState(() {});
   }
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GethouseCubit, GethouseState>(
@@ -103,6 +102,7 @@ class _HomeViewState extends State<HomeView> {
                       child: SizeVertical(value: 1),
                     ),
                     const SliverToBoxAdapter(
+                      
                       child: CustomFilters(),
                     ),
                     const SliverToBoxAdapter(
