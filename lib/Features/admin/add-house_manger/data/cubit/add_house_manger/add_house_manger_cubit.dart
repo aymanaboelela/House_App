@@ -7,34 +7,24 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
 import 'package:path/path.dart';
+part 'add_house_manger_state.dart';
 
-part 'add_house_state.dart';
-
-class AddHouseCubit extends Cubit<AddHouseState> {
-  AddHouseCubit() : super(AddHouseInitial());
-  bool isMaleSelected = true;
-  bool isFemaleSelected = false;
-  bool isApartmentSelected = true;
-  bool isStudioSelected = false;
+class AddHouseMangerCubit extends Cubit<AddHouseMangerState> {
+  AddHouseMangerCubit() : super(AddHouseMangerInitial());
 
   List<XFile> imagesFiles = [];
   List imageNames = [];
   List<String> imageUrls = [];
   String? url;
-
-  Future<void> addHouse({
+  Future<void> AddHouseManger({
     required String idHouse,
-    required String typeHouse,
-    required String gender,
-    required String price,
-    required String numberOfRooms,
-    required String numberOfBeds,
-    required String description,
-    required bool airConditioner,
-    required bool wifi,
-    required bool naturalGas,
+    required String name,
+    required String phoneNumber,
+    required String nameOfUniversity,
+    required String ground,      
+    required String addrese,
   }) async {
-    emit(IsLodingAddHouse());
+    emit(IsLodingAddHouseManger());
     if (imagesFiles.isEmpty) {
       emit(IamgeFeiler());
     } else {
@@ -42,20 +32,16 @@ class AddHouseCubit extends Cubit<AddHouseState> {
         await addImages();
         await Firebase.initializeApp();
         CollectionReference houses =
-            FirebaseFirestore.instance.collection('houses');
+            FirebaseFirestore.instance.collection('houses manger');
 
         await houses.add(
           {
             'id House': idHouse,
-            'Type House': typeHouse,
-            'Gender': gender,
-            'Price': price,
-            'Number Of Rooms': numberOfRooms,
-            'Number Of Beds': numberOfBeds,
-            'Description': description,
-            'Air Conditioner': airConditioner,
-            'Wi-Fi': wifi,
-            'Natural Gas': naturalGas,
+            'name manger': name,
+            'phoneNumber': phoneNumber,
+            'name of university': nameOfUniversity,
+            'ground house': ground,
+            'addrese house': addrese,
             'Urls': imageUrls,
             'Date': FieldValue.serverTimestamp(),
           },
@@ -65,41 +51,16 @@ class AddHouseCubit extends Cubit<AddHouseState> {
         imageNames.clear();
         imageUrls.clear();
 
-        emit(IsSucssesAddHouse());
+        emit(IsSucssesAddHousemanger());
       } catch (e) {
         if (e is FirebaseException) {
-          emit(IsFeilerAddHouse(error: e.toString()));
+          emit(IsFeilerAddHousemanger(error: e.toString()));
         } else {
-          emit(IsFeilerAddHouse(error: 'An unknown error occurred.'));
+          emit(IsFeilerAddHousemanger(error: 'An unknown error occurred.'));
         }
       }
     }
   }
-
-  void houseSelected() {
-    isApartmentSelected = !isApartmentSelected;
-    isStudioSelected = !isApartmentSelected;
-    emit(ChingeUiAddHouse());
-  }
-
-  void houseSelected2() {
-    isStudioSelected = !isStudioSelected;
-    isApartmentSelected = !isStudioSelected;
-    emit(ChingeUiAddHouse());
-  }
-
-  void chingeGenderBoyes() {
-    isMaleSelected = !isMaleSelected;
-    isFemaleSelected = !isMaleSelected;
-    emit(ChingeUiAddHouse());
-  }
-
-  void chingeGenderGirls() {
-    isFemaleSelected = !isFemaleSelected;
-    isMaleSelected = !isFemaleSelected;
-    emit(ChingeUiAddHouse());
-  }
-
   final ImagePicker imagePicker = ImagePicker();
 
   Future<void> pickImages() async {
@@ -111,7 +72,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
           imageNames.add(basename(pickedFile.path));
         }
       }
-      emit(ChingeUiAddHouse());
+      emit(ChingeUiAddHousemanger());
     } catch (e) {
       print('Error picking images: $e');
     }
@@ -127,7 +88,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
         url = await refStorage.getDownloadURL();
         imageUrls.add(url!);
       }
-      emit(ChingeUiAddHouse());
+      emit(ChingeUiAddHousemanger());
     } catch (e) {
       print('Error uploading images: $e');
     }

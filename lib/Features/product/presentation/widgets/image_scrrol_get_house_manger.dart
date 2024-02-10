@@ -1,34 +1,34 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:house_app_one/Features/admin/add-house_manger/data/models/get_house_mangers_model/get_house_mangers_model.dart';
-import 'package:house_app_one/Features/home/data/models/house_model.dart';
+import 'package:house_app_one/Features/product/presentation/widgets/image_scrrol.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
+import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
 
 import '../../../../core/utils/assets.dart';
-import '../../../../core/utils/responsive.dart';
+import '../../../admin/add-house_manger/data/models/get_house_mangers_model/get_house_mangers_model.dart';
 
-class ScrollImage extends StatefulWidget {
-  ScrollImage({Key? key, required this.data, required this.autoPlay})
-      : super(key: key);
 
-  final HouseModel data;
+class ScrollImageGethousemanger extends StatefulWidget {
+  const ScrollImageGethousemanger({super.key, required this.data, required this.autoPlay});
+  final HouseMangerModel data;
   final bool autoPlay;
 
+
   @override
-  _ScrollImageState createState() => _ScrollImageState();
+  State<ScrollImageGethousemanger> createState() => _ScrollImageGethousemangerState();
 }
-
-class _ScrollImageState extends State<ScrollImage> {
   CarouselController carouselController = CarouselController();
+
+class _ScrollImageGethousemangerState extends State<ScrollImageGethousemanger> {
   int currentPage = 0;
-
   @override
-  Widget build(BuildContext context) {
-    List<dynamic> images = widget.data.url;
 
+  Widget build(BuildContext context) {
+    List<dynamic> images = widget.data.imageUrls!;
     return Center(
       child: Stack(
         children: [
@@ -98,4 +98,3 @@ class _ScrollImageState extends State<ScrollImage> {
     );
   }
 }
-

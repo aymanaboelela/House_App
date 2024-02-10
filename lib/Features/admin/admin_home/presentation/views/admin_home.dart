@@ -12,46 +12,47 @@ class AdminHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          centerTitle: true,
-          title: Text(
-            "صفحه الادمن",
-            style: GoogleFonts.cairo(),
-          ),
+      appBar: AppBar(
+        centerTitle: true,
+        title: Text(
+          "صفحه الادمن",
+          style: GoogleFonts.cairo(),
         ),
-        body: GridView(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, // عدد العناصر في كل سطر
-            crossAxisSpacing: 8.0, // المسافة بين العناصر الأفقية
-            mainAxisSpacing: 8.0, // المسافة بين العناصر الرأسية
+      ),
+      body: GridView(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, // عدد العناصر في كل سطر
+          crossAxisSpacing: 8.0, // المسافة بين العناصر الأفقية
+          mainAxisSpacing: 8.0, // المسافة بين العناصر الرأسية
+        ),
+        children: [
+          CustomAdminSelect(
+            title: "اضافه اشعارات",
+            icon: Icons.notifications_active_rounded,
+            onTap: () {},
           ),
-          children: [
-            CustomAdminSelect(
-              title: "اضافه اشعارات",
-              icon: Icons.notifications_active_rounded,
-              onTap: () {},
-            ),
-            CustomAdminSelect(
-              title: "اضافه شقه",
-              icon: Icons.home_work_rounded,
-              onTap: () => GoRouter.of(context).push(AppRouter.KAddProductView),
-            ),
-            CustomAdminSelect(
-              title: "البحث عن شقه",
-              icon: Icons.search_sharp,
-              onTap: () => GoRouter.of(context).push(AppRouter.KSearchInHouse),
-            ),
-            CustomAdminSelect(
-              title: "سجل صاحب العقار",
-              icon: Icons.person_add_alt_1,
-              onTap: () {},
-            ),
-            CustomAdminSelect(
-              title: "اضافه المستاجر",
-              icon: FontAwesomeIcons.users,
-              onTap: () {},
-            ),
-          ],
-        ));
+          CustomAdminSelect(
+            title: "اضافه شقه",
+            icon: Icons.home_work_rounded,
+            onTap: () => GoRouter.of(context).push(AppRouter.KAddProductView),
+          ),
+          CustomAdminSelect(
+            title: "البحث عن شقه",
+            icon: Icons.search_sharp,
+            onTap: () => GoRouter.of(context).push(AppRouter.KSearchInHouse),
+          ),
+          CustomAdminSelect(
+            title: "سجل صاحب العقار",
+            icon: Icons.person_add_alt_1,
+            onTap: () => GoRouter.of(context).push(AppRouter.KMangerDeailsView),
+          ),
+          CustomAdminSelect(
+            title: "اضافه المستاجر",
+            icon: FontAwesomeIcons.users,
+            onTap: () {},
+          ),
+        ],
+      ),
+    );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import '../utils/responsive.dart';
 
@@ -21,7 +22,7 @@ class CustomGeneralButton extends StatelessWidget {
         child: Center(
           child: Text(
             text!,
-            style: const TextStyle(
+            style: GoogleFonts.cairo(
               fontSize: 14,
               color: Color(0xffffffff),
               fontWeight: FontWeight.w500,
@@ -44,7 +45,7 @@ class CustomButtonWithIcon extends StatelessWidget {
   final Color? color;
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
+    return InkWell(
       onTap: onTap,
       child: Container(
         height: 60,
@@ -57,21 +58,20 @@ class CustomButtonWithIcon extends StatelessWidget {
             )),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Icon(
               iconData,
               color: color,
             ),
             const SizeHorizontal(value: 2),
-            Text(
-              text,
-              style: const TextStyle(
-                fontWeight: FontWeight.w600,
-                fontFamily: 'Poppins',
-                fontSize: 12,
-                color: Colors.white,
-              ),
-              textAlign: TextAlign.left,
+            Center(
+              child: Text(text,
+                  style: GoogleFonts.cairo(
+                    fontWeight: FontWeight.w600,
+                    fontSize: 12,
+                    color: Colors.white,
+                  )),
             ),
           ],
         ),

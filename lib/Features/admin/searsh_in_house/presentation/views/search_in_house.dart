@@ -1,6 +1,4 @@
 import 'dart:async';
-
-import 'package:easy_search_bar/easy_search_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,9 +25,11 @@ class _SearchInHouseState extends State<SearchInHouse> {
 
     idresalt;
     super.dispose();
+
   }
 
   String? idresalt;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +42,7 @@ class _SearchInHouseState extends State<SearchInHouse> {
       body: Column(
         children: [
           CustomTextFormField(
+            
             title: "ابحث عن طريق ID :",
             icon: Icons.search,
             onChanged: (value) {
@@ -91,7 +92,6 @@ class _SearchInHouseState extends State<SearchInHouse> {
       ),
     );
   }
-
   Widget SearchNow() {
     return Column(
       children: [

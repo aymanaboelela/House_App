@@ -1,11 +1,15 @@
 import 'package:go_router/go_router.dart';
-import 'package:house_app_one/Features/admin/searsh_in_house/presentation/views/search_in_house.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Splach/view/splach_view.dart';
+import '../../Features/admin/add-house_manger/presentation/views/add_house_manger.dart';
+import '../../Features/admin/add-house_manger/presentation/views/house_mangers.dart';
+import '../../Features/admin/add-house_manger/presentation/views/manger_deails_view.dart';
+import '../../Features/admin/add-house_manger/presentation/views/search_In_manger_view.dart';
 import '../../Features/admin/add_Product/presentation/views/add_product.dart';
 import '../../Features/admin/admin_home/presentation/views/admin_home.dart';
+import '../../Features/admin/searsh_in_house/presentation/views/search_in_house.dart';
 import '../../Features/notifacation/presentation/view/notifacation.dart';
 import '../../Features/on_boarding/presentation/on_boardin_view.dart';
 
@@ -15,11 +19,15 @@ abstract class AppRouter {
   static const kHelpView = '/helpView';
   static const kNotifacationView = '/notifacationview';
   static const KProductView = '/productView';
-  static const KLocationView = '/KLocationView';
+  static const KLocationView = '/LocationView';
 //admin
   static const KAdminHome = '/admininhome';
   static const KAddProductView = '/addproduct';
   static const KSearchInHouse = '/searchinhouse';
+  static const KAddHouseMangerView = '/addhousemangerview';
+  static const KMangerDeailsView = '/Mangerdetails';
+  static const KSearchInMangerView = '/searchinmangerview';
+  static const KHouseMangersViewe = '/housemangersview';
 
   static final router = GoRouter(
     routes: [
@@ -65,6 +73,22 @@ abstract class AppRouter {
       GoRoute(
         path: KSearchInHouse,
         builder: (context, state) => SearchInHouse(),
+      ),
+      GoRoute(
+        path: KAddHouseMangerView,
+        builder: (context, state) => AddHouseMangerView(),
+      ),
+      GoRoute(
+        path: KMangerDeailsView,
+        builder: (context, state) => MangerDeailsView(),
+      ),
+      GoRoute(
+        path: KSearchInMangerView,
+        builder: (context, state) => SearchInMangerView(),
+      ),
+      GoRoute(
+        path: KHouseMangersViewe,
+        builder: (context, state) => HouseMangersView(),
       ),
     ],
   );
