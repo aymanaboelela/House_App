@@ -4,18 +4,20 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/add_Product/data/cubit/add_house_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../../../core/utils/assets.dart';
-import '../../../../core/widgets/custom_buttons.dart';
+
+
+import '../../../../../core/utils/assets.dart';
+import '../../../../../core/widgets/custom_buttons.dart';
+import '../../../../../core/widgets/custom_toggle_button.dart';
+import '../../data/cubit/add_house_cubit.dart';
 import '../widgets/custom_check_bok.dart';
 import '../widgets/custom_select_numper_ofBad.dart';
-import '../../../../core/widgets/custom_toggle_button.dart';
 
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);

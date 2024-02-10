@@ -128,7 +128,7 @@ class _HomeViewState extends State<HomeView> {
           // add product
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              GoRouter.of(context).push(AppRouter.KAddProductView);
+              GoRouter.of(context).push(AppRouter.KAdminHome);
             },
             child: const Icon(Icons.add),
           ),
