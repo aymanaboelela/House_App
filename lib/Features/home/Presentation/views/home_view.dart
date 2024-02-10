@@ -29,7 +29,7 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     BlocProvider.of<GethouseCubit>(context).getData();
-   
+
     setState(() {});
   }
 
@@ -112,6 +112,7 @@ class _HomeViewState extends State<HomeView> {
                       delegate: SliverChildBuilderDelegate(
                         childCount: data.length,
                         (context, index) {
+                          indexProduct = index;
                           return CustomProduct(
                             index: index,
                             data: data[index],
@@ -136,3 +137,5 @@ class _HomeViewState extends State<HomeView> {
     );
   }
 }
+
+int? indexProduct;

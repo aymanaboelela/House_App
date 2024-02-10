@@ -12,8 +12,10 @@ class GethouseCubit extends Cubit<GethouseState> {
     try {
       emit(IsLodingGetHouse());
       print("Data is loading...");
-      QuerySnapshot querySnapshot =
-          await FirebaseFirestore.instance.collection('houses').get();
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('houses')
+          .orderBy('Date', descending: true)
+          .get();
       querySnapshot.docs.forEach((doc) {
         HouseModel house =
             HouseModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);

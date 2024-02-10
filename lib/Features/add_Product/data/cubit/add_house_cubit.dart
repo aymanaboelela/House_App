@@ -57,13 +57,13 @@ class AddHouseCubit extends Cubit<AddHouseState> {
             'Wi-Fi': wifi,
             'Natural Gas': naturalGas,
             'Urls': imageUrls,
+            'Date': FieldValue.serverTimestamp(),
           },
         );
         print("House added successfully");
         imagesFiles.clear();
         imageNames.clear();
         imageUrls.clear();
-        
 
         emit(IsSucssesAddHouse());
       } catch (e) {
