@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:house_app_one/Features/admin/searsh_in_house/presentation/views/search_in_house.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
@@ -16,8 +17,9 @@ abstract class AppRouter {
   static const KProductView = '/productView';
   static const KLocationView = '/KLocationView';
 //admin
-  static const KAdminHome = '/productView';
-  static const KAddProductView = '/KAddProduct';
+  static const KAdminHome = '/admininhome';
+  static const KAddProductView = '/addproduct';
+  static const KSearchInHouse = '/searchinhouse';
 
   static final router = GoRouter(
     routes: [
@@ -59,6 +61,10 @@ abstract class AppRouter {
       GoRoute(
         path: KAddProductView,
         builder: (context, state) => AddProduct(),
+      ),
+      GoRoute(
+        path: KSearchInHouse,
+        builder: (context, state) => SearchInHouse(),
       ),
     ],
   );

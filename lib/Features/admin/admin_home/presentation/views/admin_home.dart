@@ -39,7 +39,7 @@ class AdminHome extends StatelessWidget {
             CustomAdminSelect(
               title: "البحث عن شقه",
               icon: Icons.search_sharp,
-              onTap: () {},
+              onTap: () => GoRouter.of(context).push(AppRouter.KSearchInHouse),
             ),
             CustomAdminSelect(
               title: "سجل صاحب العقار",

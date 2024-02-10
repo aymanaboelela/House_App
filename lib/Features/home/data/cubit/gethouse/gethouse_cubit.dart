@@ -54,6 +54,33 @@ class GethouseCubit extends Cubit<GethouseState> {
     }
   }
 
+  // الوظيفة المعدلة لتحديث نتائج البحث
+  Future<void> searchHouseById(String houseId) async {
+    data.clear();
+    try {
+      emit(IsLodingGetHouse());
+      print("Data is loading...");
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('houses')
+          .where('id House', isEqualTo: houseId)
+          .get();
+          
+      if (querySnapshot.docs.isNotEmpty) {
+        HouseModel house = HouseModel.fromMap(querySnapshot.docs[0].id,
+            querySnapshot.docs[0].data() as Map<String, dynamic>);
+        data.add(house);
+        emit(IsSucssesGetHouse(data: data));
+        print("House found: $houseId");
+      } else {
+        print("House not found: $houseId");
+        emit(IsFeilerGetHouse(error: "House not found"));
+      }
+    } catch (e) {
+      print("Data search failed: $e");
+      emit(IsFeilerGetHouse(error: e.toString()));
+    }
+  }
+
   void deleteHouse(int index) async {
     try {
       String documentId =

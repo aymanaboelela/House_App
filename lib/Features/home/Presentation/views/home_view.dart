@@ -45,10 +45,10 @@ class _HomeViewState extends State<HomeView> {
         }
         if (state is IsFeilerGetHouse) {
           isLoding = false;
-          CustomError.error(context,
-              dialogType: DialogType.error,
-              title: "خطاء",
-              desc: " برجاء المحاوله في وقت لاحق");
+          // CustomError.error(context,
+          //     dialogType: DialogType.error,
+          //     title: "خطاء",
+          //     desc: " برجاء المحاوله في وقت لاحق");
         }
       },
       builder: (context, state) {

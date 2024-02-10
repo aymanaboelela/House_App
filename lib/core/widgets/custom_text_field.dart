@@ -22,7 +22,8 @@ class CustomTextFormField extends StatefulWidget {
       this.isVisibleColor,
       this.titleTextStyle,
       this.textFieldStyle,
-      this.cursorColor});
+      this.cursorColor,
+       });
   final String? hintText;
   final String? label;
   final FormFieldSetter<String>? onSaved;
@@ -41,6 +42,7 @@ class CustomTextFormField extends StatefulWidget {
   final Color? cursorColor;
   final TextStyle? titleTextStyle;
   final TextStyle? textFieldStyle;
+
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
 }
@@ -64,6 +66,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ),
       const SizeVertical(value: 1.5),
       TextFormField(
+
         style: widget.textFieldStyle ??
             const TextStyle(color: Colors.white, fontSize: 18),
         cursorColor: widget.cursorColor ?? Colors.white,
@@ -82,9 +85,12 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         onTapOutside: (event) => FocusScope.of(context).unfocus(),
 
         onFieldSubmitted: widget.onFieldSubmitted,
+        
         onSaved: widget.onSaved,
+        
         onChanged: widget.onChanged,
         decoration: InputDecoration(
+          
           isCollapsed: true,
           helperStyle: const TextStyle(color: Colors.white),
           isDense: true,
