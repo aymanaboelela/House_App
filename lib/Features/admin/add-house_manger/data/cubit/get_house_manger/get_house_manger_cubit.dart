@@ -7,7 +7,7 @@ part 'get_house_manger_state.dart';
 
 class GetHouseMangerCubit extends Cubit<GetHouseMangerState> {
   GetHouseMangerCubit() : super(GetHouseMangerInitial());
-    List<HouseMangerModel> data = [];
+  List<HouseMangerModel> data = [];
 
   Future<void> getData() async {
     data.clear();
@@ -19,8 +19,8 @@ class GetHouseMangerCubit extends Cubit<GetHouseMangerState> {
           .orderBy('Date', descending: true)
           .get();
       querySnapshot.docs.forEach((doc) {
-        HouseMangerModel house =
-            HouseMangerModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
+        HouseMangerModel house = HouseMangerModel.fromMap(
+            doc.id, doc.data() as Map<String, dynamic>);
         data.add(house);
       });
       emit(IsSucssesGetHouseMager(data: data));
@@ -31,8 +31,7 @@ class GetHouseMangerCubit extends Cubit<GetHouseMangerState> {
     }
   }
 
-
- Future<void> searchHouseMangerById(String houseMangerId) async {
+  Future<void> searchHouseMangerById(String houseMangerId) async {
     data.clear();
     try {
       emit(IsLodingGetHouseManger());
@@ -41,16 +40,20 @@ class GetHouseMangerCubit extends Cubit<GetHouseMangerState> {
           .collection('houses manger')
           .where('id House', isEqualTo: houseMangerId)
           .get();
-          
+
       if (querySnapshot.docs.isNotEmpty) {
-        HouseMangerModel house = HouseMangerModel.fromMap(querySnapshot.docs[0].id,
-            querySnapshot.docs[0].data() as Map<String, dynamic>);
-        data.add(house);
-        emit(IsSucssesGetHouseMager(data: data));
-        print("House found: $houseMangerId");
+        List<HouseMangerModel> matchingHouseMangers = [];
+        querySnapshot.docs.forEach((doc) {
+          HouseMangerModel house = HouseMangerModel.fromMap(
+              doc.id, doc.data() as Map<String, dynamic>);
+          matchingHouseMangers.add(house);
+        });
+
+        emit(IsSucssesGetHouseMager(data: matchingHouseMangers));
+        print("HouseMangers found for ID: $houseMangerId");
       } else {
-        print("House not found: $houseMangerId");
-        emit(IsFeilerGetHouseManger(error: "House not found"));
+        print("No HouseMangers found for ID: $houseMangerId");
+        emit(IsFeilerGetHouseManger(error: "No HouseMangers found"));
       }
     } catch (e) {
       print("Data search failed: $e");

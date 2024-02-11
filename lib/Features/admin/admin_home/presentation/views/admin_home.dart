@@ -47,9 +47,9 @@ class AdminHome extends StatelessWidget {
             onTap: () => GoRouter.of(context).push(AppRouter.KMangerDeailsView),
           ),
           CustomAdminSelect(
-            title: "اضافه المستاجر",
+            title: "سجل المستاجر",
             icon: FontAwesomeIcons.users,
-            onTap: () => GoRouter.of(context).push(AppRouter.KAddClientView),
+            onTap: () => GoRouter.of(context).push(AppRouter.KClinetDetailsView),
           ),
         ],
       ),

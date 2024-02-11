@@ -1,26 +1,25 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/admin/add-house_manger/data/cubit/get_house_manger/get_house_manger_cubit.dart';
-import 'package:house_app_one/Features/admin/add-house_manger/data/models/get_house_mangers_model/get_house_mangers_model.dart';
-import 'package:house_app_one/Features/admin/add-house_manger/presentation/views/widgets/custom_house_manger_Item.dart';
+import 'package:house_app_one/Features/admin/add_client/data/cubits/get_client/get_client_cubit.dart';
+import 'package:house_app_one/Features/admin/add_client/data/models/client_model.dart';
+import 'package:house_app_one/Features/admin/add_client/presentation/widgets/custom_client_item.dart';
 
 import '../../../../../../core/utils/responsive.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
-class SearchInMangerView extends StatefulWidget {
-  const SearchInMangerView({super.key});
+class SearchClientView extends StatefulWidget {
+  const SearchClientView({super.key});
 
   @override
-  State<SearchInMangerView> createState() => _SearchInMangerViewState();
+  State<SearchClientView> createState() => _SearchClientViewState();
 }
 
-class _SearchInMangerViewState extends State<SearchInMangerView> {
+class _SearchClientViewState extends State<SearchClientView> {
   Timer? _debounceTimer;
   void dispose() {
-    // _debounceTimer?.cancel();
+    _debounceTimer?.cancel();
 
     super.dispose();
   }
@@ -32,7 +31,7 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "البحث عن صاحب العقار",
+          "البحث عن مستاجر ",
           style: GoogleFonts.cairo(),
         ),
       ),
@@ -47,22 +46,22 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
                 idresalt = value;
                 _debounceTimer?.cancel();
                 _debounceTimer = Timer(Duration(milliseconds: 500), () {
-                  BlocProvider.of<GetHouseMangerCubit>(context)
-                      .searchHouseMangerById(value);
+                  BlocProvider.of<GetClientCubit>(context)
+                      .searchClientById(value);
                 });
               },
             ),
             SizeVertical(value: 2),
-            BlocBuilder<GetHouseMangerCubit, GetHouseMangerState>(
+            BlocBuilder<GetClientCubit, GetClientState>(
               builder: (context, state) {
-                if (state is IsLodingGetHouseManger) {
+                if (state is IsLodingGetClient) {
                   return Center(child: CircularProgressIndicator());
-                } else if (state is IsSucssesGetHouseMager) {
+                } else if (state is IsSucssesGetClient) {
                   return buildResults(state.data);
-                } else if (state is IsFeilerGetHouseManger) {
+                } else if (state is IsFeilerGetClient) {
                   return Center(
                     child: Text(
-                      'خطاء: لايوجل  صاحب شقه بهذا iD ',
+                      'خطاء : لايوجل مستاجر بهذا iD ',
                       style: GoogleFonts.cairo(fontSize: 20),
                     ),
                   );
@@ -77,12 +76,12 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
     );
   }
 
-  Widget buildResults(List<HouseMangerModel> data) {
+  Widget buildResults(List<clientModel> data) {
     return Expanded(
       child: ListView.builder(
         itemCount: data.length,
         itemBuilder: (context, index) {
-          return CustomHouseMangerItem(data: data[index]);
+          return CustomClientItem(data: data[index]);
         },
       ),
     );

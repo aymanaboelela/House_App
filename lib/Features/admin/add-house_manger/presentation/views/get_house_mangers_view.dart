@@ -39,23 +39,29 @@ class _HouseMangersViewState extends State<HouseMangersView> {
       builder: (context, state) {
         List<HouseMangerModel> data =
             BlocProvider.of<GetHouseMangerCubit>(context).data;
-        return ModalProgressHUD(
-          inAsyncCall: isLoding,
-          progressIndicator: Lottie.asset(AppAssets.Loding1),
-          child: Scaffold(
-            appBar: AppBar(
-              centerTitle: true,
-              title: Text("اصحاب العقارات", style: GoogleFonts.cairo()),
-            ),
-            body: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ListView.builder(
-                itemCount: data.length,
-                itemBuilder: (context, index) {
-                  return CustomHouseMangerItem(
-                    data: data[index],
-                  );
-                },
+        return RefreshIndicator(
+          onRefresh: () =>
+              BlocProvider.of<GetHouseMangerCubit>(context).getData(),
+          // displacement: 50,
+          edgeOffset: 50,
+          child: ModalProgressHUD(
+            inAsyncCall: isLoding,
+            progressIndicator: Lottie.asset(AppAssets.Loding1),
+            child: Scaffold(
+              appBar: AppBar(
+                centerTitle: true,
+                title: Text("اصحاب العقارات", style: GoogleFonts.cairo()),
+              ),
+              body: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListView.builder(
+                  itemCount: data.length,
+                  itemBuilder: (context, index) {
+                    return CustomHouseMangerItem(
+                      data: data[index],
+                    );
+                  },
+                ),
               ),
             ),
           ),

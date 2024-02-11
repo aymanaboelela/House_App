@@ -18,6 +18,7 @@ class AddClientView extends StatelessWidget {
   String? name;
   String? idHouse;
   String? phoneNumber;
+  String? nameOfUniversity;
   String? price;
   bool isLoding = false;
   Widget build(BuildContext context) {
@@ -89,6 +90,14 @@ class AddClientView extends StatelessWidget {
                       ),
                       SizeVertical(value: 2),
                       CustomTextFormField(
+                        title: " اسم الحامعه :",
+                        icon: Icons.phone,
+                        onChanged: (value) {
+                          nameOfUniversity = value;
+                        },
+                      ),
+                      SizeVertical(value: 2),
+                      CustomTextFormField(
                         title: "رقم العموله :",
                         icon: Icons.attach_money_rounded,
                         keyboardType: TextInputType.number,
@@ -121,6 +130,7 @@ class AddClientView extends StatelessWidget {
                             BlocProvider.of<AddClientCubit>(context).addClient(
                                 idHouse: idHouse!,
                                 name: name!,
+                                nameOfUniversity: nameOfUniversity!,
                                 phoneNumber: phoneNumber!,
                                 price: price!);
                           }

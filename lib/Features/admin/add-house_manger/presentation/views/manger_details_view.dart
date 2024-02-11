@@ -4,8 +4,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/admin/admin_home/presentation/widgets/custom_admin_select.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 
-class MangerDeailsView extends StatelessWidget {
-  const MangerDeailsView({super.key});
+class MangerDetailsView extends StatelessWidget {
+  const MangerDetailsView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,19 +26,19 @@ class MangerDeailsView extends StatelessWidget {
             children: [
               CustomAdminSelect(
                 title: "اضافه صاحب شقه",
-                icon: Icons.person_4,
+                icon: Icons.person_add,
                 onTap: () =>
                     GoRouter.of(context).push(AppRouter.KAddHouseMangerView),
               ),
               CustomAdminSelect(
-                title: "البحث عن صاحب الشقه",
+                title: "البحث عن صاحب الشقق",
                 icon: Icons.person_search_rounded,
                 onTap: () =>
                     GoRouter.of(context).push(AppRouter.KSearchInMangerView),
               ),
               CustomAdminSelect(
                 title: "اصحاب الشقق",
-                icon: Icons.person_search_rounded,
+                icon: Icons.house_outlined,
                 onTap: () =>
                     GoRouter.of(context).push(AppRouter.KHouseMangersViewe),
               ),

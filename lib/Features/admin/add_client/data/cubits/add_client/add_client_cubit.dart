@@ -17,6 +17,7 @@ class AddClientCubit extends Cubit<AddClientState> {
     required String idHouse,
     required String name,
     required String phoneNumber,
+    required String nameOfUniversity,
     required String price,
   }) async {
     emit(IsLodingAddClient());
@@ -35,6 +36,7 @@ class AddClientCubit extends Cubit<AddClientState> {
             'name': name,
             'phone Number': phoneNumber,
             'Price': price,
+            'name Of University':nameOfUniversity,
             'Url': imageUrls,
             'Date': FieldValue.serverTimestamp(),
           },

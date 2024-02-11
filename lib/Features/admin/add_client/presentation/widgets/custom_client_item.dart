@@ -1,29 +1,34 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/admin/add-house_manger/data/models/get_house_mangers_model/get_house_mangers_model.dart';
-import 'package:house_app_one/Features/product/presentation/widgets/image_scrrol_get_house_manger.dart';
+import 'package:house_app_one/Features/admin/add_client/data/models/client_model.dart';
 import 'package:intl/intl.dart';
-import '../../../../../../core/thems/app/app_colors.dart';
-import '../../../../../../core/utils/responsive.dart';
+import 'package:lottie/lottie.dart';
 
-class CustomHouseMangerItem extends StatelessWidget {
-  const CustomHouseMangerItem({super.key, required this.data});
+import '../../../../../core/thems/app/app_colors.dart';
+import '../../../../../core/utils/assets.dart';
+import '../../../../../core/utils/responsive.dart';
 
-  final HouseMangerModel data;
+class CustomClientItem extends StatelessWidget {
+  const CustomClientItem({super.key, required this.data});
+
+  final clientModel data;
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
         showModalBottomSheet(
+          isScrollControlled: true,
           context: context,
           builder: (context) {
             return Stack(
               children: [
                 Container(
                   padding: EdgeInsets.all(8),
-                  height: SizeConfig.defaultSize! * 44,
+                  height: SizeConfig.defaultSize! * 80,
+                  width: double.infinity,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
                     color: AppColors.KPrimeColor,
@@ -31,13 +36,19 @@ class CustomHouseMangerItem extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ScrollImageGethousemanger(data: data, autoPlay: false),
+                      CachedNetworkImage(
+                        imageUrl: data.imageUrl[0],
+                        placeholder: (context, url) => Center(
+                            child: Lottie.asset(AppAssets.Loding,
+                                height: SizeConfig.defaultSize! * 30)),
+                        errorWidget: (context, url, error) => const Icon(
+                          Icons.error,
+                          size: 30,
+                        ),
+                        alignment: Alignment.bottomCenter,
+                        fit: BoxFit.fill,
+                      ),
                       SizeVertical(value: 1),
-                      Text(
-                        data.addreseHouse!,
-                        maxLines: 5,
-                        style: GoogleFonts.cairo(fontSize: 22),
-                      )
                     ],
                   ),
                 ),
@@ -76,7 +87,7 @@ class CustomHouseMangerItem extends StatelessWidget {
               ),
               SizeVertical(value: 1),
               Text(
-                "الاسم: ${data.nameManger}",
+                "الاسم: ${data.nameclient}",
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
@@ -91,7 +102,7 @@ class CustomHouseMangerItem extends StatelessWidget {
               ),
               SizeVertical(value: 1),
               Text(
-                "الدور :${data.groundHouse} ",
+                "العموله :${data.price} ",
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
@@ -100,11 +111,6 @@ class CustomHouseMangerItem extends StatelessWidget {
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
-              Text(
-                "العنوان : ${data.addreseHouse}",
-                maxLines: 1,
-                style: GoogleFonts.cairo(fontSize: 25),
-              ),
             ],
           ),
         ),
@@ -112,4 +118,3 @@ class CustomHouseMangerItem extends StatelessWidget {
     );
   }
 }
-

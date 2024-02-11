@@ -1,11 +1,14 @@
 import 'package:go_router/go_router.dart';
+import 'package:house_app_one/Features/admin/add_client/presentation/views/client_details_view.dart';
+import 'package:house_app_one/Features/admin/add_client/presentation/views/get_client_view.dart';
+import 'package:house_app_one/Features/admin/add_client/presentation/views/srarch_client_view.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Splach/view/splach_view.dart';
-import '../../Features/admin/add-house_manger/presentation/views/add_house_manger.dart';
-import '../../Features/admin/add-house_manger/presentation/views/house_mangers.dart';
-import '../../Features/admin/add-house_manger/presentation/views/manger_deails_view.dart';
+import '../../Features/admin/add-house_manger/presentation/views/add_house_manger_view.dart';
+import '../../Features/admin/add-house_manger/presentation/views/get_house_mangers_view.dart';
+import '../../Features/admin/add-house_manger/presentation/views/manger_details_view.dart';
 import '../../Features/admin/add-house_manger/presentation/views/search_In_manger_view.dart';
 import '../../Features/admin/add_Product/presentation/views/add_product.dart';
 import '../../Features/admin/add_client/presentation/views/add_client_view.dart';
@@ -30,6 +33,9 @@ abstract class AppRouter {
   static const KSearchInMangerView = '/searchinmangerview';
   static const KHouseMangersViewe = '/housemangersview';
   static const KAddClientView = '/addclientview';
+  static const KClinetDetailsView= '/clinetdetailsview';
+  static const KGetClientView= '/getclientview';
+  static const KSearchClientView= '/searchclientview';
 
   static final router = GoRouter(
     routes: [
@@ -82,7 +88,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: KMangerDeailsView,
-        builder: (context, state) => MangerDeailsView(),
+        builder: (context, state) => MangerDetailsView(),
       ),
       GoRoute(
         path: KSearchInMangerView,
@@ -95,6 +101,18 @@ abstract class AppRouter {
       GoRoute(
         path: KAddClientView,
         builder: (context, state) => AddClientView(),
+      ),
+      GoRoute(
+        path: KClinetDetailsView,
+        builder: (context, state) => ClinetDetailsView(),
+      ),
+      GoRoute(
+        path: KGetClientView,
+        builder: (context, state) => GetClientView(),
+      ),
+      GoRoute(
+        path: KSearchClientView,
+        builder: (context, state) => SearchClientView(),
       ),
     ],
   );

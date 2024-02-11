@@ -5,7 +5,11 @@ import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 
 class CustomAdminSelect extends StatelessWidget {
-  const CustomAdminSelect({super.key, required this.title, required this.icon,required this.onTap});
+  const CustomAdminSelect(
+      {super.key,
+      required this.title,
+      required this.icon,
+      required this.onTap});
   final String title;
   final IconData icon;
   final void Function() onTap;
@@ -23,12 +27,12 @@ class CustomAdminSelect extends StatelessWidget {
           SizeVertical(value: 2),
           Icon(
             icon,
-            size: SizeConfig.defaultSize! * 12,
+            size: SizeConfig.defaultSize! * 11,
           ),
           SizeVertical(value: 1),
           Text(
             title,
-            style: GoogleFonts.cairo(fontSize: SizeConfig.defaultSize! * 2),
+            style: GoogleFonts.cairo(fontSize: SizeConfig.defaultSize! * 1.9),
           )
         ]),
       ),
