@@ -21,7 +21,7 @@ class AddHouseMangerCubit extends Cubit<AddHouseMangerState> {
     required String name,
     required String phoneNumber,
     required String nameOfUniversity,
-    required String ground,      
+    required String ground,
     required String addrese,
   }) async {
     emit(IsLodingAddHouseManger());
@@ -61,6 +61,7 @@ class AddHouseMangerCubit extends Cubit<AddHouseMangerState> {
       }
     }
   }
+
   final ImagePicker imagePicker = ImagePicker();
 
   Future<void> pickImages() async {
@@ -80,6 +81,7 @@ class AddHouseMangerCubit extends Cubit<AddHouseMangerState> {
 
   Future<void> addImages() async {
     try {
+      imageUrls.clear();
       for (int i = 0; i < imagesFiles.length; i++) {
         File file = File(imagesFiles[i].path);
         var refStorage =

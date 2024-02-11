@@ -8,6 +8,7 @@ import '../../Features/admin/add-house_manger/presentation/views/house_mangers.d
 import '../../Features/admin/add-house_manger/presentation/views/manger_deails_view.dart';
 import '../../Features/admin/add-house_manger/presentation/views/search_In_manger_view.dart';
 import '../../Features/admin/add_Product/presentation/views/add_product.dart';
+import '../../Features/admin/add_client/presentation/views/add_client_view.dart';
 import '../../Features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../Features/admin/searsh_in_house/presentation/views/search_in_house.dart';
 import '../../Features/notifacation/presentation/view/notifacation.dart';
@@ -28,6 +29,7 @@ abstract class AppRouter {
   static const KMangerDeailsView = '/Mangerdetails';
   static const KSearchInMangerView = '/searchinmangerview';
   static const KHouseMangersViewe = '/housemangersview';
+  static const KAddClientView = '/addclientview';
 
   static final router = GoRouter(
     routes: [
@@ -89,6 +91,10 @@ abstract class AppRouter {
       GoRoute(
         path: KHouseMangersViewe,
         builder: (context, state) => HouseMangersView(),
+      ),
+      GoRoute(
+        path: KAddClientView,
+        builder: (context, state) => AddClientView(),
       ),
     ],
   );

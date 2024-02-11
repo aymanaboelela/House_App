@@ -17,11 +17,6 @@ class AddHouseCubit extends Cubit<AddHouseState> {
   bool isApartmentSelected = true;
   bool isStudioSelected = false;
 
-  List<XFile> imagesFiles = [];
-  List imageNames = [];
-  List<String> imageUrls = [];
-  String? url;
-
   Future<void> addHouse({
     required String idHouse,
     required String typeHouse,
@@ -100,6 +95,10 @@ class AddHouseCubit extends Cubit<AddHouseState> {
     emit(ChingeUiAddHouse());
   }
 
+  List<XFile> imagesFiles = [];
+  List imageNames = [];
+  List<String> imageUrls = [];
+  String? url;
   final ImagePicker imagePicker = ImagePicker();
 
   Future<void> pickImages() async {
@@ -119,6 +118,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
 
   Future<void> addImages() async {
     try {
+      imageUrls.clear();
       for (int i = 0; i < imagesFiles.length; i++) {
         File file = File(imagesFiles[i].path);
         var refStorage =

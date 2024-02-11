@@ -49,7 +49,7 @@ class AdminHome extends StatelessWidget {
           CustomAdminSelect(
             title: "اضافه المستاجر",
             icon: FontAwesomeIcons.users,
-            onTap: () {},
+            onTap: () => GoRouter.of(context).push(AppRouter.KAddClientView),
           ),
         ],
       ),
