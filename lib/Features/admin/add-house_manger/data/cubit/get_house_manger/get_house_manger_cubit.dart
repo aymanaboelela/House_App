@@ -2,9 +2,7 @@ import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:house_app_one/Features/admin/add-house_manger/data/models/get_house_mangers_model/get_house_mangers_model.dart';
 import 'package:meta/meta.dart';
-
 part 'get_house_manger_state.dart';
-
 class GetHouseMangerCubit extends Cubit<GetHouseMangerState> {
   GetHouseMangerCubit() : super(GetHouseMangerInitial());
   List<HouseMangerModel> data = [];

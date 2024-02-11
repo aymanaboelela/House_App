@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 abstract class CustomError {
   static void error(
     BuildContext context, {
-     
     required DialogType dialogType,
     required String title,
     required String desc,
@@ -17,6 +16,8 @@ abstract class CustomError {
       animType: AnimType.rightSlide,
       title: title,
       desc: desc,
+      btnOkText: "نعم",
+      btnCancelText: "لا",
       btnCancelOnPress: btnCancelOnPress,
       btnOkOnPress: btnOkOnPress,
     )..show();

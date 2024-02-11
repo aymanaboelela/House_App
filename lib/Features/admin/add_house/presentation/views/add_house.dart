@@ -17,7 +17,7 @@ import '../../../../../core/widgets/custom_buttons.dart';
 import '../../../../../core/widgets/custom_toggle_button.dart';
 import '../../data/cubit/add_house_cubit.dart';
 import '../widgets/custom_check_bok.dart';
-import '../widgets/custom_select_numper_ofBad.dart';
+import '../widgets/custom_select_numper_of_bad.dart';
 
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);

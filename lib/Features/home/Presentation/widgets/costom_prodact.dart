@@ -34,20 +34,7 @@ class _CustomProductState extends State<CustomProduct> {
     return Padding(
       padding: const EdgeInsets.only(bottom: 22),
       child: InkWell(
-        //delet house item
-        onLongPress: () {
-          CustomError.error(
-            context,
-            dialogType: DialogType.info,
-            title: "حذف",
-            desc: " هل تريد الحذف الشقه",
-            btnOkOnPress: () {
-              BlocProvider.of<GethouseCubit>(context).deleteHouse(widget.index);
-              BlocProvider.of<GethouseCubit>(context).getData();
-            },
-            btnCancelOnPress: () {},
-          );
-        },
+        
 
         onTap: () {
           // GoRouter.of(context).push(AppRouter.KProductView,extra:data );

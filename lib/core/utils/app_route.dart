@@ -10,8 +10,8 @@ import '../../Features/admin/add-house_manger/presentation/views/add_house_mange
 import '../../Features/admin/add-house_manger/presentation/views/get_house_mangers_view.dart';
 import '../../Features/admin/add-house_manger/presentation/views/manger_details_view.dart';
 import '../../Features/admin/add-house_manger/presentation/views/search_In_manger_view.dart';
-import '../../Features/admin/add_Product/presentation/views/add_product.dart';
 import '../../Features/admin/add_client/presentation/views/add_client_view.dart';
+import '../../Features/admin/add_house/presentation/views/add_house.dart';
 import '../../Features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../Features/admin/searsh_in_house/presentation/views/search_in_house.dart';
 import '../../Features/notifacation/presentation/view/notifacation.dart';
