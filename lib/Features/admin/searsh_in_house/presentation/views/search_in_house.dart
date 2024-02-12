@@ -33,10 +33,11 @@ class _SearchInHouseState extends State<SearchInHouse> {
       onRefresh: () => BlocProvider.of<GethouseCubit>(context).getData(),
       child: Scaffold(
         appBar: AppBar(
-            title: Text(
-          "البحث عن شقه ",
-          style: GoogleFonts.cairo(),
-        )),
+          title: Text(
+            "العدد : ${BlocProvider.of<GethouseCubit>(context).data.length}",
+            style: GoogleFonts.cairo(),
+          ),
+        ),
         body: Column(
           children: [
             CustomTextFormField(

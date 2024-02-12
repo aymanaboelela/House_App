@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -10,6 +11,7 @@ import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
+import '../../../../core/widgets/custom_error_massege.dart';
 import '../widgets/costom_house_item.dart';
 import '../widgets/custom_llocation.dart';
 import '../widgets/filters.dart';
@@ -37,16 +39,16 @@ class _HomeViewState extends State<HomeView> {
       listener: (context, state) {
         if (state is IsLodingGetHouse) {
           isLoding = true;
-        }
-        if (state is IsSucssesGetHouse) {
+        } else if (state is IsSucssesGetHouse) {
           isLoding = false;
-        }
-        if (state is IsFeilerGetHouse) {
+        } else if (state is IsFeilerGetHouse) {
           isLoding = false;
-          // CustomError.error(context,
-          //     dialogType: DialogType.error,
-          //     title: "خطاء",
-          //     desc: " برجاء المحاوله في وقت لاحق");
+        } else if (BlocProvider.of<GethouseCubit>(context).data.isEmpty) {
+          isLoding = false;
+          CustomError.error(context,
+              dialogType: DialogType.info,
+              title: "مشكله",
+              desc: " برجاء المحاوله في وقت لاحق");
         }
       },
       builder: (context, state) {

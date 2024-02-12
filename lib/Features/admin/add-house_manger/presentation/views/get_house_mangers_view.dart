@@ -50,7 +50,9 @@ class _HouseMangersViewState extends State<HouseMangersView> {
             child: Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                title: Text("اصحاب العقارات", style: GoogleFonts.cairo()),
+                title: Text(
+                    " العدد : ${BlocProvider.of<GetHouseMangerCubit>(context).data.length}",
+                    style: GoogleFonts.cairo()),
               ),
               body: Padding(
                 padding: const EdgeInsets.all(8.0),

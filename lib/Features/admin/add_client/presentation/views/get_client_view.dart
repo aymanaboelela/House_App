@@ -50,7 +50,9 @@ class _ClientViewState extends State<GetClientView> {
             child: Scaffold(
               appBar: AppBar(
                 centerTitle: true,
-                title: Text("المستاجرين", style: GoogleFonts.cairo()),
+                title: Text(
+                    "العدد : ${BlocProvider.of<GetClientCubit>(context).data.length}",
+                    style: GoogleFonts.cairo()),
               ),
               body: Padding(
                 padding: const EdgeInsets.all(8.0),

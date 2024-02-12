@@ -39,12 +39,13 @@ class GethouseCubit extends Cubit<GethouseState> {
           .collection('houses')
           .where('Gender', isEqualTo: gender)
           .get();
-
-      querySnapshot.docs.forEach((doc) {
-        HouseModel house =
-            HouseModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
-        data.add(house);
-      });
+      querySnapshot.docs.forEach(
+        (doc) {
+          HouseModel house =
+              HouseModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
+          data.add(house);
+        },
+      );
 
       emit(IsSucssesGetHouse(data: data));
       print("get data is $gender..");
@@ -64,7 +65,7 @@ class GethouseCubit extends Cubit<GethouseState> {
           .collection('houses')
           .where('id House', isEqualTo: houseId)
           .get();
-          
+
       if (querySnapshot.docs.isNotEmpty) {
         HouseModel house = HouseModel.fromMap(querySnapshot.docs[0].id,
             querySnapshot.docs[0].data() as Map<String, dynamic>);
@@ -83,8 +84,7 @@ class GethouseCubit extends Cubit<GethouseState> {
 
   void deleteHouse(int index) async {
     try {
-      String documentId =
-          data[index].id; // Assuming data[index] contains the document ID
+      String documentId = data[index].id;
       await FirebaseFirestore.instance
           .collection('houses')
           .doc(documentId)
