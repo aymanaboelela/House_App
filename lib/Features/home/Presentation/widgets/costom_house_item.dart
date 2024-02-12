@@ -1,21 +1,18 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
-import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
-import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../product/presentation/widgets/image_scrrol.dart';
-import '../../data/cubit/favorite/favorite_cubit.dart';
 
-class CustomProduct extends StatefulWidget {
-  const CustomProduct({
+
+class CustomhouseItem extends StatefulWidget {
+  const CustomhouseItem({
     super.key,
     required this.data,
     required this.index,
@@ -24,18 +21,16 @@ class CustomProduct extends StatefulWidget {
   final int index;
 
   @override
-  State<CustomProduct> createState() => _CustomProductState();
+  State<CustomhouseItem> createState() => _CustomhouseItemState();
 }
 
-class _CustomProductState extends State<CustomProduct> {
+class _CustomhouseItemState extends State<CustomhouseItem> {
   @override
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(bottom: 22),
       child: InkWell(
-        
-
         onTap: () {
           // GoRouter.of(context).push(AppRouter.KProductView,extra:data );
           Navigator.push(context, MaterialPageRoute(
@@ -115,6 +110,19 @@ class _CustomProductState extends State<CustomProduct> {
                               const SizeHorizontal(value: 0.4),
                               Text(
                                 widget.data.numpersOfBad,
+                                style: GoogleFonts.cairo(
+                                  fontSize: 18,
+                                ),
+                              ),
+                            ],
+                          ),
+                          SizeHorizontal(value: 2),
+                          Row(
+                            children: [
+                              const Icon(Icons.houseboat_outlined),
+                              const SizeHorizontal(value: 0.4),
+                              Text(
+                                widget.data.nameOfUniversity,
                                 style: GoogleFonts.cairo(
                                   fontSize: 18,
                                 ),

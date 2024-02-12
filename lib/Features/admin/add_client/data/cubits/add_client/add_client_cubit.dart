@@ -6,8 +6,6 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:meta/meta.dart';
-import 'package:path/path.dart';
-
 part 'add_client_state.dart';
 
 class AddClientCubit extends Cubit<AddClientState> {

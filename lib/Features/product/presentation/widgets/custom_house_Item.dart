@@ -49,7 +49,7 @@ class CoustomProductItem extends StatelessWidget {
             ],
           ),
 
-          // SizeVertical(value: 1),
+         
         ],
       ),
     );

@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import '../../../home/data/models/house_model.dart';
-import '../widgets/custom_ProductItem.dart';
+import '../widgets/custom_house_Item.dart';
 import '../widgets/custom_product_details.dart';
 import '../widgets/custum_product_coll.dart';
 import '../widgets/custom_product_details2.dart';

@@ -10,7 +10,7 @@ import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../widgets/costom_prodact.dart';
+import '../widgets/costom_house_item.dart';
 import '../widgets/custom_llocation.dart';
 import '../widgets/filters.dart';
 
@@ -121,7 +121,7 @@ class _HomeViewState extends State<HomeView> {
                         childCount: data.length,
                         (context, index) {
                           indexProduct = index;
-                          return CustomProduct(
+                          return CustomhouseItem(
                             index: index,
                             data: data[index],
                           );
@@ -132,13 +132,6 @@ class _HomeViewState extends State<HomeView> {
                 ),
               ),
             ),
-          ),
-          // add product
-          floatingActionButton: FloatingActionButton(
-            onPressed: () {
-              GoRouter.of(context).push(AppRouter.KAdminHome);
-            },
-            child: const Icon(Icons.add),
           ),
         );
       },

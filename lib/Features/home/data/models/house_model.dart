@@ -3,6 +3,7 @@ class HouseModel {
   String idHouse;
   String typeHouse;
   String price;
+  String nameOfUniversity;
   bool airConditioner;
   bool wifi;
   bool naturalgas;
@@ -18,6 +19,7 @@ class HouseModel {
     required this.numpersOfRoms,
     required this.typeHouse,
     required this.price,
+    required this.nameOfUniversity,
     required this.airConditioner,
     required this.wifi,
     required this.naturalgas,
@@ -27,12 +29,13 @@ class HouseModel {
     required this.url,
   });
 
-  HouseModel.fromMap( String id,Map<String, dynamic> map)
+  HouseModel.fromMap(String id, Map<String, dynamic> map)
       : id = id,
         idHouse = map['id House'],
         typeHouse = map['Type House'],
         numpersOfRoms = map['Number Of Rooms'],
         price = map['Price'],
+        nameOfUniversity = map['Name Of University'],
         airConditioner = map['Air Conditioner'],
         wifi = map['Wi-Fi'],
         naturalgas = map['Natural Gas'],

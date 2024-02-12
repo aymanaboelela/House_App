@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/home/Presentation/widgets/Custom_select_gender.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_filter_gender.dart';
 import 'package:house_app_one/Features/home/data/cubit/filters/filters_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';

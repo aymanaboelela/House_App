@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/responsive.dart';

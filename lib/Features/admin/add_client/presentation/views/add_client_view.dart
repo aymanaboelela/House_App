@@ -11,10 +11,12 @@ import 'package:house_app_one/core/widgets/custom_text_field.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+// ignore: must_be_immutable
 class AddClientView extends StatelessWidget {
   AddClientView({super.key});
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
+  // ignore: override_on_non_overriding_member
   String? name;
   String? idHouse;
   String? phoneNumber;

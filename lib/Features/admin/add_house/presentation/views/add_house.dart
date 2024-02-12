@@ -2,7 +2,6 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
@@ -10,25 +9,24 @@ import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
-
 import '../../../../../core/utils/assets.dart';
 import '../../../../../core/widgets/custom_buttons.dart';
 import '../../../../../core/widgets/custom_toggle_button.dart';
 import '../../data/cubit/add_house_cubit.dart';
 import '../widgets/custom_check_bok.dart';
 import '../widgets/custom_select_numper_of_bad.dart';
-
+// ignore: must_be_immutable
 class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);
 
-  String idHouse = "1";
+  String? idHouse;
   String typeHouse = "استيديو";
   String? genger = "شباب";
   String? price;
+  String? nameOfUniversity;
   String numpersOfRome = "3";
   String numpersOfBad = "6";
-  String? description = "test";
+  String? description;
   bool? airConditioner = false;
   bool? wifi = false;
   bool? naturalgas = false;
@@ -227,6 +225,15 @@ class AddProduct extends StatelessWidget {
                           ),
                           const SizeVertical(value: 2),
                           CustomTextFormField(
+                            title: " اسم الجامعه : ",
+                            hintText: "اسم الجامعه",
+                            icon: FontAwesomeIcons.idBadge,
+                            onChanged: (value) {
+                              nameOfUniversity = value;
+                            },
+                          ),
+                          const SizeVertical(value: 2),
+                          CustomTextFormField(
                             title: "وصف الشقة:",
                             hintText: "وصف الشقة",
                             icon: FontAwesomeIcons.houseChimney,
@@ -253,9 +260,10 @@ class AddProduct extends StatelessWidget {
                               if (_formKey.currentState?.validate() ?? false) {
                                 BlocProvider.of<AddHouseCubit>(context)
                                     .addHouse(
-                                  idHouse: idHouse,
+                                  idHouse: idHouse!,
                                   typeHouse: typeHouse,
                                   gender: genger!,
+                                  nameOfUniversity: nameOfUniversity!,
                                   numberOfRooms: numpersOfRome,
                                   numberOfBeds: numpersOfBad,
                                   airConditioner: airConditioner!,

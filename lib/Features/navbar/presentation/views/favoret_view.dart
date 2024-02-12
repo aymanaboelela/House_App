@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:lottie/lottie.dart';
-import '../../../home/Presentation/widgets/costom_prodact.dart';
+import '../../../home/Presentation/widgets/costom_house_item.dart';
 import '../../../home/data/cubit/favorite/favorite_cubit.dart';
 import '../../../home/data/models/house_model.dart';
 
@@ -37,7 +36,7 @@ class FavoriteProductsView extends StatelessWidget {
                 itemCount: FavoriteProducts.products.length,
                 itemBuilder: (context, index) {
                   HouseModel data = FavoriteProducts.products[index];
-                  return CustomProduct(
+                  return CustomhouseItem(
                     index: indexProduct!,
                     data: data,
                   );

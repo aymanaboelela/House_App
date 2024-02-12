@@ -1,14 +1,12 @@
 import 'dart:async';
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/admin/searsh_in_house/presentation/widgets/custom_popup_menu_button.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
-import '../../../../home/Presentation/widgets/costom_prodact.dart';
+import '../../../../home/Presentation/widgets/costom_house_item.dart';
 import '../../../../home/data/models/house_model.dart';
 
 class SearchInHouse extends StatefulWidget {
@@ -87,7 +85,7 @@ class _SearchInHouseState extends State<SearchInHouse> {
         itemBuilder: (context, index) {
           return Stack(
             children: [
-              CustomProduct(
+              CustomhouseItem(
                 index: index,
                 data: data[index],
               ),

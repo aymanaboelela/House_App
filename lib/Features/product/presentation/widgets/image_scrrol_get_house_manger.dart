@@ -3,7 +3,6 @@ import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:house_app_one/Features/product/presentation/widgets/image_scrrol.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
