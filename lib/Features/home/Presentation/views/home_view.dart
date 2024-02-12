@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -85,8 +86,14 @@ class _HomeViewState extends State<HomeView> {
                       ),
                       actions: [
                         GestureDetector(
-                          onDoubleTap: () =>
-                              GoRouter.of(context).push(AppRouter.KLoginView),
+                          onDoubleTap: () {
+                            FirebaseAuth.instance.currentUser == null
+                                ? GoRouter.of(context)
+                                    .push(AppRouter.KLoginView)
+                                : GoRouter.of(context)
+                                    .push(AppRouter.KAdminHome);
+                            ;
+                          },
                           child: Image.asset(
                             AppAssets.logo,
                           ),

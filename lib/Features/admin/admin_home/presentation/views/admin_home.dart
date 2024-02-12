@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -49,10 +50,17 @@ class AdminHome extends StatelessWidget {
           CustomAdminSelect(
             title: "سجل المستاجر",
             icon: FontAwesomeIcons.users,
-            onTap: () => GoRouter.of(context).push(AppRouter.KClinetDetailsView),
+            onTap: () =>
+                GoRouter.of(context).push(AppRouter.KClinetDetailsView),
           ),
         ],
       ),
+      floatingActionButton: IconButton(
+          onPressed: () async {
+            await FirebaseAuth.instance.signOut();
+            GoRouter.of(context).pushReplacement(AppRouter.KLoginView);
+          },
+          icon: Icon(Icons.login)),
     );
   }
 }

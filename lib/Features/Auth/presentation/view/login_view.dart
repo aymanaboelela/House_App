@@ -44,7 +44,7 @@ class _LoginViewState extends State<LoginView> {
         });
 
         if (state is AuthSucceed) {
-          GoRouter.of(context).push(AppRouter.KAdminHome);
+          GoRouter.of(context).pushReplacement(AppRouter.KAdminHome);
         } else if (state is AuthUserFound) {
           CustomError.error(context,
               dialogType: DialogType.error, title: "خطاء", desc: state.error);
