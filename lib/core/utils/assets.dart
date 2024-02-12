@@ -10,4 +10,5 @@ abstract class AppAssets {
   static const notifacation = 'assets/json/notfacation.json';
   static const whatsapp = 'assets/json/whatsap.json';
   static const phone = 'assets/json/phone.json';
+  static const login = 'assets/json/login.json';
 }

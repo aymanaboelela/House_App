@@ -1,18 +1,14 @@
-import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
-import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
-import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../data/cubit/favorite/favorite_cubit.dart';
 import '../widgets/costom_prodact.dart';
 import '../widgets/custom_llocation.dart';
 import '../widgets/filters.dart';
@@ -88,8 +84,12 @@ class _HomeViewState extends State<HomeView> {
                         ),
                       ),
                       actions: [
-                        Image.asset(
-                          AppAssets.logo,
+                        GestureDetector(
+                          onDoubleTap: () =>
+                              GoRouter.of(context).push(AppRouter.KLoginView),
+                          child: Image.asset(
+                            AppAssets.logo,
+                          ),
                         ),
                       ],
                       expandedHeight: 20,

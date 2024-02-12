@@ -5,6 +5,7 @@ import 'package:house_app_one/Features/admin/add_client/presentation/views/srarc
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
+import '../../Features/Auth/presentation/view/login_view.dart';
 import '../../Features/Splach/view/splach_view.dart';
 import '../../Features/admin/add-house_manger/presentation/views/add_house_manger_view.dart';
 import '../../Features/admin/add-house_manger/presentation/views/get_house_mangers_view.dart';
@@ -24,6 +25,7 @@ abstract class AppRouter {
   static const kNotifacationView = '/notifacationview';
   static const KProductView = '/productView';
   static const KLocationView = '/LocationView';
+  static const KLoginView = '/loginview';
 //admin
   static const KAdminHome = '/admininhome';
   static const KAddProductView = '/addproduct';
@@ -68,6 +70,10 @@ abstract class AppRouter {
       GoRoute(
         path: KLocationView,
         builder: (context, state) => LocationView(),
+      ),
+      GoRoute(
+        path: KLoginView,
+        builder: (context, state) => LoginView(),
       ),
       // admin
       GoRoute(

@@ -3,27 +3,27 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField(
-      {super.key,
-      this.hintText,
-      this.label,
-      this.onSaved,
-      this.onChanged,
-      this.onFieldSubmitted,
-      this.validator,
-      this.controller,
-      this.height,
-      this.width,
-      this.keyboardType,
-      this.icon,
-      this.title,
-      this.isVisible,
-      this.fillColor,
-      this.isVisibleColor,
-      this.titleTextStyle,
-      this.textFieldStyle,
-      this.cursorColor,
-       });
+  const CustomTextFormField({
+    super.key,
+    this.hintText,
+    this.label,
+    this.onSaved,
+    this.onChanged,
+    this.onFieldSubmitted,
+    this.validator,
+    this.controller,
+    this.height,
+    this.width,
+    this.keyboardType,
+    this.icon,
+    this.title,
+    this.isVisible,
+    this.fillColor,
+    this.isVisibleColor,
+    this.titleTextStyle,
+    this.textFieldStyle,
+    this.cursorColor,
+  });
   final String? hintText;
   final String? label;
   final FormFieldSetter<String>? onSaved;
@@ -66,7 +66,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ),
       const SizeVertical(value: 1.5),
       TextFormField(
-
         style: widget.textFieldStyle ??
             const TextStyle(color: Colors.white, fontSize: 18),
         cursorColor: widget.cursorColor ?? Colors.white,
@@ -85,12 +84,11 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         onTapOutside: (event) => FocusScope.of(context).unfocus(),
 
         onFieldSubmitted: widget.onFieldSubmitted,
-        
+
         onSaved: widget.onSaved,
-        
+
         onChanged: widget.onChanged,
         decoration: InputDecoration(
-          
           isCollapsed: true,
           helperStyle: const TextStyle(color: Colors.white),
           isDense: true,
@@ -106,8 +104,8 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   icon: Icon(isObscure == true
                       ? Icons.visibility_off
                       : Icons.visibility),
-                  color: widget.isVisibleColor ?? Colors.grey[850],
-                  iconSize: 25,
+                  color: widget.isVisibleColor ?? Colors.grey,
+                  iconSize: 20,
                 )
               : null,
           contentPadding: EdgeInsets.symmetric(
