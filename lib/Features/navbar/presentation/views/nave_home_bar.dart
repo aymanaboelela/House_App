@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/favoret_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
+import 'package:house_app_one/core/utils/responsive.dart';
 
 class NavBarHome extends StatefulWidget {
   const NavBarHome({Key? key});
@@ -10,21 +11,20 @@ class NavBarHome extends StatefulWidget {
   @override
   State<NavBarHome> createState() => _NavBarHomeState();
 }
-List screens = [
-  HomeView(),
-  FavoriteProductsView(),
-  const LocationView()
-]; 
+
+List screens = [HomeView(), FavoriteProductsView(), const LocationView()];
 
 int curantIndex = 0;
 
+
 class _NavBarHomeState extends State<NavBarHome> {
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: screens[curantIndex],
       bottomNavigationBar: CurvedNavigationBar(
-        height: 50,
+        height: SizeConfig.defaultSize! * 5,
         backgroundColor: Colors.transparent,
         color: Colors.grey.shade800,
         buttonBackgroundColor: Colors.blue,

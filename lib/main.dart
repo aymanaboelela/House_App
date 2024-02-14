@@ -28,6 +28,7 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
+  
 }
 
 class MyApp extends StatelessWidget {
@@ -84,3 +85,4 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+// & "C:\Program Files\Android\Android Studio\jre\bin\keytool" -genkeypair -v -keystore "C:\path\to\keystore.jks" -keyalg RSA -keysize 2048 -validity 10000 -storetype JKS

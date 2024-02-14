@@ -38,7 +38,6 @@ abstract class AppRouter {
   static const KClinetDetailsView= '/clinetdetailsview';
   static const KGetClientView= '/getclientview';
   static const KSearchClientView= '/searchclientview';
-
   static final router = GoRouter(
     routes: [
       GoRoute(
