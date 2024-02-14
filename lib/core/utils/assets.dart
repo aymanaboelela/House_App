@@ -11,4 +11,10 @@ abstract class AppAssets {
   static const whatsapp = 'assets/json/whatsap.json';
   static const phone = 'assets/json/phone.json';
   static const login = 'assets/json/login.json';
+  static const locationMarker = 'assets/json/location_marker.json';
+}
+
+abstract class AppStyle {
+  static const nightmode = 'assets/map_style/night_mode.json';
+
 }
