@@ -12,6 +12,8 @@
 	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>I need to use the location feature for users to track and access their destination</string>
 	<key>CFBundleName</key>
 	<string>house_app_one</string>
 	<key>CFBundlePackageType</key>

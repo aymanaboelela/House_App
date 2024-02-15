@@ -19,7 +19,7 @@ class CollCubit extends Cubit<CollState> {
   }
 
   Future<void> launchWhatsApp(String id) async {
-    String massege = " لو سمحت عاوز استفسر عن شقه ID:[$id ] 🏡";
+    String massege = " لو سمحت عاوز استفسر عن شقه ID:[$id] 🏡";
     String urls = "https://wa.me/+2${phoneNumber}/?text=$massege";
     final Uri url = Uri.parse(urls);
     await launchUrl(url);

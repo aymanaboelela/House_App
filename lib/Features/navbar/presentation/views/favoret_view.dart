@@ -37,7 +37,7 @@ class FavoriteProductsView extends StatelessWidget {
                 itemBuilder: (context, index) {
                   HouseModel data = FavoriteProducts.products[index];
                   return CustomhouseItem(
-                    index: indexProduct!,
+                    index: index,
                     data: data,
                   );
                 },
