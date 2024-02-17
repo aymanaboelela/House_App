@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/cool_item.dart';
@@ -9,7 +8,6 @@ import 'package:house_app_one/Features/product/presentation/view/product_view.da
 import 'package:house_app_one/core/thems/app/app_colors.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../../product/presentation/widgets/image_scrrol.dart';
-
 
 class CustomhouseItem extends StatefulWidget {
   const CustomhouseItem({

@@ -74,7 +74,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         obscureText: widget.isVisible == true ? isObscure : false,
         validator: widget.validator ??
             (value) {
-              if (value!.isEmpty) {
+              if (value?.isEmpty?? true) {
                 return "";
               } else {
                 return null;

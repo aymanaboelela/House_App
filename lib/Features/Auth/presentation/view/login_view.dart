@@ -23,6 +23,7 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   final _formKey = GlobalKey<FormState>();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   bool isLoding = false;
   void initState() {
     FirebaseAuth.instance.authStateChanges().listen((User? user) {
@@ -110,9 +111,13 @@ class _LoginViewState extends State<LoginView> {
                       CustomGeneralButton(
                         text: "تسجيل دخول للإدمن",
                         onTap: () {
-                          if (_formKey.currentState?.validate() ?? false) {
+                          if (_formKey.currentState!.validate()) {
+                            _formKey.currentState!.save();
                             BlocProvider.of<AuthCubit>(context)
                                 .LogeIn(email: email!, password: password!);
+                          } else {
+                            autovalidateMode = AutovalidateMode.always;
+                            setState(() {});
                           }
                         },
                       ),

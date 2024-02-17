@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 import '../../../../core/utils/responsive.dart';
 
-class CustomFilterGender extends StatelessWidget {
-  const CustomFilterGender({
+class CustomFilterSelect extends StatelessWidget {
+  const CustomFilterSelect({
     super.key,
+    required this.title,
   });
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.defaultSize! * 4.2,
+      // width: SizeConfig.defaultSize! * 9,
+      height: SizeConfig.defaultSize! * 4.3,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
           side: const BorderSide(width: 1, color: Colors.white),
@@ -22,16 +24,15 @@ class CustomFilterGender extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
-          mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              "النوع",
-              style: GoogleFonts.cairo(fontSize: 12),
+              title,
+              style: GoogleFonts.cairo(fontSize: 13),
             ),
             const SizeHorizontal(value: 0.9),
             const Icon(
               Icons.keyboard_arrow_down_outlined,
-            )
+            ),
           ],
         ),
       ),

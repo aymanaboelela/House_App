@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_delete_icon_gender.dart';
@@ -7,17 +6,12 @@ import 'package:house_app_one/Features/home/Presentation/widgets/custom_filter_g
 import 'package:house_app_one/Features/home/data/cubit/filters/filters_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
+import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_toggle_button.dart';
-import '../../../../core/utils/responsive.dart';
 
-class CustomFilterGender extends StatefulWidget {
-  const CustomFilterGender({super.key});
+class CustomFliterSelectTypHouse extends StatelessWidget {
+  const CustomFliterSelectTypHouse({super.key});
 
-  @override
-  State<CustomFilterGender> createState() => _CustomFilterGenderState();
-}
-
-class _CustomFilterGenderState extends State<CustomFilterGender> {
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -38,7 +32,7 @@ class _CustomFilterGenderState extends State<CustomFilterGender> {
                     children: [
                       const SizeVertical(value: 2),
                       Text(
-                        "نوع المستاجر",
+                        "نوع العقار",
                         style: GoogleFonts.cairo(fontSize: 20),
                       ),
                       const SizeVertical(value: 1),
@@ -56,34 +50,33 @@ class _CustomFilterGenderState extends State<CustomFilterGender> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               CustomToggleButton(
-                                label: "شباب",
+                                label: "شقه",
                                 onToggle: () {
                                   BlocProvider.of<FiltersCubit>(context)
-                                      .chingeGenderBoyes();
+                                      .chingetyphouse();
                                   BlocProvider.of<GethouseCubit>(context)
-                                      .getDataGender("شباب");
-                                  setState(() {});
+                                      .getDataTypHouse("شقه");
+
                                   Navigator.pop(context);
                                 },
                                 isSelected:
                                     BlocProvider.of<FiltersCubit>(context)
-                                        .isMaleSelected,
+                                        .ishouseSelected,
                               ),
                               SizeHorizontal(value: 2),
                               CustomToggleButton(
-                                  label: "بنات",
+                                  label: "استيديو",
                                   onToggle: () {
                                     BlocProvider.of<FiltersCubit>(context)
-                                        .chingeGenderBoyes();
+                                        .chingetyphouse();
                                     BlocProvider.of<GethouseCubit>(context)
-                                        .getDataGender("بنات");
+                                        .getDataTypHouse("استيديو");
 
-                                    setState(() {});
                                     Navigator.pop(context);
                                   },
                                   isSelected:
                                       BlocProvider.of<FiltersCubit>(context)
-                                          .isFemaleSelected),
+                                          .isStudioelected),
                             ],
                           );
                         },
@@ -106,7 +99,7 @@ class _CustomFilterGenderState extends State<CustomFilterGender> {
         );
       },
       child: Builder(
-        builder: (context) => CustomFilterSelect(title: "نوع المستاجر"),
+        builder: (context) => CustomFilterSelect(title: "نوع العقار"),
       ),
     );
   }

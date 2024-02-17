@@ -13,4 +13,13 @@ class FiltersCubit extends Cubit<FiltersState> {
     isFemaleSelected = !isMaleSelected;
     emit(FilterChingeUi());
   }
+  bool ishouseSelected = false;
+  bool isStudioelected = false;
+  void chingetyphouse() {
+    ishouseSelected = !ishouseSelected;
+    isStudioelected = !ishouseSelected;
+    emit(FilterChingeUi());
+  }
+
+
 }

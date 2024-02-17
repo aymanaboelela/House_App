@@ -11,9 +11,8 @@ class IsSucssesGetHouse extends GethouseState {
   IsSucssesGetHouse({required this.data});
 }
 
-class IsLodingGetHouse extends GethouseState {
-
-}
+class IsLodingGetHouse extends GethouseState {}
+class IsDataIsEmptyGetHouse extends GethouseState {}
 
 class IsFeilerGetHouse extends GethouseState {
   IsFeilerGetHouse({required this.error}) : super();
