@@ -47,7 +47,7 @@ class GethouseCubit extends Cubit<GethouseState> {
         },
       );
       if (data.isEmpty) {
-        emit(IsDataIsEmptyGetHouse());
+        emit(IsDataIsEmptyGetHouse( data: data));
       }
 
       emit(IsSucssesGetHouse(data: data));
@@ -78,7 +78,7 @@ class GethouseCubit extends Cubit<GethouseState> {
         },
       );
       if (data.isEmpty) {
-        emit(IsDataIsEmptyGetHouse());
+        emit(IsDataIsEmptyGetHouse( data: data));
       }
       emit(IsSucssesGetHouse(data: data));
       print("get data is $typHouse..");

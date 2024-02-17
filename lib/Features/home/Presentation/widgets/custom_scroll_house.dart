@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/costom_house_item.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_all_houses_fliter.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_fliter_select_typ_house.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_llocation.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/filters.dart';
@@ -12,6 +13,7 @@ import 'package:house_app_one/core/utils/responsive.dart';
 import '../../../../core/utils/app_route.dart';
 import '../../../../core/utils/assets.dart';
 import '../../data/models/house_model.dart';
+
 class CustomScrollHouse extends StatelessWidget {
   const CustomScrollHouse({
     super.key,
@@ -72,6 +74,8 @@ class CustomScrollHouse extends StatelessWidget {
                 SizeHorizontal(
                   value: 1,
                 ),
+                AllHousesFltier(),
+                SizeHorizontal(value: 1),
                 CustomFilterGender(),
                 SizeHorizontal(value: 1),
                 CustomFliterSelectTypHouse()
