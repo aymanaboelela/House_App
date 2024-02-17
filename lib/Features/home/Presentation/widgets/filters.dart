@@ -62,7 +62,7 @@ class _CustomFilterGenderState extends State<CustomFilterGender> {
                                       .chingeGenderBoyes();
                                   BlocProvider.of<GethouseCubit>(context)
                                       .getDataGender("شباب");
-                                  setState(() {});
+
                                   Navigator.pop(context);
                                 },
                                 isSelected:
@@ -78,7 +78,6 @@ class _CustomFilterGenderState extends State<CustomFilterGender> {
                                     BlocProvider.of<GethouseCubit>(context)
                                         .getDataGender("بنات");
 
-                                    setState(() {});
                                     Navigator.pop(context);
                                   },
                                   isSelected:

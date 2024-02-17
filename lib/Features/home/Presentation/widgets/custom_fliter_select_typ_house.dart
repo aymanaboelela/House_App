@@ -56,7 +56,6 @@ class CustomFliterSelectTypHouse extends StatelessWidget {
                                       .chingetyphouse();
                                   BlocProvider.of<GethouseCubit>(context)
                                       .getDataTypHouse("شقه");
-
                                   Navigator.pop(context);
                                 },
                                 isSelected:

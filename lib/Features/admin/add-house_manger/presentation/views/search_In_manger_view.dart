@@ -31,28 +31,27 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "البحث عن صاحب العقار",
-          style: GoogleFonts.cairo(),
+        leading: Center(
+          child: Text(
+              '${BlocProvider.of<GetHouseMangerCubit>(context).data.length}'),
+        ),
+        title: CustomTextFormFieldSearch(
+          icon: Icons.search,
+          onChanged: (value) {
+            idresalt = value;
+            _debounceTimer?.cancel();
+            _debounceTimer = Timer(Duration(milliseconds: 500), () {
+              BlocProvider.of<GetHouseMangerCubit>(context)
+                  .searchHouseMangerById(value);
+            });
+          },
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            CustomTextFormField(
-              title: "ابحث عن طريق ID :",
-              icon: Icons.search,
-              onChanged: (value) {
-                idresalt = value;
-                _debounceTimer?.cancel();
-                _debounceTimer = Timer(Duration(milliseconds: 500), () {
-                  BlocProvider.of<GetHouseMangerCubit>(context)
-                      .searchHouseMangerById(value);
-                });
-              },
-            ),
-            SizeVertical(value: 2),
             BlocBuilder<GetHouseMangerCubit, GetHouseMangerState>(
               builder: (context, state) {
                 if (state is IsLodingGetHouseManger) {
@@ -90,10 +89,11 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
 
   Widget SearchNow() {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Icon(Icons.search),
         SizeVertical(value: 2),
-        Text("قم بالبحث "),
+        Center(child: Text("قم بالبحث ")),
       ],
     );
   }

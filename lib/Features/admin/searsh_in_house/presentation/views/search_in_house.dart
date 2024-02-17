@@ -33,25 +33,27 @@ class _SearchInHouseState extends State<SearchInHouse> {
       onRefresh: () => BlocProvider.of<GethouseCubit>(context).getData(),
       child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "العدد : ${BlocProvider.of<GethouseCubit>(context).data.length}",
-            style: GoogleFonts.cairo(),
+          leading: Center(
+            child: Text(
+              "${BlocProvider.of<GethouseCubit>(context).data.length}",
+              style: GoogleFonts.cairo(),
+            ),
+          ),
+          title: CustomTextFormFieldSearch(
+            height: 20,
+            title: "ابحث عن طريق ID :",
+            icon: Icons.search,
+            onChanged: (value) {
+              idresalt = value;
+              _debounceTimer?.cancel();
+              _debounceTimer = Timer(Duration(milliseconds: 500), () {
+                BlocProvider.of<GethouseCubit>(context).searchHouseById(value);
+              });
+            },
           ),
         ),
         body: Column(
           children: [
-            CustomTextFormField(
-              title: "ابحث عن طريق ID :",
-              icon: Icons.search,
-              onChanged: (value) {
-                idresalt = value;
-                _debounceTimer?.cancel();
-                _debounceTimer = Timer(Duration(milliseconds: 500), () {
-                  BlocProvider.of<GethouseCubit>(context)
-                      .searchHouseById(value);
-                });
-              },
-            ),
             SizeVertical(value: 2),
             BlocBuilder<GethouseCubit, GethouseState>(
               builder: (context, state) {

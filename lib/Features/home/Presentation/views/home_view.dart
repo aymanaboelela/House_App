@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
           isLoding = false;
         } else if (state is IsFeilerGetHouse) {
           isLoding = false;
-        } else if (BlocProvider.of<GethouseCubit>(context).data.isEmpty) {
+        } else if (state is IsDataIsEmptyGetHouse) {
           isLoding = false;
           CustomError.error(context,
               dialogType: DialogType.info,

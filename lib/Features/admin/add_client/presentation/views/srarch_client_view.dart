@@ -30,28 +30,24 @@ class _SearchClientViewState extends State<SearchClientView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          "البحث عن مستاجر ",
-          style: GoogleFonts.cairo(),
+        leading: Center(
+            child: Text(
+                "${BlocProvider.of<GetClientCubit>(context).data.length}")),
+        title: CustomTextFormFieldSearch(
+          icon: Icons.search,
+          onChanged: (value) {
+            idresalt = value;
+            _debounceTimer?.cancel();
+            _debounceTimer = Timer(Duration(milliseconds: 500), () {
+              BlocProvider.of<GetClientCubit>(context).searchClientById(value);
+            });
+          },
         ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(12),
         child: Column(
           children: [
-            CustomTextFormField(
-              title: "ابحث عن طريق ID :",
-              icon: Icons.search,
-              onChanged: (value) {
-                idresalt = value;
-                _debounceTimer?.cancel();
-                _debounceTimer = Timer(Duration(milliseconds: 500), () {
-                  BlocProvider.of<GetClientCubit>(context)
-                      .searchClientById(value);
-                });
-              },
-            ),
-            SizeVertical(value: 2),
             BlocBuilder<GetClientCubit, GetClientState>(
               builder: (context, state) {
                 if (state is IsLodingGetClient) {
@@ -92,7 +88,7 @@ class _SearchClientViewState extends State<SearchClientView> {
       children: [
         Icon(Icons.search),
         SizeVertical(value: 2),
-        Text("قم بالبحث "),
+        Center(child: Text("قم بالبحث ")),
       ],
     );
   }
