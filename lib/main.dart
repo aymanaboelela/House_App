@@ -7,6 +7,7 @@ import 'package:house_app_one/Features/Auth/data/cubits/auth_cubit/auth_cubit.da
 import 'package:house_app_one/Features/admin/add-house_manger/data/cubit/get_house_manger/get_house_manger_cubit.dart';
 import 'package:house_app_one/Features/admin/add_client/data/cubits/get_client/get_client_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
+import 'package:house_app_one/Features/home/data/cubit/my_boc_observer.dart';
 import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/thems/them.dart';
 import 'package:house_app_one/firebase_options.dart';
@@ -18,6 +19,7 @@ import 'generated/l10n.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  Bloc.observer = MyBlocObserver();
   await CacheData.cacheDataInit();
   await GoogleFonts();
 
@@ -36,11 +38,9 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FavoriteCubit(),
         ),
-
         BlocProvider(
           create: (context) => GetHouseMangerCubit(),
         ),
-
         BlocProvider(
           create: (context) => GethouseCubit(),
         ),

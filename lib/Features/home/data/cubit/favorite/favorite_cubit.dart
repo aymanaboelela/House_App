@@ -9,14 +9,13 @@ class FavoriteCubit extends Cubit<FavoretState> {
   FavoriteCubit() : super(FavoretInitial());
 
   Future<void> addProductInFavoriteView(
-      HouseModel data, bool isFavorite, int index) async {
+      HouseModel data, bool isFavorite, String id) async {
     await CacheData.setData(
-      key: index.toString(),
+      key: id,
       value: isFavorite,
     );
 
     isFavorite = FavoriteProducts.products.contains(data);
-
     if (isFavorite) {
       FavoriteProducts.products.remove(data);
     } else {
@@ -24,14 +23,12 @@ class FavoriteCubit extends Cubit<FavoretState> {
     }
     emit(FavoretChenge());
   }
-  
 
-  Future<void> getData(int index) async {
-    await CacheData.getdata(key: index.toString()) ?? false;
+  Future<void> getData(String id) async {
+    await CacheData.getdata(key: id) ?? false;
     emit(GetDataState());
   }
 }
-
 class FavoriteProducts {
   static List<HouseModel> products = [];
 }

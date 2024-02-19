@@ -6,23 +6,21 @@ import '../../data/cubit/favorite/favorite_cubit.dart';
 import '../../data/models/house_model.dart';
 
 class FavoretIconItem extends StatefulWidget {
-  const FavoretIconItem({super.key, required this.data, required this.index});
+  const FavoretIconItem({super.key, required this.data, required this.id});
   final HouseModel data;
-  final int index;
+  final String id;
   @override
   State<FavoretIconItem> createState() => _FavoretIconItemState();
 }
 
 class _FavoretIconItemState extends State<FavoretIconItem> {
-  bool isFavorite = false;
+  late bool isFavorite;
 
   @override
   void initState() {
     super.initState();
-    BlocProvider.of<FavoriteCubit>(context).getData(widget.index).then((_) {
-      isFavorite = CacheData.getdata(key: widget.index.toString()) ?? false;
-      setState(() {});
-    });
+    isFavorite = CacheData.getdata(key: widget.id) ?? false;
+    setState(() {});
   }
 
   @override
@@ -33,21 +31,15 @@ class _FavoretIconItemState extends State<FavoretIconItem> {
           onPressed: () async {
             isFavorite = !isFavorite;
             await BlocProvider.of<FavoriteCubit>(context)
-                .addProductInFavoriteView(
-                    widget.data, isFavorite, widget.index);
-            // CacheData.clearData(clearData: true);
+                .addProductInFavoriteView(widget.data, isFavorite, widget.id);
             setState(() {});
           },
-          icon: isFavorite
-              ? Icon(
-                  Icons.favorite,
-                  color: Colors.red,
-                  size: SizeConfig.defaultSize! * 3.5,
-                )
-              : Icon(
-                  Icons.favorite_border,
-                  size: SizeConfig.defaultSize! * 3,
-                ),
+          icon: Icon(
+            // استخدام شرط تكراري لتحديد أيقونة القلب
+            isFavorite ? Icons.favorite : Icons.favorite_border,
+            color: isFavorite ? Colors.red : null,
+            size: SizeConfig.defaultSize! * (isFavorite ? 3.5 : 3),
+          ),
         );
       },
     );

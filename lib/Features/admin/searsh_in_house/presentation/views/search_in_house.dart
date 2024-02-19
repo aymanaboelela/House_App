@@ -89,7 +89,7 @@ class _SearchInHouseState extends State<SearchInHouse> {
           return Stack(
             children: [
               CustomhouseItem(
-                index: index,
+                id: data[index].id,
                 data: data[index],
               ),
               CustomPopupMenuButton(index: index),

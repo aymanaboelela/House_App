@@ -91,7 +91,7 @@ class CustomScrollHouse extends StatelessWidget {
             childCount: data.length,
             (context, index) {
               return CustomhouseItem(
-                index: index,
+                id: data[index].id,
                 data: data[index],
               );
             },
