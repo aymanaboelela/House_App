@@ -4,11 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/Auth/data/cubits/auth_cubit/auth_cubit.dart';
-import 'package:house_app_one/Features/admin/add-house_manger/data/cubit/add_house_manger/add_house_manger_cubit.dart';
 import 'package:house_app_one/Features/admin/add-house_manger/data/cubit/get_house_manger/get_house_manger_cubit.dart';
-import 'package:house_app_one/Features/admin/add_client/data/cubits/add_client/add_client_cubit.dart';
 import 'package:house_app_one/Features/admin/add_client/data/cubits/get_client/get_client_cubit.dart';
-import 'package:house_app_one/Features/admin/add_house/data/cubit/add_house_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
 import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/thems/them.dart';
@@ -28,7 +25,6 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   runApp(const MyApp());
-  
 }
 
 class MyApp extends StatelessWidget {
@@ -40,18 +36,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FavoriteCubit(),
         ),
-        BlocProvider(
-          create: (context) => AddHouseCubit(),
-        ),
-        BlocProvider(
-          create: (context) => AddHouseMangerCubit(),
-        ),
+
         BlocProvider(
           create: (context) => GetHouseMangerCubit(),
         ),
-        BlocProvider(
-          create: (context) => AddClientCubit(),
-        ),
+
         BlocProvider(
           create: (context) => GethouseCubit(),
         ),

@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
 
@@ -8,18 +10,28 @@ class FiltersCubit extends Cubit<FiltersState> {
 
   bool isMaleSelected = false;
   bool isFemaleSelected = false;
-  void chingeGenderBoyes() {
-    isMaleSelected = !isMaleSelected;
-    isFemaleSelected = !isMaleSelected;
+
+  void chingeGenderBoyes(bool isMale) {
+    isMaleSelected = isMale;
+    isFemaleSelected = !isMale;
     emit(FilterChingeUi());
   }
+
   bool ishouseSelected = false;
   bool isStudioelected = false;
-  void chingetyphouse() {
-    ishouseSelected = !ishouseSelected;
-    isStudioelected = !ishouseSelected;
+  void chingetyphouse(bool isHouse) {
+    ishouseSelected = isHouse;
+    isStudioelected = !isHouse;
     emit(FilterChingeUi());
   }
 
+  void isGenderIsFalse() {
+    isMaleSelected = false;
+    isFemaleSelected = false;
+  }
 
+  void isTypHouseIsFalse() {
+    ishouseSelected = false;
+    isStudioelected = false;
+  }
 }

@@ -53,7 +53,10 @@ class CustomFliterSelectTypHouse extends StatelessWidget {
                                 label: "شقه",
                                 onToggle: () {
                                   BlocProvider.of<FiltersCubit>(context)
-                                      .chingetyphouse();
+                                      .chingetyphouse(true);
+
+                                  BlocProvider.of<FiltersCubit>(context)
+                                      .isGenderIsFalse();
                                   BlocProvider.of<GethouseCubit>(context)
                                       .getDataTypHouse("شقه");
                                   Navigator.pop(context);
@@ -67,7 +70,9 @@ class CustomFliterSelectTypHouse extends StatelessWidget {
                                   label: "استيديو",
                                   onToggle: () {
                                     BlocProvider.of<FiltersCubit>(context)
-                                        .chingetyphouse();
+                                        .chingetyphouse(false);
+                                    BlocProvider.of<FiltersCubit>(context)
+                                        .isGenderIsFalse();
                                     BlocProvider.of<GethouseCubit>(context)
                                         .getDataTypHouse("استيديو");
 
@@ -82,7 +87,7 @@ class CustomFliterSelectTypHouse extends StatelessWidget {
                       )
                     ],
                   ),
-                ),
+              ),
                 Positioned(
                   child: IconButton(
                     onPressed: () {

@@ -24,128 +24,132 @@ class AddClientView extends StatelessWidget {
   String? price;
   bool isLoding = false;
   Widget build(BuildContext context) {
-    return BlocConsumer<AddClientCubit, AddClientState>(
-      listener: (context, state) {
-        if (state is IsLodingAddClient) {
-          isLoding = true;
-        } else if (state is IsSucssesAddClient) {
-          isLoding = false;
-          CustomError.error(context,
-              dialogType: DialogType.success,
-              title: "نجح",
-              desc: "تم اضافه المستاجر بنجاح");
-        } else if (state is IsFeilerAddClient) {
-          isLoding = false;
-        } else if (state is IamgeFeiler) {
-          isLoding = false;
-          CustomError.error(context,
-              dialogType: DialogType.error,
-              title: "فشل",
-              desc: "فشلت اضافه المستاجر ");
-          CustomError.error(context,
-              dialogType: DialogType.error, title: "فشل", desc: "اضف صوره ");
-        }
-      },
-      builder: (context, state) {
-        return ModalProgressHUD(
-          inAsyncCall: isLoding,
-          progressIndicator: Lottie.asset(AppAssets.Loding1),
-          child: Form(
-            key: _formKey,
-            child: Scaffold(
-              appBar: AppBar(
-                centerTitle: true,
-                title: Text(
-                  "اضف مستاجر",
-                  style: GoogleFonts.cairo(),
+    return BlocProvider(
+      create: (context) => AddClientCubit(),
+      child: BlocConsumer<AddClientCubit, AddClientState>(
+        listener: (context, state) {
+          if (state is IsLodingAddClient) {
+            isLoding = true;
+          } else if (state is IsSucssesAddClient) {
+            isLoding = false;
+            CustomError.error(context,
+                dialogType: DialogType.success,
+                title: "نجح",
+                desc: "تم اضافه المستاجر بنجاح");
+          } else if (state is IsFeilerAddClient) {
+            isLoding = false;
+          } else if (state is IamgeFeiler) {
+            isLoding = false;
+            CustomError.error(context,
+                dialogType: DialogType.error,
+                title: "فشل",
+                desc: "فشلت اضافه المستاجر ");
+            CustomError.error(context,
+                dialogType: DialogType.error, title: "فشل", desc: "اضف صوره ");
+          }
+        },
+        builder: (context, state) {
+          return ModalProgressHUD(
+            inAsyncCall: isLoding,
+            progressIndicator: Lottie.asset(AppAssets.Loding1),
+            child: Form(
+              key: _formKey,
+              child: Scaffold(
+                appBar: AppBar(
+                  centerTitle: true,
+                  title: Text(
+                    "اضف مستاجر",
+                    style: GoogleFonts.cairo(),
+                  ),
                 ),
-              ),
-              body: Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      CustomTextFormField(
-                        title: "الاسم :",
-                        icon: Icons.person,
-                        onChanged: (value) {
-                          name = value;
-                        },
-                      ),
-                      SizeVertical(value: 2),
-                      CustomTextFormField(
-                        title: "id الشقه :",
-                        icon: Icons.insert_drive_file_rounded,
-                        onChanged: (value) {
-                          idHouse = value;
-                        },
-                      ),
-                      SizeVertical(value: 2),
-                      CustomTextFormField(
-                        title: "رقم الهاتف :",
-                        icon: Icons.phone,
-                        keyboardType: TextInputType.phone,
-                        onChanged: (value) {
-                          phoneNumber = value;
-                        },
-                      ),
-                      SizeVertical(value: 2),
-                      CustomTextFormField(
-                        title: " اسم الحامعه :",
-                        icon: Icons.phone,
-                        onChanged: (value) {
-                          nameOfUniversity = value;
-                        },
-                      ),
-                      SizeVertical(value: 2),
-                      CustomTextFormField(
-                        title: "رقم العموله :",
-                        icon: Icons.attach_money_rounded,
-                        keyboardType: TextInputType.number,
-                        onChanged: (value) {
-                          price = value;
-                        },
-                      ),
-                      SizeVertical(value: 2),
-                      Text(
-                        " اضف صوه  العقد :",
-                        style: GoogleFonts.cairo(fontSize: 20),
-                      ),
-                      SizeVertical(value: 1),
-                      IconButton(
-                        onPressed: () {
-                          BlocProvider.of<AddClientCubit>(context)
-                              .pickImageFromCamera();
-                        },
-                        icon: Icon(
-                          Icons.photo_rounded,
-                          size: 45,
+                body: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: SingleChildScrollView(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        CustomTextFormField(
+                          title: "الاسم :",
+                          icon: Icons.person,
+                          onChanged: (value) {
+                            name = value;
+                          },
                         ),
-                      ),
-                      SizeVertical(value: 2),
-                      CustomGeneralButton(
-                        text: "اضف مستاجر",
-                        onTap: () {
-                          if (_formKey.currentState!.validate()) {
-                            // Form is valid, submit data
-                            BlocProvider.of<AddClientCubit>(context).addClient(
-                                idHouse: idHouse!,
-                                name: name!,
-                                nameOfUniversity: nameOfUniversity!,
-                                phoneNumber: phoneNumber!,
-                                price: price!);
-                          }
-                        },
-                      )
-                    ],
+                        SizeVertical(value: 2),
+                        CustomTextFormField(
+                          title: "id الشقه :",
+                          icon: Icons.insert_drive_file_rounded,
+                          onChanged: (value) {
+                            idHouse = value;
+                          },
+                        ),
+                        SizeVertical(value: 2),
+                        CustomTextFormField(
+                          title: "رقم الهاتف :",
+                          icon: Icons.phone,
+                          keyboardType: TextInputType.phone,
+                          onChanged: (value) {
+                            phoneNumber = value;
+                          },
+                        ),
+                        SizeVertical(value: 2),
+                        CustomTextFormField(
+                          title: " اسم الحامعه :",
+                          icon: Icons.phone,
+                          onChanged: (value) {
+                            nameOfUniversity = value;
+                          },
+                        ),
+                        SizeVertical(value: 2),
+                        CustomTextFormField(
+                          title: "رقم العموله :",
+                          icon: Icons.attach_money_rounded,
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) {
+                            price = value;
+                          },
+                        ),
+                        SizeVertical(value: 2),
+                        Text(
+                          " اضف صوه  العقد :",
+                          style: GoogleFonts.cairo(fontSize: 20),
+                        ),
+                        SizeVertical(value: 1),
+                        IconButton(
+                          onPressed: () {
+                            BlocProvider.of<AddClientCubit>(context)
+                                .pickImageFromCamera();
+                          },
+                          icon: Icon(
+                            Icons.photo_rounded,
+                            size: 45,
+                          ),
+                        ),
+                        SizeVertical(value: 2),
+                        CustomGeneralButton(
+                          text: "اضف مستاجر",
+                          onTap: () {
+                            if (_formKey.currentState!.validate()) {
+                              // Form is valid, submit data
+                              BlocProvider.of<AddClientCubit>(context)
+                                  .addClient(
+                                      idHouse: idHouse!,
+                                      name: name!,
+                                      nameOfUniversity: nameOfUniversity!,
+                                      phoneNumber: phoneNumber!,
+                                      price: price!);
+                            }
+                          },
+                        )
+                      ],
+                    ),
                   ),
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }

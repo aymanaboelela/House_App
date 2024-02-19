@@ -30,7 +30,6 @@ class _CustomDeleteIconGenderState extends State<CustomDeleteIconGender> {
               icon: Icon(Icons.delete))
           : InkWell(
               onTap: () {
-                BlocProvider.of<GethouseCubit>(context).getData();
                 Navigator.pop(context);
                 BlocProvider.of<FiltersCubit>(context).isFemaleSelected = false;
                 BlocProvider.of<FiltersCubit>(context).isMaleSelected = false;

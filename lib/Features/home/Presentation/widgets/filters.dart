@@ -59,7 +59,9 @@ class _CustomFilterGenderState extends State<CustomFilterGender> {
                                 label: "شباب",
                                 onToggle: () {
                                   BlocProvider.of<FiltersCubit>(context)
-                                      .chingeGenderBoyes();
+                                      .chingeGenderBoyes(true);
+                                  BlocProvider.of<FiltersCubit>(context)
+                                      .isTypHouseIsFalse();
                                   BlocProvider.of<GethouseCubit>(context)
                                       .getDataGender("شباب");
 
@@ -74,7 +76,9 @@ class _CustomFilterGenderState extends State<CustomFilterGender> {
                                   label: "بنات",
                                   onToggle: () {
                                     BlocProvider.of<FiltersCubit>(context)
-                                        .chingeGenderBoyes();
+                                        .chingeGenderBoyes(false);
+                                    BlocProvider.of<FiltersCubit>(context)
+                                        .isTypHouseIsFalse();
                                     BlocProvider.of<GethouseCubit>(context)
                                         .getDataGender("بنات");
 
