@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_popup_menu_whith_unversty_locatin.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 
 class CustomLocationAndNotifacation extends StatelessWidget {
@@ -24,11 +25,7 @@ class CustomLocationAndNotifacation extends StatelessWidget {
                 fontWeight: FontWeight.bold,
               ),
             ),
-            IconButton(
-                onPressed: () {
-                  GoRouter.of(context).push(AppRouter.KLocationView);
-                },
-                icon: const Icon(Icons.keyboard_arrow_down_outlined))
+            CustomPopupMenuWhithUnverstyLocation(),
           ],
         ),
         const Spacer(),

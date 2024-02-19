@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:house_app_one/Features/location/data/models/locations_model.dart';
-import 'package:house_app_one/core/utils/assets.dart';
 import 'package:location/location.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-import '../../../../core/utils/responsive.dart';
 
 class LocationView extends StatefulWidget {
   LocationView({super.key});
@@ -29,9 +27,8 @@ class _LocationViewState extends State<LocationView> {
   @override
   void initState() {
     super.initState();
-     isLoding = true;
+    isLoding = true;
     initMap();
-   
   }
 
   @override
@@ -46,7 +43,7 @@ class _LocationViewState extends State<LocationView> {
           initialCameraPosition: _kLake,
           onMapCreated: (controller) {
             googleMapController = controller;
-            // initMapStyle(); // chenge theme mode 
+            // initMapStyle(); // chenge theme mode
           },
         ),
       ),
@@ -54,7 +51,7 @@ class _LocationViewState extends State<LocationView> {
   }
 
   void initMap() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(Duration(seconds: 3));
     initMarkars();
     isLoding = false;
     setState(() {});
@@ -79,5 +76,4 @@ class _LocationViewState extends State<LocationView> {
   //       await DefaultAssetBundle.of(context).loadString(AppStyle.nightmode);
   //   googleMapController!.setMapStyle(nightMapStyle);
   // }
-
 }

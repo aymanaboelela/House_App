@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_delete_icon_gender.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_filter_gender.dart';
+import 'package:house_app_one/Features/home/data/cubit/filters/filters_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
@@ -49,6 +50,11 @@ class AllHousesFltier extends StatelessWidget {
                               onTap: () {
                                 BlocProvider.of<GethouseCubit>(context)
                                     .getData();
+                                BlocProvider.of<FiltersCubit>(context)
+                                    .isGenderIsFalse();
+                                BlocProvider.of<FiltersCubit>(context)
+                                    .isTypHouseIsFalse();
+
                                 Navigator.pop(context);
                               }),
                         ),
@@ -63,7 +69,6 @@ class AllHousesFltier extends StatelessWidget {
                       icon: const Icon(Icons.close_outlined),
                     ),
                   ),
-                  CustomDeleteIconGender(),
                 ],
               );
             },
