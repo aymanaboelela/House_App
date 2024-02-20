@@ -32,6 +32,7 @@ class AddProduct extends StatelessWidget {
   bool? wifi = false;
   bool? naturalgas = false;
   bool isLoging = false;
+  bool ?romeSingel = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -206,6 +207,11 @@ class AddProduct extends StatelessWidget {
                                 selectedTitle: (value) {
                                   naturalgas = value;
                                 }),
+                            CustomCheckbox(
+                                title: "غرفه سنجل",
+                                selectedTitle: (value) {
+                                  romeSingel = value;
+                                }),
                             const SizeVertical(value: 2),
                             CustomTextFormField(
                               keyboardType:
@@ -274,6 +280,7 @@ class AddProduct extends StatelessWidget {
                                     airConditioner: airConditioner!,
                                     wifi: wifi!,
                                     naturalGas: naturalgas!,
+                                    romeSingel:romeSingel! ,
                                     price: price!,
                                     description: description!,
                                   );

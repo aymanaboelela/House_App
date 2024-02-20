@@ -28,6 +28,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
     required String description,
     required bool airConditioner,
     required bool wifi,
+    required bool romeSingel,
     required bool naturalGas,
   }) async {
     emit(IsLodingAddHouse());
@@ -52,6 +53,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
             'Description': description,
             'Air Conditioner': airConditioner,
             'Wi-Fi': wifi,
+            'Rome Singel': romeSingel,
             'Natural Gas': naturalGas,
             'Urls': imageUrls,
             'Date': FieldValue.serverTimestamp(),

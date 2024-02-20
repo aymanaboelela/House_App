@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import '../../../home/data/models/house_model.dart';
@@ -34,10 +33,9 @@ class ProductView extends StatelessWidget {
                   numberOfRooms: data.numpersOfRoms,
                   typeHouse: data.typeHouse),
               const SizeVertical(value: 2.2),
-              CustomProductDetails2(
-                  isWiFi: data.wifi,
-                  isAirConditioner: data.airConditioner,
-                  isNaturalgas: data.naturalgas),
+              CustomProductDetailsFeatures(
+                data: data,
+              ),
               const SizeVertical(value: 2.2),
               CoustomProductDescription(
                 description: data.description,

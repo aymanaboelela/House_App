@@ -27,8 +27,8 @@ class CoustomProductDescription extends StatelessWidget {
             Text(
               description,
               style: GoogleFonts.cairo(fontSize: 17),
-              maxLines: 4,
-            )
+            ),
+            SizeVertical(value: 1),
           ],
         ),
       ),

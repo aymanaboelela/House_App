@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/data/models/house_model.dart';
 
 import '../../../../core/thems/app/app_colors.dart';
 import '../../../../core/utils/responsive.dart';
 
-class CustomProductDetails2 extends StatelessWidget {
-  const CustomProductDetails2({
+class CustomProductDetailsFeatures extends StatelessWidget {
+  const CustomProductDetailsFeatures({
     super.key,
-    required this.isWiFi,
-    required this.isAirConditioner,
-    required this.isNaturalgas,
+    required this.data,
   });
-  final bool isWiFi;
-  final bool isAirConditioner;
-  final bool isNaturalgas;
+
+  final HouseModel data;
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +45,11 @@ class CustomProductDetails2 extends StatelessWidget {
                     ),
                   ),
                   const SizeHorizontal(value: 8.2),
-                  isWiFi
+                  data.wifi
                       ? Row(
                           children: [
                             const Icon(Icons.wifi),
-                            SizeVertical(value: 2),
+                            SizeHorizontal(value: 0.5),
                             Text(
                               'Wi-Fi',
                               style: GoogleFonts.cairo(
@@ -68,7 +66,7 @@ class CustomProductDetails2 extends StatelessWidget {
               const SizeVertical(value: 3),
               Row(
                 children: [
-                  isNaturalgas
+                  data.naturalgas
                       ? Row(
                           children: [
                             const Icon(Icons.fire_extinguisher_rounded),
@@ -85,7 +83,7 @@ class CustomProductDetails2 extends StatelessWidget {
                       : const Row(
                           children: [],
                         ),
-                  isAirConditioner
+                  data.airConditioner
                       ? Row(
                           children: [
                             const Icon(Icons.ac_unit),
@@ -103,6 +101,23 @@ class CustomProductDetails2 extends StatelessWidget {
                         ),
                 ],
               ),
+              SizeVertical(value: 3),
+              data.romeSingel
+                  ? Row(
+                      children: [
+                        const Icon(Icons.single_bed),
+                        const SizeHorizontal(value: 0.5),
+                        Text(
+                          "غرفه سنجل",
+                          style: GoogleFonts.cairo(
+                            fontSize: 16,
+                          ),
+                        ),
+                      ],
+                    )
+                  : const Row(
+                      children: [],
+                    ),
             ],
           ),
         ),

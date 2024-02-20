@@ -115,6 +115,7 @@ class _LoginViewState extends State<LoginView> {
                             _formKey.currentState!.save();
                             BlocProvider.of<AuthCubit>(context)
                                 .LogeIn(email: email!, password: password!);
+                              
                           } else {
                             autovalidateMode = AutovalidateMode.always;
                             setState(() {});
