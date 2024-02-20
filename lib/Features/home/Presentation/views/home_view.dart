@@ -23,7 +23,6 @@ class _HomeViewState extends State<HomeView> {
   void initState() {
     super.initState();
     BlocProvider.of<GethouseCubit>(context).getData();
-
     setState(() {});
   }
 
@@ -42,7 +41,7 @@ class _HomeViewState extends State<HomeView> {
           CustomError.error(context,
               dialogType: DialogType.info,
               title: "مشكله",
-              desc: " برجاء المحاوله في وقت لاحق");
+              desc: "لايوجد عقار بهذا الوصف حاول في وقت اخر");
         }
       },
       builder: (context, state) {
@@ -56,28 +55,7 @@ class _HomeViewState extends State<HomeView> {
               child: RefreshIndicator(
                 displacement: 50.0,
                 onRefresh: () {
-                  if (BlocProvider.of<FiltersCubit>(context).isFemaleSelected ==
-                      true) {
-                    return BlocProvider.of<GethouseCubit>(context)
-                        .getDataGender("بنات");
-                  } else if (BlocProvider.of<FiltersCubit>(context)
-                          .isMaleSelected ==
-                      true) {
-                    return BlocProvider.of<GethouseCubit>(context)
-                        .getDataGender("شباب");
-                  } else if (BlocProvider.of<FiltersCubit>(context)
-                          .ishouseSelected ==
-                      true) {
-                    return BlocProvider.of<GethouseCubit>(context)
-                        .getDataTypHouse("شقه");
-                  } else if (BlocProvider.of<FiltersCubit>(context)
-                          .isStudioelected ==
-                      true) {
-                    return BlocProvider.of<GethouseCubit>(context)
-                        .getDataTypHouse("استيديو");
-                  } else {
-                    return BlocProvider.of<GethouseCubit>(context).getData();
-                  }
+                  return refreshData(context);
                 },
                 child: CustomScrollHouse(),
               ),
@@ -86,5 +64,19 @@ class _HomeViewState extends State<HomeView> {
         );
       },
     );
+  }
+
+  Future<void> refreshData(BuildContext context) {
+    if (BlocProvider.of<FiltersCubit>(context).isFemaleSelected == true) {
+      return BlocProvider.of<GethouseCubit>(context).getDataGender("بنات");
+    } else if (BlocProvider.of<FiltersCubit>(context).isMaleSelected == true) {
+      return BlocProvider.of<GethouseCubit>(context).getDataGender("شباب");
+    } else if (BlocProvider.of<FiltersCubit>(context).ishouseSelected == true) {
+      return BlocProvider.of<GethouseCubit>(context).getDataTypHouse("شقه");
+    } else if (BlocProvider.of<FiltersCubit>(context).isStudioelected == true) {
+      return BlocProvider.of<GethouseCubit>(context).getDataTypHouse("استيديو");
+    } else {
+      return BlocProvider.of<GethouseCubit>(context).getData();
+    }
   }
 }

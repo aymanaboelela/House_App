@@ -142,7 +142,6 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
           Positioned(
             left: 0,
             child: FavoretIconItem(
-              
               data: widget.data,
             ),
           ),

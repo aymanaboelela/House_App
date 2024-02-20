@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/favoret_item.dart';
+import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import '../../../home/data/models/house_model.dart';
 import '../widgets/custom_house_Item.dart';
@@ -13,13 +15,13 @@ class ProductView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-          // actions: [FavoretIconItem(data: data)],
-          ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 9),
-        child: SingleChildScrollView(
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 9),
+      child: Scaffold(
+        appBar: AppBar(
+          actions: [Image.asset(AppAssets.logo)],
+        ),
+        body: SingleChildScrollView(
           child: Column(
             children: [
               CoustomProductItem(
