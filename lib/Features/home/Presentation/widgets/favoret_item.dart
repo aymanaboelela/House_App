@@ -6,9 +6,9 @@ import '../../data/cubit/favorite/favorite_cubit.dart';
 import '../../data/models/house_model.dart';
 
 class FavoretIconItem extends StatefulWidget {
-  const FavoretIconItem({super.key, required this.data, required this.id});
+  const FavoretIconItem({super.key, required this.data, });
   final HouseModel data;
-  final String id;
+ 
   @override
   State<FavoretIconItem> createState() => _FavoretIconItemState();
 }
@@ -19,7 +19,7 @@ class _FavoretIconItemState extends State<FavoretIconItem> {
   @override
   void initState() {
     super.initState();
-    isFavorite = CacheData.getdata(key: widget.id) ?? false;
+    isFavorite = CacheData.getdata(key: widget.data.id) ?? false;
     setState(() {});
   }
 
@@ -31,7 +31,7 @@ class _FavoretIconItemState extends State<FavoretIconItem> {
           onPressed: () async {
             isFavorite = !isFavorite;
             await BlocProvider.of<FavoriteCubit>(context)
-                .addProductInFavoriteView(widget.data, isFavorite, widget.id);
+                .addProductInFavoriteView(widget.data, isFavorite,);
             setState(() {});
           },
           icon: Icon(

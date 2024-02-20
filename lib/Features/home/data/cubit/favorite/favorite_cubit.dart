@@ -9,9 +9,9 @@ class FavoriteCubit extends Cubit<FavoretState> {
   FavoriteCubit() : super(FavoretInitial());
 
   Future<void> addProductInFavoriteView(
-      HouseModel data, bool isFavorite, String id) async {
+      HouseModel data, bool isFavorite,) async {
     await CacheData.setData(
-      key: id,
+      key: data.id,
       value: isFavorite,
     );
 

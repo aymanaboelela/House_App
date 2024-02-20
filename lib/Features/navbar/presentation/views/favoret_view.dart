@@ -11,7 +11,6 @@ class FavoriteProductsView extends StatefulWidget {
   @override
   State<FavoriteProductsView> createState() => _FavoriteProductsViewState();
 }
-
 class _FavoriteProductsViewState extends State<FavoriteProductsView> {
   @override
   void initState() {
@@ -63,7 +62,6 @@ class _FavoriteProductsViewState extends State<FavoriteProductsView> {
               HouseModel data = FavoriteProducts.products[index];
               // BlocProvider.of<FavoriteCubit>(context).getData();
               return CustomhouseItem(
-                id: data.id,
                 data: data,
               );
             },

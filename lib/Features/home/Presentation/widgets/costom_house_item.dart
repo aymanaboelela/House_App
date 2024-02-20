@@ -13,10 +13,10 @@ class CustomhouseItem extends StatefulWidget {
   const CustomhouseItem({
     super.key,
     required this.data,
-    required this.id,
+    
   });
   final HouseModel data;
-  final String id;
+
 
   @override
   State<CustomhouseItem> createState() => _CustomhouseItemState();
@@ -142,7 +142,7 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
           Positioned(
             left: 0,
             child: FavoretIconItem(
-              id: widget.id,
+              
               data: widget.data,
             ),
           ),
