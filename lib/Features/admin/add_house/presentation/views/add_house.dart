@@ -21,7 +21,7 @@ class AddProduct extends StatelessWidget {
   AddProduct({Key? key}) : super(key: key);
 
   String? idHouse;
-  String typeHouse = "استيديو";
+  String typeHouse = "شقه";
   String? genger = "شباب";
   String? price;
   String? nameOfUniversity;
@@ -32,7 +32,7 @@ class AddProduct extends StatelessWidget {
   bool? wifi = false;
   bool? naturalgas = false;
   bool isLoging = false;
-  bool ?romeSingel = false;
+  bool? romeSingel = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -280,7 +280,7 @@ class AddProduct extends StatelessWidget {
                                     airConditioner: airConditioner!,
                                     wifi: wifi!,
                                     naturalGas: naturalgas!,
-                                    romeSingel:romeSingel! ,
+                                    romeSingel: romeSingel!,
                                     price: price!,
                                     description: description!,
                                   );

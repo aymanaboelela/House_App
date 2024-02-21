@@ -45,7 +45,7 @@ class CustomProductCall extends StatelessWidget {
                     BlocProvider.of<CollCubit>(context).makePhoneCall();
                   },
                   child: Container(
-                    height: SizeConfig.defaultSize! * 6.2,
+                    height: SizeConfig.defaultSize! * 5,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white),
@@ -60,7 +60,7 @@ class CustomProductCall extends StatelessWidget {
                         .launchWhatsApp(data.idHouse);
                   },
                   child: Container(
-                    height: SizeConfig.defaultSize! * 6.2,
+                    height: SizeConfig.defaultSize! * 5,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
                         color: Colors.white),

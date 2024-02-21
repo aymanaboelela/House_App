@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:house_app_one/Features/product/presentation/widgets/custom_product_location.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import '../../../home/data/models/house_model.dart';
@@ -36,6 +37,8 @@ class ProductView extends StatelessWidget {
               CustomProductDetailsFeatures(
                 data: data,
               ),
+              const SizeVertical(value: 2.2),
+           CustomProductLocation(),
               const SizeVertical(value: 2.2),
               CoustomProductDescription(
                 description: data.description,

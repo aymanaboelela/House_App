@@ -30,7 +30,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "مميزات الشقه ",
+                "مميزات العقار ",
                 style: GoogleFonts.cairo(fontSize: 22),
               ),
               const SizeVertical(value: 2),
@@ -41,7 +41,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                   Text(
                     " مفروشه",
                     style: GoogleFonts.cairo(
-                      fontSize: 16,
+                      fontSize: SizeConfig.defaultSize! * 1.8,
                     ),
                   ),
                   const SizeHorizontal(value: 8.2),
@@ -53,7 +53,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                             Text(
                               'Wi-Fi',
                               style: GoogleFonts.cairo(
-                                fontSize: 16,
+                                fontSize: SizeConfig.defaultSize! * 1.8,
                               ),
                             ),
                           ],
@@ -74,7 +74,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                             Text(
                               "غاز طبيعي",
                               style: GoogleFonts.cairo(
-                                fontSize: 16,
+                                fontSize: SizeConfig.defaultSize! * 1.8,
                               ),
                             ),
                             const SizeHorizontal(value: 7.2),
@@ -83,15 +83,15 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                       : const Row(
                           children: [],
                         ),
-                  data.airConditioner
+                  data.romeSingel
                       ? Row(
                           children: [
-                            const Icon(Icons.ac_unit),
+                            const Icon(Icons.single_bed),
                             const SizeHorizontal(value: 0.5),
                             Text(
-                              "تكيف",
+                              "غرفه سنجل",
                               style: GoogleFonts.cairo(
-                                fontSize: 16,
+                                fontSize: SizeConfig.defaultSize! * 1.8,
                               ),
                             ),
                           ],
@@ -102,22 +102,24 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                 ],
               ),
               SizeVertical(value: 3),
-              data.romeSingel
-                  ? Row(
-                      children: [
-                        const Icon(Icons.single_bed),
-                        const SizeHorizontal(value: 0.5),
-                        Text(
-                          "غرفه سنجل",
-                          style: GoogleFonts.cairo(
-                            fontSize: 16,
+              Row(children: [
+                data.airConditioner
+                    ? Row(
+                        children: [
+                          const Icon(Icons.ac_unit),
+                          const SizeHorizontal(value: 0.7),
+                          Text(
+                            "تكيف",
+                            style: GoogleFonts.cairo(
+                              fontSize: SizeConfig.defaultSize! * 1.8,
+                            ),
                           ),
-                        ),
-                      ],
-                    )
-                  : const Row(
-                      children: [],
-                    ),
+                        ],
+                      )
+                    : const Row(
+                        children: [],
+                      ),
+              ]),
             ],
           ),
         ),

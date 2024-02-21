@@ -25,7 +25,7 @@ class CoustomProductItem extends StatelessWidget {
       child: Column(
         children: [
           ScrollImage(data: data, autoPlay: true),
-          const SizeVertical(value: 2),
+          Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -48,8 +48,7 @@ class CoustomProductItem extends StatelessWidget {
               const Spacer()
             ],
           ),
-
-         
+          Spacer(),
         ],
       ),
     );
