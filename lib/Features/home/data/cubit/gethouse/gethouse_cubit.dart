@@ -47,7 +47,7 @@ class GethouseCubit extends Cubit<GethouseState> {
         },
       );
       if (data.isEmpty) {
-        emit(IsDataIsEmptyGetHouse( data: data));
+        emit(IsDataIsEmptyGetHouse(data: data));
       }
 
       emit(IsSucssesGetHouse(data: data));
@@ -78,7 +78,7 @@ class GethouseCubit extends Cubit<GethouseState> {
         },
       );
       if (data.isEmpty) {
-        emit(IsDataIsEmptyGetHouse( data: data));
+        emit(IsDataIsEmptyGetHouse(data: data));
       }
       emit(IsSucssesGetHouse(data: data));
       print("get data is $typHouse..");
@@ -125,6 +125,24 @@ class GethouseCubit extends Cubit<GethouseState> {
       print('House deleted successfully');
     } catch (e) {
       print('Error deleting house: $e');
+    }
+  }
+
+  void updateHouse(int index, Map<String, dynamic> newData) async {
+    try {
+      emit(IsLodingEditHouse());
+      String documentId = data[index].id;
+      await FirebaseFirestore.instance
+          .collection('houses')
+          .doc(documentId)
+          .update(newData);
+      emit(IsSucssesEditHouse());
+    } catch (e) {
+      emit(
+        IsFeilerEditHouse(
+          error: e.toString(),
+        ),
+      );
     }
   }
 }

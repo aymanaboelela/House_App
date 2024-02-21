@@ -2,6 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/client_details_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/get_client_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/srarch_client_view.dart';
+import 'package:house_app_one/Features/admin/add_house/presentation/views/edit_house.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/location_inversty/presentation/views/location_university_view.dart';
@@ -31,6 +32,7 @@ abstract class AppRouter {
 //admin
   static const KAdminHome = '/admininhome';
   static const KAddProductView = '/addproduct';
+  static const KEditProductView = '/editproductview';
   static const KSearchInHouse = '/searchinhouse';
   static const KAddHouseMangerView = '/addhousemangerview';
   static const KMangerDeailsView = '/Mangerdetails';
@@ -89,6 +91,10 @@ abstract class AppRouter {
         path: KAddProductView,
         builder: (context, state) => AddProduct(),
       ),
+      // GoRoute(
+      //   path: KEditProductView,
+      //   builder: (context, state) => EditProductView(id: null,),
+      // ),
       GoRoute(
         path: KSearchInHouse,
         builder: (context, state) => SearchInHouse(),

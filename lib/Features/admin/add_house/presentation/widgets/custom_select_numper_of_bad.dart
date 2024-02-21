@@ -1,14 +1,23 @@
 import 'package:flutter/material.dart';
 
 class CustomSelectNumperOfBad extends StatefulWidget {
-  const CustomSelectNumperOfBad({Key? key, required this.onNumberSelected}) : super(key: key);
+  const CustomSelectNumperOfBad(
+      {Key? key, required this.onNumberSelected, this.selectedNumber})
+      : super(key: key);
   final Function(String) onNumberSelected;
+  final selectedNumber;
   @override
   State<CustomSelectNumperOfBad> createState() =>
       _CustomSelectNumperOfBadState();
 }
 
 class _CustomSelectNumperOfBadState extends State<CustomSelectNumperOfBad> {
+  void initState() {
+    super.initState();
+
+    selectedNumber = widget.selectedNumber ?? ""; // تحديد الرقم الافتراضي
+  }
+
   List<String> numbers = [
     "1",
     "2",
@@ -42,7 +51,7 @@ class _CustomSelectNumperOfBadState extends State<CustomSelectNumperOfBad> {
                     setState(() {
                       selectedNumber = value.toString();
                     });
-                     widget.onNumberSelected(selectedNumber);
+                    widget.onNumberSelected(selectedNumber);
                     print(selectedNumber);
                   },
                 ),

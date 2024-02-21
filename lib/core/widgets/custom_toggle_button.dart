@@ -19,6 +19,7 @@ class CustomToggleButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CupertinoButton(
+      
       padding: const EdgeInsets.all(8.0),
       minSize: SizeConfig.defaultSize! * 6.5,
       color: isSelected ? Colors.blue : Colors.grey,

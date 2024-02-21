@@ -22,3 +22,15 @@ class IsFeilerGetHouse extends GethouseState {
   IsFeilerGetHouse({required this.error}) : super();
   final String error;
 }
+
+
+// ubDate
+
+class IsSucssesEditHouse extends GethouseState {}
+
+class IsLodingEditHouse extends GethouseState {}
+
+class IsFeilerEditHouse extends GethouseState {
+  IsFeilerEditHouse({required this.error}) : super();
+  final String error;
+}

@@ -12,9 +12,9 @@ part 'add_house_state.dart';
 
 class AddHouseCubit extends Cubit<AddHouseState> {
   AddHouseCubit() : super(AddHouseInitial());
-  bool isMaleSelected = true;
+  bool isMaleSelected = false;
   bool isFemaleSelected = false;
-  bool isApartmentSelected = true;
+  bool isApartmentSelected = false;
   bool isStudioSelected = false;
 
   Future<void> addHouse({
@@ -28,7 +28,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
     required String description,
     required bool airConditioner,
     required bool wifi,
-    required bool romeSingel,
+    required bool singelRome,
     required bool naturalGas,
   }) async {
     emit(IsLodingAddHouse());
@@ -53,7 +53,7 @@ class AddHouseCubit extends Cubit<AddHouseState> {
             'Description': description,
             'Air Conditioner': airConditioner,
             'Wi-Fi': wifi,
-            'Rome Singel': romeSingel,
+            'Rome Singel': singelRome,
             'Natural Gas': naturalGas,
             'Urls': imageUrls,
             'Date': FieldValue.serverTimestamp(),

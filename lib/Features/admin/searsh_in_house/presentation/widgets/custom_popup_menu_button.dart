@@ -2,6 +2,7 @@ import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/admin/add_house/presentation/views/edit_house.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 
@@ -38,6 +39,14 @@ class CustomPopupMenuButton extends StatelessWidget {
           child: Text(
             'تعديل ',
             style: GoogleFonts.cairo(),
+          ),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => EditHouseView(
+                index: index,
+              ),
+            ),
           ),
           value: 1,
         ),

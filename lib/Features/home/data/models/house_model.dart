@@ -7,7 +7,7 @@ class HouseModel {
   bool airConditioner;
   bool wifi;
   bool naturalgas;
-  bool romeSingel;
+  bool singelRome;
   String description;
   String gender;
   String numpersOfBad;
@@ -23,7 +23,7 @@ class HouseModel {
     required this.nameOfUniversity,
     required this.airConditioner,
     required this.wifi,
-    required this.romeSingel,
+    required this.singelRome,
     required this.naturalgas,
     required this.description,
     required this.gender,
@@ -40,7 +40,7 @@ class HouseModel {
         nameOfUniversity = map['Name Of University'],
         airConditioner = map['Air Conditioner'],
         wifi = map['Wi-Fi'],
-        romeSingel = map['Rome Singel'],
+        singelRome = map['Rome Singel'],
         naturalgas = map['Natural Gas'],
         description = map['Description'],
         gender = map['Gender'],

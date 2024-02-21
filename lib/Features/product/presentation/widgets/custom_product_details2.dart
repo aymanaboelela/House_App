@@ -83,7 +83,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                       : const Row(
                           children: [],
                         ),
-                  data.romeSingel
+                  data.singelRome
                       ? Row(
                           children: [
                             const Icon(Icons.single_bed),
