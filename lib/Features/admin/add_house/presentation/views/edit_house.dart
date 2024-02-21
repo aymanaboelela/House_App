@@ -161,6 +161,7 @@ class _EditProductState extends State<EditHouseView> {
                                     BlocProvider.of<AddHouseCubit>(context)
                                         .houseSelected();
                                     typeHouse = "شقه";
+                                    setState(() {});
                                   },
                                 ),
                                 const SizeHorizontal(value: 1),
@@ -175,6 +176,7 @@ class _EditProductState extends State<EditHouseView> {
                                     typeHouse = "استيديو";
                                     BlocProvider.of<AddHouseCubit>(context)
                                         .houseSelected2();
+                                    setState(() {});
                                   },
                                 ),
                               ],
@@ -201,6 +203,7 @@ class _EditProductState extends State<EditHouseView> {
                                     genger = "شباب";
                                     BlocProvider.of<AddHouseCubit>(context)
                                         .chingeGenderBoyes();
+                                    setState(() {});
                                   },
                                 ),
                                 const SizeHorizontal(value: 1),
@@ -215,6 +218,7 @@ class _EditProductState extends State<EditHouseView> {
                                     genger = "بنات";
                                     BlocProvider.of<AddHouseCubit>(context)
                                         .chingeGenderGirls();
+                                    setState(() {});
                                   },
                                 ),
                               ],
