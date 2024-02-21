@@ -4,6 +4,7 @@ import 'package:house_app_one/Features/admin/add_client/presentation/views/get_c
 import 'package:house_app_one/Features/admin/add_client/presentation/views/srarch_client_view.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
+import 'package:house_app_one/Features/location_inversty/presentation/views/location_university_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Auth/presentation/view/login_view.dart';
 import '../../Features/Splach/view/splach_view.dart';
@@ -25,6 +26,7 @@ abstract class AppRouter {
   static const kNotifacationView = '/notifacationview';
   static const KProductView = '/productView';
   static const KLocationView = '/LocationView';
+  static const KLocationInuniversityView = '/LocationInuniversityView';
   static const KLoginView = '/loginview';
 //admin
   static const KAdminHome = '/admininhome';
@@ -35,9 +37,9 @@ abstract class AppRouter {
   static const KSearchInMangerView = '/searchinmangerview';
   static const KHouseMangersViewe = '/housemangersview';
   static const KAddClientView = '/addclientview';
-  static const KClinetDetailsView= '/clinetdetailsview';
-  static const KGetClientView= '/getclientview';
-  static const KSearchClientView= '/searchclientview';
+  static const KClinetDetailsView = '/clinetdetailsview';
+  static const KGetClientView = '/getclientview';
+  static const KSearchClientView = '/searchclientview';
   static final router = GoRouter(
     routes: [
       GoRoute(
@@ -74,7 +76,11 @@ abstract class AppRouter {
         path: KLoginView,
         builder: (context, state) => LoginView(),
       ),
-      // admin
+      GoRoute(
+        path: KLocationInuniversityView,
+        builder: (context, state) => LocationUniversitySearchBarView(),
+      ),
+      // admin ?????????????
       GoRoute(
         path: KAdminHome,
         builder: (context, state) => AdminHome(),

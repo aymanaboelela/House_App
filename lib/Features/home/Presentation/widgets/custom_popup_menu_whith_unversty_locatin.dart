@@ -35,32 +35,13 @@ class CustomPopupMenuWhithUnverstyLocation extends StatelessWidget {
       items: [
         PopupMenuItem(
           child: Text(
-            'مكان الجامعه',
+            "تغير الموقع",
             style: GoogleFonts.cairo(),
           ),
-          onTap: () => GoRouter.of(context).push(AppRouter.KLocationView),
+          onTap: () =>
+              GoRouter.of(context).push(AppRouter.KLocationInuniversityView),
           value: 1,
         ),
-        // PopupMenuItem(
-        //   child: Text(
-        //     'حذف الشقه',
-        //     style: GoogleFonts.cairo(),
-        //   ),
-        //   value: 2,
-        //   onTap: () {
-        //     CustomError.error(
-        //       context,
-        //       dialogType: DialogType.info,
-        //       title: "حذف",
-        //       desc: " هل تريد الحذف العقار",
-        //       btnOkOnPress: () {
-        //         BlocProvider.of<GethouseCubit>(context).deleteHouse(index);
-        //         BlocProvider.of<GethouseCubit>(context).getData();
-        //       },
-        //       btnCancelOnPress: () {},
-        //     );
-        //   },
-        // ),
       ],
       elevation: 8.0,
     );
