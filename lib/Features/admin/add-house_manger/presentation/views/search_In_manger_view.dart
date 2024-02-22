@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/admin/add-house_manger/data/cubit/get_house_manger/get_house_manger_cubit.dart';
 import 'package:house_app_one/Features/admin/add-house_manger/data/models/get_house_mangers_model/get_house_mangers_model.dart';
 import 'package:house_app_one/Features/admin/add-house_manger/presentation/views/widgets/custom_house_manger_Item.dart';
-
+import 'package:house_app_one/core/utils/app_route.dart';
 import '../../../../../../core/utils/responsive.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
@@ -31,10 +32,6 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Center(
-          child: Text(
-              '${BlocProvider.of<GetHouseMangerCubit>(context).data.length}'),
-        ),
         title: CustomTextFormFieldSearch(
           icon: Icons.search,
           onChanged: (value) {
@@ -73,6 +70,7 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
           ],
         ),
       ),
+      drawer: buildSideDrawer(),
     );
   }
 
@@ -95,6 +93,43 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
         SizeVertical(value: 2),
         Center(child: Text("قم بالبحث ")),
       ],
+    );
+  }
+
+  Widget buildSideDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Column(
+              children: [
+                Text(
+                  "عدد اصحاب العقارات ",
+                  style: GoogleFonts.cairo(),
+                ),
+                SizeVertical(value: 1),
+                Text(
+                  "${BlocProvider.of<GetHouseMangerCubit>(context).data.length}",
+                  style: GoogleFonts.cairo(),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "البحث عن عقار",
+              style: GoogleFonts.cairo(),
+            ),
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.KSearchInHouse);
+            },
+          ),
+        ],
+      ),
     );
   }
 }

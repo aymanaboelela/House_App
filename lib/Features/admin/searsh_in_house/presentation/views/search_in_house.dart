@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/admin/searsh_in_house/presentation/widgets/custom_popup_menu_button.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
+import 'package:house_app_one/core/utils/app_route.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
 import '../../../../home/Presentation/widgets/costom_house_item.dart';
@@ -33,12 +35,6 @@ class _SearchInHouseState extends State<SearchInHouse> {
       onRefresh: () => BlocProvider.of<GethouseCubit>(context).getData(),
       child: Scaffold(
         appBar: AppBar(
-          leading: Center(
-            child: Text(
-              "${BlocProvider.of<GethouseCubit>(context).data.length}",
-              style: GoogleFonts.cairo(),
-            ),
-          ),
           title: CustomTextFormFieldSearch(
             height: 20,
             title: "ابحث عن طريق ID :",
@@ -47,7 +43,8 @@ class _SearchInHouseState extends State<SearchInHouse> {
               idresalt = value;
               _debounceTimer?.cancel();
               _debounceTimer = Timer(Duration(milliseconds: 500), () {
-                BlocProvider.of<GethouseCubit>(context).searchHouseById(value);
+                BlocProvider.of<GethouseCubit>(context)
+                    .searchHouseById(value);
               });
             },
           ),
@@ -61,8 +58,6 @@ class _SearchInHouseState extends State<SearchInHouse> {
                   return Center(child: CircularProgressIndicator());
                 } else if (state is IsSucssesGetHouse) {
                   return buildResults(state.data);
-                } else if (state is IsSucssesGetHouse) {
-                  return SearchNow();
                 } else if (state is IsFeilerGetHouse) {
                   return Center(
                     child: Text(
@@ -77,6 +72,7 @@ class _SearchInHouseState extends State<SearchInHouse> {
             ),
           ],
         ),
+        drawer: buildSideDrawer(),
       ),
     );
   }
@@ -106,6 +102,43 @@ class _SearchInHouseState extends State<SearchInHouse> {
         SizeVertical(value: 2),
         Text("قم بالبحث "),
       ],
+    );
+  }
+
+  Widget buildSideDrawer() {
+    return Drawer(
+      child: ListView(
+        padding: EdgeInsets.zero,
+        children: [
+          DrawerHeader(
+            decoration: BoxDecoration(
+              color: Colors.blue,
+            ),
+            child: Column(
+              children: [
+                Text(
+                  "عدد الشقق في التطبيق",
+                  style: GoogleFonts.cairo(),
+                ),
+                SizeVertical(value: 1),
+                Text(
+                  "${BlocProvider.of<GethouseCubit>(context).data.length}",
+                  style: GoogleFonts.cairo(),
+                ),
+              ],
+            ),
+          ),
+          ListTile(
+            title: Text(
+              "البحث عن صاحب عقار",
+              style: GoogleFonts.cairo(),
+            ),
+            onTap: () {
+              GoRouter.of(context).push(AppRouter.KSearchInMangerView);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
