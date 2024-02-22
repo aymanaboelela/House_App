@@ -2,7 +2,7 @@ import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/client_details_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/get_client_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/srarch_client_view.dart';
-import 'package:house_app_one/Features/admin/add_house/presentation/views/edit_house.dart';
+import 'package:house_app_one/Features/chat/presentation/views/chat_from_user.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/location_inversty/presentation/views/location_university_view.dart';
@@ -29,6 +29,7 @@ abstract class AppRouter {
   static const KLocationView = '/LocationView';
   static const KLocationInuniversityView = '/LocationInuniversityView';
   static const KLoginView = '/loginview';
+  static const KChatFromUserView = '/chatfromuserview';
 //admin
   static const KAdminHome = '/admininhome';
   static const KAddProductView = '/addproduct';
@@ -82,6 +83,10 @@ abstract class AppRouter {
         path: KLocationInuniversityView,
         builder: (context, state) => LocationUniversitySearchBarView(),
       ),
+      GoRoute(
+        path: KChatFromUserView,
+        builder: (context, state) => ChatPage(),
+      ),
       // admin ?????????????
       GoRoute(
         path: KAdminHome,
@@ -93,7 +98,7 @@ abstract class AppRouter {
       ),
       // GoRoute(
       //   path: KEditProductView,
-      //   builder: (context, state) => EditProductView(id: null,),
+      //   builder: (context, state) => EditProductView(),
       // ),
       GoRoute(
         path: KSearchInHouse,
