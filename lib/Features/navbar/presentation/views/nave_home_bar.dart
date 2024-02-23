@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_view.dart';
 import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/favoret_view.dart';
-import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
+import 'package:house_app_one/Features/google_maps/presentation/views/location_view.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 
 class NavBarHome extends StatefulWidget {

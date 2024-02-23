@@ -7,7 +7,7 @@ import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
-import 'package:lottie/lottie.dart';
+
 
 class CustomProductLocation extends StatelessWidget {
   const CustomProductLocation({super.key});

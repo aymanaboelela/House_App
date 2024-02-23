@@ -10,12 +10,7 @@ class FirebaseMessagingService {
       print("FirebaseMessaging token: $token");
     });
 
-    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-      print("onMessage: $message");
-      // تنفيذ الشيفرة عند استلام الإشعار أثناء فتح التطبيق
-    });
 
-    // Use getInitialMessage for onLaunch and onResume
     _firebaseMessaging.getInitialMessage().then((RemoteMessage? message) {
       if (message != null) {
         print("onLaunch or onResume: $message");

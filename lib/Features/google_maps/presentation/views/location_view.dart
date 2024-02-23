@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
-import 'package:house_app_one/Features/location/data/models/locations_model.dart';
+import 'package:house_app_one/Features/google_maps/data/models/locations_model.dart';
 import 'package:location/location.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 

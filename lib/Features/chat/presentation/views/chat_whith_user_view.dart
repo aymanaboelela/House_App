@@ -8,8 +8,6 @@ import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_tex
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
-
-
 class ChatWhithUserView extends StatefulWidget {
   const ChatWhithUserView({Key? key}) : super(key: key);
   @override

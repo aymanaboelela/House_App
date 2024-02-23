@@ -4,12 +4,19 @@ import 'package:house_app_one/core/utils/assets.dart';
 import 'package:lottie/lottie.dart';
 
 class NotifacationView extends StatelessWidget {
-  const NotifacationView({super.key});
+  const NotifacationView({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        title: Text(
+          "صفحه الاشعارات",
+          style: GoogleFonts.cairo(),
+        ),
+      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
@@ -17,7 +24,7 @@ class NotifacationView extends StatelessWidget {
             AppAssets.notifacation,
           ),
           Text(
-            "لا يوجد اشعارات حتي الان",
+            "لا يوجد اشعارات حتى الآن",
             style: GoogleFonts.cairo(fontSize: 22),
           ),
         ],

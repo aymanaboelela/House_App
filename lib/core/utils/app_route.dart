@@ -5,7 +5,8 @@ import 'package:house_app_one/Features/admin/add_client/presentation/views/srarc
 import 'package:house_app_one/Features/admin/add_notfacation/presentation/views/add_notfacation_view.dart';
 import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_view.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
-import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
+import 'package:house_app_one/Features/google_maps/presentation/views/location_view.dart';
+import 'package:house_app_one/Features/home/Presentation/views/notfacation_view.dart';
 import 'package:house_app_one/Features/location_inversty/presentation/views/location_university_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Auth/presentation/view/login_view.dart';
@@ -18,7 +19,6 @@ import '../../Features/admin/add_client/presentation/views/add_client_view.dart'
 import '../../Features/admin/add_house/presentation/views/add_house.dart';
 import '../../Features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../Features/admin/searsh_in_house/presentation/views/search_in_house.dart';
-import '../../Features/notifacation/presentation/view/notifacation.dart';
 import '../../Features/on_boarding/presentation/on_boardin_view.dart';
 
 abstract class AppRouter {
