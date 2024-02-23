@@ -1,0 +1,55 @@
+import 'dart:convert';
+
+import 'package:bloc/bloc.dart';
+import 'package:meta/meta.dart';
+import 'package:http/http.dart' as http;
+part 'add_not_facation_state.dart';
+
+class AddNotFacationCubit extends Cubit<AddNotFacationState> {
+  AddNotFacationCubit() : super(AddNotFacationInitial());
+
+  Future<void> sendNotification(String title, String description) async {
+    emit(IsLodingAddAddNotFacation());
+    try {
+      var headersList = {
+        'Accept': '*/*',
+        'User-Agent': 'Thunder Client (https://www.thunderclient.com)',
+        'Content-Type': 'application/json',
+        'Authorization':
+            'key=AAAAp7VSv0Y:APA91bGRTgm5BThTU83YuW4APlqj1WZHNgSz2qu1Sr567FkXiOOzLuBB6MCz99MykZx0mFJYK1CUTp2Ze0Om7YOVQHX7XYSP6suNqDOSbmaKbzd2bCGKDqD_046YykyAoKBi4hpAY55A'
+      };
+      var url = Uri.parse('https://fcm.googleapis.com/fcm/send');
+
+      var body = {
+        "to":
+            "dVnman8iTre3u7vq8F8x-6:APA91bGpp3dKZk2rZogonyLF04os_AC0V0ySbnjFAKixND_zJQfRlniI9fBsBR-V-d7_GzUep4ZloJCdQzpi37dY2PvpsTGe41Ir4wyfiidT9C4xZnlJHPMyquoCE79UH6X7ENlDN8N7",
+        "notification": {
+          "title": title,
+          "body": description,
+          "mutable_content": true,
+          "sound": "Tri-tone"
+        },
+        "data": {
+          "url": "<url of media image>",
+          "dl": "<deeplink action on tap of notification>"
+        }
+      };
+
+      var req = http.Request('POST', url);
+      req.headers.addAll(headersList);
+      req.body = json.encode(body);
+
+      var res = await req.send();
+      final resBody = await res.stream.bytesToString();
+
+      if (res.statusCode >= 200 && res.statusCode < 300) {
+        print(resBody);
+      } else {
+        print('Error: ${res.reasonPhrase}');
+      }
+      emit(IsSucssesAddNotFacation());
+    } catch (e) {
+      emit(IsFeilerAddNotFacation(error: e.toString()));
+    }
+  }
+}

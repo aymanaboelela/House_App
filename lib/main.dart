@@ -1,4 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,6 +8,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/Auth/data/cubits/auth_cubit/auth_cubit.dart';
 import 'package:house_app_one/Features/admin/add-house_manger/data/cubit/get_house_manger/get_house_manger_cubit.dart';
 import 'package:house_app_one/Features/admin/add_client/data/cubits/get_client/get_client_cubit.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/notfacation_in_app/notfacation_in_app.dart';
+import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/my_boc_observer.dart';
 import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
@@ -21,8 +25,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
   await CacheData.cacheDataInit();
-  await GoogleFonts();
 
+  await GoogleFonts();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -31,6 +35,7 @@ Future<void> main() async {
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
@@ -49,6 +54,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => CollCubit(),
+        ),
+        BlocProvider(
+          create: (context) => ChatMessageCubit(),
         ),
         BlocProvider(
           create: (context) => FiltersCubit(),

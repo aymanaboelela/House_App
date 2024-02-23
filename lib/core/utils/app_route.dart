@@ -2,7 +2,8 @@ import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/client_details_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/get_client_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/srarch_client_view.dart';
-import 'package:house_app_one/Features/chat/presentation/views/chat_from_user.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/presentation/views/add_notfacation_view.dart';
+import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_view.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/location/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/location_inversty/presentation/views/location_university_view.dart';
@@ -40,6 +41,7 @@ abstract class AppRouter {
   static const KSearchInMangerView = '/searchinmangerview';
   static const KHouseMangersViewe = '/housemangersview';
   static const KAddClientView = '/addclientview';
+  static const KAddNotfacation = '/addnotfacation';
   static const KClinetDetailsView = '/clinetdetailsview';
   static const KGetClientView = '/getclientview';
   static const KSearchClientView = '/searchclientview';
@@ -85,7 +87,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: KChatFromUserView,
-        builder: (context, state) => ChatPage(),
+        builder: (context, state) => ChatWhithUserView(),
       ),
       // admin ?????????????
       GoRoute(
@@ -123,6 +125,10 @@ abstract class AppRouter {
       GoRoute(
         path: KAddClientView,
         builder: (context, state) => AddClientView(),
+      ),
+      GoRoute(
+        path: KAddNotfacation,
+        builder: (context, state) => AddNotFacation(),
       ),
       GoRoute(
         path: KClinetDetailsView,

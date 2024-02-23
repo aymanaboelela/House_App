@@ -30,7 +30,7 @@ class AdminHome extends StatelessWidget {
           CustomAdminSelect(
             title: "اضافه اشعارات",
             icon: Icons.notifications_active_rounded,
-            onTap: () {},
+            onTap: () => GoRouter.of(context).push(AppRouter.KAddNotfacation),
           ),
           CustomAdminSelect(
             title: "اضافه شقه",

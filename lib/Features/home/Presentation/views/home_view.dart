@@ -1,4 +1,7 @@
+import 'dart:ffi';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_scroll_house.dart';
@@ -21,9 +24,26 @@ class _HomeViewState extends State<HomeView> {
   bool isLoding = true;
   @override
   void initState() {
+    getToken();
+    getNotfacation();
     super.initState();
     BlocProvider.of<GethouseCubit>(context).getData();
     setState(() {});
+  }
+
+  void getNotfacation() {
+    FirebaseMessaging.onMessage.listen(
+      (event) {
+        print("seccess in notfacation");
+      },
+    );
+  }
+
+  void getToken() async {
+    var Token = await FirebaseMessaging.instance.getToken();
+    print("//////////////////////////////////////////////");
+    print(Token);
+    print("////////////////////////////////////////////");
   }
 
   @override

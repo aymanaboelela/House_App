@@ -1,0 +1,111 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
+import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_bubble.dart';
+import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_text_field.dart';
+import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
+import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
+import 'package:house_app_one/Features/communication/data/models/message_model.dart';
+
+
+class ChatWhithUserView extends StatefulWidget {
+  const ChatWhithUserView({Key? key}) : super(key: key);
+  @override
+  State<ChatWhithUserView> createState() => _ChatWhithUserViewState();
+}
+
+class _ChatWhithUserViewState extends State<ChatWhithUserView> {
+  TextEditingController textEditingController = TextEditingController();
+  bool isMessageLoading = false;
+  String? errorMessage;
+
+  void chat() {
+    if (textEditingController.text.isNotEmpty) {
+      BlocProvider.of<ChatMessageCubit>(context).senderdMessage(
+        receiverId: "1",
+        message: textEditingController.text,
+      );
+      textEditingController.clear();
+    }
+  }
+
+  List<MessageModel> messageModel = [];
+  @override
+  Widget build(BuildContext context) {
+    BlocProvider.of<ChatMessageCubit>(context).recivedMessage(receiverId: "1");
+    return Scaffold(
+      backgroundColor: MyColors.darkGrey,
+      appBar: AppBar(
+        centerTitle: true,
+        elevation: BorderSide.strokeAlignOutside,
+        backgroundColor: MyColors.purple,
+        shadowColor: MyColors.darkGrey,
+        shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25))),
+        title: Text(
+          "الدعم الفني",
+          style: GoogleFonts.cairo(),
+        ),
+      ),
+      body: BlocConsumer<ChatMessageCubit, ChatMessageState>(
+        listener: (context, state) {
+          if (state is ChatMessageLoading) {
+            isMessageLoading = true;
+          }
+          if (state is ChatSenderMessageSuccess) {
+            isMessageLoading = false;
+          }
+          if (state is ChatReciverMessageSuccess) {
+            isMessageLoading = false;
+            messageModel = state.data;
+          }
+          if (state is ChatMessageFailure) {
+            isMessageLoading = false;
+            errorMessage = state.message;
+          }
+        },
+        builder: (context, state) {
+          if (state is ChatReciverMessageSuccess) {
+            isMessageLoading = false;
+            messageModel = state.data;
+          }
+          return isMessageLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : Padding(
+                  padding: const EdgeInsets.only(top: 5),
+                  child: ListView.builder(
+                    reverse: true,
+                    // shrinkWrap: true,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: messageModel.length,
+                    itemBuilder: (context, index) =>
+                        messageModel[index].senderId !=
+                                FirebaseAuth.instance.currentUser!.uid
+                            ? ChatBubbleForCurrentUser(
+                                message: messageModel[index].message,
+                              )
+                            : ChatBubbleForFriend(
+                                message: messageModel[index].message,
+                                time: messageModel[index].timeTamp,
+                              ),
+                  ),
+                );
+        },
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.only(bottom: 10),
+        child: CustomChatTextField(
+          controller: textEditingController,
+          onPressed: () => chat(),
+          onSubmitted: (_) => chat(),
+        ),
+      ),
+    );
+  }
+}
