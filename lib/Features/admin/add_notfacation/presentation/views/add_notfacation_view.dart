@@ -61,35 +61,38 @@ class _AddNotFacationState extends State<AddNotFacation> {
                     style: GoogleFonts.cairo(),
                   ),
                 ),
-                body: Column(
-                  children: [
-                    CustomTextFormField(
-                      icon: Icons.title,
-                      title: "العنون",
-                      hintText: "اضف عنوان الرساله",
-                      onChanged: (value) {
-                        title = value;
-                      },
-                    ),
-                    SizeVertical(value: 2),
-                    CustomTextFormField(
-                      icon: Icons.description_rounded,
-                      title: "اضف وصف الرساله",
-                      onChanged: (value) {
-                        description = value;
-                      },
-                    ),
-                    SizeVertical(value: 3),
-                    CustomGeneralButton(
-                      text: "اضف اشعار",
-                      onTap: () {
-                        if (_formKey.currentState?.validate() ?? false) {
-                          BlocProvider.of<AddNotFacationCubit>(context)
-                              .sendNotification(title!, description!);
-                        }
-                      },
-                    )
-                  ],
+                body: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 10),
+                  child: Column(
+                    children: [
+                      CustomTextFormField(
+                        icon: Icons.title,
+                        title: "العنون",
+                        hintText: "اضف عنوان الرساله",
+                        onChanged: (value) {
+                          title = value;
+                        },
+                      ),
+                      SizeVertical(value: 2),
+                      CustomTextFormField(
+                        icon: Icons.description_rounded,
+                        title: "اضف وصف الرساله",
+                        onChanged: (value) {
+                          description = value;
+                        },
+                      ),
+                      SizeVertical(value: 3),
+                      CustomGeneralButton(
+                        text: "اضف اشعار",
+                        onTap: () {
+                          if (_formKey.currentState?.validate() ?? false) {
+                            BlocProvider.of<AddNotFacationCubit>(context)
+                                .sendNotification(title!, description!);
+                          }
+                        },
+                      )
+                    ],
+                  ),
                 ),
               ),
             ),

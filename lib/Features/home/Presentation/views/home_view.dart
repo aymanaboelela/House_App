@@ -1,8 +1,8 @@
-
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_drawer.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_scroll_house.dart';
 import 'package:house_app_one/Features/home/data/cubit/filters/filters_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
@@ -65,6 +65,7 @@ class _HomeViewState extends State<HomeView> {
       },
       builder: (context, state) {
         return Scaffold(
+          drawer: CustomDrawer(),
           body: ModalProgressHUD(
             inAsyncCall: state is IsLodingGetHouse ? true : false,
             progressIndicator: Lottie.asset(AppAssets.Loding1,
@@ -99,3 +100,5 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 }
+
+

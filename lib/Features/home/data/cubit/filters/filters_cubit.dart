@@ -1,13 +1,9 @@
 
-
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
-
 part 'filters_state.dart';
-
 class FiltersCubit extends Cubit<FiltersState> {
   FiltersCubit() : super(FiltersInitial());
-
   bool isMaleSelected = false;
   bool isFemaleSelected = false;
 

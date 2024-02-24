@@ -7,7 +7,6 @@ import 'package:house_app_one/Features/communication/data/models/message_model.d
 
 class ChatMessageCubit extends Cubit<ChatMessageState> {
   ChatMessageCubit() : super(ChatMessageInitial());
-
   Future<void> senderdMessage({
     required String receiverId,
     required String message,
@@ -15,11 +14,12 @@ class ChatMessageCubit extends Cubit<ChatMessageState> {
     emit(ChatMessageLoading());
     try {
       MessageModel messageModel = MessageModel(
-          senderTocen: "user1",
-          senderId: FirebaseAuth.instance.currentUser!.uid,
-          receiverId: receiverId,
-          message: message,
-          timeTamp: DateTime.now().toString());
+        senderTocen: "user1",
+        senderId: FirebaseAuth.instance.currentUser!.uid,
+        receiverId: receiverId,
+        message: message,
+        timeTamp: DateTime.now().toString(),
+      );
       List<String> ids = [FirebaseAuth.instance.currentUser!.uid, receiverId];
       ids.sort();
       String chatRoomId = ids.join("_");
@@ -27,9 +27,7 @@ class ChatMessageCubit extends Cubit<ChatMessageState> {
           .collection('chat_room')
           .doc(chatRoomId)
           .collection('messages')
-          
           .add(messageModel.toJson());
-
       emit(ChatSenderMessageSuccess());
     } on FirebaseException catch (err) {
       emit(ChatMessageFailure(message: err.toString()));

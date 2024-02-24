@@ -25,16 +25,6 @@ class CustomScrollHouse extends StatelessWidget {
       slivers: [
         SliverAppBar(
           centerTitle: true,
-          leading: IconButton(
-            onPressed: () {
-              GoRouter.of(context).push(AppRouter.kHelpView);
-            },
-            icon: Icon(
-              Icons.view_headline_sharp,
-              color: Color.fromARGB(255, 237, 237, 237),
-              size: SizeConfig.defaultSize! * 2.6,
-            ),
-          ),
           title: Text(
             "AkOdO",
             style: GoogleFonts.spaceGrotesk(
