@@ -13,7 +13,7 @@ class NotifacationView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "صفحه الاشعارات",
+          "الاشعارات",
           style: GoogleFonts.cairo(),
         ),
       ),

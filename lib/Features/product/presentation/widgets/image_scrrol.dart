@@ -83,8 +83,10 @@ class _ScrollImageState extends State<ScrollImage> {
               dotsCount: images.length,
               position: currentPage,
               decorator: DotsDecorator(
+                
+
                 activeColor: Colors.blue,
-                color: AppColors.KPrimeColor,
+                color: Colors.grey,
                 size: const Size.square(9.0),
                 activeSize: const Size(18.0, 9.0),
                 activeShape: RoundedRectangleBorder(
@@ -97,4 +99,3 @@ class _ScrollImageState extends State<ScrollImage> {
     );
   }
 }
-

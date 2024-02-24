@@ -1,7 +1,7 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_drawer.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_scroll_house.dart';
 import 'package:house_app_one/Features/home/data/cubit/filters/filters_cubit.dart';
@@ -11,7 +11,6 @@ import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../core/widgets/custom_error_massege.dart';
-
 class HomeView extends StatefulWidget {
   const HomeView({Key? key});
 
@@ -23,26 +22,11 @@ class _HomeViewState extends State<HomeView> {
   bool isLoding = true;
   @override
   void initState() {
-    getToken();
-    getNotfacation();
-    super.initState();
+    BlocProvider.of<GetnotfacationCubit>(context).getToken();
+
     BlocProvider.of<GethouseCubit>(context).getData();
     setState(() {});
-  }
-
-  void getNotfacation() {
-    FirebaseMessaging.onMessage.listen(
-      (event) {
-        print("seccess in notfacation");
-      },
-    );
-  }
-
-  void getToken() async {
-    var Token = await FirebaseMessaging.instance.getToken();
-    print("//////////////////////////////////////////////");
-    print(Token);
-    print("////////////////////////////////////////////");
+    super.initState();
   }
 
   @override
@@ -100,5 +84,3 @@ class _HomeViewState extends State<HomeView> {
     }
   }
 }
-
-

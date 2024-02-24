@@ -6,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/Auth/data/cubits/auth_cubit/auth_cubit.dart';
 import 'package:house_app_one/Features/admin/add-house_manger/data/cubit/get_house_manger/get_house_manger_cubit.dart';
 import 'package:house_app_one/Features/admin/add_client/data/cubits/get_client/get_client_cubit.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/favorite/favorite_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/my_boc_observer.dart';
@@ -45,6 +46,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => GethouseCubit(),
+        ),
+        BlocProvider(
+          create: (context) => GetnotfacationCubit(),
         ),
         BlocProvider(
           create: (context) => GetClientCubit(),
