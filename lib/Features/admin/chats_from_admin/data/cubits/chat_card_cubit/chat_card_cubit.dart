@@ -4,7 +4,6 @@ import 'package:house_app_one/Features/admin/chats_from_admin/data/models/chat_c
 import 'package:meta/meta.dart';
 
 part 'chat_card_state.dart';
-
 class ChatCardCubit extends Cubit<ChatCardState> {
   ChatCardCubit() : super(ChatCardInitial());
   final CollectionReference usersCollection =

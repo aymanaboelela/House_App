@@ -48,12 +48,13 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
               itemCount: chats.length,
               itemBuilder: (context, index) {
                 return ChatCard(
-                  lastMessage: chats[index].userToken,
+                  lastMessage: chats[index].message,
                   name: "مستخدم",
-                  time: "12:12",
+                  time: chats[index].time.toString(),
                   onTap: () async {
                     BlocProvider.of<ChatMessageCubit>(context)
                         .recivedMessage(usertoken: chats[index].userToken);
+
                     setState(() {});
                     Navigator.of(context).push(
                       MaterialPageRoute(

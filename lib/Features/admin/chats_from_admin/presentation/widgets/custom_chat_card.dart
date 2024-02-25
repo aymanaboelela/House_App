@@ -1,9 +1,10 @@
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
+import 'package:intl/intl.dart';
 
 class ChatCard extends StatelessWidget {
   const ChatCard({
@@ -22,6 +23,8 @@ class ChatCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    DateTime dateTime = DateTime.parse(time);
+    String formattedTime = DateFormat('hh:mm a').format(dateTime);
     return Padding(
       padding: const EdgeInsets.only(top: 20, left: 5, right: 5),
       child: InkWell(
@@ -37,7 +40,7 @@ class ChatCard extends StatelessWidget {
               horizontal: BorderSide(width: 2, color: MyColors.black),
             ),
           ),
-          child: Row(
+          child: Stack(
             children: [
               CircleAvatar(
                 radius: SizeConfig.defaultSize! * 4,
@@ -46,26 +49,34 @@ class ChatCard extends StatelessWidget {
                   AppAssets.userImage,
                 ),
               ),
-              SizeHorizontal(value: 1),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    name,
-                    overflow: TextOverflow.ellipsis,
-                    style: GoogleFonts.cairo(fontSize: 20),
-                  ),
-                  SizeVertical(value: 1),
-                  Text(
-                    lastMessage,
-                    overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      fontSize: 1,
-                      color: MyColors.lightGrey,
+              Positioned(
+                right: SizeConfig.defaultSize! * 10,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      name,
+                      overflow: TextOverflow.ellipsis,
+                      style: GoogleFonts.cairo(fontSize: 20),
                     ),
-                  ),
-                ],
+                    SizeVertical(value: 1),
+                    Text(lastMessage,
+                        overflow: TextOverflow.ellipsis,
+                        style: GoogleFonts.cairo(
+                          fontSize: SizeConfig.defaultSize! * 1.6,
+                          color: MyColors.lightGrey,
+                        )),
+                  ],
+                ),
+              ),
+              Positioned(
+                bottom: 2,
+                left: 3,
+                child: Text(
+                  formattedTime,
+                  style: GoogleFonts.cairo(fontSize: 13),
+                ),
               ),
             ],
           ),

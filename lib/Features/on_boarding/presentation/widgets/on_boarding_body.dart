@@ -75,11 +75,12 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
       ),
     );
   }
-  
+
   Future<void> addTokenInFirebase(String token) async {
-    await FirebaseFirestore.instance
-        .collection('usertoken')
-        .doc()
-        .set({'userToken': token}, SetOptions(merge: true));
+    await FirebaseFirestore.instance.collection('usertoken').doc(token).set({
+      'userToken': token,
+      'message': "",
+      'time': "",
+    }, SetOptions(merge: true));
   }
 }

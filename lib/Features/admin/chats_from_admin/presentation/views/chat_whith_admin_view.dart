@@ -33,6 +33,7 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
         userToken: widget.token,
         message: textEditingController.text,
       );
+
       textEditingController.clear();
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
           "رساله جديديده", textEditingController.text, widget.token.toString());

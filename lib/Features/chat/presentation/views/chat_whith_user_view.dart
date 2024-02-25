@@ -33,7 +33,10 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
         userToken: token!,
         message: textEditingController.text,
       );
+      BlocProvider.of<ChatMessageCubit>(context)
+          .addMessageinChateCard(textEditingController.text,token!);
       textEditingController.clear();
+      
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
           " رساله من مستخدم ",
           textEditingController.text,
