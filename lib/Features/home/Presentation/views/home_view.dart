@@ -11,24 +11,21 @@ import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../core/widgets/custom_error_massege.dart';
+
 class HomeView extends StatefulWidget {
   const HomeView({Key? key});
-
   @override
   State<HomeView> createState() => _HomeViewState();
 }
-
 class _HomeViewState extends State<HomeView> {
   bool isLoding = true;
   @override
   void initState() {
     BlocProvider.of<GetnotfacationCubit>(context).getToken();
-
     BlocProvider.of<GethouseCubit>(context).getData();
     setState(() {});
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GethouseCubit, GethouseState>(

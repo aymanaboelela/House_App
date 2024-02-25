@@ -8,7 +8,8 @@ part 'add_not_facation_state.dart';
 class AddNotFacationCubit extends Cubit<AddNotFacationState> {
   AddNotFacationCubit() : super(AddNotFacationInitial());
 
-  Future<void> sendNotification(String title, String description) async {
+  Future<void> sendNotification(
+      String title, String description, String token) async {
     emit(IsLodingAddAddNotFacation());
     try {
       var headersList = {
@@ -21,8 +22,7 @@ class AddNotFacationCubit extends Cubit<AddNotFacationState> {
       var url = Uri.parse('https://fcm.googleapis.com/fcm/send');
 
       var body = {
-        "to":
-            "dVnman8iTre3u7vq8F8x-6:APA91bGpp3dKZk2rZogonyLF04os_AC0V0ySbnjFAKixND_zJQfRlniI9fBsBR-V-d7_GzUep4ZloJCdQzpi37dY2PvpsTGe41Ir4wyfiidT9C4xZnlJHPMyquoCE79UH6X7ENlDN8N7",
+        "to": token,
         "notification": {
           "title": title,
           "body": description,

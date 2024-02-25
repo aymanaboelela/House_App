@@ -16,32 +16,26 @@ class ChatBubbleForCurrentUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Row(
-        children: [
-          /////
-          Container(
-            padding:
-                const EdgeInsets.only(left: 16, top: 10, bottom: 10, right: 10),
-            margin:
-                const EdgeInsets.only(left: 16, top: 8, bottom: 16, right: 100),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                topRight: Radius.circular(25),
-                bottomRight: Radius.circular(25),
-              ),
-              color: MyColors.darkGrey2,
-            ),
-            child: Text(
-              message,
-              textAlign: TextAlign.start,
-              style: const TextStyle(
-                fontSize: 18,
-                color: MyColors.white,
-              ),
-            ),
+      child: Container(
+        padding:
+            const EdgeInsets.only(left: 16, top: 10, bottom: 10, right: 10),
+        margin: const EdgeInsets.only(left: 16, top: 8, bottom: 16, right: 100),
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            topRight: Radius.circular(25),
+            bottomRight: Radius.circular(25),
           ),
-        ],
+          color: MyColors.darkGrey2,
+        ),
+        child: Text(
+          message,
+          textAlign: TextAlign.start,
+          style: const TextStyle(
+            fontSize: 18,
+            color: MyColors.white,
+          ),
+        ),
       ),
     );
   }
@@ -60,50 +54,34 @@ class ChatBubbleForFriend extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     DateTime dateTime = DateTime.parse(time);
-
     String formattedTime = DateFormat('hh:mm a').format(dateTime);
+
     return Align(
       alignment: Alignment.centerRight,
       child: Padding(
         padding: const EdgeInsets.only(right: 10),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CircleAvatar(
-              radius: 17,
-              backgroundColor: Colors.black,
-              backgroundImage: AssetImage(AppAssets.logo),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 20),
+          child: Container(
+            padding:
+                const EdgeInsets.only(left: 16, top: 10, bottom: 10, right: 10),
+            margin: const EdgeInsets.only(top: 18, right: 11),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                topLeft: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              color: Color.fromARGB(255, 40, 47, 121),
             ),
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(left: 20),
-                child: Stack(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.only(
-                          left: 16, top: 10, bottom: 10, right: 10),
-                      margin: const EdgeInsets.only(top: 18, right: 11),
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          bottomLeft: Radius.circular(25),
-                          topLeft: Radius.circular(25),
-                          bottomRight: Radius.circular(25),
-                        ),
-                        color: Color.fromARGB(255, 40, 47, 121),
-                      ),
-                      child: Text(
-                        message,
-                        style: GoogleFonts.cairo(
-                          fontSize: 18,
-                          color: Colors.white,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+            child: Text(
+              message,
+              style: GoogleFonts.cairo(
+                fontSize: 18,
+                color: Colors.white,
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

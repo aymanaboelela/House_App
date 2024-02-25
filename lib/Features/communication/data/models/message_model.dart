@@ -1,30 +1,30 @@
 class MessageModel {
-  final String senderTocen;
-  final String senderId;
-  final String receiverId;
+  final String adminEmail;
+  final String userToken;
   final String message;
   final String timeTamp;
+  final bool isAdmin;
 
   MessageModel(
-      {required this.senderTocen,
-      required this.senderId,
-      required this.receiverId,
+      {required this.isAdmin,
+      required this.adminEmail,
+      required this.userToken,
       required this.message,
       required this.timeTamp});
 
   factory MessageModel.fromJson(dynamic jsonData) {
     return MessageModel(
-        senderTocen: jsonData['senderTocen'],
-        senderId: jsonData['senderId'],
-        receiverId: jsonData['receiverId'],
+        adminEmail: jsonData['adminEmail'],
+        isAdmin: jsonData['isAdmin'],
+        userToken: jsonData['userToken'],
         message: jsonData['message'],
         timeTamp: jsonData['timeTamp']);
   }
   Map<String, dynamic> toJson() {
     return {
-      'senderTocen': senderTocen,
-      'senderId': senderId,
-      'receiverId': receiverId,
+      'adminEmail': adminEmail,
+      'isAdmin': isAdmin,
+      'userToken': userToken,
       'message': message,
       'timeTamp': timeTamp,
     };

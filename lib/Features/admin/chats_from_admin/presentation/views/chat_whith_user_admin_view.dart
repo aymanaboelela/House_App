@@ -10,13 +10,13 @@ import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
 
-class ChatWhithUserView extends StatefulWidget {
-  const ChatWhithUserView({Key? key}) : super(key: key);
+class ChatWhithAdminView extends StatefulWidget {
+  const ChatWhithAdminView({Key? key}) : super(key: key);
   @override
-  State<ChatWhithUserView> createState() => _ChatWhithUserViewState();
+  State<ChatWhithAdminView> createState() => _ChatWhithUserViewState();
 }
 
-class _ChatWhithUserViewState extends State<ChatWhithUserView> {
+class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
   @override
   void initState() {
     setState(() {});
@@ -29,7 +29,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
   void chat() {
     if (textEditingController.text.isNotEmpty) {
       BlocProvider.of<ChatMessageCubit>(context).senderdMessage(
-        isAdmin: false,
+        isAdmin: true,
         userToken: token!,
         message: textEditingController.text,
       );
@@ -57,7 +57,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
                 bottomLeft: Radius.circular(25),
                 bottomRight: Radius.circular(25))),
         title: Text(
-          "الدعم الفني",
+          "صفحه الادمن",
           style: GoogleFonts.cairo(),
         ),
       ),
@@ -90,20 +90,19 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
               : Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: ListView.builder(
-                    reverse: true,
-                    // shrinkWrap: true,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: messageModel.length,
-                    itemBuilder: (context, index) =>
-                        messageModel[index].isAdmin == false
-                            ? ChatBubbleForFriend(
-                                message: messageModel[index].message,
-                                time: messageModel[index].timeTamp,
-                              )
-                            : ChatBubbleForCurrentUser(
-                                message: messageModel[index].message,
-                              ),
-                  ),
+                      reverse: true,
+                      // shrinkWrap: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: messageModel.length,
+                      itemBuilder: (context, index) =>
+                          messageModel[index].isAdmin == true
+                              ? ChatBubbleForFriend(
+                                  message: messageModel[index].message,
+                                  time: messageModel[index].timeTamp,
+                                )
+                              : ChatBubbleForCurrentUser(
+                                  message: messageModel[index].message,
+                                )),
                 );
         },
       ),

@@ -85,10 +85,11 @@ class _AddNotFacationState extends State<AddNotFacation> {
                       CustomGeneralButton(
                         text: "اضف اشعار",
                         onTap: () {
-                          if (_formKey.currentState?.validate() ?? false) {
-                            BlocProvider.of<AddNotFacationCubit>(context)
-                                .sendNotification(title!, description!);
-                          }
+                          // if (_formKey.currentState?.validate() ?? false) {
+                          //   BlocProvider.of<AddNotFacationCubit>(context)
+                          //       .sendNotification(
+                          //           title!, description!, "tocen");
+                          // }
                         },
                       )
                     ],

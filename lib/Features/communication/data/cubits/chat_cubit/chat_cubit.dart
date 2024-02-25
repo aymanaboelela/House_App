@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'dart:ffi';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,21 +9,21 @@ import 'package:house_app_one/Features/communication/data/models/message_model.d
 class ChatMessageCubit extends Cubit<ChatMessageState> {
   ChatMessageCubit() : super(ChatMessageInitial());
   Future<void> senderdMessage({
-    required String receiverId,
+    required String userToken,
     required String message,
+    required bool isAdmin,
   }) async {
     emit(ChatMessageLoading());
     try {
       MessageModel messageModel = MessageModel(
-        senderTocen: "user1",
-        senderId: FirebaseAuth.instance.currentUser!.uid,
-        receiverId: receiverId,
+        isAdmin: isAdmin,
+        adminEmail: FirebaseAuth.instance.currentUser!.email!,
+        userToken: userToken,
         message: message,
         timeTamp: DateTime.now().toString(),
       );
-      List<String> ids = [FirebaseAuth.instance.currentUser!.uid, receiverId];
-      ids.sort();
-      String chatRoomId = ids.join("_");
+
+      String chatRoomId = userToken;
       await FirebaseFirestore.instance
           .collection('chat_room')
           .doc(chatRoomId)
@@ -35,12 +36,10 @@ class ChatMessageCubit extends Cubit<ChatMessageState> {
     }
   }
 
-  void recivedMessage({required String receiverId}) {
+  void recivedMessage({required String userToken}) {
     emit(ChatMessageLoading());
     try {
-      List<String> ids = [FirebaseAuth.instance.currentUser!.uid, receiverId];
-      ids.sort();
-      String chatRoomId = ids.join("_");
+      String chatRoomId = userToken;
       FirebaseFirestore.instance
           .collection('chat_room')
           .doc(chatRoomId)
@@ -62,11 +61,4 @@ class ChatMessageCubit extends Cubit<ChatMessageState> {
       log(err.toString());
     }
   }
-
-  // final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
-  // Future<String> getDeviceToken() async {
-  //   String? token = await firebaseMessaging.getToken();
-  //   print("توكن الجهاز: $token");
-  //   return token.toString();
-  // }
 }

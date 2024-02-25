@@ -1,3 +1,7 @@
+import 'dart:ffi';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
@@ -19,6 +23,8 @@ class _SplashViewbodyState extends State<SplashViewbody>
   Animation? animation;
   @override
   void initState() {
+    getToken();
+
     super.initState();
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1000));
@@ -28,6 +34,13 @@ class _SplashViewbodyState extends State<SplashViewbody>
       });
     animationController?.repeat(reverse: true);
     getToNewScreen();
+  }
+
+  Future<void> getToken() async {
+    token = await FirebaseMessaging.instance.getToken();
+    print("//////////////////////////////////////////////");
+    print(token);
+    print("////////////////////////////////////////////");
   }
 
   @override
@@ -69,8 +82,15 @@ class _SplashViewbodyState extends State<SplashViewbody>
           seconds: 6,
         ), () {
       hasSeenOnboarding == false
-          ? GoRouter.of(context).pushReplacement(AppRouter.kOnBoardingView)
+          ? GoRouter.of(context).pushReplacement(
+              AppRouter.kOnBoardingView,
+            )
           : GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
     });
+   
   }
+
+
 }
+
+String? token;

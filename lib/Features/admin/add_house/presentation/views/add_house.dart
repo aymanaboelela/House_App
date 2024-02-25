@@ -296,21 +296,21 @@ class _AddProductState extends State<AddProduct> {
                               onTap: () {
                                 if (_formKey.currentState?.validate() ??
                                     false) {
-                                  BlocProvider.of<AddHouseCubit>(context)
-                                      .addHouse(
-                                    idHouse: idHouse!,
-                                    typeHouse: typeHouse,
-                                    gender: genger!,
-                                    nameOfUniversity: nameOfUniversity!,
-                                    numberOfRooms: numpersOfRome,
-                                    numberOfBeds: numpersOfBad,
-                                    airConditioner: airConditioner!,
-                                    wifi: wifi!,
-                                    naturalGas: naturalgas!,
-                                    singelRome: singelRome!,
-                                    price: price!,
-                                    description: description!,
-                                  );
+                                  // BlocProvider.of<AddHouseCubit>(context)
+                                  //     .addHouse(
+                                  //   idHouse: idHouse!,
+                                  //   typeHouse: typeHouse,
+                                  //   gender: genger!,
+                                  //   nameOfUniversity: nameOfUniversity!,
+                                  //   numberOfRooms: numpersOfRome,
+                                  //   numberOfBeds: numpersOfBad,
+                                  //   airConditioner: airConditioner!,
+                                  //   wifi: wifi!,
+                                  //   naturalGas: naturalgas!,
+                                  //   singelRome: singelRome!,
+                                  //   price: price!,
+                                  //   description: description!,
+                                  // );
                                 }
                               },
                             ),

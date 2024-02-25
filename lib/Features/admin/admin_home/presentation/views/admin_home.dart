@@ -53,6 +53,11 @@ class AdminHome extends StatelessWidget {
             onTap: () =>
                 GoRouter.of(context).push(AppRouter.KClinetDetailsView),
           ),
+          CustomAdminSelect(
+            title: "الرسال ",
+            icon: Icons.chat,
+            onTap: () => GoRouter.of(context).push(AppRouter.KChatsInEdmin),
+          ),
         ],
       ),
       floatingActionButton: IconButton(

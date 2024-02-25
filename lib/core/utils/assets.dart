@@ -2,6 +2,7 @@ abstract class AppAssets {
   static const logo = 'assets/images/logo.png';
 
   static const locationPhoto = 'assets/images/locationPhoto.jpg';
+  static const userImage = 'assets/images/userimage.png';
   static const onbording1 = 'assets/json/onbording1.json';
   static const onbording2 = 'assets/json/onbording2.json';
   static const onbording3 = 'assets/json/onbording3.json';
