@@ -16,26 +16,36 @@ class ChatBubbleForCurrentUser extends StatelessWidget {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.centerLeft,
-      child: Container(
-        padding:
-            const EdgeInsets.only(left: 16, top: 10, bottom: 10, right: 10),
-        margin: const EdgeInsets.only(left: 16, top: 8, bottom: 16, right: 100),
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            topRight: Radius.circular(25),
-            bottomRight: Radius.circular(25),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.end,
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          CircleAvatar(
+            radius: 17,
+            backgroundColor: Colors.black,
+            backgroundImage: AssetImage(AppAssets.logo),
           ),
-          color: MyColors.darkGrey2,
-        ),
-        child: Text(
-          message,
-          textAlign: TextAlign.start,
-          style: const TextStyle(
-            fontSize: 18,
-            color: MyColors.white,
+          Container(
+            padding:
+                const EdgeInsets.only(left: 13, top: 10, bottom: 10, right: 13),
+            margin:
+                const EdgeInsets.only(left: 25, top: 2, bottom: 16, right: 20),
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(25),
+                topRight: Radius.circular(25),
+                bottomRight: Radius.circular(25),
+              ),
+              color: MyColors.darkGrey2,
+            ),
+            child: Text(message,
+                textAlign: TextAlign.start,
+                style: GoogleFonts.cairo(
+                  fontSize: 18,
+                  color: MyColors.white,
+                )),
           ),
-        ),
+        ],
       ),
     );
   }
@@ -59,29 +69,36 @@ class ChatBubbleForFriend extends StatelessWidget {
     return Align(
       alignment: Alignment.centerRight,
       child: Padding(
-        padding: const EdgeInsets.only(right: 10),
-        child: Padding(
-          padding: const EdgeInsets.only(left: 20),
-          child: Container(
-            padding:
-                const EdgeInsets.only(left: 16, top: 10, bottom: 10, right: 10),
-            margin: const EdgeInsets.only(top: 18, right: 11),
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                topLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25),
-              ),
-              color: Color.fromARGB(255, 40, 47, 121),
+        padding: const EdgeInsets.only(right: 10, left: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            CircleAvatar(
+              radius: 17,
+              backgroundColor: Colors.black,
+              backgroundImage: AssetImage(AppAssets.userImage),
             ),
-            child: Text(
-              message,
-              style: GoogleFonts.cairo(
-                fontSize: 18,
-                color: Colors.white,
+            Container(
+              padding: const EdgeInsets.only(
+                  left: 16, top: 10, bottom: 10, right: 10),
+              margin: const EdgeInsets.only(top: 7, right: 28, bottom: 20),
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(25),
+                  topLeft: Radius.circular(25),
+                  bottomRight: Radius.circular(25),
+                ),
+                color: Color.fromARGB(255, 40, 47, 121),
+              ),
+              child: Text(
+                message,
+                style: GoogleFonts.cairo(
+                  fontSize: 18,
+                  color: Colors.white,
+                ),
               ),
             ),
-          ),
+          ],
         ),
       ),
     );

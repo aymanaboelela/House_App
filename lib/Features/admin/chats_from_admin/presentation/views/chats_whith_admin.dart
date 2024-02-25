@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/data/cubits/chat_card_cubit/chat_card_cubit.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/data/models/chat_card_model.dart';
-import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chat_whith_user_admin_view.dart';
+import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chat_whith_admin_view.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/widgets/custom_chat_card.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
@@ -20,6 +20,7 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
     super.initState();
     BlocProvider.of<ChatCardCubit>(context).buildChatCard();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +54,9 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(
-                        builder: (context) => ChatWhithAdminView(),
+                        builder: (context) => ChatWhithAdminView(
+                          token: chats[index].userToken,
+                        ),
                       ),
                     );
                     BlocProvider.of<ChatMessageCubit>(context)

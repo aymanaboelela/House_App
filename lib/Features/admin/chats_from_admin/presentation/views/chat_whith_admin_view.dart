@@ -11,7 +11,8 @@ import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
 
 class ChatWhithAdminView extends StatefulWidget {
-  const ChatWhithAdminView({Key? key}) : super(key: key);
+  const ChatWhithAdminView({Key? key, required this.token}) : super(key: key);
+  final String token;
   @override
   State<ChatWhithAdminView> createState() => _ChatWhithUserViewState();
 }
@@ -30,12 +31,12 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
     if (textEditingController.text.isNotEmpty) {
       BlocProvider.of<ChatMessageCubit>(context).senderdMessage(
         isAdmin: true,
-        userToken: token!,
+        userToken: widget.token,
         message: textEditingController.text,
       );
       textEditingController.clear();
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
-          "رساله جديديده", textEditingController.text, token.toString());
+          "رساله جديديده", textEditingController.text, widget.token.toString());
     }
     setState(() {});
   }
