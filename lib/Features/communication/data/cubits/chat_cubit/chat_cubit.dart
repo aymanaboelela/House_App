@@ -36,13 +36,12 @@ class ChatMessageCubit extends Cubit<ChatMessageState> {
     }
   }
 
-  void recivedMessage({required String userToken}) {
+  void recivedMessage({required String usertoken}) {
     emit(ChatMessageLoading());
     try {
-      String chatRoomId = userToken;
       FirebaseFirestore.instance
           .collection('chat_room')
-          .doc(chatRoomId)
+          .doc(usertoken)
           .collection('messages')
           .orderBy(
             'timeTamp',
@@ -56,6 +55,10 @@ class ChatMessageCubit extends Cubit<ChatMessageState> {
         }
         emit(ChatReciverMessageSuccess(data: messageModel));
       });
+
+      print("/////////////////");
+      print(usertoken);
+      print("/////////////////");
     } on FirebaseException catch (err) {
       emit(ChatMessageFailure(message: err.toString()));
       log(err.toString());

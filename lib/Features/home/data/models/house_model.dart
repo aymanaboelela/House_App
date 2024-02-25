@@ -46,4 +46,22 @@ class HouseModel {
         gender = map['Gender'],
         numpersOfBad = map['Number Of Beds'],
         url = map['Urls'] ?? [];
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'idHouse': idHouse,
+      'typeHouse': typeHouse,
+      'numpersOfRoms': numpersOfRoms,
+      'price': price,
+      'nameOfUniversity': nameOfUniversity,
+      'airConditioner': airConditioner,
+      'wifi': wifi,
+      'singelRome': singelRome,
+      'naturalgas': naturalgas,
+      'description': description,
+      'gender': gender,
+      'numpersOfBad': numpersOfBad,
+      'url': url,
+    };
+  }
 }

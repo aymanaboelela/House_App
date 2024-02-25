@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/add_not_facation_cubit.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_bubble.dart';
@@ -40,12 +39,9 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
     }
     setState(() {});
   }
-
   List<MessageModel> messageModel = [];
   @override
   Widget build(BuildContext context) {
-    BlocProvider.of<ChatMessageCubit>(context)
-        .recivedMessage(userToken: token.toString());
     return Scaffold(
       backgroundColor: MyColors.darkGrey,
       appBar: AppBar(

@@ -51,7 +51,10 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                   lastMessage: chats[index].userToken,
                   name: "مستخدم",
                   time: "12:12",
-                  onTap: () {
+                  onTap: () async {
+                    BlocProvider.of<ChatMessageCubit>(context)
+                        .recivedMessage(usertoken: chats[index].userToken);
+                    setState(() {});
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ChatWhithAdminView(
@@ -59,8 +62,6 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                         ),
                       ),
                     );
-                    BlocProvider.of<ChatMessageCubit>(context)
-                        .recivedMessage(userToken: chats[index].userToken);
                   },
                 );
               },

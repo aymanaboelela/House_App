@@ -46,7 +46,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<ChatMessageCubit>(context)
-        .recivedMessage(userToken: token.toString());
+        .recivedMessage(usertoken: token.toString());
     return Scaffold(
       backgroundColor: MyColors.darkGrey,
       appBar: AppBar(

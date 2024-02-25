@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
 import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import '../../../../core/utils/responsive.dart';
 import '../../data/cubit/favorite/favorite_cubit.dart';
 import '../../data/models/house_model.dart';
 
 class FavoretIconItem extends StatefulWidget {
-  const FavoretIconItem({super.key, required this.data, });
+  const FavoretIconItem({
+    super.key,
+    required this.data,
+  });
   final HouseModel data;
- 
+
   @override
   State<FavoretIconItem> createState() => _FavoretIconItemState();
 }
@@ -31,7 +35,7 @@ class _FavoretIconItemState extends State<FavoretIconItem> {
           onPressed: () async {
             isFavorite = !isFavorite;
             await BlocProvider.of<FavoriteCubit>(context)
-                .addProductInFavoriteView(widget.data, isFavorite,);
+                .addProductInFavoriteView(widget.data, isFavorite, token!);
             setState(() {});
           },
           icon: Icon(

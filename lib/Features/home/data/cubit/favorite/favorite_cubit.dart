@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 
 import '../../models/house_model.dart';
@@ -9,18 +10,25 @@ class FavoriteCubit extends Cubit<FavoretState> {
   FavoriteCubit() : super(FavoretInitial());
 
   Future<void> addProductInFavoriteView(
-      HouseModel data, bool isFavorite,) async {
+      HouseModel data, bool isFavorite, String token) async {
     await CacheData.setData(
       key: data.id,
       value: isFavorite,
     );
 
     isFavorite = FavoriteProducts.products.contains(data);
-    if (isFavorite) {
-      FavoriteProducts.products.remove(data);
-    } else {
-      FavoriteProducts.products.add(data);
-    }
+
+    // if (isFavorite) {
+    //   await FirebaseFirestore.instance
+    //       .collection('isFavoritehouses')
+    //       .doc(token)
+    //       .delete();
+    // } else {
+    //   await FirebaseFirestore.instance
+    //       .collection('isFavoritehouses')
+    //       .doc(token)
+    //       .set(({"idhouse": data.id}));
+    // }
     emit(FavoretChenge());
   }
 
@@ -29,6 +37,13 @@ class FavoriteCubit extends Cubit<FavoretState> {
     emit(GetDataState());
   }
 }
+
 class FavoriteProducts {
   static List<HouseModel> products = [];
 }
+// isFavorite = FavoriteProducts.products.contains(data);
+// if (isFavorite) {
+//   FavoriteProducts.products.remove(data);
+// } else {
+//   FavoriteProducts.products.add(data);
+// }
