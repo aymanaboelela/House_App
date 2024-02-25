@@ -35,7 +35,9 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
       );
       textEditingController.clear();
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
-          "رساله جديديده", textEditingController.text, token.toString());
+          " رساله من مستخدم ",
+          textEditingController.text,
+          "send tocen phone admni");
     }
     setState(() {});
   }

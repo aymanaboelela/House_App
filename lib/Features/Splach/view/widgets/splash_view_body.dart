@@ -1,6 +1,4 @@
-import 'dart:ffi';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -24,7 +22,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
   @override
   void initState() {
     getToken();
-
     super.initState();
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1000));
@@ -35,22 +32,18 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController?.repeat(reverse: true);
     getToNewScreen();
   }
-
   Future<void> getToken() async {
     token = await FirebaseMessaging.instance.getToken();
     print("//////////////////////////////////////////////");
-    print(token);
+    debugPrint(token);
     print("////////////////////////////////////////////");
   }
-
   @override
   void dispose() {
     animationController?.dispose();
     super.dispose();
   }
-
   bool hasSeenOnboarding = CacheData.getdata(key: 'hasSeenOnboarding') ?? false;
-
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -89,8 +82,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
     });
    
   }
-
-
 }
 
 String? token;

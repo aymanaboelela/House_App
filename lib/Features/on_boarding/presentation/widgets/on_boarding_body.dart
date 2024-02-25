@@ -1,9 +1,11 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
 import 'package:house_app_one/core/utils/assets.dart';
+import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import '../../../../core/utils/app_route.dart';
 import '../../../../core/shered_preferences/shared_preferences.dart';
 import 'custom_page_view.dart';
@@ -61,16 +63,23 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
         onFinish: () {
           CacheData.setData(key: "hasSeenOnboarding", value: true);
           GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
-          addTokenInFirebase(token!);
+          //
+          token != null
+              ? addTokenInFirebase(token!)
+              : CustomError.error(context,
+                  dialogType: DialogType.error,
+                  title: "خطاء!",
+                  desc: "قم باتصال بانترنت واعد تشغيل التطبيق ");
+          ;
         },
       ),
     );
   }
-
+  
   Future<void> addTokenInFirebase(String token) async {
     await FirebaseFirestore.instance
         .collection('usertoken')
-        .doc() // يجب استبدال 'yourDocumentId' بمعرف المستند الخاص بك
+        .doc()
         .set({'userToken': token}, SetOptions(merge: true));
   }
 }

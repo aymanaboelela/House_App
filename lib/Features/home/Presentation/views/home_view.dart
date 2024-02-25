@@ -1,7 +1,6 @@
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_drawer.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_scroll_house.dart';
 import 'package:house_app_one/Features/home/data/cubit/filters/filters_cubit.dart';
@@ -21,7 +20,7 @@ class _HomeViewState extends State<HomeView> {
   bool isLoding = true;
   @override
   void initState() {
-    BlocProvider.of<GetnotfacationCubit>(context).getToken();
+  
     BlocProvider.of<GethouseCubit>(context).getData();
     setState(() {});
     super.initState();

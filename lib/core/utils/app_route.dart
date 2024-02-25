@@ -4,7 +4,7 @@ import 'package:house_app_one/Features/admin/add_client/presentation/views/get_c
 import 'package:house_app_one/Features/admin/add_client/presentation/views/srarch_client_view.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/presentation/views/add_notfacation_view.dart';
 import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_view.dart';
-import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chats_whith_admin.dart';
+import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chats_carts_whith_admin.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/google_maps/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/home/Presentation/views/notfacation_view.dart';

@@ -92,7 +92,6 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
                   padding: const EdgeInsets.only(top: 5),
                   child: ListView.builder(
                       reverse: true,
-                      // shrinkWrap: true,
                       physics: const BouncingScrollPhysics(),
                       itemCount: messageModel.length,
                       itemBuilder: (context, index) =>
