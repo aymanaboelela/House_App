@@ -103,6 +103,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
                                 time: messageModel[index].timeTamp,
                               )
                             : ChatBubbleForCurrentUser(
+                                time: messageModel[index].timeTamp,
                                 message: messageModel[index].message,
                               ),
                   ),

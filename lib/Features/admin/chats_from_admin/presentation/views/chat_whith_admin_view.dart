@@ -39,6 +39,7 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
     }
     setState(() {});
   }
+
   List<MessageModel> messageModel = [];
   @override
   Widget build(BuildContext context) {
@@ -87,18 +88,20 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
               : Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: ListView.builder(
-                      reverse: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: messageModel.length,
-                      itemBuilder: (context, index) =>
-                          messageModel[index].isAdmin == true
-                              ? ChatBubbleForFriend(
-                                  message: messageModel[index].message,
-                                  time: messageModel[index].timeTamp,
-                                )
-                              : ChatBubbleForCurrentUser(
-                                  message: messageModel[index].message,
-                                )),
+                    reverse: true,
+                    physics: const BouncingScrollPhysics(),
+                    itemCount: messageModel.length,
+                    itemBuilder: (context, index) =>
+                        messageModel[index].isAdmin == true
+                            ? ChatBubbleForCurrentUser(
+                                time: messageModel[index].timeTamp,
+                                message: messageModel[index].message,
+                              )
+                            : ChatBubbleForFriend(
+                                message: messageModel[index].message,
+                                time: messageModel[index].timeTamp,
+                              ),
+                  ),
                 );
         },
       ),

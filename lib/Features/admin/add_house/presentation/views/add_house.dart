@@ -15,7 +15,6 @@ import '../../../../../core/widgets/custom_toggle_button.dart';
 import '../../data/cubit/add_house/add_house_cubit.dart';
 import '../widgets/custom_check_bok.dart';
 import '../widgets/custom_select_numper_of_bad.dart';
-
 // ignore: must_be_immutable
 class AddProduct extends StatefulWidget {
   AddProduct({Key? key}) : super(key: key);
@@ -33,31 +32,18 @@ class _AddProductState extends State<AddProduct> {
   }
 
   String? idHouse;
-
   String typeHouse = "شقه";
-
   String? genger = "شباب";
-
   String? price;
-
   String? nameOfUniversity = "MTI";
-
   String numpersOfRome = "3";
-
   String numpersOfBad = "6";
-
   String? description;
-
   bool? airConditioner = false;
-
   bool? wifi = false;
-
   bool? naturalgas = false;
-
   bool isLoging = false;
-
   bool? singelRome = false;
-
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
@@ -296,21 +282,21 @@ class _AddProductState extends State<AddProduct> {
                               onTap: () {
                                 if (_formKey.currentState?.validate() ??
                                     false) {
-                                  // BlocProvider.of<AddHouseCubit>(context)
-                                  //     .addHouse(
-                                  //   idHouse: idHouse!,
-                                  //   typeHouse: typeHouse,
-                                  //   gender: genger!,
-                                  //   nameOfUniversity: nameOfUniversity!,
-                                  //   numberOfRooms: numpersOfRome,
-                                  //   numberOfBeds: numpersOfBad,
-                                  //   airConditioner: airConditioner!,
-                                  //   wifi: wifi!,
-                                  //   naturalGas: naturalgas!,
-                                  //   singelRome: singelRome!,
-                                  //   price: price!,
-                                  //   description: description!,
-                                  // );
+                                  BlocProvider.of<AddHouseCubit>(context)
+                                      .addHouse(
+                                    idHouse: idHouse!,
+                                    typeHouse: typeHouse,
+                                    gender: genger!,
+                                    nameOfUniversity: nameOfUniversity!,
+                                    numberOfRooms: numpersOfRome,
+                                    numberOfBeds: numpersOfBad,
+                                    airConditioner: airConditioner!,
+                                    wifi: wifi!,
+                                    naturalGas: naturalgas!,
+                                    singelRome: singelRome!,
+                                    price: price!,
+                                    description: description!,
+                                  );
                                 }
                               },
                             ),
