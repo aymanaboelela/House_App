@@ -31,7 +31,9 @@ class CustomProductDetailsFeatures extends StatelessWidget {
             children: [
               Text(
                 "مميزات العقار ",
-                style: GoogleFonts.cairo(fontSize: 22),
+                style: GoogleFonts.cairo(
+                  fontSize: SizeConfig.defaultSize! * 2,
+                ),
               ),
               const SizeVertical(value: 2),
               Row(
@@ -48,7 +50,9 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                   data.wifi
                       ? Row(
                           children: [
-                            const Icon(Icons.wifi),
+                            const Icon(
+                              Icons.wifi,
+                            ),
                             SizeHorizontal(value: 0.5),
                             Text(
                               'Wi-Fi',

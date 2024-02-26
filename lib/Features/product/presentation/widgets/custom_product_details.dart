@@ -37,14 +37,14 @@ class CustomProductDetails extends StatelessWidget {
                   Text(
                     "نوع العقار : $typeHouse",
                     style: GoogleFonts.cairo(
-                      fontSize: 16,
+                      fontSize: SizeConfig.defaultSize! * 2,
                     ),
                   ),
                   Spacer(),
                   Text(
                     "عدد الغرف : $numberOfBeds",
                     style: GoogleFonts.cairo(
-                      fontSize: 16,
+                      fontSize: SizeConfig.defaultSize! * 2,
                     ),
                   ),
                   SizeHorizontal(value: 7),
@@ -56,14 +56,14 @@ class CustomProductDetails extends StatelessWidget {
                   Text(
                     "نوع السكن : $gender",
                     style: GoogleFonts.cairo(
-                      fontSize: 16,
+                      fontSize: SizeConfig.defaultSize! * 2,
                     ),
                   ),
                   Spacer(),
                   Text(
                     "عدد السرائر : $numberOfRooms",
                     style: GoogleFonts.cairo(
-                      fontSize: 16,
+                      fontSize: SizeConfig.defaultSize! * 2,
                     ),
                   ),
                   SizeHorizontal(value: 7),

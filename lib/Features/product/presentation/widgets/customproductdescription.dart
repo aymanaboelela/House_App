@@ -21,12 +21,16 @@ class CoustomProductDescription extends StatelessWidget {
           children: [
             Text(
               "الوصف",
-              style: GoogleFonts.cairo(fontSize: 22),
+              style: GoogleFonts.cairo(
+                fontSize: SizeConfig.defaultSize! * 2,
+              ),
             ),
             const SizeVertical(value: 0.5),
             Text(
               description,
-              style: GoogleFonts.cairo(fontSize: 17),
+              style: GoogleFonts.cairo(
+                fontSize: SizeConfig.defaultSize! * 1.2,
+              ),
             ),
             SizeVertical(value: 1),
           ],

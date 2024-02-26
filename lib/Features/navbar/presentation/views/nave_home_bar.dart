@@ -4,7 +4,6 @@ import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_v
 import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/favoret_view.dart';
 import 'package:house_app_one/Features/google_maps/presentation/views/location_view.dart';
-import 'package:house_app_one/core/utils/responsive.dart';
 
 class NavBarHome extends StatefulWidget {
   const NavBarHome({Key? key});
@@ -13,37 +12,32 @@ class NavBarHome extends StatefulWidget {
   State<NavBarHome> createState() => _NavBarHomeState();
 }
 
-List screens = [
+List<Widget> screens = [
   HomeView(),
   FavoriteProductsView(),
   ChatWhithUserView(),
   LocationView()
 ];
 
-int curantIndex = 0;
+int currentIndex = 0;
 
 class _NavBarHomeState extends State<NavBarHome> {
   @override
-  void initState() {
-    // BlocProvider.of<FavoriteCubit>(context).getData("VIND4TX8fKnSNi68ZV97");
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[curantIndex],
+      body: screens[currentIndex],
       bottomNavigationBar: CurvedNavigationBar(
-        height: SizeConfig.defaultSize! * 5,
+        height: 50, // Adjust the height according to your needs
         backgroundColor: Colors.transparent,
         color: Colors.grey.shade800,
         buttonBackgroundColor: Colors.blue,
         animationDuration: const Duration(milliseconds: 300),
         onTap: (index) {
-          curantIndex = index; // Change here
-          setState(() {});
+          setState(() {
+            currentIndex = index;
+          });
         },
-        index: curantIndex,
+        index: currentIndex,
         items: const [
           Icon(
             Icons.home,

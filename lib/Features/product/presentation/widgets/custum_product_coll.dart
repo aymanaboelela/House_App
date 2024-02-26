@@ -17,7 +17,7 @@ class CustomProductCall extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: SizeConfig.defaultSize! * 20,
+      // height: SizeConfig.defaultSize! * 20,
       width: double.infinity,
       decoration: const BoxDecoration(
         color: AppColors.KPrimeColor,
@@ -29,12 +29,16 @@ class CustomProductCall extends StatelessWidget {
           children: [
             Text(
               "التواصل",
-              style: GoogleFonts.cairo(fontSize: 22),
+              style: GoogleFonts.cairo(
+                fontSize: SizeConfig.defaultSize! * 2,
+              ),
             ),
             SizeVertical(value: 1),
             Text(
               "اضغط علي رمز الاتصال او الوتساب",
-              style: GoogleFonts.cairo(fontSize: 18),
+              style: GoogleFonts.cairo(
+                fontSize: SizeConfig.defaultSize! * 1.4,
+              ),
             ),
             const SizeVertical(value: 3),
             Row(
@@ -71,6 +75,7 @@ class CustomProductCall extends StatelessWidget {
                 ),
               ],
             ),
+            SizeVertical(value: 2),
           ],
         ),
       ),

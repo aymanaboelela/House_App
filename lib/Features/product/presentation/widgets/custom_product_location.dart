@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -24,7 +23,9 @@ class CustomProductLocation extends StatelessWidget {
         children: [
           Text(
             "موقع الجامعه ",
-            style: GoogleFonts.cairo(fontSize: 22),
+            style: GoogleFonts.cairo(
+              fontSize: SizeConfig.defaultSize! * 2,
+            ),
           ),
           SizeVertical(value: 2),
           Row(
@@ -32,7 +33,9 @@ class CustomProductLocation extends StatelessWidget {
             children: [
               Text(
                 "القاهره \nالمقطم,الهضبه الوسطي",
-                style: GoogleFonts.cairo(fontSize: 17),
+                style: GoogleFonts.cairo(
+                  fontSize: SizeConfig.defaultSize! * 1.4,
+                ),
               ),
               Spacer(),
               InkWell(

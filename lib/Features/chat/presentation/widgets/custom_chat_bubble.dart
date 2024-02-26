@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
@@ -37,7 +36,7 @@ class ChatBubbleForCurrentUser extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.only(
-                    left: 13, top: 10, bottom: 25, right: 13),
+                    left: 13, top: 10, bottom: 25, right: 42),
                 margin: const EdgeInsets.only(
                     left: 25, top: 2, bottom: 16, right: 20),
                 decoration: const BoxDecoration(
@@ -56,8 +55,8 @@ class ChatBubbleForCurrentUser extends StatelessWidget {
                     )),
               ),
               Positioned(
-                left: SizeConfig.defaultSize! * 4,
-                bottom: SizeConfig.defaultSize! * 2.4,
+                right: 30,
+                bottom: 20,
                 child: Text(formattedTime),
               ),
             ],
@@ -99,8 +98,12 @@ class ChatBubbleForFriend extends StatelessWidget {
               children: [
                 Container(
                   padding: const EdgeInsets.only(
-                      left: 16, top: 10, bottom: 25, right: 10),
-                  margin: const EdgeInsets.only(top: 7, right: 28, bottom: 20),
+                      left: 43, top: 10, bottom: 27, right: 10),
+                  margin: const EdgeInsets.only(
+                    top: 7,
+                    right: 28,
+                    bottom: 20,
+                  ),
                   decoration: const BoxDecoration(
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(25),
@@ -118,9 +121,10 @@ class ChatBubbleForFriend extends StatelessWidget {
                   ),
                 ),
                 Positioned(
-                    right: SizeConfig.defaultSize! * 4,
-                    bottom: SizeConfig.defaultSize! * 2.5,
-                    child: Text(formattedTime)),
+                  left: 15,
+                  bottom: 25,
+                  child: Text(formattedTime),
+                ),
               ],
             ),
           ],

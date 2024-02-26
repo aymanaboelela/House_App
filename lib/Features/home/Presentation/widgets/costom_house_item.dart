@@ -13,10 +13,8 @@ class CustomhouseItem extends StatefulWidget {
   const CustomhouseItem({
     super.key,
     required this.data,
-    
   });
   final HouseModel data;
-
 
   @override
   State<CustomhouseItem> createState() => _CustomhouseItemState();
@@ -39,7 +37,7 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
         },
         child: Stack(children: [
           Container(
-            height: SizeConfig.defaultSize! * 43,
+            // height: SizeConfig.defaultSize! * 43,
             width: double.infinity,
             decoration: const BoxDecoration(
               color: AppColors.KPrimeColor,
@@ -135,7 +133,8 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
                       )
                     ],
                   ),
-                )
+                ),
+                SizeVertical(value: 1.5),
               ],
             ),
           ),
