@@ -1,9 +1,14 @@
+import 'dart:async';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:concentric_transition/concentric_transition.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_dont_internet.dart';
+
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import '../../../../core/utils/app_route.dart';
@@ -18,6 +23,23 @@ class OnBoardingViewBody extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<OnBoardingViewBody> {
+  @override
+  late StreamSubscription<ConnectivityResult> subscription;
+  void initState() {
+    chikInternet();
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      // Got a new connectivity status!
+      chikInternet();
+    });
+    super.initState();
+  }
+ @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
   final data = [
     const CustomPageView(
         title: 'سكن مغتربين ',
@@ -44,36 +66,38 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: ConcentricPageView(
-        curve: Curves.ease,
-        // direction: Axis.vertical,
-        itemCount: data.length,
-        colors: data.map((e) => e.backgroundColor).toList(),
-        // physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (int index) {
-          return data[index];
-        },
-        nextButtonBuilder: (context) {
-          return Icon(
-            Icons.arrow_forward_ios_rounded,
-            size: 30,
+    return showNoInternetAnimation
+        ? customDontInternet()
+        : Scaffold(
+            body: ConcentricPageView(
+              curve: Curves.ease,
+              // direction: Axis.vertical,
+              itemCount: data.length,
+              colors: data.map((e) => e.backgroundColor).toList(),
+              // physics: const NeverScrollableScrollPhysics(),
+              itemBuilder: (int index) {
+                return data[index];
+              },
+              nextButtonBuilder: (context) {
+                return Icon(
+                  Icons.arrow_forward_ios_rounded,
+                  size: 30,
+                );
+              },
+              onFinish: () {
+                CacheData.setData(key: "hasSeenOnboarding", value: true);
+                GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
+                //
+                token != null
+                    ? addTokenInFirebase(token!)
+                    : CustomError.error(context,
+                        dialogType: DialogType.error,
+                        title: "خطاء!",
+                        desc: "قم باتصال بانترنت واعد تشغيل التطبيق ");
+                ;
+              },
+            ),
           );
-        },
-        onFinish: () {
-          CacheData.setData(key: "hasSeenOnboarding", value: true);
-          GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
-          //
-          token != null
-              ? addTokenInFirebase(token!)
-              : CustomError.error(context,
-                  dialogType: DialogType.error,
-                  title: "خطاء!",
-                  desc: "قم باتصال بانترنت واعد تشغيل التطبيق ");
-          ;
-        },
-      ),
-    );
   }
 
   Future<void> addTokenInFirebase(String token) async {
@@ -82,5 +106,21 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
       'message': "",
       'time': "",
     }, SetOptions(merge: true));
+  }
+
+  bool showNoInternetAnimation = false;
+
+  Future<void> chikInternet() async {
+    final connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      print("لايوجد انترنت");
+      setState(() {
+        showNoInternetAnimation = true;
+      });
+    } else {
+      setState(() {
+        showNoInternetAnimation = false;
+      });
+    }
   }
 }

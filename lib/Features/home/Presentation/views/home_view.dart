@@ -1,10 +1,15 @@
+import 'dart:async';
+
 import 'package:awesome_dialog/awesome_dialog.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_drawer.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_scroll_house.dart';
 import 'package:house_app_one/Features/home/data/cubit/filters/filters_cubit.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
@@ -16,15 +21,18 @@ class HomeView extends StatefulWidget {
   @override
   State<HomeView> createState() => _HomeViewState();
 }
+
 class _HomeViewState extends State<HomeView> {
+ 
+
   bool isLoding = true;
+
   @override
   void initState() {
-  
     BlocProvider.of<GethouseCubit>(context).getData();
-    setState(() {});
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<GethouseCubit, GethouseState>(
@@ -79,4 +87,6 @@ class _HomeViewState extends State<HomeView> {
       return BlocProvider.of<GethouseCubit>(context).getData();
     }
   }
+
+
 }

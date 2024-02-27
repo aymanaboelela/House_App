@@ -13,6 +13,7 @@ abstract class AppAssets {
   static const notifacation = 'assets/json/notfacation.json';
   static const whatsapp = 'assets/json/whatsap.json';
   static const phone = 'assets/json/phone.json';
+  static const nointernet = 'assets/json/no_internet.json';
   static const login = 'assets/json/login.json';
   static const locationMarker = 'assets/json/location_marker.json';
   static const delete = 'assets/json/delete.json';

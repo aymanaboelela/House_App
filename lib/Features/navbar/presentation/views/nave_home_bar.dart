@@ -1,5 +1,9 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_view.dart';
 import 'package:house_app_one/Features/home/Presentation/views/home_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/favoret_view.dart';
@@ -22,6 +26,51 @@ List<Widget> screens = [
 int currentIndex = 0;
 
 class _NavBarHomeState extends State<NavBarHome> {
+  late StreamSubscription<ConnectivityResult> subscription;
+
+  Future<void> chikInternet() async {
+    final connectivityResult = await Connectivity().checkConnectivity();
+    if (connectivityResult == ConnectivityResult.none) {
+      print("لايوجد انترنت");
+      setState(() {
+        showNoInternetSnackbar(context);
+      });
+    } else {
+      setState(() {
+        ScaffoldMessenger.of(context).hideCurrentSnackBar();
+      });
+    }
+  }
+
+  void showNoInternetSnackbar(BuildContext context) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Colors.black,
+        content: Center(
+          child: Text(
+            "برجاءالاتصال بالاترنت ",
+            style: GoogleFonts.cairo(
+              color: Colors.white,
+            ),
+          ),
+        ),
+        duration: Duration(days: 3),
+      ),
+    );
+  }
+
+  @override
+  void initState() {
+    chikInternet();
+    subscription = Connectivity()
+        .onConnectivityChanged
+        .listen((ConnectivityResult result) {
+      // Got a new connectivity status!
+      chikInternet();
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,5 +107,11 @@ class _NavBarHomeState extends State<NavBarHome> {
         ],
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
   }
 }
