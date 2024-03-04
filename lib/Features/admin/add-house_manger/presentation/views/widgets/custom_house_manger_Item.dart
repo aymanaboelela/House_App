@@ -36,6 +36,7 @@ class CustomHouseMangerItem extends StatelessWidget {
                       Text(
                         data.addreseHouse!,
                         maxLines: 5,
+                        overflow: TextOverflow.ellipsis,
                         style: GoogleFonts.cairo(fontSize: 22),
                       )
                     ],
@@ -76,33 +77,39 @@ class CustomHouseMangerItem extends StatelessWidget {
               ),
               SizeVertical(value: 1),
               Text(
-                "الاسم: ${data.nameManger}",
+                "الاسم : ${data.nameManger}",
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
               Text(
-                "رقم التلفون :${data.phoneNumber} ",
+                "رقم الهاتف : ${data.phoneNumber} ",
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
               Text(
-                "جامعه:${data.nameOfUniversity} ",
+                "رقم اخر : ${data.phoneNumber2} ",
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
               Text(
-                "الدور :${data.groundHouse} ",
+                "جامعه : ${data.nameOfUniversity} ",
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
               Text(
-                "التاريخ: ${DateFormat('yyyy - MM - dd').format(data.date!.toDate())}",
+                "الدور : ${data.groundHouse} ",
+                style: GoogleFonts.cairo(fontSize: 23),
+              ),
+              SizeVertical(value: 1),
+              Text(
+                "التاريخ : ${DateFormat('yyyy - MM - dd').format(data.date!.toDate())}",
                 style: GoogleFonts.cairo(fontSize: 23),
               ),
               SizeVertical(value: 1),
               Text(
                 "العنوان : ${data.addreseHouse}",
                 maxLines: 1,
+                overflow: TextOverflow.ellipsis,
                 style: GoogleFonts.cairo(fontSize: 25),
               ),
             ],
@@ -112,4 +119,3 @@ class CustomHouseMangerItem extends StatelessWidget {
     );
   }
 }
-

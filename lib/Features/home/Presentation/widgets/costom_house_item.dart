@@ -64,7 +64,7 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
                       ),
                       const SizeVertical(value: 0.4),
                       Text(
-                        " ${widget.data.price} ج/ الشهر",
+                        "${widget.data.price} ج/ الشهر",
                         style: GoogleFonts.cairo(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,

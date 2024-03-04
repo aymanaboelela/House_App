@@ -12,9 +12,16 @@ import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
 // ignore: must_be_immutable
-class AddClientView extends StatelessWidget {
+class AddClientView extends StatefulWidget {
   AddClientView({super.key});
+
+  @override
+  State<AddClientView> createState() => _AddClientViewState();
+}
+
+class _AddClientViewState extends State<AddClientView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+   TextEditingController _controller = TextEditingController();
   @override
   // ignore: override_on_non_overriding_member
   String? name;
@@ -23,6 +30,7 @@ class AddClientView extends StatelessWidget {
   String? nameOfUniversity;
   String? price;
   bool isLoding = false;
+
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => AddClientCubit(),
@@ -94,8 +102,47 @@ class AddClientView extends StatelessWidget {
                         ),
                         SizeVertical(value: 2),
                         CustomTextFormField(
-                          title: " اسم الحامعه :",
-                          icon: Icons.phone,
+                          title: " اسم الجامعه :",
+                          controller: _controller,
+                          icon: Icons.houseboat_sharp,
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                showDialog(
+                                  context: context,
+                                  builder: (BuildContext context) {
+                                    return Align(
+                                      alignment: Alignment.topLeft,
+                                      child: FractionallySizedBox(
+                                        widthFactor: 0.8,
+                                        heightFactor: 0.5,
+                                        child: AlertDialog(
+                                          title: Text(
+                                            "اختر الجامعة",
+                                            style: GoogleFonts.cairo(),
+                                          ),
+                                          content: SingleChildScrollView(
+                                            child: Column(
+                                              children: [
+                                                ListTile(
+                                                  title: Text("MTI"),
+                                                  onTap: () {
+                                                    setState(() {
+                                                      _controller.text = "MTI";
+                                                      nameOfUniversity = "MTI";
+                                                    });
+                                                    Navigator.pop(context);
+                                                  },
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                              icon: Icon(Icons.arrow_drop_down_outlined)),
                           onChanged: (value) {
                             nameOfUniversity = value;
                           },

@@ -23,6 +23,7 @@ class AddHouseMangerView extends StatelessWidget {
     String? idHouse;
     String? name;
     String? phoneNumber;
+    String? phoneNumber2;
     String? nameOfUniversity;
     String? ground;
     String? addrese;
@@ -100,6 +101,14 @@ class AddHouseMangerView extends StatelessWidget {
                           },
                           icon: Icons.phone_android_outlined,
                         ),
+                        CustomTextFormField(
+                          title: "رقم هاتف اخر :",
+                          keyboardType: TextInputType.number,
+                          onChanged: (value) {
+                            phoneNumber2 = value;
+                          },
+                          icon: Icons.phone_android_outlined,
+                        ),
                         SizeVertical(value: 2),
                         CustomTextFormField(
                           title: "اسم الجامعه :",
@@ -144,6 +153,7 @@ class AddHouseMangerView extends StatelessWidget {
                                 idHouse: idHouse!,
                                 name: name!,
                                 phoneNumber: phoneNumber!,
+                                phoneNumber2: phoneNumber2!,
                                 nameOfUniversity: nameOfUniversity!,
                                 ground: ground!,
                                 addrese: addrese!,

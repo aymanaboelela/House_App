@@ -12,7 +12,6 @@ class CustomDrawer extends StatelessWidget {
     return Stack(
       children: [
         ListView(
-          padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
               decoration: BoxDecoration(
@@ -41,7 +40,23 @@ class CustomDrawer extends StatelessWidget {
                 GoRouter.of(context).push(AppRouter.KLocationInuniversityView);
               },
             ),
-
+            ListTile(
+              title: Row(
+                children: [
+                  Text(
+                    "الدعم الفني",
+                    style: GoogleFonts.cairo(
+                      fontWeight: FontWeight.w500,
+                    ),
+                  ),
+                  Spacer(),
+                  Icon(Icons.arrow_forward_ios_rounded),
+                ],
+              ),
+              onTap: () {
+                GoRouter.of(context).push(AppRouter.KChatFromUserView);
+              },
+            ),
             ListTile(
               title: Row(
                 children: [
@@ -59,7 +74,6 @@ class CustomDrawer extends StatelessWidget {
                 GoRouter.of(context).push(AppRouter.kNotifacationView);
               },
             ),
-
             ListTile(
               title: Row(
                 children: [
@@ -77,7 +91,6 @@ class CustomDrawer extends StatelessWidget {
                 GoRouter.of(context).push(AppRouter.kHelpView);
               },
             ),
-            // يمكنك إضافة المزيد من عناصر القائمة حسب احتياجاتك
           ],
         ),
         Positioned(

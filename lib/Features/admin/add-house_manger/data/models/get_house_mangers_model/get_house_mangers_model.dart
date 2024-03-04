@@ -5,6 +5,7 @@ class HouseMangerModel {
   final String? idHouse;
   final String? nameManger;
   final String? phoneNumber;
+  final String? phoneNumber2;
   final String? nameOfUniversity;
   final String? groundHouse;
   final String? addreseHouse;
@@ -16,6 +17,7 @@ class HouseMangerModel {
     required this.idHouse,
     required this.nameManger,
     required this.phoneNumber,
+    required this.phoneNumber2,
     required this.nameOfUniversity,
     required this.groundHouse,
     required this.addreseHouse,
@@ -29,6 +31,7 @@ class HouseMangerModel {
       idHouse: data['id House'],
       nameManger: data['name manger'],
       phoneNumber: data['phoneNumber'],
+      phoneNumber2: data['phoneNumber2'],
       nameOfUniversity: data['name of university'],
       groundHouse: data['ground house'],
       addreseHouse: data['addrese house'],
@@ -36,9 +39,4 @@ class HouseMangerModel {
       date: data['Date'],
     );
   }
-
-
- 
-
- 
 }

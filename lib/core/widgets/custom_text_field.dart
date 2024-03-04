@@ -22,7 +22,7 @@ class CustomTextFormField extends StatefulWidget {
     this.isVisibleColor,
     this.titleTextStyle,
     this.textFieldStyle,
-    this.cursorColor,
+    this.cursorColor, this.suffixIcon,
   });
   final String? hintText;
   final String? label;
@@ -37,6 +37,7 @@ class CustomTextFormField extends StatefulWidget {
   final IconData? icon;
   final String? title;
   final bool? isVisible;
+  final Widget? suffixIcon;
   final Color? fillColor;
   final Color? isVisibleColor;
   final Color? cursorColor;
@@ -107,7 +108,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                   color: widget.isVisibleColor ?? Colors.grey,
                   iconSize: 20,
                 )
-              : null,
+              : widget.suffixIcon,
           contentPadding: EdgeInsets.symmetric(
               vertical: SizeConfig.defaultSize! * 1.5,
               horizontal: SizeConfig.defaultSize! * 0.22222),

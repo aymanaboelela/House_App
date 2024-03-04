@@ -20,11 +20,6 @@ class SearchInMangerView extends StatefulWidget {
 
 class _SearchInMangerViewState extends State<SearchInMangerView> {
   Timer? _debounceTimer;
-  void dispose() {
-    // _debounceTimer?.cancel();
-
-    super.dispose();
-  }
 
   String? idresalt;
 
