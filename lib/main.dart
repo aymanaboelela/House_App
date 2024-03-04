@@ -20,10 +20,11 @@ import 'Features/home/data/cubit/filters/filters_cubit.dart';
 import 'Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'core/utils/app_route.dart';
 import 'generated/l10n.dart';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();
-  GetnotfacationCubit().getNotfacation();
+  GetNotfacationCubit().getNotfacation();
   await CacheData.cacheDataInit();
   await GoogleFonts();
   await Firebase.initializeApp(
@@ -31,6 +32,7 @@ Future<void> main() async {
   );
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
   @override
@@ -47,7 +49,7 @@ class MyApp extends StatelessWidget {
           create: (context) => GethouseCubit(),
         ),
         BlocProvider(
-          create: (context) => GetnotfacationCubit(),
+          create: (context) => GetNotfacationCubit(),
         ),
         BlocProvider(
           create: (context) => GetClientCubit(),

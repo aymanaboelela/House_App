@@ -37,7 +37,7 @@ class CustomProductCall extends StatelessWidget {
             Text(
               "اضغط علي رمز الاتصال او الوتساب",
               style: GoogleFonts.cairo(
-                fontSize: SizeConfig.defaultSize! * 1.4,
+                fontSize: SizeConfig.defaultSize! * 1.5,
               ),
             ),
             const SizeVertical(value: 3),

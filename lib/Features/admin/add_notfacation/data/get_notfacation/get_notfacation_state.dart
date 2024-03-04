@@ -1,8 +1,6 @@
 part of 'get_notfacation_cubit.dart';
 
 @immutable
-abstract class GetnotfacationState {}
+abstract class GetNotfacationState {}
 
-class GetnotfacationInitial extends GetnotfacationState {}
-
-
+class GetnotfacationInitial extends GetNotfacationState {}

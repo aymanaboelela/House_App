@@ -1,9 +1,7 @@
 import 'dart:developer';
-import 'dart:ffi';
 import 'package:bloc/bloc.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:house_app_one/Features/admin/chats_from_admin/data/models/chat_card_model.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
 
@@ -67,8 +65,10 @@ class ChatMessageCubit extends Cubit<ChatMessageState> {
   }
 
   Future<void> addMessageinChateCard(String messageText, String token) async {
-    await FirebaseFirestore.instance.collection('usertoken').doc(token).set(
-        {"message": messageText, "time": DateTime.now().toString()},
-        SetOptions(merge: true));
+    await FirebaseFirestore.instance.collection('usertoken').doc(token).set({
+      "userToken": token,
+      "message": messageText,
+      "time": DateTime.now().toString()
+    }, SetOptions(merge: true));
   }
 }

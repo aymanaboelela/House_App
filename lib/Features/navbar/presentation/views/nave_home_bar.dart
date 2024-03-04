@@ -48,7 +48,7 @@ class _NavBarHomeState extends State<NavBarHome> {
         backgroundColor: Colors.black,
         content: Center(
           child: Text(
-            "برجاءالاتصال بالاترنت ",
+            "برجاء الاتصال بالإنترنت",
             style: GoogleFonts.cairo(
               color: Colors.white,
             ),

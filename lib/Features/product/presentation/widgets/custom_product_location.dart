@@ -34,7 +34,7 @@ class CustomProductLocation extends StatelessWidget {
               Text(
                 "القاهره \nالمقطم,الهضبه الوسطي",
                 style: GoogleFonts.cairo(
-                  fontSize: SizeConfig.defaultSize! * 1.4,
+                  fontSize: SizeConfig.defaultSize! * 1.5,
                 ),
               ),
               Spacer(),

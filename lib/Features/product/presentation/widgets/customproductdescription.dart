@@ -29,7 +29,7 @@ class CoustomProductDescription extends StatelessWidget {
             Text(
               description,
               style: GoogleFonts.cairo(
-                fontSize: SizeConfig.defaultSize! * 1.2,
+                fontSize: SizeConfig.defaultSize! * 1.5,
               ),
             ),
             SizeVertical(value: 1),

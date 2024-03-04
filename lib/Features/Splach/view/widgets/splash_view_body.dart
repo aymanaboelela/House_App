@@ -1,7 +1,8 @@
-
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
 
@@ -21,7 +22,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
   Animation? animation;
   @override
   void initState() {
-    getToken();
+   BlocProvider.of<GetNotfacationCubit>(context).getToken();
     super.initState();
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1000));
@@ -32,17 +33,12 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController?.repeat(reverse: true);
     getToNewScreen();
   }
-  Future<void> getToken() async {
-    token = await FirebaseMessaging.instance.getToken();
-    print("//////////////////////////////////////////////");
-    debugPrint(token);
-    print("////////////////////////////////////////////");
-  }
   @override
   void dispose() {
     animationController?.dispose();
     super.dispose();
   }
+
   bool hasSeenOnboarding = CacheData.getdata(key: 'hasSeenOnboarding') ?? false;
   @override
   Widget build(BuildContext context) {
@@ -80,7 +76,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
             )
           : GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
     });
-   
   }
 }
 

@@ -8,6 +8,8 @@ import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_tex
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
+import 'package:house_app_one/core/utils/assets.dart';
+import 'package:lottie/lottie.dart';
 
 class ChatWhithAdminView extends StatefulWidget {
   const ChatWhithAdminView({Key? key, required this.token}) : super(key: key);
@@ -83,8 +85,8 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
             messageModel = state.data;
           }
           return isMessageLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
+              ? Center(
+                  child: Lottie.asset(AppAssets.Loding1),
                 )
               : Padding(
                   padding: const EdgeInsets.only(top: 5),

@@ -3,12 +3,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
-import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:lottie/lottie.dart';
-
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/responsive.dart';
-
 class ScrollImage extends StatefulWidget {
   ScrollImage({Key? key, required this.data, required this.autoPlay})
       : super(key: key);

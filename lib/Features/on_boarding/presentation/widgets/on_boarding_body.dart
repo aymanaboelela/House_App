@@ -1,16 +1,14 @@
 import 'dart:async';
-
-import 'package:awesome_dialog/awesome_dialog.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:concentric_transition/concentric_transition.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/add_not_facation_cubit.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_dont_internet.dart';
-
 import 'package:house_app_one/core/utils/assets.dart';
-import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import '../../../../core/utils/app_route.dart';
 import '../../../../core/shered_preferences/shared_preferences.dart';
 import 'custom_page_view.dart';
@@ -26,6 +24,7 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
   @override
   late StreamSubscription<ConnectivityResult> subscription;
   void initState() {
+    BlocProvider.of<GetNotfacationCubit>(context).getToken();
     chikInternet();
     subscription = Connectivity()
         .onConnectivityChanged
@@ -35,11 +34,13 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
     });
     super.initState();
   }
- @override
+
+  @override
   void dispose() {
     subscription.cancel();
     super.dispose();
   }
+
   final data = [
     const CustomPageView(
         title: 'سكن مغتربين ',
@@ -89,27 +90,16 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
                 GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
                 //
                 token != null
-                    ? addTokenInFirebase(token!)
-                    : CustomError.error(context,
-                        dialogType: DialogType.error,
-                        title: "خطاء!",
-                        desc: "قم باتصال بانترنت واعد تشغيل التطبيق ");
-                ;
+                    ? BlocProvider.of<AddNotFacationCubit>(context).addTokenInFirebase(token!)
+                    : customDontInternet();
               },
             ),
           );
   }
 
-  Future<void> addTokenInFirebase(String token) async {
-    await FirebaseFirestore.instance.collection('usertoken').doc(token).set({
-      'userToken': token,
-      'message': "",
-      'time': "",
-    }, SetOptions(merge: true));
-  }
+  
 
   bool showNoInternetAnimation = false;
-
   Future<void> chikInternet() async {
     final connectivityResult = await Connectivity().checkConnectivity();
     if (connectivityResult == ConnectivityResult.none) {

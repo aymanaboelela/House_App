@@ -7,20 +7,20 @@ import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/widgets/custom_chat_card.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
+import 'package:house_app_one/core/utils/assets.dart';
+import 'package:lottie/lottie.dart';
 
 class ChatsInEdmin extends StatefulWidget {
   const ChatsInEdmin({super.key});
   @override
   State<ChatsInEdmin> createState() => _ChatsInEdminState();
 }
-
 class _ChatsInEdminState extends State<ChatsInEdmin> {
   List<ChatCardModel> chats = [];
   void initState() {
     super.initState();
     BlocProvider.of<ChatCardCubit>(context).buildChatCard();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,10 +38,10 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
         elevation: BorderSide.strokeAlignOutside,
         backgroundColor: MyColors.purple,
       ),
-      body: BlocBuilder<ChatCardCubit, ChatCardState>(
+      body: BlocBuilder<ChatCardCubit,ChatCardState>(
         builder: (context, state) {
           if (state is ChatCardLoading) {
-            return const Center(child: CircularProgressIndicator());
+            return Center(child: LottieBuilder.asset(AppAssets.Loding1));
           } else if (state is ChatCardSuccess) {
             chats = state.data;
             return ListView.builder(
@@ -54,8 +54,9 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                   onTap: () async {
                     BlocProvider.of<ChatMessageCubit>(context)
                         .recivedMessage(usertoken: chats[index].userToken);
+                    setState(() {
 
-                    setState(() {});
+                    });
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ChatWhithAdminView(
@@ -67,7 +68,7 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                 );
               },
             );
-          }
+          }  
           if (state is ChatCardFailure) {
             return Text('Error: ${state.message}');
           } else {

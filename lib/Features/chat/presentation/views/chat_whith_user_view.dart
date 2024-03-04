@@ -3,12 +3,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/add_not_facation_cubit.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_bubble.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_text_field.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
+import 'package:house_app_one/core/utils/assets.dart';
+import 'package:lottie/lottie.dart';
 
 class ChatWhithUserView extends StatefulWidget {
   const ChatWhithUserView({Key? key}) : super(key: key);
@@ -19,10 +22,12 @@ class ChatWhithUserView extends StatefulWidget {
 class _ChatWhithUserViewState extends State<ChatWhithUserView> {
   @override
   void initState() {
+   
     setState(() {});
     super.initState();
   }
 
+  bool tokinisNul = false;
   TextEditingController textEditingController = TextEditingController();
   bool isMessageLoading = false;
   String? errorMessage;
@@ -34,11 +39,11 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
         message: textEditingController.text,
       );
       BlocProvider.of<ChatMessageCubit>(context)
-          .addMessageinChateCard(textEditingController.text,token!);
+          .addMessageinChateCard(textEditingController.text, token!);
       textEditingController.clear();
-      
+
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
-          " رساله من مستخدم ",
+          "رساله من مستخدم ",
           textEditingController.text,
           "send tocen phone admni");
     }
@@ -89,9 +94,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
             messageModel = state.data;
           }
           return isMessageLoading
-              ? const Center(
-                  child: CircularProgressIndicator(),
-                )
+              ? Center(child: LottieBuilder.asset(AppAssets.Loding1))
               : Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: ListView.builder(

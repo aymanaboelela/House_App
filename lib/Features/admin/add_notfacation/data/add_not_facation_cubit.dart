@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 part 'add_not_facation_state.dart';
@@ -49,4 +50,17 @@ class AddNotFacationCubit extends Cubit<AddNotFacationState> {
       emit(IsFeilerAddNotFacation(error: e.toString()));
     }
   }
+
+Future<void> addTokenInFirebase(String token) async {
+    await FirebaseFirestore.instance.collection('usertoken').doc(token).set({
+      'userToken': token,
+      'message': "",
+      'time': "",
+    }, SetOptions(merge: true));
+  }
+
+
+
+
+
 }
