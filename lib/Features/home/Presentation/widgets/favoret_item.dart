@@ -12,14 +12,11 @@ class FavoretIconItem extends StatefulWidget {
     required this.data,
   });
   final HouseModel data;
-
   @override
   State<FavoretIconItem> createState() => _FavoretIconItemState();
 }
-
 class _FavoretIconItemState extends State<FavoretIconItem> {
   late bool isFavorite;
-
   @override
   void initState() {
     super.initState();
@@ -39,7 +36,6 @@ class _FavoretIconItemState extends State<FavoretIconItem> {
             setState(() {});
           },
           icon: Icon(
-            // استخدام شرط تكراري لتحديد أيقونة القلب
             isFavorite ? Icons.favorite : Icons.favorite_border,
             color: isFavorite ? Colors.red : null,
             size: SizeConfig.defaultSize! * (isFavorite ? 3.5 : 3),

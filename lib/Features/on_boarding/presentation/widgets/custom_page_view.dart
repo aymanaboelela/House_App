@@ -34,12 +34,12 @@ class CustomPageView extends StatelessWidget {
           const SizeVertical(value: 2),
           Text(
             title.toUpperCase(),
-            style: GoogleFonts.cairo(
-              color: titleColor,
+            style: TextStyle(
+               color: titleColor,
               fontSize: 30,
               fontWeight: FontWeight.bold,
-              // overflow: TextOverflow.clip
-            ),
+              fontFamily: "Cairo"
+            )
           ),
           const SizeVertical(value: 1.7),
           Text(

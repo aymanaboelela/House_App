@@ -7,27 +7,17 @@ import 'package:house_app_one/Features/admin/searsh_in_house/presentation/widget
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
-import '../../../../home/Presentation/widgets/costom_house_item.dart';
+import '../../../../home/Presentation/widgets/custom_house_item._in_home_view.dart';
 import '../../../../home/data/models/house_model.dart';
-
 class SearchInHouse extends StatefulWidget {
   const SearchInHouse({Key? key}) : super(key: key);
-
   @override
   State<SearchInHouse> createState() => _SearchInHouseState();
 }
-
 Timer? _debounceTimer;
 
 class _SearchInHouseState extends State<SearchInHouse> {
-  void dispose() {
-    _debounceTimer?.cancel();
-    idresalt;
-    super.dispose();
-  }
-
   String? idresalt;
-
   @override
   Widget build(BuildContext context) {
     return RefreshIndicator(
@@ -103,9 +93,5 @@ class _SearchInHouseState extends State<SearchInHouse> {
         Text("قم بالبحث "),
       ],
     );
-  }
-
-   
-
- 
+  } 
 }

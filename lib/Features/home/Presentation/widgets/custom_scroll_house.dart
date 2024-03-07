@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/home/Presentation/widgets/costom_house_item.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_house_item._in_home_view.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_all_houses_fliter.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_fliter_select_typ_house.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_llocation.dart';

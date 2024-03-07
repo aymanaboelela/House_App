@@ -6,8 +6,6 @@ import 'package:house_app_one/Features/admin/add_client/data/cubits/get_client/g
 import 'package:house_app_one/Features/admin/add_client/data/models/client_model.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/widgets/custom_client_item.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/widgets/custom_drawer_in_client.dart';
-import 'package:house_app_one/Features/home/data/models/house_model.dart';
-
 import '../../../../../../core/utils/responsive.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
@@ -24,14 +22,9 @@ class _SearchClientViewState extends State<SearchClientView> {
   @override
   void initState() {
     _controller.text = widget.idHouse ?? "";
+    BlocProvider.of<GetClientCubit>(context).getData();
     super.initState();
   }
-
-  void dispose() {
-    _debounceTimer?.cancel();
-    super.dispose();
-  }
-
   String? idresalt;
 
   @override

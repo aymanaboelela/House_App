@@ -101,6 +101,7 @@ class AddHouseMangerView extends StatelessWidget {
                           },
                           icon: Icons.phone_android_outlined,
                         ),
+                        SizeVertical(value: 2),
                         CustomTextFormField(
                           title: "رقم هاتف اخر :",
                           keyboardType: TextInputType.number,

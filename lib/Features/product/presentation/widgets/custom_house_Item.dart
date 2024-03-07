@@ -24,25 +24,28 @@ class CoustomProductItem extends StatelessWidget {
       ),
       child: Column(
         children: [
+          
           ScrollImage(data: data, autoPlay: true),
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              Text(
+              Text(    
                 "${data.price} ج/ الشهر",
-                style: GoogleFonts.cairo(
+                style: TextStyle(
                   fontSize: SizeConfig.defaultSize! * 2.2,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Cairo"
                 ),
               ),
               const Spacer(),
               Text(
                 "ID : ${data.idHouse}",
-                style: GoogleFonts.cairo(
+                style:TextStyle(
                   fontSize: SizeConfig.defaultSize! * 2.2,
                   fontWeight: FontWeight.bold,
+                  fontFamily: "Cairo"
                 ),
               ),
               const Spacer()

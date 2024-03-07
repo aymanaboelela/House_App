@@ -26,7 +26,7 @@ Future<void> main() async {
   Bloc.observer = MyBlocObserver();
   GetNotfacationCubit().getNotfacation();
   await CacheData.cacheDataInit();
-  await GoogleFonts();
+  await GoogleFonts.cairo();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );

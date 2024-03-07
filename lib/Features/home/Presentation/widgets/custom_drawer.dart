@@ -17,11 +17,9 @@ class CustomDrawerHomeView extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.black,
               ),
-              child: Column(children: [
-                Image.asset(
-                  AppAssets.logo,
-                ),
-              ]),
+              child: Image.asset(
+                AppAssets.logo,
+              ),
             ),
             SizeVertical(value: 1),
             ListTile(

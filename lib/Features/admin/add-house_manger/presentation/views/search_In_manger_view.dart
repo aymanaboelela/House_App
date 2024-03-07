@@ -22,7 +22,9 @@ class SearchInHouseMangerView extends StatefulWidget {
 class _SearchInHouseMangerViewState extends State<SearchInHouseMangerView> {
   @override
   void initState() {
+    BlocProvider.of<GetHouseMangerCubit>(context).getData();
     _controller.text = widget.idHouse ?? "";
+
     super.initState();
   }
 

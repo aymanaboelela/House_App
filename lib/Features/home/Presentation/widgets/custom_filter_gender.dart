@@ -25,10 +25,7 @@ class CustomFilterSelect extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: GoogleFonts.cairo(fontSize: 13),
-            ),
+            Text(title, style: TextStyle(fontFamily: "Cairo", fontSize: 13)),
             const SizeHorizontal(value: 0.9),
             const Icon(
               Icons.keyboard_arrow_down_outlined,
