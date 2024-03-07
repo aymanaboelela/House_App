@@ -1,11 +1,9 @@
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
-
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/responsive.dart';
 
@@ -22,7 +20,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
   Animation? animation;
   @override
   void initState() {
-   BlocProvider.of<GetNotfacationCubit>(context).getToken();
+    BlocProvider.of<GetNotfacationCubit>(context).getTokenWithUser();
     super.initState();
     animationController = AnimationController(
         vsync: this, duration: const Duration(milliseconds: 1000));
@@ -33,6 +31,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController?.repeat(reverse: true);
     getToNewScreen();
   }
+
   @override
   void dispose() {
     animationController?.dispose();
@@ -79,4 +78,4 @@ class _SplashViewbodyState extends State<SplashViewbody>
   }
 }
 
-String? token;
+String? userToken;

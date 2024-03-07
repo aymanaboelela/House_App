@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 import 'package:http/http.dart' as http;
 part 'add_not_facation_state.dart';
+
 class AddNotFacationCubit extends Cubit<AddNotFacationState> {
   AddNotFacationCubit() : super(AddNotFacationInitial());
   Future<void> sendNotification(
@@ -32,14 +33,12 @@ class AddNotFacationCubit extends Cubit<AddNotFacationState> {
           "dl": "<deeplink action on tap of notification>"
         }
       };
-
       var req = http.Request('POST', url);
       req.headers.addAll(headersList);
       req.body = json.encode(body);
 
       var res = await req.send();
       final resBody = await res.stream.bytesToString();
-
       if (res.statusCode >= 200 && res.statusCode < 300) {
         print(resBody);
       } else {
@@ -51,16 +50,16 @@ class AddNotFacationCubit extends Cubit<AddNotFacationState> {
     }
   }
 
-Future<void> addTokenInFirebase(String token) async {
+  Future<void> addTokenInFirebaseWithUser(String token) async {
     await FirebaseFirestore.instance.collection('usertoken').doc(token).set({
       'userToken': token,
       'message': "",
       'time': "",
     }, SetOptions(merge: true));
   }
-
-
-
-
-
+  Future<void> addTokenInFirebaseWithAdmin(String token) async {
+    await FirebaseFirestore.instance.collection('Admintoken').doc(token).set({
+      'userToken': token,
+    }, SetOptions(merge: true));
+  }
 }

@@ -1,10 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 class ChatCardModel {
   final String userToken;
   final String message;
   final String time;
-
   ChatCardModel({
     required this.message,
     required this.time,

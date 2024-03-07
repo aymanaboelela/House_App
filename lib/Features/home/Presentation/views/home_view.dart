@@ -19,8 +19,6 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
- 
-
   bool isLoding = true;
 
   @override
@@ -49,7 +47,6 @@ class _HomeViewState extends State<HomeView> {
       },
       builder: (context, state) {
         return Scaffold(
-          drawer: CustomDrawer(),
           body: ModalProgressHUD(
             inAsyncCall: state is IsLodingGetHouse ? true : false,
             progressIndicator: Lottie.asset(AppAssets.Loding1,
@@ -65,6 +62,7 @@ class _HomeViewState extends State<HomeView> {
               ),
             ),
           ),
+          drawer: CustomDrawerHomeView(),
         );
       },
     );
@@ -83,6 +81,4 @@ class _HomeViewState extends State<HomeView> {
       return BlocProvider.of<GethouseCubit>(context).getData();
     }
   }
-
-
 }

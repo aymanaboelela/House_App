@@ -5,8 +5,8 @@ import 'package:house_app_one/core/utils/app_route.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 
-class CustomDrawer extends StatelessWidget {
-  const CustomDrawer({super.key});
+class CustomDrawerHomeView extends StatelessWidget {
+  const CustomDrawerHomeView({super.key});
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -17,9 +17,11 @@ class CustomDrawer extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.black,
               ),
-              child: Image.asset(
-                AppAssets.logo,
-              ),
+              child: Column(children: [
+                Image.asset(
+                  AppAssets.logo,
+                ),
+              ]),
             ),
             SizeVertical(value: 1),
             ListTile(

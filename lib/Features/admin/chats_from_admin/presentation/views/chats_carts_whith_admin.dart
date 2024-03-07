@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/data/cubits/chat_card_cubit/chat_card_cubit.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/data/models/chat_card_model.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chat_whith_admin_view.dart';
@@ -15,6 +16,7 @@ class ChatsInEdmin extends StatefulWidget {
   @override
   State<ChatsInEdmin> createState() => _ChatsInEdminState();
 }
+
 class _ChatsInEdminState extends State<ChatsInEdmin> {
   List<ChatCardModel> chats = [];
   void initState() {
@@ -38,7 +40,7 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
         elevation: BorderSide.strokeAlignOutside,
         backgroundColor: MyColors.purple,
       ),
-      body: BlocBuilder<ChatCardCubit,ChatCardState>(
+      body: BlocBuilder<ChatCardCubit, ChatCardState>(
         builder: (context, state) {
           if (state is ChatCardLoading) {
             return Center(child: LottieBuilder.asset(AppAssets.Loding1));
@@ -54,9 +56,7 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                   onTap: () async {
                     BlocProvider.of<ChatMessageCubit>(context)
                         .recivedMessage(usertoken: chats[index].userToken);
-                    setState(() {
-
-                    });
+                    setState(() {});
                     Navigator.of(context).push(
                       MaterialPageRoute(
                         builder: (context) => ChatWhithAdminView(
@@ -68,7 +68,7 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                 );
               },
             );
-          }  
+          }
           if (state is ChatCardFailure) {
             return Text('Error: ${state.message}');
           } else {

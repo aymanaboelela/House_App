@@ -5,22 +5,30 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/admin/add_client/data/cubits/get_client/get_client_cubit.dart';
 import 'package:house_app_one/Features/admin/add_client/data/models/client_model.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/widgets/custom_client_item.dart';
+import 'package:house_app_one/Features/admin/add_client/presentation/widgets/custom_drawer_in_client.dart';
+import 'package:house_app_one/Features/home/data/models/house_model.dart';
 
 import '../../../../../../core/utils/responsive.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
 class SearchClientView extends StatefulWidget {
-  const SearchClientView({super.key});
-
+  const SearchClientView({super.key, this.idHouse});
+  final String? idHouse;
   @override
   State<SearchClientView> createState() => _SearchClientViewState();
 }
 
 class _SearchClientViewState extends State<SearchClientView> {
   Timer? _debounceTimer;
+  TextEditingController _controller = TextEditingController();
+  @override
+  void initState() {
+    _controller.text = widget.idHouse ?? "";
+    super.initState();
+  }
+
   void dispose() {
     _debounceTimer?.cancel();
-
     super.dispose();
   }
 
@@ -30,10 +38,8 @@ class _SearchClientViewState extends State<SearchClientView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: Center(
-            child: Text(
-                "${BlocProvider.of<GetClientCubit>(context).data.length}")),
         title: CustomTextFormFieldSearch(
+          controller: _controller,
           icon: Icons.search,
           onChanged: (value) {
             idresalt = value;
@@ -69,6 +75,7 @@ class _SearchClientViewState extends State<SearchClientView> {
           ],
         ),
       ),
+      endDrawer: CustomDrawerInClient(),
     );
   }
 

@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:house_app_one/core/shered_preferences/shared_preferences.dart';
 import 'package:meta/meta.dart';
 
 part 'auth_state.dart';
@@ -20,6 +21,7 @@ class AuthCubit extends Cubit<AuthState> {
         password: password,
       );
       print('Sign in successful');
+      CacheData.setData(key:"email",value: email);
       emit(AuthSucceed());
     } on FirebaseAuthException catch (e) {
       print('Error during sign in: $e');

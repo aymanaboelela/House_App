@@ -11,14 +11,23 @@ import 'package:house_app_one/core/utils/app_route.dart';
 import '../../../../../../core/utils/responsive.dart';
 import '../../../../../../core/widgets/custom_text_field.dart';
 
-class SearchInMangerView extends StatefulWidget {
-  const SearchInMangerView({super.key});
-
+class SearchInHouseMangerView extends StatefulWidget {
+  const SearchInHouseMangerView({super.key, this.idHouse});
+  final String? idHouse;
   @override
-  State<SearchInMangerView> createState() => _SearchInMangerViewState();
+  State<SearchInHouseMangerView> createState() =>
+      _SearchInHouseMangerViewState();
 }
 
-class _SearchInMangerViewState extends State<SearchInMangerView> {
+class _SearchInHouseMangerViewState extends State<SearchInHouseMangerView> {
+  @override
+  void initState() {
+    _controller.text = widget.idHouse ?? "";
+    super.initState();
+  }
+
+  TextEditingController _controller = TextEditingController();
+
   Timer? _debounceTimer;
 
   String? idresalt;
@@ -28,6 +37,7 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
     return Scaffold(
       appBar: AppBar(
         title: CustomTextFormFieldSearch(
+          controller: _controller,
           icon: Icons.search,
           onChanged: (value) {
             idresalt = value;
@@ -65,7 +75,7 @@ class _SearchInMangerViewState extends State<SearchInMangerView> {
           ],
         ),
       ),
-      drawer: buildSideDrawer(),
+      endDrawer: buildSideDrawer(),
     );
   }
 

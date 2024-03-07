@@ -1,6 +1,5 @@
 abstract class AppAssets {
   static const logo = 'assets/images/logo.png';
-
   static const locationPhoto = 'assets/images/locationPhoto.jpg';
   static const userImage = 'assets/images/userimage.png';
   static const onbording1 = 'assets/json/onbording1.json';
@@ -18,7 +17,6 @@ abstract class AppAssets {
   static const locationMarker = 'assets/json/location_marker.json';
   static const delete = 'assets/json/delete.json';
 }
-
 abstract class AppStyle {
   static const nightmode = 'assets/map_style/night_mode.json';
 }

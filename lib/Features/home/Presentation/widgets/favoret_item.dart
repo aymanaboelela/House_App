@@ -35,7 +35,7 @@ class _FavoretIconItemState extends State<FavoretIconItem> {
           onPressed: () async {
             isFavorite = !isFavorite;
             await BlocProvider.of<FavoriteCubit>(context)
-                .addProductInFavoriteView(widget.data, isFavorite, token!);
+                .addProductInFavoriteView(widget.data, isFavorite, userToken!);
             setState(() {});
           },
           icon: Icon(

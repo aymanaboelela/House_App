@@ -24,7 +24,7 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
   @override
   late StreamSubscription<ConnectivityResult> subscription;
   void initState() {
-    BlocProvider.of<GetNotfacationCubit>(context).getToken();
+    BlocProvider.of<GetNotfacationCubit>(context).getTokenWithUser();
     chikInternet();
     subscription = Connectivity()
         .onConnectivityChanged
@@ -89,15 +89,14 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
                 CacheData.setData(key: "hasSeenOnboarding", value: true);
                 GoRouter.of(context).pushReplacement(AppRouter.kHomeView);
                 //
-                token != null
-                    ? BlocProvider.of<AddNotFacationCubit>(context).addTokenInFirebase(token!)
+                userToken != null
+                    ? BlocProvider.of<AddNotFacationCubit>(context)
+                        .addTokenInFirebaseWithUser(userToken!)
                     : customDontInternet();
               },
             ),
           );
   }
-
-  
 
   bool showNoInternetAnimation = false;
   Future<void> chikInternet() async {

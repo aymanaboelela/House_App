@@ -3,16 +3,22 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
-import 'package:meta/meta.dart';
 part 'get_notfacation_state.dart';
 
 class GetNotfacationCubit extends Cubit<GetNotfacationState> {
   GetNotfacationCubit() : super(GetnotfacationInitial());
 
-  Future<void> getToken() async {
-    token = await FirebaseMessaging.instance.getToken();
+  Future<void> getTokenWithUser() async {
+    userToken = await FirebaseMessaging.instance.getToken();
     print("//////////////////////////////////////////////");
-    debugPrint(token);
+    debugPrint(userToken);
+    print("////////////////////////////////////////////");
+  }
+
+  Future<void> getTokenWithAdmin() async {
+    adminToken = await FirebaseMessaging.instance.getToken();
+    print("//////////////////////////////////////////////");
+    debugPrint(userToken);
     print("////////////////////////////////////////////");
   }
 
@@ -29,11 +35,6 @@ class GetNotfacationCubit extends Cubit<GetNotfacationState> {
     }
   }
 
-  // Future<String> getToken() async {
-  //   String? token = await FirebaseMessaging.instance.getToken();
-  //   print("//////////////////////////////////////////////");
-  //   print(token);
-  //   print("////////////////////////////////////////////");
-  //   return token!;
-  // }
 }
+
+String? adminToken;

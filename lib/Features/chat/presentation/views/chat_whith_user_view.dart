@@ -22,7 +22,6 @@ class ChatWhithUserView extends StatefulWidget {
 class _ChatWhithUserViewState extends State<ChatWhithUserView> {
   @override
   void initState() {
-   
     setState(() {});
     super.initState();
   }
@@ -35,17 +34,17 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
     if (textEditingController.text.isNotEmpty) {
       BlocProvider.of<ChatMessageCubit>(context).senderdMessage(
         isAdmin: false,
-        userToken: token!,
+        userToken: userToken!,
         message: textEditingController.text,
       );
       BlocProvider.of<ChatMessageCubit>(context)
-          .addMessageinChateCard(textEditingController.text, token!);
+          .addMessageinChateCard(textEditingController.text, userToken!);
       textEditingController.clear();
 
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
           "رساله من مستخدم ",
           textEditingController.text,
-          "send tocen phone admni");
+          "token in admin ");
     }
     setState(() {});
   }
@@ -54,7 +53,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
   @override
   Widget build(BuildContext context) {
     BlocProvider.of<ChatMessageCubit>(context)
-        .recivedMessage(usertoken: token.toString());
+        .recivedMessage(usertoken: userToken.toString());
     return Scaffold(
       backgroundColor: MyColors.darkGrey,
       appBar: AppBar(

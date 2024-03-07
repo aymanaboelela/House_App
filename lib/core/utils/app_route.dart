@@ -1,7 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/client_details_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/get_client_view.dart';
-import 'package:house_app_one/Features/admin/add_client/presentation/views/srarch_client_view.dart';
+import 'package:house_app_one/Features/admin/add_client/presentation/views/search_in_client.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/presentation/views/add_notfacation_view.dart';
 import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_view.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chats_carts_whith_admin.dart';
@@ -20,7 +20,7 @@ import '../../Features/admin/add_client/presentation/views/add_client_view.dart'
 import '../../Features/admin/add_house/presentation/views/add_house.dart';
 import '../../Features/admin/admin_home/presentation/views/admin_home.dart';
 import '../../Features/admin/searsh_in_house/presentation/views/search_in_house.dart';
-import '../../Features/on_boarding/presentation/on_boardin_view.dart';
+import '../../Features/on_boarding/presentation/views/on_boardin_view.dart';
 
 abstract class AppRouter {
   static const kOnBoardingView = '/onboardingView';
@@ -97,7 +97,6 @@ abstract class AppRouter {
         builder: (context, state) => AdminHome(),
       ),
       GoRoute(
-        
         path: KAddProductView,
         builder: (context, state) => AddProduct(),
       ),
@@ -119,7 +118,7 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: KSearchInMangerView,
-        builder: (context, state) => SearchInMangerView(),
+        builder: (context, state) => SearchInHouseMangerView(),
       ),
       GoRoute(
         path: KHouseMangersViewe,
