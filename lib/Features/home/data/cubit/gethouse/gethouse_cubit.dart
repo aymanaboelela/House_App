@@ -9,8 +9,8 @@ class GethouseCubit extends Cubit<GethouseState> {
 
   Future<void> getData() async {
     data.clear();
+    emit(IsLodingGetHouse());
     try {
-      emit(IsLodingGetHouse());
       print("Data is loading...");
       QuerySnapshot querySnapshot = await FirebaseFirestore.instance
           .collection('houses')
@@ -21,11 +21,39 @@ class GethouseCubit extends Cubit<GethouseState> {
             HouseModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
         data.add(house);
       });
-      emit(IsSucssesGetHouse(data: data));
+      emit(IsSuccessGetHouse(data: data));
       print("get data...");
     } catch (e) {
       print("Data is failed: $e");
-      emit(IsFeilerGetHouse(error: e.toString()));
+      emit(IsFailureGetHouse(error: e.toString()));
+    }
+  }
+
+  List<HouseModel> dataIsFavorite = [];
+  Future<void> getFavoriteData({required String token}) async {
+    dataIsFavorite.clear();
+    try {
+      QuerySnapshot querySnapshot = await FirebaseFirestore.instance
+          .collection('isFavoritehouses')
+          .doc(token)
+          .collection('isFavorite')
+          .get();
+      if (querySnapshot.docs.isEmpty) {
+        emit(IsDataIsEmptyFavorite());
+      } else {
+        querySnapshot.docs.forEach(
+          (doc) {
+            HouseModel houseFavorite =
+                HouseModel.fromMap(doc.id, doc.data() as Map<String, dynamic>);
+            dataIsFavorite.add(houseFavorite);
+          },
+        );
+
+        print("Data retrieved successfully: $dataIsFavorite");
+        emit(IsSuccessGetHouseFavorite(data: dataIsFavorite));
+      }
+    } catch (e) {
+      print("Failed to fetch data: $e");
     }
   }
 
@@ -50,11 +78,11 @@ class GethouseCubit extends Cubit<GethouseState> {
         emit(IsDataIsEmptyGetHouse(data: data));
       }
 
-      emit(IsSucssesGetHouse(data: data));
+      emit(IsSuccessGetHouse(data: data));
       print("get data is $gender..");
     } catch (e) {
       print("Data is failed: $e");
-      emit(IsFeilerGetHouse(error: e.toString()));
+      emit(IsFailureGetHouse(error: e.toString()));
     }
   }
 
@@ -80,11 +108,11 @@ class GethouseCubit extends Cubit<GethouseState> {
       if (data.isEmpty) {
         emit(IsDataIsEmptyGetHouse(data: data));
       }
-      emit(IsSucssesGetHouse(data: data));
+      emit(IsSuccessGetHouse(data: data));
       print("get data is $typHouse..");
     } catch (e) {
       print("Data is failed: $e");
-      emit(IsFeilerGetHouse(error: e.toString()));
+      emit(IsFailureGetHouse(error: e.toString()));
     }
   }
 
@@ -103,15 +131,15 @@ class GethouseCubit extends Cubit<GethouseState> {
         HouseModel house = HouseModel.fromMap(querySnapshot.docs[0].id,
             querySnapshot.docs[0].data() as Map<String, dynamic>);
         data.add(house);
-        emit(IsSucssesGetHouse(data: data));
+        emit(IsSuccessGetHouse(data: data));
         print("House found: $houseId");
       } else {
         print("House not found: $houseId");
-        emit(IsFeilerGetHouse(error: "House not found"));
+        emit(IsFailureGetHouse(error: "House not found"));
       }
     } catch (e) {
       print("Data search failed: $e");
-      emit(IsFeilerGetHouse(error: e.toString()));
+      emit(IsFailureGetHouse(error: e.toString()));
     }
   }
 
@@ -135,7 +163,8 @@ class GethouseCubit extends Cubit<GethouseState> {
       await FirebaseFirestore.instance
           .collection('houses')
           .doc(documentId)
-          .update(newData);
+          .set(newData);
+      SetOptions(merge: true);
       emit(IsSucssesEditHouse());
     } catch (e) {
       emit(

@@ -6,6 +6,7 @@ import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:lottie/lottie.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/responsive.dart';
+
 class ScrollImage extends StatefulWidget {
   ScrollImage({Key? key, required this.data, required this.autoPlay})
       : super(key: key);
@@ -80,8 +81,6 @@ class _ScrollImageState extends State<ScrollImage> {
               dotsCount: images.length,
               position: currentPage,
               decorator: DotsDecorator(
-                
-
                 activeColor: Colors.blue,
                 color: Colors.grey,
                 size: const Size.square(9.0),

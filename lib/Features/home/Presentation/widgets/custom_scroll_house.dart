@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_data_is_empty.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_house_item._in_home_view.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_all_houses_fliter.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_fliter_select_typ_house.dart';
@@ -14,13 +15,25 @@ import '../../../../core/utils/app_route.dart';
 import '../../../../core/utils/assets.dart';
 import '../../data/models/house_model.dart';
 
-class CustomScrollHouse extends StatelessWidget {
+class CustomScrollHouse extends StatefulWidget {
   const CustomScrollHouse({
     super.key,
   });
+
+  @override
+  State<CustomScrollHouse> createState() => _CustomScrollHouseState();
+}
+
+class _CustomScrollHouseState extends State<CustomScrollHouse> {
+  @override
+  void initState() {
+    data = BlocProvider.of<GethouseCubit>(context).data;
+    super.initState();
+  }
+
+  List<HouseModel> data = [];
   @override
   Widget build(BuildContext context) {
-    List<HouseModel> data = BlocProvider.of<GethouseCubit>(context).data;
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -68,7 +81,7 @@ class CustomScrollHouse extends StatelessWidget {
                 SizeHorizontal(value: 1),
                 CustomFilterGender(),
                 SizeHorizontal(value: 1),
-                CustomFliterSelectTypHouse()
+                CustomFliterSelectTypHouse(),
               ],
             ),
           ),
@@ -76,15 +89,15 @@ class CustomScrollHouse extends StatelessWidget {
         const SliverToBoxAdapter(
           child: SizeVertical(value: 3),
         ),
-        SliverList(
-          delegate: SliverChildBuilderDelegate(
-            childCount: data.length,
-            (context, index) {
-              return CustomhouseItem(
-                data: data[index],
-              );
-            },
-          ),
+        SliverList.builder(
+          itemCount: data.length,
+          itemBuilder: (context, index) {
+            return data.isEmpty
+                ? CustomDataIsEmpty()
+                : CustomhouseItem(
+                    data: data[index],
+                  );
+          },
         ),
       ],
     );

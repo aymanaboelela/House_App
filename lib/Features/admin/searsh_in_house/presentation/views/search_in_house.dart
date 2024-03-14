@@ -9,11 +9,13 @@ import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
 import '../../../../home/Presentation/widgets/custom_house_item._in_home_view.dart';
 import '../../../../home/data/models/house_model.dart';
+
 class SearchInHouse extends StatefulWidget {
   const SearchInHouse({Key? key}) : super(key: key);
   @override
   State<SearchInHouse> createState() => _SearchInHouseState();
 }
+
 Timer? _debounceTimer;
 
 class _SearchInHouseState extends State<SearchInHouse> {
@@ -43,9 +45,9 @@ class _SearchInHouseState extends State<SearchInHouse> {
               builder: (context, state) {
                 if (state is IsLodingGetHouse) {
                   return Center(child: CircularProgressIndicator());
-                } else if (state is IsSucssesGetHouse) {
+                } else if (state is IsSuccessGetHouse) {
                   return buildResults(state.data);
-                } else if (state is IsFeilerGetHouse) {
+                } else if (state is IsFailureGetHouse) {
                   return Center(
                     child: Text(
                       'خطاء: لايوجل شقه بهذا iD [$idresalt]',
@@ -93,5 +95,5 @@ class _SearchInHouseState extends State<SearchInHouse> {
         Text("قم بالبحث "),
       ],
     );
-  } 
+  }
 }

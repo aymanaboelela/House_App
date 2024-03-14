@@ -32,9 +32,9 @@ class CustomProductLocation extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "القاهره \nالمقطم,الهضبه الوسطي",
+                "القاهره\n\nالمقطم,الهضبه الوسطي",
                 style: GoogleFonts.cairo(
-                  fontSize: SizeConfig.defaultSize! * 1.5,
+                  fontSize: SizeConfig.defaultSize! * 1.6,
                 ),
               ),
               Spacer(),

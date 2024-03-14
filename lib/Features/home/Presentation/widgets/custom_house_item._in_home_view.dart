@@ -28,7 +28,6 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
       padding: const EdgeInsets.only(bottom: 22),
       child: InkWell(
         onTap: () {
-          // GoRouter.of(context).push(AppRouter.KProductView,extra:data );
           Navigator.push(context, MaterialPageRoute(
             builder: (context) {
               return ProductView(data: widget.data);
@@ -37,7 +36,6 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
         },
         child: Stack(children: [
           Container(
-            // height: SizeConfig.defaultSize! * 43,
             width: double.infinity,
             decoration: const BoxDecoration(
               color: AppColors.KPrimeColor,
@@ -141,7 +139,6 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
           Positioned(
             left: 0,
             child: FavoretIconItem(
-              
               data: widget.data,
             ),
           ),

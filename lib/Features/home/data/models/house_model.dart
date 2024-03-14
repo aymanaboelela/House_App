@@ -33,23 +33,30 @@ class HouseModel {
 
   HouseModel.fromMap(String id, Map<String, dynamic> map)
       : id = id,
-        idHouse = map['id House'],
-        typeHouse = map['Type House'],
-        numpersOfRoms = map['Number Of Rooms'],
-        price = map['Price'],
-        nameOfUniversity = map['Name Of University'],
-        airConditioner = map['Air Conditioner'],
-        wifi = map['Wi-Fi'],
-        singelRome = map['Rome Singel'],
-        naturalgas = map['Natural Gas'],
-        description = map['Description'],
-        gender = map['Gender'],
-        numpersOfBad = map['Number Of Beds'],
+        idHouse = map['id House']?? "" ,// Add null check and default value
+        typeHouse = map['Type House'] ?? '', // Add null check and default value
+        numpersOfRoms =
+            map['Number Of Rooms'] ?? '', // Add null check and default value
+        price = map['Price'] ?? '', // Add null check and default value
+        nameOfUniversity =
+            map['Name Of University'] ?? '', // Add null check and default value
+        airConditioner =
+            map['Air Conditioner'] ?? false, // Add null check and default value
+        wifi = map['Wi-Fi'] ?? false, // Add null check and default value
+        singelRome =
+            map['Rome Singel'] ?? false, // Add null check and default value
+        naturalgas =
+            map['Natural Gas'] ?? false, // Add null check and default value
+        description =
+            map['Description'] ?? '', // Add null check and default value
+        gender = map['Gender'] ?? '', // Add null check and default value
+        numpersOfBad =
+            map['Number Of Beds'] ?? '', // Add null check and default value
         url = map['Urls'] ?? [];
   Map<String, dynamic> toJson() {
     return {
       'id': id,
-      'idHouse': idHouse,
+      'id House': idHouse,
       'typeHouse': typeHouse,
       'numpersOfRoms': numpersOfRoms,
       'price': price,
@@ -64,6 +71,4 @@ class HouseModel {
       'url': url,
     };
   }
-
-  
 }

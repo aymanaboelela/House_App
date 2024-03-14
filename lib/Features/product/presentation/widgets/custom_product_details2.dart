@@ -43,7 +43,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                   Text(
                     " مفروشه",
                     style: GoogleFonts.cairo(
-                      fontSize: SizeConfig.defaultSize! * 1.8,
+                      fontSize: SizeConfig.defaultSize! * 1.6,
                     ),
                   ),
                   const SizeHorizontal(value: 8.2),
@@ -57,7 +57,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                             Text(
                               'Wi-Fi',
                               style: GoogleFonts.cairo(
-                                fontSize: SizeConfig.defaultSize! * 1.8,
+                                fontSize: SizeConfig.defaultSize! * 1.6,
                               ),
                             ),
                           ],
@@ -78,7 +78,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                             Text(
                               "غاز طبيعي",
                               style: GoogleFonts.cairo(
-                                fontSize: SizeConfig.defaultSize! * 1.8,
+                                fontSize: SizeConfig.defaultSize! * 1.6,
                               ),
                             ),
                             const SizeHorizontal(value: 7.2),
@@ -95,7 +95,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                             Text(
                               "غرفه سنجل",
                               style: GoogleFonts.cairo(
-                                fontSize: SizeConfig.defaultSize! * 1.8,
+                                fontSize: SizeConfig.defaultSize! * 1.6,
                               ),
                             ),
                           ],
@@ -115,7 +115,7 @@ class CustomProductDetailsFeatures extends StatelessWidget {
                           Text(
                             "تكيف",
                             style: GoogleFonts.cairo(
-                              fontSize: SizeConfig.defaultSize! * 1.8,
+                              fontSize: SizeConfig.defaultSize! * 1.6,
                             ),
                           ),
                         ],
