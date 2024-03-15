@@ -53,10 +53,11 @@ class AddNotFacationCubit extends Cubit<AddNotFacationState> {
   Future<void> addTokenInFirebaseWithUser(String token) async {
     await FirebaseFirestore.instance.collection('usertoken').doc(token).set({
       'userToken': token,
-      'message': "",
-      'time': "",
+      'message': "لم يقوم بارسال اي رساله",
+      'time': DateTime.now().toString(),
     }, SetOptions(merge: true));
   }
+
   Future<void> addTokenInFirebaseWithAdmin(String token) async {
     await FirebaseFirestore.instance.collection('Admintoken').doc(token).set({
       'userToken': token,

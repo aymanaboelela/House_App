@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/data/cubits/chat_card_cubit/chat_card_cubit.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/data/models/chat_card_model.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chat_whith_admin_view.dart';
@@ -23,6 +22,7 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
     super.initState();
     BlocProvider.of<ChatCardCubit>(context).buildChatCard();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,9 +50,9 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
               itemCount: chats.length,
               itemBuilder: (context, index) {
                 return ChatCard(
-                  lastMessage: chats[index].message,
+                  lastMessage: chats[index].message.toString()??"",
                   name: "مستخدم",
-                  time: chats[index].time.toString(),
+                  time: chats[index].time.toString()??"",
                   onTap: () async {
                     BlocProvider.of<ChatMessageCubit>(context)
                         .recivedMessage(usertoken: chats[index].userToken);
@@ -68,11 +68,13 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
                 );
               },
             );
-          }
-          if (state is ChatCardFailure) {
-            return Text('Error: ${state.message}');
           } else {
-            return Container();
+            return Center(
+              child: Text(
+                "يوجد مشكله في تحميل الشاتات",
+                style: TextStyle(fontFamily: "Cairo"),
+              ),
+            );
           }
         },
       ),

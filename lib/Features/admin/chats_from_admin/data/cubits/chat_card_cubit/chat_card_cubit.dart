@@ -8,6 +8,7 @@ class ChatCardCubit extends Cubit<ChatCardState> {
   ChatCardCubit() : super(ChatCardInitial());
   final CollectionReference usersCollection =
       FirebaseFirestore.instance.collection('usertoken');
+      
   Future<void> buildChatCard() async {
     emit(ChatCardLoading());
     try {

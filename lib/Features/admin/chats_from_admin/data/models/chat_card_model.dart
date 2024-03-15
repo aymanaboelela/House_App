@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 class ChatCardModel {
   final String userToken;
   final String message;
@@ -8,11 +7,12 @@ class ChatCardModel {
     required this.time,
     required this.userToken,
   });
+
   factory ChatCardModel.fromJson(dynamic jsonData) {
     return ChatCardModel(
-      userToken: jsonData['userToken']??"",
-      message: jsonData['message']??"",
-      time: jsonData['time']??"",
+      userToken: jsonData['userToken'] ?? "",
+      message: jsonData['message'] ?? "",
+      time: jsonData['time'] ?? DateTime.now().toString(),
     );
   }
 }

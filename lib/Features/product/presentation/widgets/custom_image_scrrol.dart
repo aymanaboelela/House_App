@@ -7,18 +7,18 @@ import 'package:lottie/lottie.dart';
 import '../../../../core/utils/assets.dart';
 import '../../../../core/utils/responsive.dart';
 
-class ScrollImage extends StatefulWidget {
-  ScrollImage({Key? key, required this.data, required this.autoPlay})
+class CustomScrollImage extends StatefulWidget {
+  CustomScrollImage({Key? key, required this.data, required this.autoPlay})
       : super(key: key);
 
   final HouseModel data;
   final bool autoPlay;
 
   @override
-  _ScrollImageState createState() => _ScrollImageState();
+  _CustomScrollImageState createState() => _CustomScrollImageState();
 }
 
-class _ScrollImageState extends State<ScrollImage> {
+class _CustomScrollImageState extends State<CustomScrollImage> {
   CarouselController carouselController = CarouselController();
   int currentPage = 0;
 

@@ -7,7 +7,7 @@ import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/view/product_view.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
 import '../../../../core/utils/responsive.dart';
-import '../../../product/presentation/widgets/image_scrrol.dart';
+import '../../../product/presentation/widgets/custom_image_scrrol.dart';
 
 class CustomhouseItem extends StatefulWidget {
   const CustomhouseItem({
@@ -46,7 +46,7 @@ class _CustomhouseItemState extends State<CustomhouseItem> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                ScrollImage(data: widget.data, autoPlay: false),
+                CustomScrollImage(data: widget.data, autoPlay: false),
                 const SizeVertical(value: 1),
                 Padding(
                   padding: EdgeInsets.symmetric(

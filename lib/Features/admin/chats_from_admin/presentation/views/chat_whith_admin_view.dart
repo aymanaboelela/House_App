@@ -22,10 +22,12 @@ class ChatWhithAdminView extends StatefulWidget {
 class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
   @override
   void initState() {
-    BlocProvider.of<AddNotFacationCubit>(context).addTokenInFirebaseWithAdmin(adminToken!);
+    BlocProvider.of<AddNotFacationCubit>(context)
+        .addTokenInFirebaseWithAdmin(adminToken!);
     setState(() {});
     super.initState();
   }
+
   TextEditingController textEditingController = TextEditingController();
   bool isMessageLoading = false;
   String? errorMessage;
@@ -37,9 +39,9 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
         message: textEditingController.text,
       );
 
-      textEditingController.clear();
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
-          "رساله جديده", textEditingController.text, widget.token.toString());
+          "📌رساله جديده", textEditingController.text, widget.token.toString());
+      textEditingController.clear();
     }
     setState(() {});
   }
@@ -92,20 +94,21 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
               : Padding(
                   padding: const EdgeInsets.only(top: 5),
                   child: ListView.builder(
-                    reverse: true,
-                    physics: const BouncingScrollPhysics(),
-                    itemCount: messageModel.length,
-                    itemBuilder: (context, index) =>
-                        messageModel[index].isAdmin == true
-                            ? ChatBubbleForCurrentUser(
-                                time: messageModel[index].timeTamp,
-                                message: messageModel[index].message,
-                              )
-                            : ChatBubbleForFriend(
-                                message: messageModel[index].message,
-                                time: messageModel[index].timeTamp,
-                              ),
-                  ),
+                      reverse: true,
+                      physics: const BouncingScrollPhysics(),
+                      itemCount: messageModel.length,
+                      itemBuilder: (context, index) =>
+                          messageModel[index].isAdmin == true
+                              ? ChatBubbleForFriend(
+                                  isAdmain: true,
+                                  message: messageModel[index].message,
+                                  time: messageModel[index].timeTamp,
+                                )
+                              : ChatBubbleForCurrentUser(
+                                  isAdmain: false,
+                                  time: messageModel[index].timeTamp,
+                                  message: messageModel[index].message,
+                                )),
                 );
         },
       ),

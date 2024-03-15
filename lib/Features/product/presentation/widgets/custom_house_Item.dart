@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
-import 'package:house_app_one/Features/product/presentation/widgets/image_scrrol.dart';
+import 'package:house_app_one/Features/product/presentation/widgets/custom_image_scrrol.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 
 import '../../../../core/thems/app/app_colors.dart';
@@ -23,29 +23,26 @@ class CoustomProductItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          
-          ScrollImage(data: data, autoPlay: true),
+          CustomScrollImage(data: data, autoPlay: true),
           Spacer(),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Spacer(),
-              Text(    
+              Text(
                 "${data.price} ج/ الشهر",
                 style: TextStyle(
-                  fontSize: SizeConfig.defaultSize! * 2.2,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Cairo"
-                ),
+                    fontSize: SizeConfig.defaultSize! * 2.2,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Cairo"),
               ),
               const Spacer(),
               Text(
                 "ID : ${data.idHouse}",
-                style:TextStyle(
-                  fontSize: SizeConfig.defaultSize! * 2.2,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: "Cairo"
-                ),
+                style: TextStyle(
+                    fontSize: SizeConfig.defaultSize! * 2.2,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: "Cairo"),
               ),
               const Spacer()
             ],

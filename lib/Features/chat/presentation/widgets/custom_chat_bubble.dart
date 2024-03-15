@@ -11,9 +11,11 @@ class ChatBubbleForCurrentUser extends StatelessWidget {
     Key? key,
     required this.message,
     required this.time,
+    required this.isAdmain,
   }) : super(key: key);
   final String time;
   final String message;
+  final bool isAdmain;
   @override
   Widget build(BuildContext context) {
     DateTime dateTime = DateTime.parse(time);
@@ -29,7 +31,9 @@ class ChatBubbleForCurrentUser extends StatelessWidget {
             child: CircleAvatar(
               radius: 17,
               backgroundColor: Colors.black,
-              backgroundImage: AssetImage(AppAssets.logo),
+              backgroundImage: isAdmain
+                  ? AssetImage(AppAssets.logo)
+                  : AssetImage(AppAssets.userImage),
             ),
           ),
           Stack(
@@ -72,9 +76,11 @@ class ChatBubbleForFriend extends StatelessWidget {
     Key? key,
     required this.message,
     required this.time,
+    required this.isAdmain,
   }) : super(key: key);
 
   final String message;
+  final bool isAdmain;
   final String time;
 
   @override
@@ -92,7 +98,9 @@ class ChatBubbleForFriend extends StatelessWidget {
             CircleAvatar(
               radius: 17,
               backgroundColor: Colors.black,
-              backgroundImage: AssetImage(AppAssets.userImage),
+              backgroundImage: isAdmain
+                  ? AssetImage(AppAssets.logo)
+                  : AssetImage(AppAssets.userImage),
             ),
             Stack(
               children: [

@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/add_not_facation_cubit.dart';
-import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_bubble.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_text_field.dart';
@@ -21,12 +20,6 @@ class ChatWhithUserView extends StatefulWidget {
 
 class _ChatWhithUserViewState extends State<ChatWhithUserView> {
   @override
-  void initState() {
-    setState(() {});
-    super.initState();
-  }
-
-  bool tokinisNul = false;
   TextEditingController textEditingController = TextEditingController();
   bool isMessageLoading = false;
   String? errorMessage;
@@ -37,14 +30,14 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
         userToken: userToken!,
         message: textEditingController.text,
       );
+
       BlocProvider.of<ChatMessageCubit>(context)
           .addMessageinChateCard(textEditingController.text, userToken!);
-      textEditingController.clear();
 
+//add notfacation in admine
       BlocProvider.of<AddNotFacationCubit>(context).sendNotification(
-          "رساله من مستخدم ",
-          textEditingController.text,
-          "token in admin ");
+          "رساله من مستخدم ", textEditingController.text, "token in admin ");
+      textEditingController.clear();
     }
     setState(() {});
   }
@@ -62,9 +55,11 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
         backgroundColor: MyColors.purple,
         shadowColor: MyColors.darkGrey,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25))),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
         title: Text(
           "الدعم الفني",
           style: GoogleFonts.cairo(),
@@ -104,10 +99,12 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
                     itemBuilder: (context, index) =>
                         messageModel[index].isAdmin == false
                             ? ChatBubbleForFriend(
+                                isAdmain: false,
                                 message: messageModel[index].message,
                                 time: messageModel[index].timeTamp,
                               )
                             : ChatBubbleForCurrentUser(
+                                isAdmain: true,
                                 time: messageModel[index].timeTamp,
                                 message: messageModel[index].message,
                               ),

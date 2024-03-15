@@ -14,11 +14,11 @@ class MessageModel {
 
   factory MessageModel.fromJson(dynamic jsonData) {
     return MessageModel(
-        adminEmail: jsonData['adminEmail'],
-        isAdmin: jsonData['isAdmin'],
-        userToken: jsonData['userToken'],
-        message: jsonData['message'],
-        timeTamp: jsonData['timeTamp']);
+        adminEmail: jsonData['adminEmail'] ?? "",
+        isAdmin: jsonData['isAdmin'] ?? "",
+        userToken: jsonData['userToken'] ?? "",
+        message: jsonData['message'] ?? "",
+        timeTamp: jsonData['timeTamp'] ?? "");
   }
   Map<String, dynamic> toJson() {
     return {

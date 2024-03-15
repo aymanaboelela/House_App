@@ -107,9 +107,11 @@ class _HomeScreenState extends State<OnBoardingViewBody> {
         showNoInternetAnimation = true;
       });
     } else {
-      setState(() {
-        showNoInternetAnimation = false;
-      });
+      setState(
+        () {
+          showNoInternetAnimation = false;
+        },
+      );
     }
   }
 }
