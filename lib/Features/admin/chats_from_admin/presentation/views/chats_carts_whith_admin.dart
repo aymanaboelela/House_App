@@ -50,9 +50,9 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
               itemCount: chats.length,
               itemBuilder: (context, index) {
                 return ChatCard(
-                  lastMessage: chats[index].message.toString()??"",
+                  lastMessage: chats[index].message.toString(),
                   name: "مستخدم",
-                  time: chats[index].time.toString()??"",
+                  time: chats[index].time.toString(),
                   onTap: () async {
                     BlocProvider.of<ChatMessageCubit>(context)
                         .recivedMessage(usertoken: chats[index].userToken);

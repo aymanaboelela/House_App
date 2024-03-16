@@ -4,11 +4,13 @@ import 'package:house_app_one/Features/admin/chats_from_admin/data/models/chat_c
 import 'package:meta/meta.dart';
 
 part 'chat_card_state.dart';
+
 class ChatCardCubit extends Cubit<ChatCardState> {
   ChatCardCubit() : super(ChatCardInitial());
-  final CollectionReference usersCollection =
-      FirebaseFirestore.instance.collection('usertoken');
-      
+  final Query<Map<String, dynamic>> usersCollection = FirebaseFirestore.instance
+      .collection('usertoken')
+      .orderBy('time', descending: true);
+
   Future<void> buildChatCard() async {
     emit(ChatCardLoading());
     try {
