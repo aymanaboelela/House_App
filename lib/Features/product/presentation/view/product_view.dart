@@ -38,7 +38,7 @@ class ProductView extends StatelessWidget {
                 data: data,
               ),
               const SizeVertical(value: 2.2),
-           CustomProductLocation(),
+              CustomProductLocation(),
               const SizeVertical(value: 2.2),
               CoustomProductDescription(
                 description: data.description,
@@ -47,6 +47,7 @@ class ProductView extends StatelessWidget {
               CustomProductCall(
                 data: data,
               ),
+              const SizeVertical(value: 2.2),
               const SizeVertical(value: 2.2),
             ],
           ),

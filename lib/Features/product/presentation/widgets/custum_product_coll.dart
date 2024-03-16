@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
-import 'package:house_app_one/core/utils/assets.dart';
-import 'package:lottie/lottie.dart';
+import 'package:house_app_one/Features/product/presentation/widgets/custom_call_item.dart';
+
+
 import '../../../../core/thems/app/app_colors.dart';
 import '../../../../core/utils/responsive.dart';
-import '../../../home/data/cubit/coll/coll_cubit.dart';
+
 
 class CustomProductCall extends StatelessWidget {
   const CustomProductCall({
@@ -23,7 +24,7 @@ class CustomProductCall extends StatelessWidget {
         color: AppColors.KPrimeColor,
       ),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 6),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -41,40 +42,20 @@ class CustomProductCall extends StatelessWidget {
               ),
             ),
             const SizeVertical(value: 3),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                InkWell(
-                  onTap: () {
-                    BlocProvider.of<CollCubit>(context).makePhoneCall(phoneNumber: '01021196367');
-                  },
-                  child: Container(
-                    height: SizeConfig.defaultSize! * 5,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white),
-                    child: Lottie.asset(AppAssets.phone,
-                        height: SizeConfig.defaultSize! * 4),
-                  ),
-                ),
-                SizeHorizontal(value: 3.2),
-                InkWell(
-                  onTap: () {
-                    BlocProvider.of<CollCubit>(context)
-                        .launchWhatsApp(phoneNumber: "01021196367",id: data.idHouse);
-                  },
-                  child: Container(
-                    height: SizeConfig.defaultSize! * 5,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.white),
-                    child: Lottie.asset(
-                      AppAssets.whatsapp,
-                    ),
-                  ),
-                ),
-              ],
+            CustomCallItem(phoneNumber: '01021196367', data: data),
+            SizeVertical(value: 2),
+            Divider(
+              endIndent: 20,
+              indent: 20,
             ),
+            Text(
+              "رقم اخر ",
+              style: GoogleFonts.cairo(
+                fontSize: SizeConfig.defaultSize! * 2,
+              ),
+            ),
+            SizeVertical(value: 1.5),
+            CustomCallItem(phoneNumber: '01202692317', data: data),
             SizeVertical(value: 2),
           ],
         ),
@@ -82,3 +63,4 @@ class CustomProductCall extends StatelessWidget {
     );
   }
 }
+
