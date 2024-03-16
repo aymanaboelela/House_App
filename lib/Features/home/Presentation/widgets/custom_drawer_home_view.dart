@@ -81,7 +81,7 @@ class CustomDrawerHomeView extends StatelessWidget {
                 title: Row(
                   children: [
                     Text(
-                      "مساعده",
+                      "حول التطبيق",
                       style: GoogleFonts.cairo(
                         fontWeight: FontWeight.w500,
                       ),
