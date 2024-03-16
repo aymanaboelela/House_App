@@ -21,8 +21,9 @@ class CollItem extends StatelessWidget {
         return Row(
           children: [
             CustomColl(
+              
               onTap: () {
-                BlocProvider.of<CollCubit>(context).makePhoneCall();
+                BlocProvider.of<CollCubit>(context).makePhoneCall(  phoneNumber: "01021196367");
               },
               color: Colors.blue,
               icon: Icons.phone,
@@ -31,7 +32,7 @@ class CollItem extends StatelessWidget {
             CustomColl(
               onTap: () {
                 BlocProvider.of<CollCubit>(context)
-                    .launchWhatsApp(data.idHouse);
+                    .launchWhatsApp(phoneNumber: '01021196367',id: data.idHouse);
               },
               color: const Color(0xFF4EFF75),
               icon: FontAwesomeIcons.whatsapp,

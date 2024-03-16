@@ -46,7 +46,7 @@ class CustomProductCall extends StatelessWidget {
               children: [
                 InkWell(
                   onTap: () {
-                    BlocProvider.of<CollCubit>(context).makePhoneCall();
+                    BlocProvider.of<CollCubit>(context).makePhoneCall(phoneNumber: '01021196367');
                   },
                   child: Container(
                     height: SizeConfig.defaultSize! * 5,
@@ -61,7 +61,7 @@ class CustomProductCall extends StatelessWidget {
                 InkWell(
                   onTap: () {
                     BlocProvider.of<CollCubit>(context)
-                        .launchWhatsApp(data.idHouse);
+                        .launchWhatsApp(phoneNumber: "01021196367",id: data.idHouse);
                   },
                   child: Container(
                     height: SizeConfig.defaultSize! * 5,

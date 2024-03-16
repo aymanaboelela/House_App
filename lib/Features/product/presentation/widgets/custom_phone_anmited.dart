@@ -15,12 +15,13 @@ class CustomPhoneAnmited extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        BlocProvider.of<CollCubit>(context).makePhoneCall();
+        BlocProvider.of<CollCubit>(context).makePhoneCall(phoneNumber: '01021196367');
       },
       child: Container(
         height: SizeConfig.defaultSize! * 6.2,
         width: SizeConfig.defaultSize! * 6.2,
         decoration: BoxDecoration(
+          
             borderRadius: BorderRadius.circular(20), color: Colors.white),
         child: Lottie.asset(
           AppAssets.phone,
