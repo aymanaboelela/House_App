@@ -1,5 +1,6 @@
 abstract class AppAssets {
   static const logo = 'assets/images/logo.png';
+  static const backgroundChat = 'assets/images/backgraedchat.jpg';
   static const locationPhoto = 'assets/images/locationPhoto.jpg';
   static const userImage = 'assets/images/userimage.png';
   static const onbording1 = 'assets/json/onbording1.json';

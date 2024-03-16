@@ -4,10 +4,8 @@ import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/widgets/custom_phone_anmited.dart';
 import 'package:house_app_one/core/utils/assets.dart';
-
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
-
 // ignore: must_be_immutable
 class HelpView extends StatelessWidget {
   HelpView({super.key});

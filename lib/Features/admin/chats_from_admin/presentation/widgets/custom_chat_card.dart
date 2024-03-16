@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
@@ -61,12 +60,15 @@ class ChatCard extends StatelessWidget {
                       style: GoogleFonts.cairo(fontSize: 20),
                     ),
                     SizeVertical(value: 1),
-                    Text(lastMessage,
-                        overflow: TextOverflow.ellipsis,
-                        style: GoogleFonts.cairo(
-                          fontSize: SizeConfig.defaultSize! * 1.6,
-                          color: MyColors.lightGrey,
-                        )),
+                    SizedBox(
+                      width: SizeConfig.defaultSize! * 20,
+                      child: Text(lastMessage,
+                          overflow: TextOverflow.ellipsis,
+                          style: GoogleFonts.cairo(
+                            fontSize: SizeConfig.defaultSize! * 1.6,
+                            color: MyColors.lightGrey,
+                          )),
+                    ),
                   ],
                 ),
               ),

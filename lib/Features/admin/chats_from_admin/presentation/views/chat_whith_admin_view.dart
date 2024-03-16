@@ -57,60 +57,70 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
         backgroundColor: MyColors.purple,
         shadowColor: MyColors.darkGrey,
         shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-                bottomLeft: Radius.circular(25),
-                bottomRight: Radius.circular(25))),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
         title: Text(
           "صفحه الادمن",
           style: GoogleFonts.cairo(),
         ),
       ),
-      body: BlocConsumer<ChatMessageCubit, ChatMessageState>(
-        listener: (context, state) {
-          if (state is ChatMessageLoading) {
-            isMessageLoading = true;
-          }
-          if (state is ChatSenderMessageSuccess) {
-            isMessageLoading = false;
-          }
-          if (state is ChatReciverMessageSuccess) {
-            isMessageLoading = false;
-            messageModel = state.data;
-          }
-          if (state is ChatMessageFailure) {
-            isMessageLoading = false;
-            errorMessage = state.message;
-          }
-        },
-        builder: (context, state) {
-          if (state is ChatReciverMessageSuccess) {
-            isMessageLoading = false;
-            messageModel = state.data;
-          }
-          return isMessageLoading
-              ? Center(
-                  child: Lottie.asset(AppAssets.Loding1),
-                )
-              : Padding(
-                  padding: const EdgeInsets.only(top: 5),
-                  child: ListView.builder(
-                      reverse: true,
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: messageModel.length,
-                      itemBuilder: (context, index) =>
-                          messageModel[index].isAdmin == true
-                              ? ChatBubbleForFriend(
-                                  isAdmain: true,
-                                  message: messageModel[index].message,
-                                  time: messageModel[index].timeTamp,
-                                )
-                              : ChatBubbleForCurrentUser(
-                                  isAdmain: false,
-                                  time: messageModel[index].timeTamp,
-                                  message: messageModel[index].message,
-                                )),
-                );
-        },
+      body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage(AppAssets.backgroundChat),
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: BlocConsumer<ChatMessageCubit, ChatMessageState>(
+          listener: (context, state) {
+            if (state is ChatMessageLoading) {
+              isMessageLoading = true;
+            }
+            if (state is ChatSenderMessageSuccess) {
+              isMessageLoading = false;
+            }
+            if (state is ChatReciverMessageSuccess) {
+              isMessageLoading = false;
+              messageModel = state.data;
+            }
+            if (state is ChatMessageFailure) {
+              isMessageLoading = false;
+              errorMessage = state.message;
+            }
+          },
+          builder: (context, state) {
+            if (state is ChatReciverMessageSuccess) {
+              isMessageLoading = false;
+              messageModel = state.data;
+            }
+            return isMessageLoading
+                ? Center(
+                    child: Lottie.asset(AppAssets.Loding1),
+                  )
+                : Padding(
+                    padding: const EdgeInsets.only(top: 5),
+                    child: ListView.builder(
+                        reverse: true,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: messageModel.length,
+                        itemBuilder: (context, index) =>
+                            messageModel[index].isAdmin == true
+                                ? ChatBubbleForFriend(
+                                    isAdmain: true,
+                                    message: messageModel[index].message,
+                                    time: messageModel[index].timeTamp,
+                                  )
+                                : ChatBubbleForCurrentUser(
+                                    isAdmain: false,
+                                    time: messageModel[index].timeTamp,
+                                    message: messageModel[index].message,
+                                  )),
+                  );
+          },
+        ),
       ),
       bottomNavigationBar: Padding(
         padding: const EdgeInsets.only(bottom: 10),
