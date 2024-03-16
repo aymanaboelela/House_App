@@ -17,7 +17,7 @@ class HelpView extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          "مساعدة",
+          "حول التطبيبق",
           style: GoogleFonts.cairo(),
         ),
         centerTitle: true,
