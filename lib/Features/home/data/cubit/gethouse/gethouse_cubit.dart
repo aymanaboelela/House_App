@@ -164,7 +164,6 @@ class GethouseCubit extends Cubit<GethouseState> {
           .collection('houses')
           .doc(documentId)
           .set(newData);
-      SetOptions(merge: true);
       emit(IsSucssesEditHouse());
     } catch (e) {
       emit(

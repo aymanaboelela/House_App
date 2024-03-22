@@ -42,7 +42,7 @@ class CustomProductDetails extends StatelessWidget {
                   ),
                   Spacer(),
                   Text(
-                    "عدد الغرف : $numberOfBeds",
+                    "عدد الغرف : $numberOfRooms",
                     style: GoogleFonts.cairo(
                       fontSize: SizeConfig.defaultSize! * 1.6,
                     ),
@@ -61,7 +61,7 @@ class CustomProductDetails extends StatelessWidget {
                   ),
                   Spacer(),
                   Text(
-                    "عدد السرائر : $numberOfRooms",
+                    "عدد السرائر : $numberOfBeds",
                     style: GoogleFonts.cairo(
                       fontSize: SizeConfig.defaultSize! * 1.6,
                     ),

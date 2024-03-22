@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
@@ -44,8 +45,10 @@ class _SplashViewbodyState extends State<SplashViewbody>
     SizeConfig().init(context);
     return Scaffold(
       backgroundColor: const Color.fromARGB(137, 25, 25, 25),
-      body: Stack(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Spacer(),
           // Image.asset(kBackGrawendSplash),
           AnimatedBuilder(
             animation: animation!,
@@ -58,7 +61,16 @@ class _SplashViewbodyState extends State<SplashViewbody>
                 ),
               ),
             ),
-          )
+          ),
+          Spacer(),
+          Text(
+            "رقم الاصدار : 1.0.0",
+            style: TextStyle(
+              color: Colors.grey,
+              fontFamily: "Cairo",
+            ),
+          ),
+          SizeVertical(value: 2)
         ],
       ),
     );
@@ -67,7 +79,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
   void getToNewScreen() {
     Future.delayed(
         const Duration(
-          seconds: 3,
+          days: 3,
         ), () {
       hasSeenOnboarding == false
           ? GoRouter.of(context).pushReplacement(
