@@ -163,7 +163,7 @@ class GethouseCubit extends Cubit<GethouseState> {
       await FirebaseFirestore.instance
           .collection('houses')
           .doc(documentId)
-          .set(newData);
+          .set(newData, SetOptions(merge: true));
       emit(IsSucssesEditHouse());
     } catch (e) {
       emit(
