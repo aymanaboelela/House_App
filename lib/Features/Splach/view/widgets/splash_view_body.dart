@@ -38,7 +38,6 @@ class _SplashViewbodyState extends State<SplashViewbody>
     animationController?.dispose();
     super.dispose();
   }
-
   bool hasSeenOnboarding = CacheData.getdata(key: 'hasSeenOnboarding') ?? false;
   @override
   Widget build(BuildContext context) {
