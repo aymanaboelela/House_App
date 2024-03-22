@@ -79,7 +79,7 @@ class _SplashViewbodyState extends State<SplashViewbody>
   void getToNewScreen() {
     Future.delayed(
         const Duration(
-          days: 3,
+          seconds: 3,
         ), () {
       hasSeenOnboarding == false
           ? GoRouter.of(context).pushReplacement(
