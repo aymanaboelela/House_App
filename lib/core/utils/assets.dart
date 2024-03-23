@@ -17,6 +17,7 @@ abstract class AppAssets {
   static const login = 'assets/json/login.json';
   static const locationMarker = 'assets/json/location_marker.json';
   static const delete = 'assets/json/delete.json';
+  static const rating = 'assets/json/rating.json';
 }
 abstract class AppStyle {
   static const nightmode = 'assets/map_style/night_mode.json';

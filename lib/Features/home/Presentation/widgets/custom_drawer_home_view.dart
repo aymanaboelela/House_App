@@ -94,6 +94,23 @@ class CustomDrawerHomeView extends StatelessWidget {
                   GoRouter.of(context).push(AppRouter.kHelpView);
                 },
               ),
+              ListTile(
+                title: Row(
+                  children: [
+                    Text(
+                      "تقيم التطبيق",
+                      style: GoogleFonts.cairo(
+                        fontWeight: FontWeight.w500,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios_rounded),
+                  ],
+                ),
+                onTap: () {
+                  GoRouter.of(context).push(AppRouter.KRitingView);
+                },
+              ),
             ],
           ),
           Positioned(

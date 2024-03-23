@@ -8,6 +8,7 @@ import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
 import 'package:house_app_one/Features/google_maps/presentation/views/location_view.dart';
 import 'package:house_app_one/Features/home/Presentation/views/notfacation_view.dart';
+import 'package:house_app_one/Features/home/Presentation/views/rating_view.dart';
 import 'package:house_app_one/Features/location_inversty/presentation/views/location_university_view.dart';
 import 'package:house_app_one/Features/navbar/presentation/views/nave_home_bar.dart';
 import '../../Features/Auth/presentation/view/login_view.dart';
@@ -32,6 +33,7 @@ abstract class AppRouter {
   static const KLocationInuniversityView = '/LocationInuniversityView';
   static const KLoginView = '/loginview';
   static const KChatFromUserView = '/chatfromuserview';
+  static const KRitingView = '/ritingview';
 //admin
   static const KAdminHome = '/admininhome';
   static const KAddProductView = '/addproduct';
@@ -91,6 +93,11 @@ abstract class AppRouter {
         path: KChatFromUserView,
         builder: (context, state) => ChatWhithUserView(),
       ),
+      GoRoute(
+        path: KRitingView,
+        builder: (context, state) => RatingView(),
+      ),
+
       // admin ?????????????
       GoRoute(
         path: KAdminHome,

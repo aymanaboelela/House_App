@@ -6,6 +6,7 @@ import 'package:house_app_one/Features/product/presentation/widgets/custom_phone
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:lottie/lottie.dart';
+
 // ignore: must_be_immutable
 class HelpView extends StatelessWidget {
   HelpView({super.key});
@@ -75,6 +76,14 @@ class HelpView extends StatelessWidget {
             ),
             SizeVertical(value: 2),
             CustomPhoneAnmited(),
+            SizeVertical(value: 2),
+            Text(
+              "رقم الاصدار : 1.0.0",
+              style: TextStyle(
+                fontFamily: "cairo",
+              ),
+            ),
+            SizeVertical(value: 2),
           ],
         ),
       ),
