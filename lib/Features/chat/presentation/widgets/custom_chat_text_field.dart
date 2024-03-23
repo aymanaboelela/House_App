@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 
 class CustomChatTextField extends StatefulWidget {
   const CustomChatTextField({
@@ -25,7 +25,7 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
       child: Padding(
         padding: const EdgeInsets.only(right: 10, left: 10, top: 10, bottom: 5),
         child: TextField(
-          cursorColor: foucsColor ? MyColors.purple : MyColors.lightGrey,
+          cursorColor: foucsColor ? AppColors.purple : AppColors.lightGrey,
           controller: widget.controller,
           onTap: () {
             foucsColor = true;
@@ -37,19 +37,19 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
           //   foucsColor = false;
           //   setState(() {});
           // },
-          style: const TextStyle(color: MyColors.white),
+          style: const TextStyle(color: AppColors.white),
           decoration: InputDecoration(
             filled: true,
-            fillColor: MyColors.darkGrey2,
+            fillColor: AppColors.darkGrey2,
             hintText: ' اكتب استفسارك',
-            hintStyle: const TextStyle(color: MyColors.lightGrey),
+            hintStyle: const TextStyle(color: AppColors.lightGrey),
             suffixIcon: IconButton(
               onPressed: widget.onPressed,
               icon: Padding(
                 padding: const EdgeInsets.only(right: 10),
                 child: Icon(
                   Icons.send_rounded,
-                  color: foucsColor ? MyColors.purple : MyColors.lightGrey,
+                  color: foucsColor ? AppColors.purple : AppColors.lightGrey,
                   size: 30,
                 ),
               ),
@@ -64,7 +64,7 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
             focusedBorder: const OutlineInputBorder(
               borderSide: BorderSide(
                 width: 2,
-                color: MyColors.purple,
+                color: AppColors.purple,
               ),
             ),
           ),

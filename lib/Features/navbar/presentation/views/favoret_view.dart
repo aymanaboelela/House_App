@@ -13,14 +13,14 @@ class FavoriteProductsView extends StatefulWidget {
   @override
   State<FavoriteProductsView> createState() => _FavoriteProductsViewState();
 }
+
 class _FavoriteProductsViewState extends State<FavoriteProductsView> {
   @override
   void initState() {
     BlocProvider.of<GethouseCubit>(context).getFavoriteData(token: userToken!);
-    data = BlocProvider.of<GethouseCubit>(context).dataIsFavorite;
-    setState(() {});
     super.initState();
   }
+
   List<HouseModel> data = [];
   @override
   Widget build(BuildContext context) {

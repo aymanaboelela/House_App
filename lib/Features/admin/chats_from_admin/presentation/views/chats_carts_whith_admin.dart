@@ -5,8 +5,8 @@ import 'package:house_app_one/Features/admin/chats_from_admin/data/cubits/chat_c
 import 'package:house_app_one/Features/admin/chats_from_admin/data/models/chat_card_model.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chat_whith_admin_view.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/widgets/custom_chat_card.dart';
-import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:lottie/lottie.dart';
 
@@ -38,7 +38,7 @@ class _ChatsInEdminState extends State<ChatsInEdmin> {
           bottomRight: Radius.circular(25),
         )),
         elevation: BorderSide.strokeAlignOutside,
-        backgroundColor: MyColors.purple,
+        backgroundColor: AppColors.purple,
       ),
       body: BlocBuilder<ChatCardCubit, ChatCardState>(
         builder: (context, state) {

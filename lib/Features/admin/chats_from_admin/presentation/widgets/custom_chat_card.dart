@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:intl/intl.dart';
@@ -34,16 +34,16 @@ class ChatCard extends StatelessWidget {
           padding: const EdgeInsets.all(10),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
-            color: MyColors.darkGrey2,
+            color: AppColors.darkGrey2,
             border: Border.symmetric(
-              horizontal: BorderSide(width: 2, color: MyColors.black),
+              horizontal: BorderSide(width: 2, color: AppColors.black),
             ),
           ),
           child: Stack(
             children: [
               CircleAvatar(
                 radius: SizeConfig.defaultSize! * 4,
-                backgroundColor: MyColors.darkGrey,
+                backgroundColor: AppColors.darkGrey,
                 backgroundImage: AssetImage(
                   AppAssets.userImage,
                 ),
@@ -66,7 +66,7 @@ class ChatCard extends StatelessWidget {
                           overflow: TextOverflow.ellipsis,
                           style: GoogleFonts.cairo(
                             fontSize: SizeConfig.defaultSize! * 1.6,
-                            color: MyColors.lightGrey,
+                            color: AppColors.lightGrey,
                           )),
                     ),
                   ],

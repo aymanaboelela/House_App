@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
-import 'package:house_app_one/core/utils/responsive.dart';
 
 import 'package:intl/intl.dart';
 
@@ -49,13 +48,13 @@ class ChatBubbleForCurrentUser extends StatelessWidget {
                     topRight: Radius.circular(25),
                     bottomRight: Radius.circular(25),
                   ),
-                  color: MyColors.darkGrey2,
+                  color: AppColors.darkGrey2,
                 ),
                 child: Text(message,
                     textAlign: TextAlign.start,
                     style: GoogleFonts.cairo(
                       fontSize: 18,
-                      color: MyColors.white,
+                      color: AppColors.white,
                     )),
               ),
               Positioned(

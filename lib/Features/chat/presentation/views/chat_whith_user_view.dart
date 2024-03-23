@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/add_not_facation_cubit.dart';
-import 'package:house_app_one/Features/chat/presentation/widgets/color.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_bubble.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_text_field.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:lottie/lottie.dart';
 
@@ -51,7 +51,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
       appBar: AppBar(
         centerTitle: true,
         elevation: BorderSide.strokeAlignOutside,
-        backgroundColor: MyColors.purple,
+        backgroundColor: AppColors.purple,
         shadowColor: Color(0xff053936),
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
