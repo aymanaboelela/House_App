@@ -34,7 +34,7 @@ class AddClientCubit extends Cubit<AddClientState> {
             'name': name,
             'phone Number': phoneNumber,
             'Price': price,
-            'name Of University':nameOfUniversity,
+            'name Of University': nameOfUniversity,
             'Url': imageUrls,
             'Date': FieldValue.serverTimestamp(),
           },
@@ -60,6 +60,17 @@ class AddClientCubit extends Cubit<AddClientState> {
   Future<void> pickImageFromCamera() async {
     try {
       pickedFile = await imagePicker.pickImage(source: ImageSource.camera);
+      if (pickedFile != null) {
+        await addImage();
+      }
+    } catch (e) {
+      print('Error picking image from camera: $e');
+    }
+  }
+
+  Future<void> pickImageFromphone() async {
+    try {
+      pickedFile = await imagePicker.pickImage(source: ImageSource.gallery);
       if (pickedFile != null) {
         await addImage();
       }

@@ -19,7 +19,6 @@ class ChatWhithUserView extends StatefulWidget {
 }
 
 class _ChatWhithUserViewState extends State<ChatWhithUserView> {
-  @override
   TextEditingController textEditingController = TextEditingController();
   bool isMessageLoading = false;
   String? errorMessage;

@@ -21,7 +21,7 @@ class AddClientView extends StatefulWidget {
 
 class _AddClientViewState extends State<AddClientView> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-   TextEditingController _controller = TextEditingController();
+  TextEditingController _controller = TextEditingController();
   @override
   // ignore: override_on_non_overriding_member
   String? name;
@@ -162,15 +162,29 @@ class _AddClientViewState extends State<AddClientView> {
                           style: GoogleFonts.cairo(fontSize: 20),
                         ),
                         SizeVertical(value: 1),
-                        IconButton(
-                          onPressed: () {
-                            BlocProvider.of<AddClientCubit>(context)
-                                .pickImageFromCamera();
-                          },
-                          icon: Icon(
-                            Icons.photo_rounded,
-                            size: 45,
-                          ),
+                        Row(
+                          children: [
+                            IconButton(
+                              onPressed: () {
+                                BlocProvider.of<AddClientCubit>(context)
+                                    .pickImageFromCamera();
+                              },
+                              icon: Icon(
+                                Icons.camera_alt,
+                                size: 45,
+                              ),
+                            ),
+                            IconButton(
+                              onPressed: () {
+                                BlocProvider.of<AddClientCubit>(context)
+                                    .pickImageFromphone();
+                              },
+                              icon: Icon(
+                                Icons.photo_rounded,
+                                size: 45,
+                              ),
+                            ),
+                          ],
                         ),
                         SizeVertical(value: 2),
                         CustomGeneralButton(
