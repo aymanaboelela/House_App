@@ -20,6 +20,6 @@ class CustomIsFavoretIsEmpty extends StatelessWidget {
         ],
       ),
     );
-    ;
+    
   }
 }

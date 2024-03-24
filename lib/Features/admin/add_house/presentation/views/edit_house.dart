@@ -16,10 +16,9 @@ import '../../data/cubit/add_house/add_house_cubit.dart';
 import '../widgets/custom_check_bok.dart';
 import '../widgets/custom_select_numper_of_bad.dart';
 
-// ignore: must_be_immutable
 class EditHouseView extends StatefulWidget {
   EditHouseView({Key? key, required this.index}) : super(key: key);
-  @override
+  
   final int index;
   State<EditHouseView> createState() => _EditProductState();
 }

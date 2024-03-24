@@ -21,7 +21,7 @@ class OnBoardingViewBody extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<OnBoardingViewBody> {
-  @override
+  
   late StreamSubscription<ConnectivityResult> subscription;
   void initState() {
     BlocProvider.of<GetNotfacationCubit>(context).getTokenWithUser();
