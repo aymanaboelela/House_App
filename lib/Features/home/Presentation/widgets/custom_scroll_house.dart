@@ -1,3 +1,4 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -11,6 +12,9 @@ import 'package:house_app_one/Features/home/Presentation/widgets/custom_llocatio
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/home/data/models/fliters_modes.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
+import 'package:house_app_one/core/widgets/custom_error_massege.dart';
+import 'package:lottie/lottie.dart';
+import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../core/utils/app_route.dart';
 import '../../../../core/utils/assets.dart';
 import '../../data/models/house_model.dart';
@@ -27,28 +31,29 @@ class CustomScrollHouse extends StatefulWidget {
 class _CustomScrollHouseState extends State<CustomScrollHouse> {
   @override
   void initState() {
-    data = BlocProvider.of<GethouseCubit>(context).data;
     super.initState();
+    BlocProvider.of<GethouseCubit>(context).getData();
   }
+
+  List<FlitersModel> fliters(BuildContext context) => [
+        FlitersModel(
+          name: "كل العقارات",
+          onTap: () => bottomSheetInAllHouses(context),
+        ),
+        FlitersModel(
+          name: "نوع المستاجر",
+          onTap: () => bottomSheateIsGenger(context),
+        ),
+        FlitersModel(
+          name: "نوع العقار",
+          onTap: () => bottomSheettyphouse(context),
+        ),
+      ];
 
   List<HouseModel> data = [];
   int selectFilter = 0;
   @override
   Widget build(BuildContext context) {
-    List<FlitersModel> fliters = [
-      FlitersModel(
-        name: "كل العقارات",
-        onTap: () => bottomSheetInAllHouses(context),
-      ),
-      FlitersModel(
-        name: "نوع المستاجر",
-        onTap: () => bottomSheateIsGenger(context),
-      ),
-      FlitersModel(
-        name: "نوع العقار",
-        onTap: () => bottomSheettyphouse(context),
-      ),
-    ];
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -57,7 +62,6 @@ class _CustomScrollHouseState extends State<CustomScrollHouse> {
             "AkOdO",
             style: GoogleFonts.spaceGrotesk(
               fontWeight: FontWeight.w700,
-              // color: Color.fromARGB(255, 228, 199, 7),
             ),
           ),
           actions: [
@@ -66,7 +70,6 @@ class _CustomScrollHouseState extends State<CustomScrollHouse> {
                 FirebaseAuth.instance.currentUser == null
                     ? GoRouter.of(context).push(AppRouter.KLoginView)
                     : GoRouter.of(context).push(AppRouter.KAdminHome);
-                ;
               },
               child: Image.asset(
                 AppAssets.logo,
@@ -86,23 +89,25 @@ class _CustomScrollHouseState extends State<CustomScrollHouse> {
         ),
         SliverToBoxAdapter(
           child: SizedBox(
-            height: 50, // ارتفاع الـ CustomFilterSelect
+            height: 46,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: fliters.length,
+              itemCount: fliters(context).length,
               itemBuilder: (BuildContext context, int index) {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 6),
                   child: InkWell(
                     onTap: () {
-                      fliters[index].onTap();
+                      fliters(context)[index].onTap();
                       if (selectFilter != index) {
-                        selectFilter = index;
-                        setState(() {});
+                        setState(() {
+                          selectFilter = index;
+                        });
                       }
                     },
                     child: CustomFilterSelect(
-                        title: fliters[index], isSelect: selectFilter == index),
+                        title: fliters(context)[index],
+                        isSelect: selectFilter == index),
                   ),
                 );
               },
@@ -112,14 +117,42 @@ class _CustomScrollHouseState extends State<CustomScrollHouse> {
         const SliverToBoxAdapter(
           child: SizeVertical(value: 3),
         ),
-        SliverList.builder(
-          itemCount: data.length,
-          itemBuilder: (context, index) {
-            return data.isEmpty
-                ? CustomDataIsEmpty()
-                : CustomhouseItem(
-                    data: data[index],
-                  );
+        BlocConsumer<GethouseCubit, GethouseState>(
+          listener: (context, state) {
+            if (state is IsFailureGetHouse) {
+              CustomError.error(
+                context,
+                dialogType: DialogType.error,
+                title: "فشل",
+                desc: "فشلت جلب العقارات",
+              );
+            }
+            if (state is IsDataIsEmptyGetHouse) {
+              CustomError.error(
+                context,
+                dialogType: DialogType.info,
+                title: "مشكله",
+                desc: "لايوجد عقار بهذا الوصف حاول في وقت اخر",
+              );
+            }
+          },
+          builder: (context, state) {
+            return SliverList(
+              delegate: SliverChildBuilderDelegate(
+                (BuildContext context, int index) {
+                  if (state is IsLodingGetHouse) {
+                    return Lottie.asset(AppAssets.Loding1);
+                  } else if (state is IsSuccessGetHouse) {
+                    final data = state.data;
+                    return data.isEmpty
+                        ? CustomDataIsEmpty()
+                        : CustomhouseItem(data: data[index]);
+                  }
+                  return CustomDataIsEmpty();
+                },
+                childCount: state is IsSuccessGetHouse ? state.data.length : 1,
+              ),
+            );
           },
         ),
       ],

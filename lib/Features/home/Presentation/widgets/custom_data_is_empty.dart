@@ -8,9 +8,13 @@ class CustomDataIsEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Text(
-        "هناك مشكله برجاء المحاوله في وقت لاحق",
-        style: TextStyle(fontFamily: "Cairo"),
+      child: Column(
+        children: [
+          Text(
+            "هناك مشكله برجاء المحاوله في وقت لاحق",
+            style: TextStyle(fontFamily: "Cairo"),
+          ),
+        ],
       ),
     );
   }
