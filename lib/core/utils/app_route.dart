@@ -2,7 +2,6 @@ import 'package:go_router/go_router.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/client_details_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/get_client_view.dart';
 import 'package:house_app_one/Features/admin/add_client/presentation/views/search_in_client.dart';
-import 'package:house_app_one/Features/admin/add_notfacation/presentation/views/add_notfacation_view.dart';
 import 'package:house_app_one/Features/chat/presentation/views/chat_whith_user_view.dart';
 import 'package:house_app_one/Features/admin/chats_from_admin/presentation/views/chats_carts_whith_admin.dart';
 import 'package:house_app_one/Features/communication/presentation/view/help_view.dart';
@@ -44,7 +43,7 @@ abstract class AppRouter {
   static const KSearchInMangerView = '/searchinmangerview';
   static const KHouseMangersViewe = '/housemangersview';
   static const KAddClientView = '/addclientview';
-  static const KAddNotfacation = '/addnotfacation';
+
   static const KClinetDetailsView = '/clinetdetailsview';
   static const KGetClientView = '/getclientview';
   static const KSearchClientView = '/searchclientview';
@@ -135,10 +134,7 @@ abstract class AppRouter {
         path: KAddClientView,
         builder: (context, state) => AddClientView(),
       ),
-      GoRoute(
-        path: KAddNotfacation,
-        builder: (context, state) => AddNotFacation(),
-      ),
+  
       GoRoute(
         path: KClinetDetailsView,
         builder: (context, state) => ClinetDetailsView(),

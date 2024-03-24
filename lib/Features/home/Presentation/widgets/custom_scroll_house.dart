@@ -14,7 +14,6 @@ import 'package:house_app_one/Features/home/data/models/fliters_modes.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:lottie/lottie.dart';
-import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 import '../../../../core/utils/app_route.dart';
 import '../../../../core/utils/assets.dart';
 import '../../data/models/house_model.dart';
