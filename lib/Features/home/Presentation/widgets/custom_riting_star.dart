@@ -13,8 +13,7 @@ class _CustomRatingBarState extends State<CustomRatingBar> {
   @override
   Widget build(BuildContext context) {
     return RatingBar.builder(
-      initialRating: 2,
-      
+      initialRating: 3,
       glow: true,
       minRating: 1,
       direction: Axis.horizontal,

@@ -10,6 +10,7 @@ import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
 import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
+import 'package:house_app_one/core/widgets/custom_app_bar.dart';
 import 'package:lottie/lottie.dart';
 
 class ChatWhithAdminView extends StatefulWidget {
@@ -51,22 +52,7 @@ class _ChatWhithUserViewState extends State<ChatWhithAdminView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.darkGrey,
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: BorderSide.strokeAlignOutside,
-        backgroundColor: AppColors.purple,
-        shadowColor: AppColors.darkGrey,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
-          ),
-        ),
-        title: Text(
-          "صفحه الادمن",
-          style: GoogleFonts.cairo(),
-        ),
-      ),
+      appBar: CustomAppBar.customAppBar(title: "صفحه الادمن"),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(

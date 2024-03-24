@@ -2,9 +2,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_riting_star.dart';
-import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
+import 'package:house_app_one/core/widgets/custom_app_bar.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:lottie/lottie.dart';
 
@@ -65,29 +65,19 @@ class _RatingViewState extends State<RatingView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: BorderSide.strokeAlignOutside,
-        backgroundColor: AppColors.purple,
-        shadowColor: Color(0xff053936),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
-          ),
-        ),
-        title: Text(
-          "تقييم التطبيق",
-          style: GoogleFonts.cairo(),
-        ),
-      ),
+      appBar: CustomAppBar.customAppBar(title: "تقيم التطبيق"),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            Lottie.asset(AppAssets.rating),
-            Text("  قم بتقييم التطبيق  🥰",
-                style: GoogleFonts.cairo(fontSize: 18)),
+            SizeVertical(value: 2),
+            Lottie.asset(AppAssets.rating,
+                height: SizeConfig.defaultSize! * 25),
+            SizeVertical(value: 2),
+            Text(
+              "  قم بتقييم التطبيق  🥰",
+              style: GoogleFonts.cairo(fontSize: 20),
+            ),
             SizeVertical(value: 2),
             Center(
               child: CustomRatingBar(

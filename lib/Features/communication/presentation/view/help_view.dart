@@ -3,9 +3,9 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_divider.dart';
 import 'package:house_app_one/Features/home/data/models/house_model.dart';
 import 'package:house_app_one/Features/product/presentation/widgets/custom_phone_anmited.dart';
-import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
+import 'package:house_app_one/core/widgets/custom_app_bar.dart';
 import 'package:lottie/lottie.dart';
 
 // ignore: must_be_immutable
@@ -15,22 +15,7 @@ class HelpView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: BorderSide.strokeAlignOutside,
-        backgroundColor: AppColors.purple,
-        shadowColor: Color(0xff053936),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
-          ),
-        ),
-        title: Text(
-          "حول التطبيق",
-          style: GoogleFonts.cairo(),
-        ),
-      ),
+      appBar: CustomAppBar.customAppBar(title: "حول التطبيق"),
       body: SingleChildScrollView(
         padding: EdgeInsets.all(16.0),
         child: Column(

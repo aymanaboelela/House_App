@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/add_not_facation_cubit.dart';
 import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_bubble.dart';
@@ -8,8 +7,8 @@ import 'package:house_app_one/Features/chat/presentation/widgets/custom_chat_tex
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_cubit.dart';
 import 'package:house_app_one/Features/communication/data/cubits/chat_cubit/chat_state.dart';
 import 'package:house_app_one/Features/communication/data/models/message_model.dart';
-import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
+import 'package:house_app_one/core/widgets/custom_app_bar.dart';
 import 'package:lottie/lottie.dart';
 
 class ChatWhithUserView extends StatefulWidget {
@@ -47,22 +46,7 @@ class _ChatWhithUserViewState extends State<ChatWhithUserView> {
     BlocProvider.of<ChatMessageCubit>(context)
         .recivedMessage(usertoken: userToken.toString());
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: BorderSide.strokeAlignOutside,
-        backgroundColor: AppColors.purple,
-        shadowColor: Color(0xff053936),
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            bottomLeft: Radius.circular(25),
-            bottomRight: Radius.circular(25),
-          ),
-        ),
-        title: Text(
-          "الدعم الفني",
-          style: GoogleFonts.cairo(),
-        ),
-      ),
+      appBar: CustomAppBar.customAppBar(title: "الدعم الفني"),
       body: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
