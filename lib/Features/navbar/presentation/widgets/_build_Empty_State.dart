@@ -1,8 +1,10 @@
-  import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/core/utils/assets.dart';
+
 import 'package:lottie/lottie.dart';
-  class CustomIsFavoretIsEmpty extends StatelessWidget {
+
+class CustomIsFavoretIsEmpty extends StatelessWidget {
   const CustomIsFavoretIsEmpty({super.key});
 
   @override
@@ -17,6 +19,7 @@ import 'package:lottie/lottie.dart';
           ),
         ],
       ),
-    );;
+    );
+    ;
   }
 }

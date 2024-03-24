@@ -6,8 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/admin/add_notfacation/data/get_notfacation/get_notfacation_cubit.dart';
 import 'package:house_app_one/Features/admin/admin_home/presentation/widgets/custom_drawer_admin.dart';
 import 'package:house_app_one/core/utils/app_route.dart';
-
-
 import '../widgets/custom_admin_select.dart';
 
 class AdminHome extends StatelessWidget {

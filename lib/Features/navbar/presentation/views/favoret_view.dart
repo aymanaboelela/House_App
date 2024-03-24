@@ -5,6 +5,7 @@ import 'package:house_app_one/Features/Splach/view/widgets/splash_view_body.dart
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_house_item._in_home_view.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
 import 'package:house_app_one/Features/navbar/presentation/widgets/_build_Empty_State.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:lottie/lottie.dart';
 import '../../../home/data/models/house_model.dart';
@@ -26,8 +27,18 @@ class _FavoriteProductsViewState extends State<FavoriteProductsView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        elevation: BorderSide.strokeAlignOutside,
+        backgroundColor: AppColors.purple,
+        shadowColor: Color(0xff053936),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
         title: Text(
-          "قائمه المفضله",
+          "قائمة المفضلات",
           style: GoogleFonts.cairo(),
         ),
       ),

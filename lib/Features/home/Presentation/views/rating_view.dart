@@ -2,15 +2,20 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_riting_star.dart';
+import 'package:house_app_one/core/thems/app/app_colors.dart';
 import 'package:house_app_one/core/utils/assets.dart';
+import 'package:house_app_one/core/utils/responsive.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:lottie/lottie.dart';
+
 enum Availability { loading, available, unavailable }
+
 class RatingView extends StatefulWidget {
   const RatingView({Key? key}) : super(key: key);
   @override
   State<RatingView> createState() => _RatingViewState();
 }
+
 class _RatingViewState extends State<RatingView> {
   final InAppReview _inAppReview = InAppReview.instance;
   String _appStoreId = 'com.akodo.akodo';
@@ -61,9 +66,19 @@ class _RatingViewState extends State<RatingView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text(
-          "تقيم التطبيق",
-          style: TextStyle(fontFamily: "Cairo"),
+        centerTitle: true,
+        elevation: BorderSide.strokeAlignOutside,
+        backgroundColor: AppColors.purple,
+        shadowColor: Color(0xff053936),
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(25),
+            bottomRight: Radius.circular(25),
+          ),
+        ),
+        title: Text(
+          "تقييم التطبيق",
+          style: GoogleFonts.cairo(),
         ),
       ),
       body: Padding(
@@ -71,6 +86,9 @@ class _RatingViewState extends State<RatingView> {
         child: Column(
           children: [
             Lottie.asset(AppAssets.rating),
+            Text("  قم بتقييم التطبيق  🥰",
+                style: GoogleFonts.cairo(fontSize: 18)),
+            SizeVertical(value: 2),
             Center(
               child: CustomRatingBar(
                 ratingCallback: (rating) {
@@ -88,4 +106,3 @@ class _RatingViewState extends State<RatingView> {
     );
   }
 }
-

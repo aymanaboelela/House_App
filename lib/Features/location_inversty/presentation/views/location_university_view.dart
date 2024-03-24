@@ -48,6 +48,7 @@ class _LocationUniversitySearchBarViewState
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: EasySearchBar(
+        
         title: Text(
           'اختار الجامعه',
           style: GoogleFonts.cairo(),
