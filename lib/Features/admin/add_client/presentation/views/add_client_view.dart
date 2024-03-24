@@ -10,7 +10,6 @@ import 'package:house_app_one/core/widgets/custom_error_massege.dart';
 import 'package:house_app_one/core/widgets/custom_text_field.dart';
 import 'package:lottie/lottie.dart';
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
-
 // ignore: must_be_immutable
 class AddClientView extends StatefulWidget {
   AddClientView({super.key});

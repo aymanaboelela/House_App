@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/data/models/fliters_modes.dart';
 import '../../../../core/utils/responsive.dart';
 
 class CustomFilterSelect extends StatelessWidget {
   const CustomFilterSelect({
     super.key,
     required this.title,
+    required this.isSelect,
   });
-  final String title;
-
+  final FlitersModel title;
+  final bool isSelect;
   @override
   Widget build(BuildContext context) {
     return Container(
-      // width: SizeConfig.defaultSize! * 9,
       height: SizeConfig.defaultSize! * 4.3,
       decoration: ShapeDecoration(
         shape: RoundedRectangleBorder(
-          side: const BorderSide(width: 1, color: Colors.white),
+          side: BorderSide(
+              width: 1, color: isSelect == true ? Colors.blue : Colors.white),
           borderRadius: BorderRadius.circular(12),
         ),
       ),
@@ -25,7 +26,7 @@ class CustomFilterSelect extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Text(title, style: TextStyle(fontFamily: "Cairo", fontSize: 13)),
+            Text(title.name, style: TextStyle(fontFamily: "Cairo", fontSize: 13)),
             const SizeHorizontal(value: 0.9),
             const Icon(
               Icons.keyboard_arrow_down_outlined,

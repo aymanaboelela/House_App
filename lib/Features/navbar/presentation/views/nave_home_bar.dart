@@ -65,7 +65,7 @@ class _NavBarHomeState extends State<NavBarHome> {
     subscription = Connectivity()
         .onConnectivityChanged
         .listen((ConnectivityResult result) {
-      // Got a new connectivity status!
+     
       chikInternet();
     });
     super.initState();
@@ -76,7 +76,8 @@ class _NavBarHomeState extends State<NavBarHome> {
     return Scaffold(
       body: screens[currentIndex],
       bottomNavigationBar: CurvedNavigationBar(
-        height: 50, // Adjust the height according to your needs
+        height: 50, 
+        
         backgroundColor: Colors.transparent,
         color: Colors.grey.shade800,
         buttonBackgroundColor: Colors.blue,

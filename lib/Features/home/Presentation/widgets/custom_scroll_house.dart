@@ -3,13 +3,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/bottom_sheates/custom_bottme_sheates.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_data_is_empty.dart';
+import 'package:house_app_one/Features/home/Presentation/widgets/custom_filter_select.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_house_item._in_home_view.dart';
-import 'package:house_app_one/Features/home/Presentation/widgets/custom_all_houses_fliter.dart';
-import 'package:house_app_one/Features/home/Presentation/widgets/custom_fliter_select_typ_house.dart';
 import 'package:house_app_one/Features/home/Presentation/widgets/custom_llocation.dart';
-import 'package:house_app_one/Features/home/Presentation/widgets/filters.dart';
 import 'package:house_app_one/Features/home/data/cubit/gethouse/gethouse_cubit.dart';
+import 'package:house_app_one/Features/home/data/models/fliters_modes.dart';
 import 'package:house_app_one/core/utils/responsive.dart';
 import '../../../../core/utils/app_route.dart';
 import '../../../../core/utils/assets.dart';
@@ -32,8 +32,23 @@ class _CustomScrollHouseState extends State<CustomScrollHouse> {
   }
 
   List<HouseModel> data = [];
+  int selectFilter = 0;
   @override
   Widget build(BuildContext context) {
+    List<FlitersModel> fliters = [
+      FlitersModel(
+        name: "كل العقارات",
+        onTap: () => bottomSheetInAllHouses(context),
+      ),
+      FlitersModel(
+        name: "نوع المستاجر",
+        onTap: () => bottomSheateIsGenger(context),
+      ),
+      FlitersModel(
+        name: "نوع العقار",
+        onTap: () => bottomSheettyphouse(context),
+      ),
+    ];
     return CustomScrollView(
       slivers: [
         SliverAppBar(
@@ -69,20 +84,28 @@ class _CustomScrollHouseState extends State<CustomScrollHouse> {
         const SliverToBoxAdapter(
           child: SizeVertical(value: 1),
         ),
-        const SliverToBoxAdapter(
-          child: SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              children: [
-                SizeHorizontal(
-                  value: 1,
-                ),
-                AllHousesFltier(),
-                SizeHorizontal(value: 1),
-                CustomFilterGender(),
-                SizeHorizontal(value: 1),
-                CustomFliterSelectTypHouse(),
-              ],
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: 50, // ارتفاع الـ CustomFilterSelect
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: fliters.length,
+              itemBuilder: (BuildContext context, int index) {
+                return Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 6),
+                  child: InkWell(
+                    onTap: () {
+                      fliters[index].onTap();
+                      if (selectFilter != index) {
+                        selectFilter = index;
+                        setState(() {});
+                      }
+                    },
+                    child: CustomFilterSelect(
+                        title: fliters[index], isSelect: selectFilter == index),
+                  ),
+                );
+              },
             ),
           ),
         ),

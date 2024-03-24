@@ -5,23 +5,17 @@ import 'package:house_app_one/Features/home/Presentation/widgets/custom_riting_s
 import 'package:house_app_one/core/utils/assets.dart';
 import 'package:in_app_review/in_app_review.dart';
 import 'package:lottie/lottie.dart';
-
 enum Availability { loading, available, unavailable }
-
 class RatingView extends StatefulWidget {
   const RatingView({Key? key}) : super(key: key);
-
   @override
   State<RatingView> createState() => _RatingViewState();
 }
-
 class _RatingViewState extends State<RatingView> {
   final InAppReview _inAppReview = InAppReview.instance;
-
   String _appStoreId = 'com.akodo.akodo';
   String _microsoftStoreId = '';
   Availability availability = Availability.loading;
-
   @override
   void initState() {
     super.initState();
@@ -94,3 +88,4 @@ class _RatingViewState extends State<RatingView> {
     );
   }
 }
+
