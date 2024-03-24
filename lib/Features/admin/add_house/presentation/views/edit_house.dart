@@ -18,7 +18,7 @@ import '../widgets/custom_select_numper_of_bad.dart';
 
 class EditHouseView extends StatefulWidget {
   EditHouseView({Key? key, required this.index}) : super(key: key);
-  
+
   final int index;
   State<EditHouseView> createState() => _EditProductState();
 }
@@ -72,19 +72,16 @@ class _EditProductState extends State<EditHouseView> {
     super.dispose();
   }
 
-  String? idHouse;
-  String? typeHouse;
-  String? genger;
-  String? price;
-  String? nameOfUniversity;
-  String? numpersOfRome;
-  String? numpersOfBad;
-  String? description;
-  bool? airConditioner;
-  bool? wifi;
-  bool? naturalgas;
-  bool? singelRome;
+  String? idHouse,
+      typeHouse,
+      genger,
+      price,
+      nameOfUniversity,
+      numpersOfRome,
+      numpersOfBad,
+      description;
 
+  bool? airConditioner, wifi, naturalgas, singelRome;
   bool isLoging = false;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -324,9 +321,7 @@ class _EditProductState extends State<EditHouseView> {
                                 description = value;
                               },
                             ),
-                            const SizeVertical(value: 2),
-                            const SizeVertical(value: 2),
-                            const SizeVertical(value: 2),
+                            const SizeVertical(value: 6),
                             CustomGeneralButton(
                               text: "اضف الشقه",
                               onTap: () {
